@@ -1,8 +1,91 @@
-.content {
-	margin-top: 50px;
+/**** GLOBAL CSS ****/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700);
+* {
+	font-family: 'Open Sans', sans-serif;
+	color: #303030;
 }
-.undecorated-link:hover {
+html {
+  	position: relative;
+  	min-height: 100%;
+}
+body {
+	background-color: #fefefe;
+  	/* Margin bottom by footer height */
+  	margin-bottom: 60px;
+}
+
+
+/**** HEADER MENU ****/
+
+.navbar-container {
+	background-color: #fefefe;
+	height: 80px;
+	border-bottom: 2px solid #f0f0f0;
+	padding: 0 20px 0 10px;
+}
+.navbar-brand>img {
+	height: 50px;
+}
+ul.nav {
+	padding-top: 14px;
+}
+.menu-item {
+	position: relative;
+	padding: 0 4px;
+}
+.menu-item:not(:first-child):after {
+	/* partial-height borders for menu items */
+    content: '';
+    position: absolute;
+    bottom: 25%;
+    left: -1px;
+    height: 50%;
+    border-left: 1px solid #303030;
+}
+.menu-item:hover, .menu-item.active {
+	background-color: #003970;
+}
+.menu-item:hover:after, .menu-item.active:after {
+	visibility: hidden;
+}
+.menu-item>a {
+	color: #030303;
+	font-weight: 600;
+}
+.menu-item>a:hover, .menu-item.active>a {
+	background-color: transparent !important;
+	color: #fefefe;
+}
+.menu-item>a:focus {
+	background-color: transparent !important;
+	color: #030303 !important;
+}
+.menu-item>.dropdown-toggle>.ham {
+	background-image: url('../img/menu/ham-icon-sprite.png');
+	background-position: 0 0;
+	background-repeat: none;
+	height: 24px;
+	width: 24px;
+	margin-right: 8px;
+}
+.menu-item:hover>.dropdown-toggle>.ham {
+	background-position: -24px 0;
+}
+
+
+/**** GLOBAL CONTENT RULES ****/
+/* page-secific rules should be included as separate css files */
+
+.content {
+	margin-top: 80px;
+}
+.highlight-link {
+	color: #22a4b4;
+}
+.highlight-link:hover {
 	text-decoration: none;
+	color: #1c7f8b;
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
@@ -12,4 +95,68 @@
 }
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
+}
+
+
+/**** LANDING PAGE CONTENT ****/
+
+.join-banner {
+	padding: 40px 0;
+}
+.join-banner::before {
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	min-height: 410px;
+  	content: "";
+  	background-image: url('../img/landing-page/join-banner-bg.jpg');
+  	background-size: cover;
+	background-repeat: none;
+  	opacity: 0.5;
+  	z-index: -1;   
+}
+.join-banner h1 {
+	color: #003970;
+	font-weight: 700;
+	margin-bottom: 40px;
+}
+.registration {
+	padding-top: 20px;
+}
+.join-button {
+	background-color: transparent;
+	border: 2px solid #003970;
+	border-radius: 16px;
+	color: #00599d;
+	font-size: 24px;
+	font-weight: 600;
+	padding: 16px 80px;
+}
+.join-button:hover {
+	text-decoration: none;
+	background-color: rgba(0,57,112,0.2);
+	color: #003970;
+}
+.sign-in-invite {
+	margin-top: 40px;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+
+/**** FOOTER ****/
+
+.footer {
+  	position: absolute;
+  	bottom: 0;
+  	width: 100%;
+  	/* Set the fixed height of the footer here */
+  	height: 60px;
+  	background-color: #fefefe;
+  	margin-top: 20px;
+}
+.footer p {
+	margin-top: 22px;
 }
