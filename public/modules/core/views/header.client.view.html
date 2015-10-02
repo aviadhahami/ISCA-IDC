@@ -1,10 +1,13 @@
 <div class="navbar-container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+-			<div class="ham"></div>
+-		</button>
 		<a href="/#!/" class="navbar-brand">
 			<img src="modules/core/img/brand/logo.png" />
 		</a>
 	</div>
-	<nav class="nav navbar-nav navbar-right" role="navigation">
+	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav navbar-right">
 			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-hide="authentication.user">
 				<a href="/#!/signin">Sign In</a>
