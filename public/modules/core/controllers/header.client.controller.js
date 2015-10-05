@@ -8,6 +8,6 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		$scope.isCollapsed = false;
 		$scope.toggleCollapsibleMenu = function() {
  			$scope.isCollapsed = !$scope.isCollapsed;
- 		}
+ 		};
 	}
 ]);

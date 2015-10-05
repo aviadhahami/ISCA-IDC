@@ -3,7 +3,7 @@
 section.block {
 	font-size: 18px;
 	color: #303030;
-	padding: 40px 0;
+	padding: 70px 0;
 }
 section.block:nth-child(even) {
 	background-color: #f5f6f7;
@@ -15,7 +15,7 @@ section.block hr {
 	border-top: 1px solid #303030;
 	opacity: 0.5;
 }
-section.block>.container>div, section.block>.container-fluid>div {
+section.block>.container>div, section.block>.container-fluid>div, section.block>.container-fluid>.container>div {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -74,11 +74,35 @@ section.block>.container>div, section.block>.container-fluid>div {
 
 /**** PARTICIPATION SECTION ****/
 
-#benefits, #benefits h5, #benefits div {
+.participation-type-tab {
+	border-bottom: 1px solid #303030;
+	padding: 0;
+	opacity: 0.5;
+}
+.participation-type-tab#volunteer {
+	text-align: right;
+}
+.participation-type-tab:hover, .participation-type-tab.active {
+	color: #328dc8;
+	border-bottom: 2px solid #303030;
+	padding: 0 4px;
+	opacity: 1;
+}
+.participation-type-tab:hover {
+	background-color: #ebecec;
+}
+
+#participant-container>div, #volunteer-container>div {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.benefits, .benefits div {
 	text-align: center;
 }
-#benefits img {
+.benefits img {
 	margin: 10px 0;
+	height: 80px;
+	width: 80px;
 }
 
 
@@ -102,30 +126,32 @@ section.block>.container>div, section.block>.container-fluid>div {
 	margin-top: 10px;
 }
 
-#volunteer {
+#special-content {
 	padding: 0;
 	margin: 60px 0 0 0;
 	background-color: #328dc8;
 }
-#volunteer-image, #volunteer-text {
+#special-content-image, #special-content-text {
 	padding: 0;
 	margin: 0;
 }
-#volunteer-image {
+#special-content-image {
 	background-color: #fefefe;
 	overflow: hidden;
 }
-#volunteer-image>img {
+#special-content-image>img {
 	width: 98%;
 }
-#volunteer-text {
+#special-content-text {
 	height: 100%;
 	padding: 100px;
 }
-#volunteer-text>h5, #volunteer-text>p {
+#special-content-text h2 {
+	margin-bottom: 40px;
+}
+#special-content-text h2, #special-content-text p {
 	color: #fefefe;
 }
-
 
 
 /**** FAQ SECTION ****/

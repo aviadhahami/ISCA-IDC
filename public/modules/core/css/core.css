@@ -16,6 +16,9 @@ body {
   	margin-bottom: 60px;
 }
 a {
+	text-decoration: none;
+}
+a, button {
 	-ms-transition: all .5s;
 	-webkit-transition: all .5s;
     transition: all .5s;
@@ -25,12 +28,49 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
 }
 
+/**** CUSTOM CLASSES FOR REPETITIVE ELEMENTS ****/
+
 .highlight-link {
 	color: #5dbbd6;
 }
-.highlight-link:hover {
+.highlight-link:hover, .highlight-link:active, .highlight-link:focus {
 	text-decoration: none;
 	color: #328dc8;
+}
+
+.readmore-btn {
+	width: 140px;
+	height: 40px;
+	color: #303030;
+	font-weight: 600;
+	background-color: transparent;
+	border: 1px solid #303030;
+}
+.readmore-btn:hover {
+	color: #fefefe;
+	background-color: #328dc8;
+	border: none;
+}
+.readmore-btn.white-theme {
+	color: #fefefe;
+	background-color: transparent;
+	border: 1px solid #fefefe;
+}
+.readmore-btn.white-theme:hover {
+	color: #329dc9;
+	background-color: #fefefe;
+	border: none;
+}
+.readmore-content {
+	max-height: 0;
+	opacity: 0;
+	-ms-transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+.readmore-content.active {
+	max-height: none;
+	opacity: 1;
 }
 
 
