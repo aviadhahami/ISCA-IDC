@@ -26,38 +26,42 @@
                     <input required id="firstName" name="firstName" data-ng-model="credentials.firstName" >
                 </md-input-container>
 
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <md-input-container>
-                        <label>Select program</label>
-                        <md-select ng-model="selectedOption" required>
-                            <md-option ng-repeat="option in programOptions" value="{{option.id}}">{{option.name}}</md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
+                <md-input-container>
+                    <label>Last Name</label>
+                    <input required id="lastName" name="lastName" data-ng-model="credentials.lastName">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Email</label>
+                    <input type="email" id="email" name="email" data-ng-model="credentials.email">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Username</label>
+                    <input type="text" id="username" name="username" data-ng-model="credentials.username">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" data-ng-model="credentials.password">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Select program</label>
+                    <md-select ng-model="selectedOption" required>
+                        <md-option ng-repeat="option in programOptions" value="{{option.id}}">{{option.name}}</md-option>
+                    </md-select>
+                </md-input-container>
 
                 <div class="text-center form-group">
                     <button type="submit" class="btn btn-large btn-primary">Sign up</button>&nbsp; or&nbsp;
                     <a href="/#!/signin" class="show-signup">Sign in</a>
                 </div>
+
                 <div data-ng-show="error" class="text-center text-danger">
                     <strong data-ng-bind="error"></strong>
                 </div>
+
             </fieldset>
         </form>
     </div>
