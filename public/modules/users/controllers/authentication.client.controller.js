@@ -30,5 +30,16 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$scope.error = response.message;
 			});
 		};
+
+		$scope.programOptions = [
+			{
+				'id': 'A',
+				'name' : 'Academic Participant'
+			},
+			{
+				'id':'V',
+				'name':'Volunteer'
+			}
+		]
 	}
 ]);
