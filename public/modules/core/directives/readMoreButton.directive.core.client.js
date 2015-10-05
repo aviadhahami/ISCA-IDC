@@ -5,7 +5,7 @@
 //  (otherwise, styling and functionality will not work):
 
 //  <div>
-// 		<div data-read-more-button align-to="left></div>
+// 		<div data-read-more-button align-to="left" theme=""></div>
 
 // 		<anytag class="readmore-content">
 // 			content to be displayed after the button is clicked.
@@ -21,6 +21,9 @@
 
 //  Styling is controlled in core.css in the CUSTOM CLASSES FOR 
 //  REPETITIVE ELEMENTS section.
+
+//  NOTE 3: use 'theme="white-theme"' attribute when placing the 
+//  button on blue / dark backgrounds.
 
 angular.module('core').directive('readMoreButton', function() {
   	return {
