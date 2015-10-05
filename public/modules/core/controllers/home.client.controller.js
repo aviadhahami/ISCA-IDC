@@ -3,7 +3,7 @@
 
 angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	function($scope, Authentication) {
-		// This provides access to user data.
+		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
 		// Controls the participant / volunteer overview tabs
