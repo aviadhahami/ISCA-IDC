@@ -24,8 +24,10 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 /**** REGISTRAION BANNER ****/
 
 #join-banner {
+	position: relative;
 	padding: 80px;
-	background-color: rgba(5,5,5,0.2);
+	background-color: rgba(5,5,5,0.4);
+	overflow: hidden;
 }
 #join-banner::before {
   	position: absolute;
@@ -37,9 +39,8 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
   	content: "";
   	background-image: url('../img/landing-page/negativespace.png');
   	background-size: cover;
-	background-repeat: none;
+	background-repeat: no-repeat;
   	opacity: 0.9;
-  	z-index: -1;   
 }
 #join-banner h3 {
 	color: #fefefe;
