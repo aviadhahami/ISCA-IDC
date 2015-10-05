@@ -25,21 +25,25 @@
 //  NOTE 3: use 'theme="white-theme"' attribute when placing the 
 //  button on blue / dark backgrounds.
 
-angular.module('core').directive('readMoreButton', ['$timeout', function($timeout) {
-  	return {
-	    restrict: 'AE',
-	    replace: 'true',
-	    template: '<button class="readmore-btn" md-ink-ripple>Read More</button>',
-	    link: function(scope, elem, attrs) {
-	    	elem.addClass(attrs.theme);
+angular.module('core').directive('readMoreButton', ['$timeout',
+    function($timeout) {
+        var tpl = '<button class="readmore-btn" md-ink-ripple>Read More</button>';
+        return {
+            restrict: 'E', // Element only
+            replace: true,
+            terminal: false,
+            template: tpl,
+            link: function(scope, elem, attrs) {
+                elem.addClass(attrs.theme);
 
-	      	elem.bind('click', function() {
-	      		$timeout(function() {
-        			elem.css('display', 'none');
-	      			elem.parent().css('text-align', attrs.alignTo);
-		        	elem.next('readmore-content').addClass('active');
-    			}, 200);
-	      	});
-	    }
-  	};
-}]);
+                // TODO: @Omer, are you trying to mimic fade effect ? why not use simple css ?
+                elem.bind('click', function() {
+                    $timeout(function() {
+                        elem.css('display', 'none');
+                        elem.parent().css('text-align', attrs.alignTo);
+                        elem.next('readmore-content').addClass('active');
+                    }, 200);
+                });
+            }
+        };
+    }]);
