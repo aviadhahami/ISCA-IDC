@@ -13,7 +13,7 @@ html {
 body {
 	background-color: #fefefe;
   	/* Margin bottom by footer height */
-  	margin-bottom: 60px;
+  	margin-bottom: 100px;
 }
 a {
 	text-decoration: none;
@@ -39,6 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .readmore-btn {
+	position: relative;
 	width: 140px;
 	height: 40px;
 	color: #303030;
@@ -135,7 +136,7 @@ ul.nav {
 }
 .menu-item>a:focus {
 	background-color: transparent !important;
-	color: #030303 !important;
+	color: #fefefe !important;
 }
 .menu-item>.dropdown-toggle>.ham {
 	background-image: url('../img/menu/ham-icon-sprite.png');
@@ -152,7 +153,7 @@ ul.nav {
 /**** GLOBAL CONTENT RULES ****/
 /* page-secific rules should be included as separate css files */
 
-.content {
+#content-section {
 	margin-top: 80px;
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -168,15 +169,15 @@ ul.nav {
 
 /**** FOOTER ****/
 
-.footer {
-  	position: absolute;
-  	bottom: 0;
-  	width: 100%;
+#footer-section {
+  	/*position: absolute;*/
+    left: 0;
+    bottom: 0;
+    width: 100%;
   	/* Set the fixed height of the footer here */
-  	height: 60px;
+  	height: 100px;
   	background-color: #fefefe;
-  	margin-top: 40px;
 }
-.footer p {
-	margin-top: 22px;
+#footer-section p {
+	margin-top: 42px;
 }

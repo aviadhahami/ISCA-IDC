@@ -25,19 +25,21 @@
 //  NOTE 3: use 'theme="white-theme"' attribute when placing the 
 //  button on blue / dark backgrounds.
 
-angular.module('core').directive('readMoreButton', function() {
+angular.module('core').directive('readMoreButton', ['$timeout', function($timeout) {
   	return {
 	    restrict: 'AE',
 	    replace: 'true',
-	    template: '<button class="readmore-btn">Read More</button>',
+	    template: '<button class="readmore-btn" md-ink-ripple>Read More</button>',
 	    link: function(scope, elem, attrs) {
 	    	elem.addClass(attrs.theme);
 
 	      	elem.bind('click', function() {
-	      		elem.css('display', 'none');
-	      		elem.parent().css('text-align', attrs.alignTo);
-		        elem.next('readmore-content').addClass('active');
+	      		$timeout(function() {
+        			elem.css('display', 'none');
+	      			elem.parent().css('text-align', attrs.alignTo);
+		        	elem.next('readmore-content').addClass('active');
+    			}, 200);
 	      	});
 	    }
   	};
-});
+}]);
