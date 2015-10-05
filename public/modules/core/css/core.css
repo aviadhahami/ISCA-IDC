@@ -73,6 +73,19 @@ h1, h2, h3, h4, h5, h6 {
 	opacity: 1;
 }
 
+ul.zebra-list {
+	padding: 0;
+	border: 2px solid rgba(0,0,0,0.1);
+	border-top: none;
+}
+ul.zebra-list>li {
+	list-style: none;
+	padding: 8px;
+}
+ul.zebra-list>li:nth-child(even) {
+	background-color: rgba(50,141,200,0.1);
+}
+
 
 /**** HEADER MENU ****/
 
