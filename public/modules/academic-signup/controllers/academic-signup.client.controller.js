@@ -5,18 +5,43 @@ angular.module('academic-signup').controller('academic-signup', ['$scope', 'Auth
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
+        function init(){
 
-        $scope.applicationFormData = {
-            'name': $scope.user.displayName,
-            'email':$scope.user.email,
-            'id':'',
+            var loadSavedData = function(){
+                return JSON.parse(localStorage.getItem('academic-application-data'));
+            }
 
+            var savedData = loadSavedData();
+            console.log('savedData',savedData);
+
+            if(savedData === null){
+                $scope.applicationFormData = {
+                    'name': $scope.user.displayName,
+                    'email':$scope.user.email,
+                    'id':'',
+                    'sex':'',
+                    'birthday': '',
+                    'phone':'',
+
+
+
+
+                };
+            }else{
+                $scope.applicationFormData = angular.copy(savedData);
+            }
         };
-        console.log($scope.user);
-        $scope.userReadTerms = false;
+
+        init();
+
+        $scope.userReadTerms = true; // TODO: CHANGE TO FALSE
         $scope.toggleUserReadTerms = function(){
             $scope.userReadTerms = !$scope.userReadTerms;
-        }
+        };
+
+        $scope.saveData = function(){
+            localStorage.setItem('academic-application-data',JSON.stringify($scope.applicationFormData));
+        };
 
     }
 ]);
