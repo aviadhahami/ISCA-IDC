@@ -8,7 +8,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         function init(){
             var loadSavedData = function(){
                 return JSON.parse(localStorage.getItem('academic-application-data'));
-            }
+            };
 
             var savedData = loadSavedData();
             console.log('savedData',savedData);
@@ -41,7 +41,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             }else{
                 $scope.applicationFormData = angular.copy(savedData);
             }
-        };
+        }
 
         init();
 
@@ -66,7 +66,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         $interval(function(){
             $scope.saveData();
-            console.log('saved')
+            console.log('saved');
         },3000);
     }
 ]);
