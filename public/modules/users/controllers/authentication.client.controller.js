@@ -33,16 +33,6 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 
 
         // Custom stuff for us
-        $scope.programOptions = [
-            {
-                'id': 'A',
-                'name' : 'Academic Participant'
-            },
-            {
-                'id':'V',
-                'name':'Volunteer'
-            }
-        ];
         $scope.degreeOptions = [
             {
                 'id':'cs',
@@ -74,13 +64,12 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
             }
         ];
 
-        $scope.selectedOption = $scope.programOptions[1].name;
         console.log($scope.selectedOption);
         $scope.selectedVolunteer = '';
 
-
+        $scope.selectedOption= '';
         var updateSelectedProgram = function(){
-            $scope.selectedVolunteer = $scope.selectedOption === $scope.programOptions[0].id;
+            $scope.VolunteerIsSelected = $scope.selectedOption.toLowerCase() === 'volunteer';
         };
 
         // Should be changed to ng-change but currently md-select doesn't support it

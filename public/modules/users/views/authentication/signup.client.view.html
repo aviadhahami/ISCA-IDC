@@ -49,11 +49,12 @@
                 <md-input-container>
                     <label>Select program</label>
                     <md-select ng-model="selectedOption" required>
-                        <md-option ng-repeat="option in programOptions" value="{{option.id}}">{{option.name}}</md-option>
+                        <md-option>Academic Participant</md-option>
+                        <md-option selected>Volunteer</md-option>
                     </md-select>
                 </md-input-container>
 
-                <div ng-show="selectedVolunteer">
+                <div ng-show="!VolunteerIsSelected">
                     <h6>Academic participants additional info</h6>
                     <md-input-container>
                         <label>ID</label>
