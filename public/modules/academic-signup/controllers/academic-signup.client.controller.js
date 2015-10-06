@@ -29,6 +29,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                         'reasonToCome':''
                     },
                     'essay':{
+                        'topic':'',
                         'content':''
                     },
                     'cv':''

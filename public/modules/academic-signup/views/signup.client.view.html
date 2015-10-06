@@ -157,9 +157,26 @@
                                 </li>
                             </ul>
 
+                            <h5>Topics</h5>
+                            <p>Selected Value: </p>
+
+                            <md-radio-group ng-model="applicationFormData.academicInfo.essay.topic">
+                                <md-radio-button value="socialEffect">
+                                    The residual effect demonstrated by social networks (Facebook, Twitter etc.) over the 'real world'.
+                                </md-radio-button>
+                                <md-radio-button value="jewChallenge">
+                                    What challenges Jews are facing in general and in our times. Share your opinion.
+                                </md-radio-button>
+                                <md-radio-button value="killAntiSemitism">
+                                    In what ways the world can eliminated Anti-Semitism and racism?. Share your opinion.
+                                </md-radio-button>
+                                <md-radio-button value="initiatives">
+                                    If you could use the ISCA academic program as your resource, what new initiatives will you make?
+                                </md-radio-button>
+                            </md-radio-group>
                             <md-input-container>
                                 <label>
-                                {{user.displayName}}'s essay
+                                    {{user.displayName}}'s essay
                                 </label>
                                 <textarea ng-model="applicationFormData.academicInfo.essay.content" cols="30" rows="10" maxlength="5000" md-maxlength="5000"></textarea>
                             </md-input-container>
