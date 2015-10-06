@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup', ['$scope', 'Authentication','$interval',
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval',
     function($scope, Authentication,$interval) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
@@ -24,8 +24,14 @@ angular.module('academic-signup').controller('academic-signup', ['$scope', 'Auth
                     'academicInfo':{
                         'currentYear':'',
                         'degree':'',
-                        'fieldOfStudy':''
-                    }
+                        'fieldOfStudy':'',
+                        'languages' : '',
+                        'reasonToCome':''
+                    },
+                    'essay':{
+                        'content':''
+                    },
+                    'cv':''
 
 
 

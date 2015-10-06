@@ -1,4 +1,4 @@
-<section ng-controller="academic-signup">
+<section ng-controller="academic-signup-controller" >
     <div class="container">
         <md-toolbar class="md-primary">
             <h1 class="md-toolbar-tools">
@@ -118,6 +118,18 @@
                                         {{option}}
                                     </md-option>
                                 </md-select>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>
+                                    Fluently spoken foreign languages (separate by comma)
+                                </label>
+                                <input type="text" ng-model="applicationFormData.academicInfo.languages"/>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>
+                                    Please describe why Anti-Semitism is important to you and what you will bring to the program
+                                </label>
+                                <textarea ng-model="applicationFormData.academicInfo.reasonToCome" cols="30" rows="10" maxlength="1000" md-maxlength="1000"></textarea>
                             </md-input-container>
                         </section>
                     </md-card-content>
