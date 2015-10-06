@@ -6,7 +6,6 @@ angular.module('academic-signup').controller('academic-signup', ['$scope', 'Auth
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         function init(){
-
             var loadSavedData = function(){
                 return JSON.parse(localStorage.getItem('academic-application-data'));
             }
@@ -22,6 +21,11 @@ angular.module('academic-signup').controller('academic-signup', ['$scope', 'Auth
                     'sex':'',
                     'birthday': '',
                     'phone':'',
+                    'academicInfo':{
+                        'currentYear':'',
+                        'degree':'',
+                        'fieldOfStudy':''
+                    },
 
 
 
@@ -43,5 +47,14 @@ angular.module('academic-signup').controller('academic-signup', ['$scope', 'Auth
             localStorage.setItem('academic-application-data',JSON.stringify($scope.applicationFormData));
         };
 
+        $scope.studyOptions = [
+            'Computer Science',
+            'Law',
+            'Psychology',
+            'Sustainability',
+            'Economics',
+            'Communication',
+            'Government'
+        ]
     }
 ]);

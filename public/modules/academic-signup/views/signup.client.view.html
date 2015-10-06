@@ -28,13 +28,12 @@
             </md-card>
             <div ng-show="userReadTerms">
                 <md-card>
-                    <!--TODO: CHANGE STYLE TO PERMANENT-->
-
                     <md-card-content>
                         <h4>PERSONAL INFORMATION</h4>
                         <hr/>
                         <section>
                             <div layout layout-sm="column">
+                                <!--TODO: CHANGE STYLE TO PERMANENT-->
                                 <md-input-container style="width:80%">
                                     <label>Name</label>
                                     <input ng-model="applicationFormData.name" disabled>
@@ -74,12 +73,53 @@
 
                     </md-card-content>
                 </md-card>
+
                 <br/>
+
                 <md-card>
                     <md-card-content>
                         <h4>ACADEMIC INFORMATION</h4>
                         <hr/>
+                        <section>
+                            <md-input-container>
+                                <label>
+                                    Degree type
+                                </label>
+                                <md-select ng-model="applicationFormData.academicInfo.degree">
+                                    <md-option value="bachelor">
+                                        B.A. / B.S.
+                                    </md-option>
+                                    <md-option value="master">
+                                        M.A. / M.S.
+                                    </md-option>
+                                    <md-option value="other">
+                                        Other
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
 
+                            <md-input-container>
+                                <label>
+                                    Current year of study
+                                </label>
+                                <md-select ng-model="applicationFormData.academicInfo.currentYear" required="">
+                                    <md-option ng-repeat="i in [1,2,3,4,5]">
+                                        {{i}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>
+                                    Field of study
+                                </label>
+                                <md-select ng-model="applicationFormData.academicInfo.fieldOfStudy" required="">
+                                    <md-option ng-repeat="option in studyOptions">
+                                        {{option}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </section>
                     </md-card-content>
                 </md-card>
             </div>
