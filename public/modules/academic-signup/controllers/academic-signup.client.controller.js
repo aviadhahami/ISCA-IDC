@@ -4,8 +4,8 @@
 angular.module('academic-signup').controller('academic-signup', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
-        $scope.authentication = Authentication;
+        var user = angular.copy(Authentication.user);
+        console.log(user)
 
-        console.log($scope.authentication);
     }
 ]);
