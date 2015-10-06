@@ -53,13 +53,33 @@
                     </md-select>
                 </md-input-container>
 
+                <div ng-show="selectedVolunteer">
+                    <h6>Academic participants additional info</h6>
+                    <md-input-container>
+                        <label>ID</label>
+                        <input type="number" id="id" name="id" data-ng-model="credentials.id">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Chasing degree in</label>
+                        <md-select ng-model="credentials.selectedDegree" required>
+                            <md-option ng-repeat="option in degreeOptions" value="{{option.id}}">{{option.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Years remaining</label>
+                        <md-select ng-model="credentials.yearsRemaining" required>
+                            <md-option ng-repeat="i in [1,2,3,4,5,6]" >{{i}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
                 <div class="text-center form-group">
-                    <button type="submit" class="btn btn-large btn-primary">Sign up</button>&nbsp; or&nbsp;
+                    <md-button type="submit" class="md-raised">Sign up</md-button>&nbsp; or&nbsp;
                     <a href="/#!/signin" class="show-signup">Sign in</a>
                 </div>
 
                 <div data-ng-show="error" class="text-center text-danger">
-                    <strong data-ng-bind="error"></strong>
+                    <strong data-ng-bind="error" style="color:red"></strong>
                 </div>
 
             </fieldset>
