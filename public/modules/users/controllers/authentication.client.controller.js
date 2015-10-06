@@ -64,7 +64,6 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
             }
         ];
 
-        console.log($scope.selectedOption);
         $scope.selectedVolunteer = '';
 
         $scope.selectedOption= '';
