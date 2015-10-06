@@ -67,6 +67,6 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         $interval(function(){
             $scope.saveData();
             console.log('saved')
-        },5000);
+        },3000);
     }
 ]);
