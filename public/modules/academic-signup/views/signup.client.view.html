@@ -134,6 +134,51 @@
                         </section>
                     </md-card-content>
                 </md-card>
+                <md-card>
+                    <md-card-content>
+                        <h4>
+                            Essay
+                        </h4>
+                        <hr/>
+                        <section>
+                            <p>
+                                In this section one may write a short essay about one of the following topics. <br/>
+                                You may choose any languages that you like, but make sure it is up to 400 words. <br/>
+                            </p>
+                            <h6>
+                                notes:
+                            </h6>
+                            <ul>
+                                <li>
+                                    <i><b>There's no need for expertise in writing essays! Do your best!</b></i>
+                                </li>
+                                <li>
+                                    Graphic designers doesn't need to write an essay yet they <b>must</b> supply a link to their portfolio
+                                </li>
+                            </ul>
+
+                            <md-input-container>
+                                <label>
+                                {{user.displayName}}'s essay
+                                </label>
+                                <textarea ng-model="applicationFormData.academicInfo.essay.content" cols="30" rows="10" maxlength="5000" md-maxlength="5000"></textarea>
+                            </md-input-container>
+                        </section>
+                    </md-card-content>
+                </md-card>
+
+                <md-card>
+                    <md-card-content>
+                        <h4>
+                            Resume
+                        </h4>
+                        <hr/>
+                        <section>
+                            <!--TODO : upload resume here-->
+                        </section>
+                    </md-card-content>
+                </md-card>
+
             </div>
         </md-content>
     </div>
