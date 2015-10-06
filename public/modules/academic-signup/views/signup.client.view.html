@@ -114,7 +114,7 @@
                                     Field of study
                                 </label>
                                 <md-select ng-model="applicationFormData.academicInfo.fieldOfStudy" required="">
-                                    <md-option ng-repeat="option in studyOptions">
+                                    <md-option ng-repeat="option in studyOptions" value="{{option}}">
                                         {{option}}
                                     </md-option>
                                 </md-select>

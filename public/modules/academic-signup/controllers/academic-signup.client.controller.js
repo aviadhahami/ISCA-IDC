@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup', ['$scope', 'Authentication',
-    function($scope, Authentication) {
+angular.module('academic-signup').controller('academic-signup', ['$scope', 'Authentication','$interval',
+    function($scope, Authentication,$interval) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         function init(){
@@ -25,7 +25,7 @@ angular.module('academic-signup').controller('academic-signup', ['$scope', 'Auth
                         'currentYear':'',
                         'degree':'',
                         'fieldOfStudy':''
-                    },
+                    }
 
 
 
@@ -55,6 +55,11 @@ angular.module('academic-signup').controller('academic-signup', ['$scope', 'Auth
             'Economics',
             'Communication',
             'Government'
-        ]
+        ];
+
+        $interval(function(){
+            $scope.saveData();
+            console.log('saved')
+        },5000);
     }
 ]);
