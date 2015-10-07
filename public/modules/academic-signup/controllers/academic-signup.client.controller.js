@@ -5,13 +5,13 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
     function($scope, Authentication,$interval,Upload,Users,$http) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
+        console.log($scope.user);
         function init(){
             var loadSavedData = function(){
                 return JSON.parse(localStorage.getItem('academic-application-data'));
             };
 
             var savedData = loadSavedData();
-            console.log('savedData',savedData);
 
             if(savedData === null){
                 $scope.applicationFormData = {
@@ -32,7 +32,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                         'topic':'',
                         'content':''
                     },
-                    'cv':''
+                    'cv':$scope.user.cv || ''
                 };
             }else{
                 $scope.applicationFormData = angular.copy(savedData);
@@ -67,9 +67,15 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
 
         $scope.file ='';
-        $scope.submit = function() {
-            if ($scope.file && !$scope.file.$error) {
-                $scope.upload($scope.file);
+        $scope.submit = function(file) {
+            console.log(file);
+            if (file) {
+                if(file.type){
+                    if (file.type.toString().indexOf('pdf') > -1){
+                        console.log(true);
+                        $scope.upload(file);
+                    }
+                }
             }
         };
 
@@ -82,16 +88,27 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                     file: file
                 }
             }).then(function (res) {
+
                 console.log(res.data);
                 console.log('Success ' + res.config.data.file.name + 'uploaded. Response: ' + res.data);
+
+                // Update objects with fresh data
                 $scope.user.cv = res.data.URI;
+                $scope.applicationFormData.cv = res.data.URI;
+
+                // Update user in DB
                 Users.update($scope.user);
-                console.log($scope.user);
+
+
             }, function (err) {
+
                 console.log('Error status: ' + err.status);
+
             }, function (evt) {
+
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+
             });
         };
 
