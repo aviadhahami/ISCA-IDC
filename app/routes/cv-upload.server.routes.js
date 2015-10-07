@@ -40,14 +40,15 @@ module.exports = function(app){
         locationString = '';
     });
     app.get('/downloadcv/:file', function(req,res) {
-        //var file = fs.createWriteStream(destFolder+req.params.file);
-        //console.log(req.params);
-        //res.pipe(file);
-        console.log(__dirname);
         var location = path.join(destFolder+req.params.file);
         console.log(location);
-        res.download(location);
-
+        fs.exists(location,function(exists){
+            if(exists){
+                res.download(location);
+            }else{
+                res.status(404);
+            }
+        });
 
     });
 };
