@@ -142,6 +142,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         };
 
         var showAlert = function(ev) {
+
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application
             // to prevent interaction outside of dialog
@@ -153,14 +154,6 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                     .ok('OK')
                     .targetEvent(ev)
             );
-        };
-
-        $scope.showDatePicker = function(ev){
-            $mdDatePicker(ev, $scope.applicationFormData.birthday).then(function(selectedDate) {
-                console.log(selectedDate)
-                $scope.applicationFormData.birthday= selectedDate;
-            });
-            console.log($scope.applicationFormData.birthday);
         };
 
         $scope.submitApplication = function(){

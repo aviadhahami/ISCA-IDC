@@ -103,8 +103,8 @@
                                 <label>
                                     Current year of study
                                 </label>
-                                <md-select ng-model="applicationFormData.academicInfo.currentYear" required="">
-                                    <md-option ng-repeat="i in [1,2,3,4,5]">
+                                <md-select ng-model="applicationFormData.academicInfo.currentYear" required>
+                                    <md-option ng-repeat="i in [1,2,3,4,5]" value="{{i}}">
                                         {{i}}
                                     </md-option>
                                 </md-select>
