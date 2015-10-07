@@ -56,7 +56,7 @@
                             <md-input-container>
                                 <label>Sex</label>
                                 <md-select ng-model="applicationFormData.sex" required>
-                                    <md-option value="male">
+                                    <md-option value="male" selected>
                                         Male
                                     </md-option>
                                     <md-option value="female">
@@ -123,7 +123,7 @@
                                 <label>
                                     Fluently spoken foreign languages (separate by comma)
                                 </label>
-                                <input type="text" ng-model="applicationFormData.academicInfo.languages"/>
+                                <input type="text" ng-model="applicationFormData.academicInfo.languages" required/>
                             </md-input-container>
                             <md-input-container>
                                 <label>
@@ -209,10 +209,12 @@
                                 <md-button class="md-raised" ngf-select="submit($file)" ngf-max-size="10MB">
                                     Upload resume
                                 </md-button>
+
                                 <md-button class="md-raised" href="downloadcv/{{user.cv}}" ng-show="user.cv">
                                     <img src="../../../icons/cloud-download.png" alt=""/>
-                                    Download uploaded resume
+                                    Download current resume
                                 </md-button>
+                                <md-progress-linear ng-show="uploadStatus.uploading" md-mode="determinate" value="{{uploadStatus.progress}}"></md-progress-linear>
                             </section>
                         </section>
                     </md-card-content>
@@ -228,14 +230,11 @@
                             Before submitting, make sure all fields are filled properly and that you haven't forgot anything. <br/>
                             When ready, click the big green button.
                         </p>
-                        <md-button class="md-raised" ng-click="" style="width:100%;height:100px; background-color: palegreen">
+                        <md-button class="md-raised" ng-click="submitApplication()" style="width:100%;height:100px; background-color: palegreen">
                             Apply now!
                         </md-button>
                     </md-card-content>
                 </md-card>
-
-
-
             </div>
         </md-content>
     </div>
