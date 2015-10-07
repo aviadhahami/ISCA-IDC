@@ -68,11 +68,9 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         $scope.file ='';
         $scope.submit = function(file) {
-            console.log(file);
             if (file) {
                 if(file.type){
                     if (file.type.toString().indexOf('pdf') > -1){
-                        console.log(true);
                         $scope.upload(file);
                     }
                 }
@@ -80,17 +78,15 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         };
 
         // upload on file select or drop
-
+        var initUpload= function(){
+            $scope.uploadStatus = {
+                progress : 0,
+                uploading : false
+            };
+        }
         $scope.upload = function (file) {
-            function initUpload(){
-                $scope.uploadStatus = {
-                    progress : 0,
-                    uploading : false
-                };
-            }
             initUpload();
             $scope.uploadStatus.uploading = true;
-            console.log(file);
             Upload.upload({
                 url: 'api/cv',
                 data: {
@@ -107,7 +103,9 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
                 // Update user in DB
                 Users.update($scope.user);
-
+                $timeout(function(){
+                    initUpload();
+                },3000);
 
             }, function (err) {
 
@@ -115,22 +113,18 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
             }, function (evt) {
 
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                // var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 $scope.uploadStatus.progress = parseInt(100.0 * evt.loaded / evt.total);
-                if ($scope.uploadStatus.progress === 100){
-                    console.log('done')
-                    $timeout(function(){
-                        initUpload();
-                    },2000);
-
-                }
-                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                // console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
 
             });
 
         };
         $scope.submitApplication = function(){
             console.log($scope.applicationFormData);
+            for(var key in $scope.applicationFormData){
+                console.log(key,$scope.applicationFormData[key]);
+            }
         };
     }
 ]);
