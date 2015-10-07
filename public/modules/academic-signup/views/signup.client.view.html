@@ -191,18 +191,7 @@
                         </h4>
                         <hr/>
                         <section>
-                            <div class="button"
-                                 ngf-select
-                                 ng-model="file"
-                                 name="file"
-                                 ngf-pattern="'image/*'"
-                                 accept="image/*"
-                                 ngf-max-size="20MB"
-                                 ngf-min-height="100"
-                                 ngf-resize="{width: 100, height: 100}">
-                                Select
-                            </div>
-                            <button ng-click="submit()">submit</button>
+                            <button class="button" ngf-select="upload($file)">Upload on file select</button>
                             <a target="_self" href="downloadcv/{{user.cv}}" ng-show="user.cv">click me</a>
                             <!--TODO : upload resume here-->
                         </section>
