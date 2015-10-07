@@ -16,8 +16,6 @@
     "angular-ui-utils": "~0.1.1",
     "bootstrap": "~3",
     "ng-file-upload": "~9.0.7",
-    "ng-file-upload-shim": "~9.0.7",
-    "mdPickers": "~0.3.2",
-    "moment": "~2.10.6"
+    "ng-file-upload-shim": "~9.0.7"
   }
 }

@@ -14,8 +14,7 @@ var ApplicationConfiguration = (function() {
 		'ui.router',
 		'ui.bootstrap',
 		'ui.utils',
-		'ngFileUpload',
-		'mdPickers'
+		'ngFileUpload'
 	];
 
 	// Add a new vertical module
