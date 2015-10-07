@@ -19,7 +19,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                     'email':$scope.user.email,
                     'id':'',
                     'sex':'',
-                    'birthday': '',
+                    'birthday': new Date(),
                     'phone':'',
                     'academicInfo':{
                         'currentYear':'',
@@ -36,6 +36,9 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                 };
             }else{
                 $scope.applicationFormData = angular.copy(savedData);
+
+                // Super important!! otherwise it is not date object and fucks us up
+                $scope.applicationFormData.birthday = new Date($scope.applicationFormData.birthday);
             }
         }
 
