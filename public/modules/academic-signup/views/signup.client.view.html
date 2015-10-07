@@ -39,8 +39,8 @@
                                     <input ng-model="applicationFormData.name" disabled>
                                 </md-input-container>
                                 <!--TODO: Fix line height as it looks like crap atm-->
-                                <md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>
-
+                                <!--<md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>-->
+                                <button ng-click="showDatePicker($event)">click</button>
                             </div>
 
                             <md-input-container>

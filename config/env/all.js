@@ -20,6 +20,7 @@ module.exports = {
 			js: [
 				'public/lib/ng-file-upload-shim/ng-file-upload-shim.min.js',
 				'public/lib/angular/angular.js',
+				'public/lib/moment/min/moment.min.js',
 				'public/lib/mdPickers/dist/mdPickers.min.js',
 				'public/lib/ng-file-upload/ng-file-upload.min.js',
 				'public/lib/angular-resource/angular-resource.js',

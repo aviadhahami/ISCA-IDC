@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog',
-    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog) {
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog','$mdDatePicker',
+    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog,$mdDatePicker) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         console.log($scope.user);
@@ -145,6 +145,11 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                     .ok('OK')
                     .targetEvent(ev)
             );
+        };
+        $scope.showDatePicker = function(ev){
+            $mdDatePicker(ev, $scope.applicationFormData.birthday).then(function(selectedDate) {
+                $scope.applicationFormData.birthday= selectedDate;
+            });;
         };
         $scope.submitApplication = function(){
             console.log($scope.applicationFormData);
