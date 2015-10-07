@@ -161,6 +161,13 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
             if(checkEmptyObjectsRecursively($scope.applicationFormData)){
                 // Form is legit
+                $scope.user.iscaData['applicationForm'] = {
+                    formPending : true,
+                    form : angular.copy($scope.applicationFormData)
+                };
+
+                Users.update($scope.user);
+
             }else{
                 showAlert(null);
                 // Form missing

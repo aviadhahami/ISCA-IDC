@@ -71,6 +71,12 @@ var UserSchema = new Schema({
 		default : ''
 	},
 	providerData: {},
+	iscaData : {
+		type: Schema.Types.Mixed,
+		default : {
+			0:''
+		}
+	},
 	additionalProvidersData: {},
 	roles: {
 		type: [{
