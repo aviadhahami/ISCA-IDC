@@ -3,12 +3,16 @@
 module.exports = function(app){
 
     var multer = require('multer');
-    var upload = multer({ dest: './uploads/'});
+    var upload = multer({ dest: './uploads/resumes/'});
 
-    app.use(multer({ dest: './uploads/',
-        rename: function (fieldname, filename) {
-            console.log(fieldname);
-            return fieldname+'_CV_'+Date.now();
+    app.use(multer({ dest: './uploads/resumes/',
+        rename: function (fieldname, filename, file) {
+            console.log(fieldname,filename,file.user);
+            var d  = new Date(),
+                day = d.getDate(),
+                month = d.getMonth() + 1,
+                year = d.getFullYear();
+            return file.user.firstName+file.user.lastName + '_CV_' + day +'.'+month+'.' + year;
         },
         onFileUploadStart: function (file) {
             console.log(file.originalname + ' is starting ...');

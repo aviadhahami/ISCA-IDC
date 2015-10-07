@@ -191,14 +191,18 @@
                         </h4>
                         <hr/>
                         <section>
-                            <form id        =  "uploadForm"
-                                  enctype   =  "multipart/form-data"
-                                  action    =  "/api/photo"
-                                  method    =  "post"
-                                    >
-                                <input type="file" name="{{user.firstName}}{{user.lastName}}" />
-                                <input type="submit" value="Upload Image" name="submit">
-                            </form>
+                            <div class="button"
+                                 ngf-select
+                                 ng-model="file"
+                                 name="file"
+                                 ngf-pattern="'image/*'"
+                                 accept="image/*"
+                                 ngf-max-size="20MB"
+                                 ngf-min-height="100"
+                                 ngf-resize="{width: 100, height: 100}">
+                                Select
+                            </div>
+                            <button ng-click="submit()">submit</button>
                             <!--TODO : upload resume here-->
                         </section>
                     </md-card-content>

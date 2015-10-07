@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','$http',
-    function($scope, Authentication,$interval,$http) {
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload',
+    function($scope, Authentication,$interval,Upload) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         function init(){
@@ -69,13 +69,31 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             console.log('saved');
         },3000);
 
-        $http({
-            method: 'POST',
-            url: '/api/cv',
-            data: 'test', // your original form data,
-            headers: {'Content-Type': 'multipart/form-data'}
-        }).then(function(data){
-            console.log(data);
-        });
+
+        $scope.file ='';
+        $scope.submit = function() {
+            if ($scope.file && !$scope.file.$error) {
+                $scope.upload($scope.file);
+            }
+        };
+
+        // upload on file select or drop
+        $scope.upload = function (file) {
+            console.log(file);
+            Upload.upload({
+                url: 'api/cv',
+                data: {
+                    file: file
+                }
+            }).then(function (resp) {
+                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
+        };
+
     }
 ]);
