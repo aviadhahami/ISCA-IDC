@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout',
-    function($scope, Authentication,$interval,Upload,Users,$timeout) {
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog',
+    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         console.log($scope.user);
@@ -120,10 +120,39 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             });
 
         };
+
+        // Recursively test for empty fields within the application object
+        var checkEmptyObjectsRecursively = function(obj){
+            for (var key in obj){
+                if (!obj[key]){
+                    return false;
+                }
+                if (typeof obj[key] == 'object'){
+                    return checkEmptyObjectsRecursively(obj[key]);
+                }
+            }
+            return true;
+        };
+        var showAlert = function(ev) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            // Modal dialogs should fully cover application
+            // to prevent interaction outside of dialog
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title('Can not submit application')
+                    .content('We believe that some things are missing in your application, please review it.')
+                    .ok('OK')
+                    .targetEvent(ev)
+            );
+        };
         $scope.submitApplication = function(){
             console.log($scope.applicationFormData);
-            for(var key in $scope.applicationFormData){
-                console.log(key,$scope.applicationFormData[key]);
+            if(checkEmptyObjectsRecursively($scope.applicationFormData)){
+                // Form is legit
+            }else{
+                showAlert(null);
+                // Form missing
             }
         };
     }
