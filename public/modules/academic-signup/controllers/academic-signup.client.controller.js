@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval',
-    function($scope, Authentication,$interval) {
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','$http',
+    function($scope, Authentication,$interval,$http) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         function init(){
@@ -68,5 +68,14 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             $scope.saveData();
             console.log('saved');
         },3000);
+
+        $http({
+            method: 'POST',
+            url: '/api/cv',
+            data: 'test', // your original form data,
+            headers: {'Content-Type': 'multipart/form-data'}
+        }).then(function(data){
+            console.log(data);
+        });
     }
 ]);
