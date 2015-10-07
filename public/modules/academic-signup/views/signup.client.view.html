@@ -191,8 +191,30 @@
                         </h4>
                         <hr/>
                         <section>
-                            <button class="button" ngf-select="submit($file)">Upload on file select</button>
-                            <a target="_self" href="downloadcv/{{user.cv}}" ng-show="user.cv">click me</a>
+                            <p>
+                                In this section we would like you to attach your resume.
+                            </p>
+                            <h6>
+                                Prerequisites:
+                            </h6>
+                            <ul>
+                                <li>
+                                    Your resume must be written in <b>English</b> or <b>Hebrew</b>.
+                                </li>
+                                <li>
+                                    Your resume must be in the format of a <b>PDF file</b> and not bigger than <b>20MB</b>
+                                </li>
+                            </ul>
+                            <section layout="row" layout-sm="column" layout-align="left center" layout-wrap>
+                                <md-button class="md-raised" ngf-select="submit($file)" ngf-max-size="10MB">
+                                    Upload resume
+                                </md-button>
+                                <md-button class="md-raised" href="downloadcv/{{user.cv}}" ng-show="user.cv">
+                                    <img src="../../../icons/cloud-download.png" alt=""/>
+                                    Download uploaded resume
+                                </md-button>
+                            </section>
+
                             <!--TODO : upload resume here-->
                         </section>
                     </md-card-content>
