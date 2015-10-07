@@ -123,16 +123,21 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         // Recursively test for empty fields within the application object
         var checkEmptyObjectsRecursively = function(obj){
-            for (var key in obj){
-                if (!obj[key]){
-                    return false;
+            var temp = true;
+            if (obj === null) {
+                temp = false;
+            }
+            for (var k in obj){
+                if (!obj[k]){
+                    temp = false;
                 }
-                if (typeof obj[key] == 'object'){
-                    return checkEmptyObjectsRecursively(obj[key]);
+                if(typeof obj[k] === 'object'){
+                    temp = temp & checkEmptyObjectsRecursively(obj[k]);
                 }
             }
-            return true;
+            return temp;
         };
+
         var showAlert = function(ev) {
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application
@@ -146,13 +151,18 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                     .targetEvent(ev)
             );
         };
+
         $scope.showDatePicker = function(ev){
             $mdDatePicker(ev, $scope.applicationFormData.birthday).then(function(selectedDate) {
+                console.log(selectedDate)
                 $scope.applicationFormData.birthday= selectedDate;
-            });;
+            });
+            console.log($scope.applicationFormData.birthday);
         };
+
         $scope.submitApplication = function(){
             console.log($scope.applicationFormData);
+
             if(checkEmptyObjectsRecursively($scope.applicationFormData)){
                 // Form is legit
             }else{
