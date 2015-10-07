@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload',
-    function($scope, Authentication,$interval,Upload) {
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$http',
+    function($scope, Authentication,$interval,Upload,Users,$http) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         function init(){
@@ -33,10 +33,6 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                         'content':''
                     },
                     'cv':''
-
-
-
-
                 };
             }else{
                 $scope.applicationFormData = angular.copy(savedData);
@@ -85,10 +81,14 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                 data: {
                     file: file
                 }
-            }).then(function (resp) {
-                console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-            }, function (resp) {
-                console.log('Error status: ' + resp.status);
+            }).then(function (res) {
+                console.log(res.data);
+                console.log('Success ' + res.config.data.file.name + 'uploaded. Response: ' + res.data);
+                $scope.user.cv = res.data.URI;
+                Users.update($scope.user);
+                console.log($scope.user);
+            }, function (err) {
+                console.log('Error status: ' + err.status);
             }, function (evt) {
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
