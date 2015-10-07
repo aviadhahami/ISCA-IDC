@@ -1,40 +1,46 @@
 <div class="navbar-container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+-			<div class="ham"></div>
+-		</button>
 		<a href="/#!/" class="navbar-brand">
 			<img src="modules/core/img/brand/logo.png" />
 		</a>
 	</div>
-	<nav class="nav navbar-nav navbar-right" role="navigation">
+	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav navbar-right">
 			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-hide="authentication.user">
-				<a href="/#!/signin">Sign In</a>
+				<a href="/#!/signin" md-ink-ripple>Sign In</a>
 			</li>
 			<li class="menu-item social-link">
-				<a href="http://google.com" target="_blank">Google+</a>
+				<a href="http://google.com" target="_blank" md-ink-ripple>Google+</a>
 			</li>
 			<li class="menu-item social-link">
-				<a href="http://twitter.com" target="_blank">Twitter</a>
+				<a href="http://twitter.com" target="_blank" md-ink-ripple>Twitter</a>
 			</li>
 			<li class="menu-item social-link">
-				<a href="http://facebook.com" target="_blank">Facebook</a>
+				<a href="http://facebook.com" target="_blank" md-ink-ripple>Facebook</a>
 			</li>
 			<li class="menu-item dropdown" data-ng-show="authentication.user">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<div class="ham"></div>
+					<div class="ham" md-ink-ripple></div>
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="/#!/settings/profile">Edit Profile</a>
+						<a href="/#!/settings/profile" md-ink-ripple>Edit Profile</a>
 					</li>
 					<li>
-						<a href="/#!/settings/accounts">Manage Social Accounts</a>
+						<a href="/#!/settings/accounts" md-ink-ripple>Manage Social Accounts</a>
 					</li>
 					<li data-ng-show="authentication.user.provider === 'local'">
-						<a href="/#!/settings/password">Change Password</a>
+						<a href="/#!/settings/password" md-ink-ripple>Change Password</a>
+					</li>
+					<li data-ng-show="authentication.user.provider === 'local'">
+						<a href="/#!/academic-signup" md-ink-ripple>Apply as academic participant</a>
 					</li>
 					<li class="divider"></li>
 					<li>
-						<a href="/auth/signout">Signout</a>
+						<a href="/auth/signout" md-ink-ripple>Signout</a>
 					</li>
 				</ul>
 			</li>

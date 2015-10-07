@@ -66,14 +66,18 @@ var UserSchema = new Schema({
 		type: String,
 		required: 'Provider is required'
 	},
+	cv: {
+		type : String,
+		default : ''
+	},
 	providerData: {},
 	additionalProvidersData: {},
 	roles: {
 		type: [{
 			type: String,
-			enum: ['user', 'admin']
+			enum: ['volunteer','participant','manager', 'admin']
 		}],
-		default: ['user']
+		default: ['volunteer']
 	},
 	updated: {
 		type: Date
