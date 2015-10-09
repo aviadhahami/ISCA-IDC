@@ -64,8 +64,6 @@ angular.module('rolespanel').controller('rolespanelController', ['$scope', 'Auth
                     .ok('Got it!')
             );
         };
-
-
         getRecordsFromDB();
         initSelectionData();
         $scope.searchbox = {
@@ -96,6 +94,10 @@ angular.module('rolespanel').controller('rolespanelController', ['$scope', 'Auth
                     initSelectionData();
                     getRecordsFromDB();
                     showSuccessModal();
+                },function(err){
+                    $mdDialog.hide();
+                    alert('something bad happened');
+                    console.log(err);
                 });
             }
 
