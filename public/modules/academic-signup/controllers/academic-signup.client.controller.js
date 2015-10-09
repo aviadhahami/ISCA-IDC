@@ -156,7 +156,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             );
         };
 
-        $scope.submitApplication = function(){
+        $scope.submitApplication = function (){
             console.log($scope.applicationFormData);
 
             if(checkEmptyObjectsRecursively($scope.applicationFormData)){

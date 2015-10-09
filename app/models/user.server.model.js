@@ -79,11 +79,9 @@ var UserSchema = new Schema({
 	},
 	additionalProvidersData: {},
 	roles: {
-		type: [{
-			type: String,
-			enum: ['user','volunteer','participant','manager', 'admin']
-		}],
-		default: ['volunteer']
+		type: String,
+		default: 'volunteer',
+		enum: ['user','volunteer','participant','manager', 'admin']
 	},
 	updated: {
 		type: Date
@@ -129,6 +127,21 @@ UserSchema.methods.hashPassword = function(password) {
  */
 UserSchema.methods.authenticate = function(password) {
 	return this.password === this.hashPassword(password);
+};
+
+/**
+ * Drops certain keys from the user object for security purposes
+ */
+UserSchema.methods.sanitize = function() {
+	var user = this;
+	return {
+		_id : user._id,
+		displayName: user.displayName,
+		email: user.email,
+		firstname: user.firstName,
+		iscaData: user.iscaData,
+		lastname: user.lastName
+	}
 };
 
 /**

@@ -4,39 +4,24 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    _ = require('lodash');
+    User = mongoose.model('User');
 
 /**
- * Create a Dashboard
+ * Return all of the current pending applications
  */
-exports.create = function(req, res) {
+exports.pending = function(req, res) {
+    User.find({ 'iscaData.applicationForm.formPending': true }, function(err, users) {
 
-};
+        // TODO Error map?
+        if (err)
+            res.status(500).json({ error: 'DAS0' });
 
-/**
- * Show the current Dashboard
- */
-exports.read = function(req, res) {
+        var usersFound = [];
 
-};
+        users.forEach(function(user) {
+            usersFound.push(user.sanitize());
+        });
 
-/**
- * Update a Dashboard
- */
-exports.update = function(req, res) {
-
-};
-
-/**
- * Delete an Dashboard
- */
-exports.delete = function(req, res) {
-
-};
-
-/**
- * List of Dashboards
- */
-exports.list = function(req, res) {
-
+        res.status(200).send(usersFound);
+    });
 };
