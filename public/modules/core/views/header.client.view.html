@@ -1,55 +1,46 @@
-<div class="container" data-ng-controller="HeaderController">
+<div class="navbar-container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
 		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a href="/#!/" class="navbar-brand">ISCA IDC</a>
+-			<div class="ham"></div>
+-		</button>
+		<a href="/#!/" class="navbar-brand">
+			<img src="modules/core/img/brand/logo.png" />
+		</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-			<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
-				<a ng-switch-when="dropdown" class="dropdown-toggle">
-					<span data-ng-bind="item.title"></span>
-					<b class="caret"></b>
-				</a>
-				<ul ng-switch-when="dropdown" class="dropdown-menu">
-					<li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
-						<a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
-					</li>
-				</ul>
-				<a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
+		<ul class="nav navbar-nav navbar-right">
+			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-hide="authentication.user">
+				<a href="/#!/signin" md-ink-ripple>Sign In</a>
 			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-			<li ui-route="/signup" ng-class="{active: $uiRoute}">
-				<a href="/#!/signup">Sign Up</a>
+			<li class="menu-item social-link">
+				<a href="http://google.com" target="_blank" md-ink-ripple>Google+</a>
 			</li>
-			<li class="divider-vertical"></li>
-			<li ui-route="/signin" ng-class="{active: $uiRoute}">
-				<a href="/#!/signin">Sign In</a>
+			<li class="menu-item social-link">
+				<a href="http://twitter.com" target="_blank" md-ink-ripple>Twitter</a>
 			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-			<li class="dropdown">
+			<li class="menu-item social-link">
+				<a href="http://facebook.com" target="_blank" md-ink-ripple>Facebook</a>
+			</li>
+			<li class="menu-item dropdown" data-ng-show="authentication.user">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+					<div class="ham" md-ink-ripple></div>
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="/#!/settings/profile">Edit Profile</a>
+						<a href="/#!/settings/profile" md-ink-ripple>Edit Profile</a>
 					</li>
 					<li>
-						<a href="/#!/settings/accounts">Manage Social Accounts</a>
+						<a href="/#!/settings/accounts" md-ink-ripple>Manage Social Accounts</a>
 					</li>
 					<li data-ng-show="authentication.user.provider === 'local'">
-						<a href="/#!/settings/password">Change Password</a>
+						<a href="/#!/settings/password" md-ink-ripple>Change Password</a>
+					</li>
+					<li data-ng-show="authentication.user.provider === 'local'">
+						<a href="/#!/academic-signup" md-ink-ripple>Apply as academic participant</a>
 					</li>
 					<li class="divider"></li>
 					<li>
-						<a href="/auth/signout">Signout</a>
+						<a href="/auth/signout" md-ink-ripple>Signout</a>
 					</li>
 				</ul>
 			</li>

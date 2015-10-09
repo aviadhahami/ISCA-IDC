@@ -1,8 +1,160 @@
-.content {
-	margin-top: 50px;
+/**** GLOBAL CSS ****/
+
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,300,400italic,600,700|Lato:400,300,700);
+
+* {
+	font-family: 'Lato', sans-serif;
+	color: #303030;
 }
-.undecorated-link:hover {
+html {
+  	position: relative;
+  	min-height: 100%;
+}
+body {
+	background-color: #fefefe;
+  	/* Margin bottom by footer height */
+  	margin-bottom: 100px;
+}
+a {
 	text-decoration: none;
+}
+a, button {
+	-ms-transition: all .5s;
+	-webkit-transition: all .5s;
+    transition: all .5s;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 600;
+}
+
+/**** CUSTOM CLASSES FOR REPETITIVE ELEMENTS ****/
+
+.highlight-link {
+	color: #5dbbd6;
+}
+.highlight-link:hover, .highlight-link:active, .highlight-link:focus {
+	text-decoration: none;
+	color: #328dc8;
+}
+
+.readmore-btn {
+	position: relative;
+	width: 140px;
+	height: 40px;
+	color: #303030;
+	font-weight: 600;
+	background-color: transparent;
+	border: 1px solid #303030;
+}
+.readmore-btn:hover {
+	color: #fefefe;
+	background-color: #328dc8;
+	border: none;
+}
+.readmore-btn.white-theme {
+	color: #fefefe;
+	background-color: transparent;
+	border: 1px solid #fefefe;
+}
+.readmore-btn.white-theme:hover {
+	color: #329dc9;
+	background-color: #fefefe;
+	border: none;
+}
+.readmore-content {
+	max-height: 0;
+	opacity: 0;
+	-ms-transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+.readmore-content.active {
+	max-height: none;
+	opacity: 1;
+}
+
+ul.zebra-list {
+	padding: 0;
+	border: 2px solid rgba(0,0,0,0.1);
+	border-top: none;
+}
+ul.zebra-list>li {
+	list-style: none;
+	padding: 8px;
+}
+ul.zebra-list>li:nth-child(even) {
+	background-color: rgba(50,141,200,0.1);
+}
+
+
+/**** HEADER MENU ****/
+
+.navbar-container {
+	background-color: #fefefe;
+	height: 80px;
+	border-bottom: 2px solid #f0f0f0;
+	padding: 0 20px 0 10px;
+}
+.navbar-brand>img {
+	height: 50px;
+}
+nav.collapse.in {
+	background-color: #fefefe;
+	margin-top: -4px;
+}
+ul.nav {
+	padding-top: 14px;
+	margin-right: -5px;
+}
+.menu-item {
+	position: relative;
+	padding: 0 4px;
+}
+.menu-item:not(:first-child):after {
+	/* partial-height borders for menu items */
+    content: '';
+    position: absolute;
+    bottom: 25%;
+    left: -1px;
+    height: 50%;
+    border-left: 1px solid #303030;
+}
+.menu-item:hover, .menu-item.active {
+	background-color: #328dc8;
+}
+.menu-item:hover:after, .menu-item.active:after {
+	visibility: hidden;
+}
+.menu-item>a {
+	color: #030303;
+	font-weight: 600;
+}
+.menu-item>a:hover, .menu-item.active>a {
+	background-color: transparent !important;
+	color: #fefefe;
+}
+.menu-item>a:focus {
+	background-color: transparent !important;
+	color: #fefefe !important;
+}
+.menu-item>.dropdown-toggle>.ham {
+	background-image: url('../img/menu/ham-icon-sprite.png');
+	background-position: 0 0;
+	background-repeat: none;
+	height: 24px;
+	width: 24px;
+}
+.menu-item:hover>.dropdown-toggle>.ham {
+	background-position: -24px 0;
+}
+
+
+/**** GLOBAL CONTENT RULES ****/
+/* page-secific rules should be included as separate css files */
+
+#content-section {
+	margin-top: 80px;
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
@@ -12,4 +164,20 @@
 }
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
+}
+
+
+/**** FOOTER ****/
+
+#footer-section {
+  	/*position: absolute;*/
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  	/* Set the fixed height of the footer here */
+  	height: 100px;
+  	background-color: #fefefe;
+}
+#footer-section p {
+	margin-top: 42px;
 }
