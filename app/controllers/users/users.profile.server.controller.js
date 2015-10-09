@@ -90,10 +90,8 @@ exports.getAllUsers = function(req,res){
 
 			users.forEach(function(user) {
 				var santizied = user.sanitize();
-				console.log(santizied);
 				sanitizedUsersArr.push(santizied);
 			});
-			console.log('done with' + user.firstName);
 			res.status(200).send(sanitizedUsersArr);
 		});
 	}else{
