@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  * Return all of the current pending applications
  */
 exports.pending = function(req, res) {
-    User.find({ 'iscaData.applicationForm.formPending': true }, function(err, users) {
+    User.find({ 'iscaData.applicationForm': { $exists: true } }, function(err, users) {
 
         // TODO Error map?
         if (err)

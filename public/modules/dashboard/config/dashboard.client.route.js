@@ -12,8 +12,16 @@ angular.module('dashboard').config(['$stateProvider',
             .state('applicationsReview', {
                 url: '/dashboard/applicationReview',
                 templateUrl: 'modules/dashboard/views/applicationsReview.client.view.html',
-                controller: ['$scope', 'applications', function($scope, applications) {
-                    // TODO What if applications is empty
+                controller: ['$scope', 'applications','Authentication', 'Userroleasenumservice', '$location', function($scope, applications, Authentication, Userroleasenumservice, $location) {
+
+                    $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
+                    $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
+
+                    // Only admin are authorized on this page
+                    if ($scope.userLevel !== 4) {
+                        $location.path('/');
+                    }
+
                     if (applications == undefined || applications.length == 0)
                         $scope.applications = undefined;
                     else
