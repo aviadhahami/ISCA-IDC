@@ -71,11 +71,17 @@ var UserSchema = new Schema({
 		default : ''
 	},
 	providerData: {},
+	iscaData : {
+		type: Schema.Types.Mixed,
+		default : {
+			0:''
+		}
+	},
 	additionalProvidersData: {},
 	roles: {
 		type: [{
 			type: String,
-			enum: ['volunteer','participant','manager', 'admin']
+			enum: ['user','volunteer','participant','manager', 'admin']
 		}],
 		default: ['volunteer']
 	},

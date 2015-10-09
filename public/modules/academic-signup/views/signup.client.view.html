@@ -26,6 +26,7 @@
                     </div>
                 </md-card-content>
             </md-card>
+
             <div ng-show="userReadTerms">
                 <md-card>
                     <md-card-content>
@@ -102,8 +103,8 @@
                                 <label>
                                     Current year of study
                                 </label>
-                                <md-select ng-model="applicationFormData.academicInfo.currentYear" required="">
-                                    <md-option ng-repeat="i in [1,2,3,4,5]">
+                                <md-select ng-model="applicationFormData.academicInfo.currentYear" required>
+                                    <md-option ng-repeat="i in [1,2,3,4,5]" value="{{i}}">
                                         {{i}}
                                     </md-option>
                                 </md-select>
@@ -160,7 +161,7 @@
                             <h5>Topics</h5>
                             <p>Selected Value: </p>
 
-                            <md-radio-group ng-model="applicationFormData.academicInfo.essay.topic">
+                            <md-radio-group ng-model="applicationFormData.essay.topic">
                                 <md-radio-button value="socialEffect">
                                     The residual effect demonstrated by social networks (Facebook, Twitter etc.) over the 'real world'.
                                 </md-radio-button>
@@ -181,7 +182,7 @@
                                 <label>
                                     {{user.displayName}}'s essay
                                 </label>
-                                <textarea ng-model="applicationFormData.academicInfo.essay.content" cols="30" rows="10" maxlength="5000" md-maxlength="5000"></textarea>
+                                <textarea ng-model="applicationFormData.essay.content" cols="30" rows="10" maxlength="5000" md-maxlength="5000"></textarea>
                             </md-input-container>
                         </section>
                     </md-card-content>

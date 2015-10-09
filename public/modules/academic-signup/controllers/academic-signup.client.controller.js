@@ -19,7 +19,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                     'email':$scope.user.email,
                     'id':'',
                     'sex':'',
-                    'birthday': '',
+                    'birthday': new Date(),
                     'phone':'',
                     'academicInfo':{
                         'currentYear':'',
@@ -36,6 +36,9 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                 };
             }else{
                 $scope.applicationFormData = angular.copy(savedData);
+
+                // Super important!! otherwise it is not date object and fucks us up
+                $scope.applicationFormData.birthday = new Date($scope.applicationFormData.birthday);
             }
         }
 
@@ -123,17 +126,23 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         // Recursively test for empty fields within the application object
         var checkEmptyObjectsRecursively = function(obj){
-            for (var key in obj){
-                if (!obj[key]){
-                    return false;
+            var temp = true;
+            if (obj === null) {
+                temp = false;
+            }
+            for (var k in obj){
+                if (!obj[k]){
+                    temp = false;
                 }
-                if (typeof obj[key] == 'object'){
-                    return checkEmptyObjectsRecursively(obj[key]);
+                if(typeof obj[k] === 'object'){
+                    temp = temp & checkEmptyObjectsRecursively(obj[k]);
                 }
             }
-            return true;
+            return temp;
         };
+
         var showAlert = function(ev) {
+
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application
             // to prevent interaction outside of dialog
@@ -146,10 +155,19 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                     .targetEvent(ev)
             );
         };
+
         $scope.submitApplication = function(){
             console.log($scope.applicationFormData);
+
             if(checkEmptyObjectsRecursively($scope.applicationFormData)){
                 // Form is legit
+                $scope.user.iscaData['applicationForm'] = {
+                    formPending : true,
+                    form : angular.copy($scope.applicationFormData)
+                };
+
+                Users.update($scope.user);
+
             }else{
                 showAlert(null);
                 // Form missing
