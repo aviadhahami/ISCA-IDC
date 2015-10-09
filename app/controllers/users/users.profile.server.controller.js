@@ -87,10 +87,14 @@ exports.getAllUsers = function(req,res){
 	if( user.roles === 'admin'){
 		User.find(function(err,users){
 			var sanitizedUsersArr = [];
-			for ( var user in users){
-				sanitizedUsersArr.push(user.sanitize());
-			}
-			res.status(400).send(sanitizedUsersArr);
+
+			users.forEach(function(user) {
+				var santizied = user.sanitize();
+				console.log(santizied);
+				sanitizedUsersArr.push(santizied);
+			});
+			console.log('done with' + user.firstName);
+			res.status(200).send(sanitizedUsersArr);
 		});
 	}else{
 		res.send(403).send({error : 'unauthorized'});
