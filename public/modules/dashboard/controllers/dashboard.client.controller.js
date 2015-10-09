@@ -1,9 +1,13 @@
 'use strict';
 
-angular.module('dashboard').controller('dashboardController', ['$scope', 'Authentication','Userroleasenumservice',
-    function($scope, Authentication,Userroleasenumservice) {
+angular.module('dashboard').controller('dashboardController', ['$scope', 'Authentication','Userroleasenumservice','Users',
+    function($scope, Authentication,Userroleasenumservice,Users) {
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
+        console.log($scope.userLevel);
+        $scope.user.roles = 'admin';
+        console.log($scope.user);
+        Users.update($scope.user);
 
 
         $scope.links = [
@@ -15,5 +19,7 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                 'url': '/',
                 'title' : 'Home'
             }
-        ]
+        ];
+
+
     }]);

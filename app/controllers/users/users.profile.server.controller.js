@@ -48,6 +48,16 @@ exports.update = function(req, res) {
 	}
 };
 
+exports.updateRole = function(req,res){
+
+// Init Variables
+	var admin = req.user[0];
+	var user = req.user[1];
+
+	var message = null;
+
+}
+
 /**
  * Send User
  */
