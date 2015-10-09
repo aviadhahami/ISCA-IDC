@@ -10,5 +10,21 @@ angular.module('rolespanel').controller('rolespanelController', ['$scope', 'Auth
             $location.path('/');
         }
 
+        //$scope.recievedUsers = [];
+        $http({
+            method : 'get',
+            url: '/users/getRecords'
+        }).then(function(res){
+            console.log(res);
+            $scope.recievedUsers = angular.copy(res.data);
+        });
+        console.log('users', $scope.recievedUsers);
+        $scope.roles= [
+            'volunteer',
+            'participant',
+            'manager',
+            'admin'
+        ];
+
 
     }]);

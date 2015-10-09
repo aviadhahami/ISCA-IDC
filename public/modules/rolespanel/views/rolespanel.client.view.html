@@ -1,11 +1,41 @@
 <md-content class="md-padding" ng-controller="rolespanelController">
     <md-card>
-        <md-card-content layout-padding>
-            <h2 class="md-title">Role panel</h2>
-            <hr/>
-            <section>
-                <div class="row flex">
+        <md-card-content>
+            <div layout="row" layout-wrap class="colorNested">
+                <div flex="80">
+                    <h2 class="md-title">Role panel</h2>
                 </div>
+                <div flex>
+                    <md-input-container>
+                        <label>Search name</label>
+                        <input type="text" placeholder="search"/>
+                    </md-input-container>
+                </div>
+            </div>
+            <section>
+                <md-content>
+
+                    <div layout="row" layout-wrap>
+                        <div flex="33" ng-repeat="currUser in recievedUsers">
+                            <md-card>
+                                <md-card-content>
+                                    <h5 class="md-title">{{currUser.firstName}} {{currUser.lastName}}</h5>
+                                    <p style="color:dimgrey">Currently is a {{currUser.roles}}</p>
+
+                                    <md-input-container>
+                                        <label>Choose new role</label>
+                                        <md-select ng-model="test">
+                                            <md-option ng-repeat="role in roles">
+                                                {{role}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+
+                    </div>
+                </md-content>
             </section>
         </md-card-content>
     </md-card>
