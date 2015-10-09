@@ -51,12 +51,21 @@ exports.update = function(req, res) {
 exports.updateRole = function(req,res){
 
 // Init Variables
+
+	console.log(req);
 	var admin = req.user[0];
-	var user = req.user[1];
 
-	var message = null;
+	if (admin.roles.toLowerCase() === 'admin'){
+		var user = req.user[1];
+		var requestedRole = req.requestedRole;
+		var message = null;
+		user.updated = Date.now();
+	}else{
+		res.status(403).send({error : 'unAuthorized!'});
+	}
 
-}
+
+};
 
 /**
  * Send User
