@@ -28,15 +28,15 @@
 angular.module('core').directive('readMoreButton', ['$timeout',
     function($timeout) {
         var tpl = '<button class="readmore-btn" md-ink-ripple>Read More</button>';
+        
         return {
-            restrict: 'E', // Element only
+            restrict: 'AE',
             replace: true,
             terminal: false,
             template: tpl,
             link: function(scope, elem, attrs) {
                 elem.addClass(attrs.theme);
 
-                // TODO: @Omer, are you trying to mimic fade effect ? why not use simple css ?
                 elem.bind('click', function() {
                     $timeout(function() {
                         elem.css('display', 'none');
@@ -46,4 +46,5 @@ angular.module('core').directive('readMoreButton', ['$timeout',
                 });
             }
         };
-    }]);
+    }
+]);

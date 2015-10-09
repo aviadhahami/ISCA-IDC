@@ -44,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 	height: 40px;
 	color: #303030;
 	font-weight: 600;
+	font-size: 18px;
 	background-color: transparent;
 	border: 1px solid #303030;
 }
@@ -141,12 +142,20 @@ ul.nav {
 .menu-item>.dropdown-toggle>.ham {
 	background-image: url('../img/menu/ham-icon-sprite.png');
 	background-position: 0 0;
-	background-repeat: none;
+	background-repeat: no-repeat;
 	height: 24px;
 	width: 24px;
 }
 .menu-item:hover>.dropdown-toggle>.ham {
 	background-position: -24px 0;
+}
+
+/* MOBILE MENU */
+.navbar-header>.navbar-toggle>.ham {
+	background-image: url('../img/menu/ham-icon-mobile.png');
+	background-size: cover;
+	height: 44px;
+	width: 44px;
 }
 
 
