@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function(app) {
-	// Routing logic   
-	// ...
+
+	var dashboard = require('../../app/controllers/dashboard.server.controller');
+	app.route('/api/dashboard/pending').get(dashboard.pending);
+
 };
