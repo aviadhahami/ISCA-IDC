@@ -10,12 +10,19 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
 
         $scope.links = [
             {
+                'level' : 1,
                 'url': '/dashboard/applicationReview',
                 'title' : 'Applications'
             },
             {
+                'level' : 1,
                 'url': '/',
                 'title' : 'Home'
+            },
+            {
+                'level' : 4,
+                'url': '/dashboard/rolespanel',
+                'title' : 'Roles panel'
             }
         ];
     }]);
