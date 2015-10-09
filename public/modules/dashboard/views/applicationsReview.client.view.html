@@ -1,6 +1,37 @@
-<md-content ng-controller="applicationsReviewController">
+<md-content layout="row" ng-controller="applicationsReviewController">
+    <div flex="10"></div>
 
-    <h2 class="md-title"> Hi</h2>
 
+
+
+    <!-- Table header -->
+    <md-tabs flex="80" md-selected="selectedTab">
+        <md-tab>
+            <div flex="80" layout="column">
+                <md-tab-body>
+
+
+                <div layout="row">
+                    <span flex>First name</span>
+                    <span flex>Last name</span>
+                    <span flex>Email</span>
+                </div>
+
+                <div layout="row" ng-repeat="application in applications">
+                    <span flex>{{ application.firstName }}</span>
+                    <span flex>{{ application.lastName }}</span>
+                    <span flex>{{ application.email }}</span>
+                </div>
+            </div>
+
+            </md-tab-body>
+        </md-tab>
+            <p>hello</p>
+        <md-tab>
+
+        </md-tab>
+    </md-tabs>
+
+    <div flex="10"></div>
 
 </md-content>

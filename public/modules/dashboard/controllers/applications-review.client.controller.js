@@ -1,10 +1,9 @@
 'use strict';
 
-angular.module('dashboard').controller('applicationsReviewController', ['$scope', 'Authentication','Userroleasenumservice', '$http',
-    function($scope, Authentication,Userroleasenumservice, $http) {
+angular.module('dashboard').controller('applicationsReviewController', ['$scope', 'Authentication','Userroleasenumservice',
+    function($scope, Authentication,Userroleasenumservice) {
+        $scope.selectedTab = 0;
 
-        $http.get('/api/dashboard/pending').then(function(response) {
-            console.log(response);
-        });
+        console.log($scope.applications);
 
     }]);
