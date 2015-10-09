@@ -22,7 +22,7 @@
                                     <p style="color:dimgrey">Currently marked as {{currUser.roles}}</p>
                                     <md-input-container>
                                         <label>Choose new role</label>
-                                        <md-select ng-model="data[currUser._id]">
+                                        <md-select ng-model="selectionData[currUser._id]">
                                             <md-option ng-repeat="role in roles track by $index" value="{{role.name}}">
                                                 {{role.name}}
                                             </md-option>
