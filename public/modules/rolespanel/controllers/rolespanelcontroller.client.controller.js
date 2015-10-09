@@ -10,7 +10,10 @@ angular.module('rolespanel').controller('rolespanelController', ['$scope', 'Auth
             $location.path('/');
         }
 
-        //$scope.recievedUsers = [];
+        $scope.searchbox = {
+            input : ' '
+        };
+
         $http({
             method : 'get',
             url: '/users/getRecords'

@@ -8,7 +8,7 @@
                 <div flex>
                     <md-input-container>
                         <label>Search name</label>
-                        <input type="text" placeholder="search"/>
+                        <input type="text" placeholder="search" ng-model="searchbox.input"/>
                     </md-input-container>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                 <md-content>
 
                     <div layout="row" layout-wrap>
-                        <div flex="33" ng-repeat="currUser in recievedUsers">
+                        <div flex="33" ng-repeat="currUser in recievedUsers  | searchWordInString : searchbox.input">
                             <md-card>
                                 <md-card-content>
                                     <h5 class="md-title">{{currUser.firstName}} {{currUser.lastName}}</h5>
@@ -25,7 +25,7 @@
                                     <md-input-container>
                                         <label>Choose new role</label>
                                         <md-select ng-model="test">
-                                            <md-option ng-repeat="role in roles">
+                                            <md-option ng-repeat="role in roles track by $index">
                                                 {{role}}
                                             </md-option>
                                         </md-select>
