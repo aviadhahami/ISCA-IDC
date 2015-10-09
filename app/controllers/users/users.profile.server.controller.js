@@ -82,6 +82,21 @@ exports.updateRole = function(req,res){
 	}
 };
 
+exports.getAllUsers = function(req,res){
+	var user = req.user;
+	if( user.roles === 'admin'){
+		User.find(function(err,users){
+			var sanitizedUsersArr = [];
+			for ( var user in users){
+				sanitizedUsersArr.push(user.sanitize());
+			}
+			res.status(400).send(sanitizedUsersArr);
+		});
+	}else{
+		res.send(403).send({error : 'unauthorized'});
+	}
+};
+
 /**
  * Send User
  */
