@@ -49,44 +49,36 @@ exports.update = function(req, res) {
 };
 
 exports.updateRole = function(req,res){
-
-// Init Variables
-
-	//console.log(req);
 	var admin = req.user;
 	if (admin){
-
-
-		if(admin.role.toLowerCase() === 'admin'){
+		console.log(admin);
+		if(admin.roles === 'admin'){
 			var requestedRole = req.body.requestedRole;
 			var userToPromote = req.body.idToPromote;
-
-
+			console.log('before User');
 			User.findById(userToPromote,function(err,foundUser){
-				foundUser.role = requestedRole;
+				foundUser.roles = requestedRole;
 				foundUser.save(function(err){
 					if (err) {
 						return res.status(400).send({
 							message: errorHandler.getErrorMessage(err)
 						});
 					} else {
-						req.login(user, function(err) {
+						req.login(admin, function(err) {
 							if (err) {
 								res.status(400).send(err);
 							} else {
-								res.json(user);
+								res.json(foundUser);
 							}
 						});
 					}
-
 				});
 			});
-
-
 		}else{
-			req.status(403).send({error : 'unauthorized'});
+			res.status(403).send({error : 'unauthorized'});
 		}
-		res.send(req.body);
+	}else{
+		res.status(400).send({error: 'no user'});
 	}
 };
 
