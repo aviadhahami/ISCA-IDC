@@ -133,16 +133,15 @@ UserSchema.methods.authenticate = function(password) {
  * Drops certain keys from the user object for security purposes
  */
 UserSchema.methods.sanitize = function() {
-	console.log('sanitizing');
 	var user = this;
-	console.log('checking ' + user._id);
 	var res = {
 		_id : user._id,
 		displayName: user.displayName,
 		email: user.email,
 		firstName: user.firstName,
 		iscaData: user.iscaData,
-		lastName: user.lastName
+		lastName: user.lastName,
+		roles : user.roles
 	};
 	return res;
 
