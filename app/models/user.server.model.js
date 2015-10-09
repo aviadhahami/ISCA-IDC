@@ -79,11 +79,9 @@ var UserSchema = new Schema({
 	},
 	additionalProvidersData: {},
 	roles: {
-		type: [{
-			type: String,
-			enum: ['user','volunteer','participant','manager', 'admin']
-		}],
-		default: ['volunteer']
+		type: String,
+		default: 'volunteer',
+		enum: ['user','volunteer','participant','manager', 'admin']
 	},
 	updated: {
 		type: Date
@@ -137,6 +135,7 @@ UserSchema.methods.authenticate = function(password) {
 UserSchema.methods.sanitize = function() {
 	var user = this;
 	return {
+		_id : user._id,
 		displayName: user.displayName,
 		email: user.email,
 		firstName: user.firstName,
