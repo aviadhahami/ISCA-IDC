@@ -140,9 +140,9 @@ UserSchema.methods.sanitize = function() {
 		_id : user._id,
 		displayName: user.displayName,
 		email: user.email,
-		firstname: user.firstName,
+		firstName: user.firstName,
 		iscaData: user.iscaData,
-		lastname: user.lastName
+		lastName: user.lastName
 	};
 	return res;
 
