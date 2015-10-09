@@ -137,6 +137,7 @@ UserSchema.methods.authenticate = function(password) {
 UserSchema.methods.sanitize = function() {
 	var user = this;
 	return {
+		_id : user._id,
 		displayName: user.displayName,
 		email: user.email,
 		firstname: user.firstName,
