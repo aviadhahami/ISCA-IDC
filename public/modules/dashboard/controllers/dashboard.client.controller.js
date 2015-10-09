@@ -17,16 +17,4 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                 'title' : 'Home'
             }
         ];
-
-        //$http({
-        //    method : 'post',
-        //    url : 'users/updateRole',
-        //    data : {
-        //        idToPromote : '55e73ce69e0de4d82619fda6',
-        //        requestedRole : 'manager'
-        //    }
-        //}).then(function(data){
-        //    console.log(data);
-        //});
-
     }]);
