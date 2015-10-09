@@ -132,6 +132,20 @@ UserSchema.methods.authenticate = function(password) {
 };
 
 /**
+ * Drops certain keys from the user object for security purposes
+ */
+UserSchema.methods.sanitize = function() {
+	var user = this;
+	return {
+		displayName: user.displayName,
+		email: user.email,
+		firstname: user.firstName,
+		iscaData: user.iscaData,
+		lastname: user.lastName
+	}
+};
+
+/**
  * Find possible not used username
  */
 UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {

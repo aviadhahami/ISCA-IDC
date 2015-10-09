@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('dashboard').controller('applicationsReviewController', ['$scope', 'Authentication','Userroleasenumservice',
-    function($scope, Authentication,Userroleasenumservice) {
+angular.module('dashboard').controller('applicationsReviewController', ['$scope', 'Authentication','Userroleasenumservice', '$http',
+    function($scope, Authentication,Userroleasenumservice, $http) {
 
+        $http.get('/api/dashboard/pending').then(function(response) {
+            console.log(response);
+        });
 
-        // TODO : reach for the DB and pull all the applications
     }]);
