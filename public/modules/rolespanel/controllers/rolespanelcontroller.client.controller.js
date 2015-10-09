@@ -6,10 +6,17 @@ angular.module('rolespanel').controller('rolespanelController', ['$scope', 'Auth
         $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
 
         console.log($scope.user);
+
+        // Navigate user out if not authorized
         if($scope.userLevel !== 4){
             $location.path('/');
         }
+        $scope.data = {
+        };
 
+        $scope.$watch('data',function(oldVal,newVal){
+            console.log($scope.data);
+        },true);
         $scope.searchbox = {
             input : ' '
         };
@@ -21,25 +28,20 @@ angular.module('rolespanel').controller('rolespanelController', ['$scope', 'Auth
             console.log(res);
             $scope.recievedUsers = angular.copy(res.data);
         });
-        console.log('users', $scope.recievedUsers);
+
         $scope.roles= {
             0: {
-                name:'volunteer',
-                code : 1
+                name:'volunteer'
             },
             1: {
-                name:'participant',
-                code : 2
+                name:'participant'
+
             },
             2: {
-                name:'manager',
-                code : 3
+                name:'manager'
             },
             3: {
-                name:'admin',
-                code : 4
+                name:'admin'
             }
         };
-
-
     }]);

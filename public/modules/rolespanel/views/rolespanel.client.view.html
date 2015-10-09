@@ -14,18 +14,16 @@
             </div>
             <section>
                 <md-content>
-
                     <div layout="row" layout-wrap>
-                        <div flex="33" ng-repeat="currUser in recievedUsers  | searchWordInString : searchbox.input">
+                        <div flex="33" ng-repeat="currUser in recievedUsers | searchWordInString : searchbox.input">
                             <md-card>
                                 <md-card-content>
                                     <h5 class="md-title">{{currUser.firstName}} {{currUser.lastName}}</h5>
                                     <p style="color:dimgrey">Currently marked as {{currUser.roles}}</p>
-
                                     <md-input-container>
                                         <label>Choose new role</label>
-                                        <md-select ng-model="test">
-                                            <md-option ng-repeat="role in roles track by $index" value="{{role.code}}">
+                                        <md-select ng-model="data[currUser._id]">
+                                            <md-option ng-repeat="role in roles track by $index" value="{{role.name}}">
                                                 {{role.name}}
                                             </md-option>
                                         </md-select>
