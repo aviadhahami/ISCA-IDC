@@ -52,19 +52,42 @@ exports.updateRole = function(req,res){
 
 // Init Variables
 
-	console.log(req);
-	var admin = req.user[0];
+	//console.log(req);
+	var admin = req.user;
+	if (admin){
 
-	if (admin.roles.toLowerCase() === 'admin'){
-		var user = req.user[1];
-		var requestedRole = req.requestedRole;
-		var message = null;
-		user.updated = Date.now();
-	}else{
-		res.status(403).send({error : 'unAuthorized!'});
+
+		if(admin.role.toLowerCase() === 'admin'){
+			var requestedRole = req.body.requestedRole;
+			var userToPromote = req.body.idToPromote;
+
+
+			User.findById(userToPromote,function(err,foundUser){
+				foundUser.role = requestedRole;
+				foundUser.save(function(err){
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						req.login(user, function(err) {
+							if (err) {
+								res.status(400).send(err);
+							} else {
+								res.json(user);
+							}
+						});
+					}
+
+				});
+			});
+
+
+		}else{
+			req.status(403).send({error : 'unauthorized'});
+		}
+		res.send(req.body);
 	}
-
-
 };
 
 /**
