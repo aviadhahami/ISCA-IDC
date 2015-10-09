@@ -11,7 +11,7 @@
 
 angular.module('core').directive('faqBlock', [
     function() {
-        var tpl = '<p class="question">{{entry.question}}</p><p class="answer">{{entry.answer}}</p>';
+        var tpl = '<div class="faq-entry"><p class="question">{{entry.question}}</p><p class="answer">{{entry.answer}}</p></div>';
         
         return {
             scope: {
@@ -22,7 +22,7 @@ angular.module('core').directive('faqBlock', [
             terminal: false,
             template: tpl,
             link: function(scope, elem, attrs) {
-                var q = elem.children('.question')
+                var q = elem.children('.question');
                 var a = elem.children('.answer');
 
                 q.bind('click', function() {

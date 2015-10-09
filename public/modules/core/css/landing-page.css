@@ -23,6 +23,9 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 
 /**** REGISTRAION BANNER ****/
 
+#header-title {
+	margin-bottom: 20px;
+}
 #join-banner {
 	position: relative;
 	padding: 80px;
@@ -102,6 +105,7 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 #volunteer-container>div {
 	margin-top: 30px;
 }
+
 .benefits div {
 	text-align: center;
 	padding: 20px;
@@ -117,9 +121,6 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 	height: 80px;
 	width: 80px;
 }
-
-
-/**** COMMENTATORS SECTION ****/
 
 .commentator {
 	margin-top: 40px;
@@ -138,6 +139,9 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 .commentator-text {
 	margin-top: 10px;
 }
+
+
+/**** BLUE SECTION ****/
 
 #special-content {
 	padding: 0;
@@ -168,14 +172,4 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 }
 
 
-/**** FAQ SECTION ****/
 
-#faq .question {
-	font-family: 'Titillium Web', sans-serif;
-	font-weight: 600;
-	color: #328dc8;
-	margin: 30px 0 10px 0;
-}
-#faq .answer {
-	padding-left: 20px;
-}

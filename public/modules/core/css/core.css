@@ -64,28 +64,52 @@ h1, h2, h3, h4, h5, h6 {
 	border: none;
 }
 .readmore-content {
-	max-height: 0;
+	height: 0;
 	opacity: 0;
-	-ms-transition: opacity .5s;
-	-webkit-transition: opacity .5s;
-    transition: opacity .5s;
+	-ms-transition: all .5s;
+	-webkit-transition: all .5s;
+    transition: all .5s;
 }
 .readmore-content.active {
-	max-height: none;
+	height: auto;
 	opacity: 1;
 }
 
 ul.zebra-list {
 	padding: 0;
-	border: 2px solid rgba(0,0,0,0.1);
-	border-top: none;
+	border: 1px solid rgba(0,0,0,0.1);
 }
 ul.zebra-list>li {
 	list-style: none;
-	padding: 8px;
+	padding: 30px 20px;
 }
 ul.zebra-list>li:nth-child(even) {
 	background-color: rgba(50,141,200,0.1);
+}
+
+.faq-entry>.question {
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 600;
+	color: #328dc8;
+	margin: 30px 0 10px 0;
+	cursor: pointer;
+	padding: 10px;
+}
+.faq-entry>.question:hover {
+	background-color: rgba(0,0,0,0.1);
+}
+.faq-entry>.answer {
+	padding-left: 30px;
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+	-ms-transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+.faq-entry>.answer.active {
+	opacity: 1;
+	height: auto;
 }
 
 
@@ -103,6 +127,8 @@ ul.zebra-list>li:nth-child(even) {
 nav.collapse.in {
 	background-color: #fefefe;
 	margin-top: -4px;
+	margin-left: -2%;
+	width: 107%;
 }
 ul.nav {
 	padding-top: 14px;
