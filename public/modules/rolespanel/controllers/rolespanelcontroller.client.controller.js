@@ -22,12 +22,24 @@ angular.module('rolespanel').controller('rolespanelController', ['$scope', 'Auth
             $scope.recievedUsers = angular.copy(res.data);
         });
         console.log('users', $scope.recievedUsers);
-        $scope.roles= [
-            'volunteer',
-            'participant',
-            'manager',
-            'admin'
-        ];
+        $scope.roles= {
+            0: {
+                name:'volunteer',
+                code : 1
+            },
+            1: {
+                name:'participant',
+                code : 2
+            },
+            2: {
+                name:'manager',
+                code : 3
+            },
+            3: {
+                name:'admin',
+                code : 4
+            }
+        };
 
 
     }]);

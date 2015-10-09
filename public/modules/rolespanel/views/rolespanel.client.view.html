@@ -25,15 +25,14 @@
                                     <md-input-container>
                                         <label>Choose new role</label>
                                         <md-select ng-model="test">
-                                            <md-option ng-repeat="role in roles track by $index">
-                                                {{role}}
+                                            <md-option ng-repeat="role in roles track by $index" value="{{role.code}}">
+                                                {{role.name}}
                                             </md-option>
                                         </md-select>
                                     </md-input-container>
                                 </md-card-content>
                             </md-card>
                         </div>
-
                     </div>
                 </md-content>
             </section>
