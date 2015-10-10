@@ -176,14 +176,15 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                         .title('Thank you!')
                         .content('We have received your application and will process it soon. Good luck!')
                         .ok('ok')
-                ).then(function(){
-
+                ).then(function(data){
 
                         // Clear localStorage
                         localStorage.clear();
 
                         // Redirect to dashboard
-                        $location.path('/dashboard/myApplication');
+                        window.location.reload();
+                        $location.path('/dashboard');
+
                     });
 
             }else{
