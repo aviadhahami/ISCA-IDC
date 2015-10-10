@@ -9,7 +9,7 @@
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav navbar-right">
-			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}">
+			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-hide="userLevel > 0">
 				<a href="/#!/signin" md-ink-ripple>Sign In</a>
 			</li>
 			<li class="menu-item social-link">
@@ -32,13 +32,13 @@
 					<li>
 						<a href="/#!/settings/accounts" md-ink-ripple>Manage Social Accounts</a>
 					</li>
-					<li data-ng-show="userLevel > 0">
+					<li data-ng-show="userLevel >0">
 						<a href="/#!/settings/password" md-ink-ripple>Change Password</a>
 					</li>
-					<li data-ng-show="userLevel > 0">
+					<li data-ng-show="userLevel >0">
 						<a href="/#!/dashboard" md-ink-ripple>Dashboard</a>
 					</li>
-					<li data-ng-show="userLevel > 0" ng-style="{color:red}">
+					<li data-ng-show="userLevel >0" ng-style="{color:red}">
 						<a href="/#!/academic-signup" md-ink-ripple>Apply as academic participant</a>
 					</li>
 					<li class="divider"></li>
