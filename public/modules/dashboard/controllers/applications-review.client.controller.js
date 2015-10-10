@@ -6,10 +6,7 @@ angular.module('dashboard').controller('applicationsReviewController', ['$scope'
             APPLICATION_VIEW  = 1;
         $scope.selectedTab = APPLICATION_TABLE;
         $scope.selectedApplication = undefined;
-<<<<<<< HEAD
 
-=======
->>>>>>> cc494999ecf7fac14a58774632e36fb1a5a5ab39
         function normalizeDescription(selectedApplication) {
             var suffix = '';
 

@@ -5,10 +5,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
     function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog,$location) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
-<<<<<<< HEAD
-        
-=======
->>>>>>> cc494999ecf7fac14a58774632e36fb1a5a5ab39
+
         function init(){
             if($scope.user.iscaData.hasOwnProperty('applicationForm')){
                 $location.path('/dashboard/myApplication');
