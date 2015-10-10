@@ -51,7 +51,7 @@ angular.module('dashboard').config(['$stateProvider',
                         if (!$scope.user.iscaData.applicationForm){
                             $location.path('/academic-signup');
                         }else{
-                            $scope.application = angular.copy($scope.user.iscaData.applicationForm.formData);
+                            $scope.application = angular.copy($scope.user.iscaData.applicationForm.form);
                         }
                     }else{
                         $location.path('/dashboard');
