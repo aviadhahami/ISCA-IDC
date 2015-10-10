@@ -1,3 +1,76 @@
+<style>
+    .colorFAicon{
+        color:darkcyan
+    }
+</style>
 <md-content ng-controller="myApplicationController">
-
+    <md-card>
+        <md-card-content>
+            <h2 class="md-title">{{application.name}}'s application form</h2>
+            <hr/>
+            <section>
+                <div layout="column">
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-user fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            ID number
+                        </div>
+                        <div flex>
+                            {{application.id}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-mobile fa-3x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Phone
+                        </div>
+                        <div flex>
+                            {{application.phone}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-envelope fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Email
+                        </div>
+                        <div flex>
+                            {{application.email}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-venus-mars fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Sex
+                        </div>
+                        <div flex>
+                            {{application.sex}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-file-pdf-o fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Resume
+                        </div>
+                        <div flex>
+                            <a href="downloadcv/{{application.cv}}">Download your resume</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </md-card-content>
+    </md-card>
 </md-content>
