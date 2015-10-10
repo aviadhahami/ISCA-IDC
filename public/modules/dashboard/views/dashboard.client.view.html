@@ -14,7 +14,7 @@
                         <h4 class="md-title">Tools and links</h4>
                         <hr/>
                         <ul>
-                            <li ng-repeat="link in links">
+                            <li ng-repeat="link in links" ng-if="userLevel >= link.level">
                                 <a href="/#!{{link.url}}">{{link.title}}</a>
                             </li>
                         </ul>
