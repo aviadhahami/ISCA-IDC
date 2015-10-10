@@ -1,15 +1,15 @@
 <div class="navbar-container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
 		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
--			<div class="ham"></div>
--		</button>
+			<div class="ham"></div>
+		</button>
 		<a href="/#!/" class="navbar-brand">
 			<img src="modules/core/img/brand/logo.png" />
 		</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav navbar-right">
-			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-hide="authentication.user">
+			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-hide="userLevel > 0">
 				<a href="/#!/signin" md-ink-ripple>Sign In</a>
 			</li>
 			<li class="menu-item social-link">
@@ -21,7 +21,7 @@
 			<li class="menu-item social-link">
 				<a href="http://facebook.com" target="_blank" md-ink-ripple>Facebook</a>
 			</li>
-			<li class="menu-item dropdown" data-ng-show="authentication.user">
+			<li class="menu-item dropdown" data-ng-show="userLevel > 0">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<div class="ham" md-ink-ripple></div>
 				</a>
@@ -32,13 +32,13 @@
 					<li>
 						<a href="/#!/settings/accounts" md-ink-ripple>Manage Social Accounts</a>
 					</li>
-					<li data-ng-show="authentication.user.provider === 'local'">
+					<li data-ng-show="userLevel >0">
 						<a href="/#!/settings/password" md-ink-ripple>Change Password</a>
 					</li>
-					<li data-ng-show="authentication.user.provider === 'local'">
+					<li data-ng-show="userLevel >0">
 						<a href="/#!/dashboard" md-ink-ripple>Dashboard</a>
 					</li>
-					<li data-ng-show="authentication.user.provider === 'local'" ng-style="{color:red}">
+					<li data-ng-show="userLevel >0" ng-style="{color:red}">
 						<a href="/#!/academic-signup" md-ink-ripple>Apply as academic participant</a>
 					</li>
 					<li class="divider"></li>

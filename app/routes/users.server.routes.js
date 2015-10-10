@@ -14,6 +14,7 @@ module.exports = function(app) {
 	app.route('/users').put(users.update);
 
 	app.route('/users/updateRole').post(users.updateRole);
+	app.route('/users/getRecords').get(users.getAllUsers);
 
 	app.route('/users/accounts').delete(users.removeOAuthProvider);
 

@@ -7,7 +7,8 @@ var _ = require('lodash'),
 	errorHandler = require('../errors.server.controller.js'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
-	User = mongoose.model('User');
+	User = mongoose.model('User'),
+	rolesString = 'volunteer,participant,manager,admin';
 
 /**
  * Update user details
@@ -52,10 +53,11 @@ exports.updateRole = function(req,res){
 	var admin = req.user;
 	if (admin){
 		console.log(admin);
-		if(admin.roles === 'admin'){
+
+		// Check if injected role exists
+		if(admin.roles === 'admin' && rolesString.indexOf(req.body.requestedRole) > -1){
 			var requestedRole = req.body.requestedRole;
 			var userToPromote = req.body.idToPromote;
-			console.log('before User');
 			User.findById(userToPromote,function(err,foundUser){
 				foundUser.roles = requestedRole;
 				foundUser.save(function(err){
@@ -79,6 +81,23 @@ exports.updateRole = function(req,res){
 		}
 	}else{
 		res.status(400).send({error: 'no user'});
+	}
+};
+
+exports.getAllUsers = function(req,res){
+	var user = req.user;
+	if( user.roles === 'admin'){
+		User.find(function(err,users){
+			var sanitizedUsersArr = [];
+
+			users.forEach(function(user) {
+				var santizied = user.sanitize();
+				sanitizedUsersArr.push(santizied);
+			});
+			res.status(200).send(sanitizedUsersArr);
+		});
+	}else{
+		res.send(403).send({error : 'unauthorized'});
 	}
 };
 
