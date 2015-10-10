@@ -13,8 +13,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
                 $scope.authentication.user = response;
 
                 // And redirect to the index page
-                $location.path('/');
+
                 window.location.reload();
+                $location.path('/');
             },function(response) {
                 $scope.error = response.data.message;
             });
@@ -28,7 +29,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 
                 // And redirect to the index page
                 window.location.reload();
-                // $location.path('/');
+                $location.path('/dashboard');
             },function(response) {
                 $scope.error = response.data.message;
             });
