@@ -5,7 +5,6 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
     function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog,$location) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
-        console.log($scope.user);
         function init(){
             var loadSavedData = function(){
                 return JSON.parse(localStorage.getItem('academic-application-data'));
@@ -174,6 +173,10 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                         .content('We have received your application and will process it soon. Good luck!')
                         .ok('ok')
                 ).then(function(){
+
+
+                        // Clear localStorage
+                        localStorage.clear();
 
                         // Redirect to dashboard
                         $location.path('/dashboard/myApplication');
