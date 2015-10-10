@@ -3,7 +3,7 @@
 angular.module('rolespanel').controller('rolespanelController', ['$scope', 'Authentication','Userroleasenumservice','Users','$http','$location','$q','$mdDialog','$interval','$timeout',
     function($scope, Authentication,Userroleasenumservice,Users, $http,$location,$q,$mdDialog,$interval,$timeout) {
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
-        $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
+        $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
         console.log($scope.user);
 

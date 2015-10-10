@@ -180,8 +180,10 @@ ul.nav {
 .navbar-header>.navbar-toggle>.ham {
 	background-image: url('../img/menu/ham-icon-mobile.png');
 	background-size: cover;
-	height: 44px;
-	width: 44px;
+	height: 34px;
+	width: 34px;
+	margin-top: 6px;
+    margin-right: -16px;
 }
 
 
