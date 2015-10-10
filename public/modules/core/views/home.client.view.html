@@ -11,10 +11,10 @@
 					We research, write, comment, report and develop tools to help reduce online hatred as much as possible, with the help of students from Israel and abroad.
 				</p>
 				<div class="registration">
-					<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0">
+					<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="!!userLevel == 0">
 						Join Us
 					</a>
-					<p class="sign-in-invite"  data-ng-if="userLevel == 0">
+					<p class="sign-in-invite"  data-ng-if="!!userLevel == 0">
 						Already registered? <a class="highlight-link" href="/#!/signin">Sign In</a>
 					</p>
 
