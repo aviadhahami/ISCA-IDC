@@ -6,7 +6,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
 		if ($scope.user)
 	        $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
-	    
+
 		// Controls the participant / volunteer overview tabs
 		$scope.participationType = 'participant';
 		$scope.changeParticipationType = function (type) {
