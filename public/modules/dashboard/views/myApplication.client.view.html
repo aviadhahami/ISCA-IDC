@@ -5,6 +5,9 @@
     md-chips .md-chips{
         box-shadow: none!important;
     }
+    md-chips-wrap{
+        padding-bottom: 0;
+    }
 </style>
 <md-content ng-controller="myApplicationController">
     <md-card>
@@ -132,28 +135,33 @@
                         </md-chips>
                     </div>
                 </div>
-                <br/>
-                <div layout="row">
-                    <div flex="5">
-                        <i class="fa fa-envelope fa-2x colorFAicon"></i>
+
+                <br/><br/>
+
+                <p style="text-decoration: underline">Essay and why you have applied</p>
+                <div layout="column">
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-question-circle fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            What do I bring in
+                        </div>
+                        <div flex>
+                            {{application.academicInfo.reasonToCome}}
+                        </div>
                     </div>
-                    <div flex="20">
-                        Email
-                    </div>
-                    <div flex>
-                        {{application.email}}
-                    </div>
-                </div>
-                <br/>
-                <div layout="row">
-                    <div flex="5">
-                        <i class="fa fa-venus-mars fa-2x colorFAicon"></i>
-                    </div>
-                    <div flex="20">
-                        Sex
-                    </div>
-                    <div flex>
-                        {{application.sex}}
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-file-text-o fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Essay
+                        </div>
+                        <div flex>
+                            {{application.essay.content}}
+                        </div>
                     </div>
                 </div>
             </div>
