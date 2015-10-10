@@ -44,29 +44,19 @@ angular.module('dashboard').config(['$stateProvider',
             }).state('myApplication', {
                 url: '/dashboard/myApplication',
                 templateUrl: 'modules/dashboard/views/myApplication.client.view.html',
-                controller: ['$scope', 'application','Authentication', '$location', function($scope, application, Authentication, $location) {
+                controller: ['$scope','Authentication', '$location', function($scope, Authentication, $location) {
 
                     $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
-
-                    if (application == undefined || application.length == 0)
-                        $scope.application = undefined;
-                    else
-                        $scope.application = application;
-                }],
-                resolve: {
-                    application: ['$q', '$http', function($q, $http) {
-                        var deferred = $q.defer();
-                        $http.get('/api/dashboard/pending').then(function(response) {
-                            if (!response.data.err) {
-                                deferred.resolve(response.data);
-                            } else {
-                                deferred.resolve({});
-                                // deferred.reject() & stateError
-                            }
-                        });
-                        return deferred.promise;
-                    }]
-                }
+                    if($scope.user){
+                        if (!$scope.user.iscaData.applicationForm){
+                            $location.path('/academic-signup');
+                        }else{
+                            $scope.application = angular.copy($scope.user.iscaData.applicationForm.formData);
+                        }
+                    }else{
+                        $location.path('/dashboard');
+                    }
+                }]
             });
     }
 ]);
