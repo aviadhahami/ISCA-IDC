@@ -14,6 +14,11 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
             },
             {
                 'level' : 1,
+                'url': '/dashboard/myApplication',
+                'title' : 'My application'
+            },
+            {
+                'level' : 1,
                 'url': '/',
                 'title' : 'Home'
             },
