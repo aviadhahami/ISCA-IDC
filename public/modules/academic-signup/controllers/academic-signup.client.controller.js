@@ -176,7 +176,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                 ).then(function(){
 
                         // Redirect to dashboard
-                        $location.path('/dashboard');
+                        $location.path('/dashboard/myApplication');
                     });
 
             }else{
