@@ -6,6 +6,10 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         function init(){
+            if($scope.user.iscaData.hasOwnProperty('applicationForm')){
+                $location.path('/dashboard');
+            }
+
             var loadSavedData = function(){
                 return JSON.parse(localStorage.getItem('academic-application-data'));
             };
