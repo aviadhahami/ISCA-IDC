@@ -16,7 +16,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
                 $location.path('/');
                 window.location.reload();
             },function(response) {
-                $scope.error = response.message;
+                $scope.error = response.data.message;
             });
         };
 
@@ -30,7 +30,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
                 window.location.reload();
                 // $location.path('/');
             },function(response) {
-                $scope.error = response.message;
+                $scope.error = response.data.message;
             });
         };
 
