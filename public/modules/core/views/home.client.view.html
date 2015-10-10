@@ -1,94 +1,219 @@
 <section data-ng-controller="HomeController">
-	<div class="jumbotron text-center">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-				<img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/img/brand/logo.png" />
+	<div class="container-fluid" id="join-banner">
+		<div class="container">
+			<div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+				<h3 id="header-title">
+					ISRAELI STUDENTS COMBATING ANTISEMITISM
+				</h3>
+				<p>
+					ISCA Academic Program is a student initiative aimed at preventing and diluting online antisemitism, racism and de-legitimization of the state of Israel.
+					<br><br>
+					We research, write, comment, report and develop tools to help reduce online hatred as much as possible, with the help of students from Israel and abroad.
+				</p>
+				<div class="registration">
+					<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0">
+						Join Us
+					</a>
+					<p class="sign-in-invite"  data-ng-if="userLevel == 0">
+						Already registered? <a class="highlight-link" href="/#!/signin">Sign In</a>
+					</p>
+
+					<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1">
+						Apply to program
+					</a>
+				</div>
 			</div>
 		</div>
-		<br>
-		<div class="row">
-			<p class="lead">
-				Open-Source Full-Stack Solution For MEAN Applications
-			</p>
+	</div>
+	<section class="block" id="participation">
+		<div class="container">
+			<div id="type-selection" class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+				<a ng-href="/#!/" class="participation-type-tab highlight-link col-xs-6" id="participant" ng-click="changeParticipationType('participant')" ng-class="{'active': participationType == 'participant'}" md-ink-ripple>
+					<h5>
+						Program participant
+					</h5>
+				</a>
+				<a ng-href="/#!/" class="participation-type-tab highlight-link col-xs-6" id="volunteer" ng-click="changeParticipationType('volunteer')" ng-class="{'active': participationType == 'volunteer'}" md-ink-ripple>
+					<h5>
+						Program volunteer
+					</h5>
+				</a>
+			</div>
+			<div id="participant-container" ng-show="participationType == 'participant'">
+				<div class="benefits col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+					<div class="col-sm-4 col-xs-12">
+						<img src="modules/core/img/landing-page/icons/classes.png" />
+						<p>
+							Academic Lectures on antisemitism and online advocacy
+						</p>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<img src="modules/core/img/landing-page/icons/team.png" />
+						<p>
+							Close mentorship from experienced team leaders
+						</p>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<img src="modules/core/img/landing-page/icons/personal-project.png" />
+						<p>
+							Create your own personal project to help combat antisemitism
+						</p>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<img src="modules/core/img/landing-page/icons/academic-credit.png" />
+						<p>
+							2 academic credits
+						</p>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<img src="modules/core/img/landing-page/icons/2-points.png" />
+						<p>
+							Scholarship awarded for excelling students
+						</p>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<img src="modules/core/img/landing-page/icons/compass.png" />
+						<p>
+							Doing something that really matters
+						</p>
+					</div>
+				</div>
+				<div class="col-sm-5 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+					<ul class="zebra-list">
+						<li>
+							<h5 class="text-center">
+								Who can apply?
+							</h5>
+						</li>
+						<li>
+							Foreign language speakers
+						</li>
+						<li>
+							New Media ninjas
+						</li>
+						<li>
+							Experience with data mining
+						</li>
+						<li>
+							Graphic designers / video editors 
+						</li>
+						<li>
+							Creative writers and editors
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+					<ul class="zebra-list">
+						<li>
+							<h5 class="text-center">
+								What are the requirements?
+							</h5>
+						</li>
+						<li>
+							Weekly volunteering hours
+						</li>
+						<li>
+							Participation in program events
+						</li>
+						<li>
+							Work on a multiple projects
+						</li>
+					</ul>
+				</div>
+				<div class="text-center col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+					<div data-read-more-button align-to="left"></div>
+					<div class="readmore-content">
+						<h5>
+							Participation Overview
+						</h5>
+						<p>
+							Participants are the heart of the academic program. They take part in lectures and events, receive close guidance by team leaders and are in charge of creating new projects that help us fight hatred. 
+							<br>
+							Since there are very few available spots for this position along with particular skills we are looking for, students have to apply to be a participant and commit to weekly volunteering hours consisting of various assignments. 
+							<br><br>
+							Participants receive 2 academic credits for their efforts and upon excellence, might be awarded with a 6000 nis scholarship for their next year of volunteering (In accordance with conditions set by the managing staff and the National Union of Israeli Students).
+						</p>
+						
+						<div class="registration">
+							<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1">
+								Apply to program
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="volunteer-container" ng-show="participationType == 'volunteer'">
+				<div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+					<h5>
+						Volunteering Overview
+					</h5>
+					<p>
+						Since we have limited spots for participant students, we opened the option for Freelance Volunteers.
+						<br><br>
+						Students who simply want to help out because they care about the cause can register and aid us in their free time, Freelance Volunteers also increase their chances of being accepted as participants the following year.
+					</p>
+					
+					<div class="commentator">
+						<div class="col-md-3 col-md-offset-0 col-xs-10 col-xs-offset-1">
+							<div class="commentator-image">
+								<img src="modules/core/img/landing-page/gabriela1.jpg" />
+							</div>
+						</div>
+						<div class="col-md-9 col-md-offset-0 col-xs-10 col-xs-offset-1">
+							<blockquote class="commentator-text">
+								<p>
+									“Coming from Europe, I thought iv'e seen a lot of hate towards Jews in real life. I never realized this phenomenon was so wide spread online and that it is the catalyst for what I experienced on the streets.
+									<br>
+									I remember being really surprised knowing that I can contribute to this struggle as a part of the university curriculum.
+									<br><br>
+									This will be my second year at ISCA Academic Program, and I truly recommend it to those who are tired of being a passer by.
+									<br>
+									You will not only learn how to identify racism, but also receive tools to actually do something about it - raise awareness and reshape society.”
+								</p>
+								<footer>
+									Gabriela Rolnik Lisauskaite, Second year Volunteer with a merit scholarship, IDC Herzliya
+								</footer>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="row">
+	</section>
+	<div id="special-content" class="container-fluid">
+		<div id="special-content-image" class="col-md-7 col-xs-12">
+			<img src="modules/core/img/landing-page/work-station.png" />
+		</div>
+		<div id="special-content-text" class="col-md-5 col-xs-12">
+			<h2>
+				Something Something Something
+			</h2>
 			<p>
-				<a class="btn btn-primary btn-lg" href="http://meanjs.org" target="_blank">Learn more</a>
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 			</p>
+			<div>
+				<div data-read-more-button theme="white-theme"></div>
+				<p class="readmore-content">
+					Participant Volunteers are the heart of the academic program. They take part in lectures and events, receive close guidance by team leaders and are in charge of creating new projects that help us fight hate.
+				</p>
+			</div>
 		</div>
 	</div>
-	<div>
-		<h2>Congrats! You've configured and run the sample application.</h2>
-		<p>MEAN.JS is a web application boilerplate, which means you should start changing everything :-)</p>
-		<p>This sample application tracks users and articles.</p>
-		<ul>
-			<li>
-				Click
-				<em>Signup</em>
-				to get started.
-			</li>
-			<li>
-				Configure your app to work with your social accounts, by editing the
-				<em>/config/env/*.js</em>
-				files.
-			</li>
-			<li>
-				Edit your users module.
-			</li>
-			<li>
-				Add new CRUD modules.
-			</li>
-			<li>
-				Have fun...
-			</li>
-		</ul>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<h2>
-				<strong>M</strong>ongoDB
-			</h2>
-			<p><a target="_blank" href="http://mongodb.org/">MongoDB</a> is a database. MongoDB's <a target="_blank" href="http://docs.mongodb.org/manual/">great manual</a> is the place to get started with NoSQL and MongoDB.</p>
+	<section class="block" id="faq">
+		<div class="container">
+			<div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+				<h5>
+					Frequently Asked Questions
+				</h5>
+				<hr>
+				<div class="faq-section">
+					<div class="faq-entry" ng-repeat="entry in faqEntries | orderBy: 'index'" data-faq-block entry="entry"></div>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<h2>
-				<strong>E</strong>xpress
-			</h2>
-			<p><a target="_blank" href="http://expressjs.com/"> Express</a> is an app server. Check out <a target="_blank" href="http://expressjs.com/guide.html">The Express Guide</a> or <a target="_blank" href="http://stackoverflow.com/questions/8144214/learning-express-for-node-js">StackOverflow</a> for more info.</p>
-		</div>
-		<div class="col-md-3">
-			<h2>
-				<strong>A</strong>ngularJS
-			</h2>
-			<p>AngularJS is web app framework. <a target="_blank" href="http://angularjs.org/">Angular's website</a> offers a lot. The <a target="_blank" href="http://www.thinkster.io/">Thinkster Popular Guide</a> and <a target="_blank" href="https://egghead.io/">Egghead Videos</a> are great resources.</p>
-		</div>
-		<div class="col-md-3">
-			<h2>
-				<strong>N</strong>ode.js
-			</h2>
-			<p><a target="_blank" href="http://nodejs.org/">Node.js</a> is a web server. Node's website and this <a target="_blank" href="http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js">stackOverflow thread</a> offer excellent starting points to get to grasps with node.</p>
-		</div>
-	</div>
-	<div class="well">
-		<h2>MEAN.JS Documentation</h2>
-		<p>
-			Once you're familiar with the foundation technology, check out the MEAN.JS Documentation:
-			<ul>
-				<li><a target="_blank" href="http://meanjs.org/docs.html">MEAN.JS Documentation</a>
-				</li>
-				<li><a target="_blank" href="http://meanjs.org/generator.html">Yeoman Generator</a>
-				</li>
-				<li><a target="_blank" href="http://meanjs.org/modules.html">Modules</a>
-				</li>
-				<li><a target="_blank" href="http://meanjs.org/changelog.html">Changelog</a>
-				</li>
-				<li><a target="_blank" href="http://meanjs.org/community.html">Community</a>
-				</li>
-				<li><a target="_blank" href="http://blog.meanjs.org">Blog</a>
-				</li>
-			</ul>
-		</p>
-	</div>
-	<br>Enjoy &amp; Keep Us Updated,
-	<br>The MEAN.JS Team.
+	</section>
 </section>
+
+
+

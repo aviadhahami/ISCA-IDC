@@ -1,0 +1,140 @@
+<md-content layout="row" ng-controller="applicationsReviewController" xmlns="http://www.w3.org/1999/html">
+    <div flex="10"></div>
+
+    <!-- Table header -->
+
+    <div flex="80" id="applicationContent" ng-if="applications && applications.length > 0">
+        <h2 class="md-display-3 page-title">Available applications</h2>
+        <md-tabs id="pendingApplication" no-tabs-wrapper md-selected="selectedTab" md-dynamic-height="true">
+            <md-tab>
+                <div flex="80" layout="column">
+                    <md-tab-body>
+                        <ul>
+                            <li layout="row" class="table-header">
+                                <span class="md-subhead" flex>First name</span>
+                                <span class="md-subhead" flex>Last name</span>
+                                <span class="md-subhead" flex>Sex</span>
+                                <span class="md-subhead" flex>Email</span>
+                                <span class="md-subhead" flex>Degree</span>
+                            </li>
+
+                            <li layout="row"
+                                ng-repeat='application in applications | orderBy: "iscaData.applicationForm.formPending": true | orderBy: "iscaData.applicationForm.accepted": true'
+                                ng-click="displayApplication(application)" class="table-row">
+                                <span class="md-body-1" flex>
+                                    <i class="fa fa-star" title="Starred" ng-show="application.iscaData.applicationForm && application.iscaData.applicationForm.starred"></i>
+                                    <i class="fa fa-check" title="Accepted" ng-show="application.iscaData.applicationForm && application.iscaData.applicationForm.accepted"></i>
+                                    <i class="fa fa-ban" title="Denied" ng-show="application.iscaData.applicationForm && !application.iscaData.applicationForm.accepted && !application.iscaData.applicationForm.formPending"></i>
+                                    {{ application.firstName }}
+                                </span>
+                                <span class="md-body-1" flex>{{ application.lastName }}</span>
+                                <span class="md-body-1" flex>{{ application.iscaData.applicationForm.form.sex }}</span>
+                                <span class="md-body-1" flex>{{ application.email }}</span>
+                                <span class="md-body-1" flex>{{ application.iscaData.applicationForm.form.academicInfo.degree + ' of ' + application.iscaData.applicationForm.form.academicInfo.fieldOfStudy }}</span>
+                            </li>
+                        </ul>
+                    </md-tab-body>
+                </div>
+
+            </md-tab>
+            <md-tab>
+                <md-tab-body>
+                    <div class="applicationView">
+                        <div>
+                            <h4 class="md-title"><i class="fa fa-chevron-left" ng-click="backToTable()"> Back</i></h4>
+                        </div>
+                        <div>
+                            <h2 class="md-display-2">{{ selectedApplication.displayName }} <small ng-if="selectedApplication.iscaData.applicationForm">{{ selectedApplication.description}}</small></h2>
+                            <h3>ID: <small>{{ selectedApplication.iscaData.applicationForm.form.id }}</small></h3>
+                            <h3>DOB: <small>{{ selectedApplication.birthday }}</small></h3>
+                            <h3>Phone: <small>{{ selectedApplication.iscaData.applicationForm.form.phone }}</small></h3>
+                            <h3>Email: <small>{{ selectedApplication.email }}</small></h3>
+                        </div>
+                        <table>
+                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.academicInfo.reasonToCome">
+                                <td>
+                                    <p class="key md-subhead">Reason to come</p>
+                                </td>
+                                <td>
+                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.academicInfo.reasonToCome }}</p>
+                                </td>
+                            </tr>
+
+                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.academicInfo.languages">
+                                <td>
+                                    <p class="key md-subhead">Languages</p>
+                                </td>
+                                <td>
+                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.academicInfo.languages }}</p>
+                                </td>
+                            </tr>
+
+                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.academicInfo.degree && selectedApplication.iscaData.applicationForm.form.academicInfo.fieldOfStudy">
+                                <td>
+                                    <p class="key md-subhead">Degree</p>
+                                </td>
+                                <td>
+                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.academicInfo.degree + ' in ' + selectedApplication.iscaData.applicationForm.form.academicInfo.fieldOfStudy }}</p>
+                                </td>
+                            </tr>
+
+                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear">
+                                <td>
+                                    <p class="key md-subhead">Year in school</p>
+                                </td>
+                                <td>
+                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear }}</p>
+                                </td>
+                            </tr>
+
+                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.essay.topic && selectedApplication.iscaData.applicationForm.form.essay.content ">
+                                <td>
+                                    <p class="key md-subhead">Essay</p>
+                                </td>
+                                <td>
+                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.essay.topic }}</p>
+                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.essay.content }}</p>
+                                </td>
+                            </tr>
+
+                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.cv">
+                                <td>
+                                    <p class="key md-subhead">Resume</p>
+                                </td>
+                                <td>
+                                    <md-button class="md-raised" href="downloadcv/{{ selectedApplication.iscaData.applicationForm.form.cv }}">
+                                        <img src="../../../icons/cloud-download.png" alt=""/>
+                                        Click to download
+                                    </md-button>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <div>
+                            <md-button class="md-raised" ng-click="starApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.formPending">
+                                <i class="fa fa-star" title="Star applicant" ng-if="!selectedApplication.iscaData.applicationForm.starred"></i>
+                                <span ng-if="!selectedApplication.iscaData.applicationForm.starred">Star</span>
+                                <i class="fa fa-star" title="Unstar applicant" ng-if="selectedApplication.iscaData.applicationForm.starred"></i>
+                                <span ng-if="selectedApplication.iscaData.applicationForm.starred">Unstar</span>
+                            </md-button>
+                            <md-button class="md-raised" ng-click="acceptApplicant(selectedApplication)" ng-if="!selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
+                                <i class="fa fa-check" title="Accept applicant"></i>
+                                Accept
+                            </md-button>
+                            </md-button><md-button class="md-raised" ng-click="denyApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
+                                <i class="fa fa-ban" title="Deny applicant"></i>
+                                Deny
+                            </md-button>
+                        </div>
+                    </div>
+                </md-tab-body>
+
+            </md-tab>
+        </md-tabs>
+    </div>
+
+    <div flex="80" ng-if="applications == undefined || applications.length == 0" style="text-align: center"><h2 class="md-display-3">No applications available</h2></div>
+
+    <div flex="10"></div>
+
+</md-content>

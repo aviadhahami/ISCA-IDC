@@ -66,14 +66,22 @@ var UserSchema = new Schema({
 		type: String,
 		required: 'Provider is required'
 	},
+	cv: {
+		type : String,
+		default : ''
+	},
 	providerData: {},
+	iscaData : {
+		type: Schema.Types.Mixed,
+		default : {
+			0:''
+		}
+	},
 	additionalProvidersData: {},
 	roles: {
-		type: [{
-			type: String,
-			enum: ['user', 'admin']
-		}],
-		default: ['user']
+		type: String,
+		default: 'volunteer',
+		enum: ['user','volunteer','participant','manager', 'admin']
 	},
 	updated: {
 		type: Date
@@ -119,6 +127,24 @@ UserSchema.methods.hashPassword = function(password) {
  */
 UserSchema.methods.authenticate = function(password) {
 	return this.password === this.hashPassword(password);
+};
+
+/**
+ * Drops certain keys from the user object for security purposes
+ */
+UserSchema.methods.sanitize = function() {
+	var user = this;
+	var res = {
+		_id : user._id,
+		displayName: user.displayName,
+		email: user.email,
+		firstName: user.firstName,
+		iscaData: user.iscaData,
+		lastName: user.lastName,
+		roles : user.roles
+	};
+	return res;
+
 };
 
 /**

@@ -1,0 +1,246 @@
+<section ng-controller="academic-signup-controller" id="academic-signup-form">
+    <div class="container">
+        <md-toolbar class="md-primary">
+            <h1 class="md-toolbar-tools">
+                APPLY TO THE ACADEMIC PROGRAM
+            </h1>
+        </md-toolbar>
+        <md-content layout-padding>
+            <md-card ng-show="!userReadTerms">
+                <md-card-content>
+                    <h3>
+                        Before we start the application process..
+                    </h3>
+                    <hr/>
+                    <p>
+                        This form is for XYZ <br/>
+                        Make sure to fill it all the way cause WUV <br/>
+                        Some more info the @roy should write for us <br/>
+                    </p>
+                    <br/>
+                    <p style="color:red">
+                        Make sure you have around 20 minutes to fill the application!
+                    </p>
+                    <div class="md-actions" layout="row" layout-align="center">
+                        <md-button md-no-ink class="md-primary" ng-click="toggleUserReadTerms()">I'm ready!</md-button>
+                    </div>
+                </md-card-content>
+            </md-card>
+
+            <div ng-show="userReadTerms">
+                <md-card>
+                    <md-card-content>
+                        <h4>PERSONAL INFORMATION</h4>
+                        <hr/>
+                        <section>
+                            <div layout layout-sm="column">
+                                <!--TODO: CHANGE STYLE TO PERMANENT-->
+                                <md-input-container style="width:80%">
+                                    <label>Name</label>
+                                    <input ng-model="applicationFormData.name" disabled>
+                                </md-input-container>
+                                <!--TODO: Fix line height as it looks like crap atm-->
+                                <md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>
+
+                            </div>
+
+                            <md-input-container>
+                                <label>email</label>
+                                <input ng-model="applicationFormData.email" disabled>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>ID</label>
+                                <input type="text" ng-model="applicationFormData.id" md-maxlength="9" maxlength="9" required>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>Sex</label>
+                                <md-select ng-model="applicationFormData.sex" required>
+                                    <md-option value="Male" selected>
+                                        Male
+                                    </md-option>
+                                    <md-option value="Female">
+                                        Female
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </section>
+
+                        <md-input-container>
+                            <label>Phone number</label>
+                            <input type="tel" ng-model="applicationFormData.phone" maxlength="15" required>
+                        </md-input-container>
+
+                    </md-card-content>
+                </md-card>
+
+                <br/>
+
+                <md-card>
+                    <md-card-content>
+                        <h4>ACADEMIC INFORMATION</h4>
+                        <hr/>
+                        <section>
+                            <md-input-container>
+                                <label>
+                                    Degree type
+                                </label>
+                                <md-select ng-model="applicationFormData.academicInfo.degree">
+                                    <md-option value="Bachelor">
+                                        B.A. / B.S.
+                                    </md-option>
+                                    <md-option value="Master">
+                                        M.A. / M.S.
+                                    </md-option>
+                                    <md-option value="other">
+                                        Other
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>
+                                    Current year of study
+                                </label>
+                                <md-select ng-model="applicationFormData.academicInfo.currentYear" required>
+                                    <md-option ng-repeat="i in [1,2,3,4,5]" value="{{i}}">
+                                        {{i}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+
+                            <md-input-container>
+                                <label>
+                                    Field of study
+                                </label>
+                                <md-select ng-model="applicationFormData.academicInfo.fieldOfStudy" required="">
+                                    <md-option ng-repeat="option in studyOptions" value="{{option}}">
+                                        {{option}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>
+                                    Fluently spoken foreign languages (separate by comma)
+                                </label>
+                                <input type="text" ng-model="applicationFormData.academicInfo.languages" required/>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>
+                                    Please describe why Anti-Semitism is important to you and what you will bring to the program
+                                </label>
+                                <textarea ng-model="applicationFormData.academicInfo.reasonToCome" cols="30" rows="10" maxlength="1000" md-maxlength="1000"></textarea>
+                            </md-input-container>
+                        </section>
+                    </md-card-content>
+                </md-card>
+                <md-card>
+                    <md-card-content>
+                        <h4>
+                            Essay
+                        </h4>
+                        <hr/>
+                        <section>
+                            <p>
+                                In this section one may write a short essay about one of the following topics. <br/>
+                                You may choose any languages that you like, but make sure it is up to 400 words. <br/>
+                            </p>
+                            <h6>
+                                notes:
+                            </h6>
+                            <ul>
+                                <li>
+                                    <i><b>There's no need for expertise in writing essays! Do your best!</b></i>
+                                </li>
+                                <li>
+                                    Graphic designers doesn't need to write an essay yet they <b>must</b> supply a link to their portfolio
+                                </li>
+                            </ul>
+
+                            <h5>Topics</h5>
+                            <p>Selected Value: </p>
+
+                            <md-radio-group ng-model="applicationFormData.essay.topic">
+                                <md-radio-button value="Social effect">
+                                    The residual effect demonstrated by social networks (Facebook, Twitter etc.) over the 'real world'.
+                                </md-radio-button>
+                                <md-radio-button value="Jewish challenge">
+                                    What challenges Jews are facing in general and in our times. Share your opinion.
+                                </md-radio-button>
+                                <md-radio-button value="Eliminate Anti-Semitism">
+                                    In what ways the world can eliminate Anti-Semitism and racism?. Share your opinion.
+                                </md-radio-button>
+                                <md-radio-button value="Initiative">
+                                    If you could use the ISCA academic program as your resource, what new initiatives will you make?
+                                </md-radio-button>
+                                <md-radio-button value="Designer">
+                                    I'm a designer and I will supply link to my portfolio below
+                                </md-radio-button>
+                            </md-radio-group>
+                            <md-input-container>
+                                <label>
+                                    {{user.displayName}}'s essay
+                                </label>
+                                <textarea ng-model="applicationFormData.essay.content" cols="30" rows="10" maxlength="5000" md-maxlength="5000"></textarea>
+                            </md-input-container>
+                        </section>
+                    </md-card-content>
+                </md-card>
+
+                <md-card>
+                    <md-card-content>
+                        <h4>
+                            Resume
+                        </h4>
+                        <hr/>
+                        <section>
+                            <p>
+                                In this section we would like you to attach your resume.
+                            </p>
+                            <h6>
+                                Prerequisites:
+                            </h6>
+                            <ul>
+                                <li>
+                                    Your resume must be written in <b>English</b> or <b>Hebrew</b>.
+                                </li>
+                                <li>
+                                    Your resume must be in the format of a <b>PDF file</b> and not bigger than <b>20MB</b>
+                                </li>
+                            </ul>
+                            <section layout="row" layout-sm="column" layout-align="left center" layout-wrap>
+                                <md-button class="md-raised" ngf-select="submit($file)" ngf-max-size="10MB">
+                                    Upload resume
+                                </md-button>
+
+                                <md-button class="md-raised" href="downloadcv/{{user.cv}}" ng-show="user.cv">
+                                    <img src="../../../icons/cloud-download.png" alt=""/>
+                                    Download current resume
+                                </md-button>
+                                <md-progress-linear ng-show="uploadStatus.uploading" md-mode="determinate" value="{{uploadStatus.progress}}"></md-progress-linear>
+                            </section>
+                        </section>
+                    </md-card-content>
+                </md-card>
+
+                <md-card>
+                    <md-card-content>
+                        <h4>
+                            Submission
+                        </h4>
+                        <hr/>
+                        <p>
+                            Before submitting, make sure all fields are filled properly and that you haven't forgot anything. <br/>
+                            When ready, click the big green button.
+                        </p>
+                        <md-button class="md-raised" ng-click="submitApplication()" style="width:100%;height:100px; background-color: palegreen">
+                            Apply now!
+                        </md-button>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
+    </div>
+</section>
+/
