@@ -74,10 +74,6 @@ exports.signin = function(req, res, next) {
  */
 exports.signout = function(req, res) {
 	req.logout();
-
-	// Clear form data
-	localStorage.clear();
-
 	res.redirect('/');
 };
 
