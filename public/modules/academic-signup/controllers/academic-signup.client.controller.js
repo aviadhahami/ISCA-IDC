@@ -7,7 +7,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         $scope.user = angular.copy(Authentication.user);
         function init(){
             if($scope.user.iscaData.hasOwnProperty('applicationForm')){
-                $location.path('/dashboard');
+                $location.path('/dashboard/myApplication');
             }
 
             var loadSavedData = function(){
