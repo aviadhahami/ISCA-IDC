@@ -6,8 +6,6 @@ angular.module('dashboard').controller('applicationsReviewController', ['$scope'
             APPLICATION_VIEW  = 1;
         $scope.selectedTab = APPLICATION_TABLE;
         $scope.selectedApplication = undefined;
-        console.log($scope.applications);
-
         function normalizeDescription(selectedApplication) {
             var suffix = '';
 
@@ -24,27 +22,7 @@ angular.module('dashboard').controller('applicationsReviewController', ['$scope'
                     suffix = 'rd';
                     break;
                 }
-                case "4": {
-                    suffix = 'th';
-                    break;
-                }
-                case "5": {
-                    suffix = 'th';
-                    break;
-                }
-                case "6": {
-                    suffix = 'th';
-                    break;
-                }
-                case "7": {
-                    suffix = 'th';
-                    break;
-                }
-                case "8": {
-                    suffix = 'th';
-                    break;
-                }
-                case "9": {
+                default :{
                     suffix = 'th';
                     break;
                 }
