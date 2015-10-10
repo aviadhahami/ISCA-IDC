@@ -44,7 +44,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         init();
 
-        $scope.userReadTerms = true; // TODO: CHANGE TO FALSE
+        $scope.userReadTerms = false;
         $scope.toggleUserReadTerms = function(){
             $scope.userReadTerms = !$scope.userReadTerms;
         };
