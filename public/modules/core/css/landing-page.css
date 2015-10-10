@@ -83,8 +83,8 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 #feeds {
 	height: 640px;
 }
-.fb-page {
-
+.news {
+	padding: 40px;
 }
 
 /**** PARTICIPATION SECTION ****/
@@ -195,5 +195,9 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 	#join-banner p {
 		margin-top: 4vh;
 		margin-bottom: 10vh;
+	}
+
+	.news {
+		height: 500px;
 	}
 }

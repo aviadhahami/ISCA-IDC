@@ -6,6 +6,18 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
 	    $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0; 
 
+		// Facebook Graph API init
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=541429809365422";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		// End Facebook init
+
+		// TODO: Get Facebook page posts (ISCAorg) using Graph API
+
 		// Controls the participant / volunteer overview tabs
 		$scope.participationType = 'participant';
 		$scope.changeParticipationType = function (type) {
