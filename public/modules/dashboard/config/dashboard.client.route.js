@@ -52,7 +52,7 @@ angular.module('dashboard').config(['$stateProvider',
                             $location.path('/academic-signup');
                         }else{
                             $scope.application = angular.copy($scope.user.iscaData.applicationForm.form);
-                            $scope.application.birthday = new Date($scope.application.birthday);
+                           // $scope.application.birthday = new Date($scope.application.birthday);
                         }
                     }else{
                         $location.path('/dashboard');
