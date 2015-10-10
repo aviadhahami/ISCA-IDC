@@ -216,7 +216,7 @@ ul.nav {
 	/* Set the fixed height of the footer here */
 	/*height: 100px;*/
 	background-color: #f0f0f0;
-	padding: 12px;
+	padding: 12px 0px;
 }
 
 #footer-section p {
@@ -255,4 +255,23 @@ ul.nav {
 
 #footer-section .abs-fixer span {
 	margin-left: 19px;
+}
+
+#theTeam .avatar {
+	border: 1px solid #E7E7E7;
+	width: 150px;
+	height: 150px;
+}
+
+#theTeam .nametag {
+	background-color: transparent;
+}
+
+#theTeam h3 {
+	margin: auto;
+}
+
+#theTeam {
+	padding-top: 36px;
+	padding-bottom: 24px;
 }
