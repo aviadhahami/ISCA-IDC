@@ -22,4 +22,6 @@ angular.module('dashboard').controller('myApplicationController', ['$scope', 'Au
         }
 
         $scope.formattedBirthday = dd +'/'+ mm +'/'+yyyy;
+
+        $scope.languages = $scope.application.academicInfo.languages.split(',');
     }]);

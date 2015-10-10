@@ -2,6 +2,9 @@
     .colorFAicon{
         color:darkcyan
     }
+    md-chips .md-chips{
+        box-shadow: none!important;
+    }
 </style>
 <md-content ng-controller="myApplicationController">
     <md-card>
@@ -9,6 +12,7 @@
             <h2 class="md-title">{{application.name}}'s application form</h2>
             <hr/>
             <section>
+                <p style="text-decoration: underline">General information</p>
                 <div layout="column">
                     <div layout="row">
                         <div flex="5">
@@ -82,6 +86,77 @@
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <br/><br/>
+
+
+            <p style="text-decoration: underline">Academic information</p>
+            <div layout="column">
+                <div layout="row">
+                    <div flex="5">
+                        <i class="fa fa-graduation-cap fa-2x colorFAicon"></i>
+                    </div>
+                    <div flex="20">
+                        Pursuing
+                    </div>
+                    <div flex>
+                        {{application.academicInfo.degree}} in {{application.academicInfo.fieldOfStudy}}
+                    </div>
+                </div>
+                <br/>
+                <div layout="row">
+                    <div flex="5">
+                        <i class="fa fa-hourglass-half fa-2x colorFAicon"></i>
+                    </div>
+                    <div flex="20">
+                        Current study year
+                    </div>
+                    <div flex>
+                        {{application.academicInfo.currentYear}}
+                    </div>
+                </div>
+                <br/>
+                <div layout="row">
+                    <div flex="5">
+                        <i class="fa fa-language fa-2x colorFAicon"></i>
+                    </div>
+                    <div flex="20">
+                        Controlled languages
+                    </div>
+                    <div flex>
+                        <md-chips ng-model="languages" readonly="true">
+                            <md-chip-template>
+                                <p>{{$chip}}</p>
+                            </md-chip-template>
+                        </md-chips>
+                    </div>
+                </div>
+                <br/>
+                <div layout="row">
+                    <div flex="5">
+                        <i class="fa fa-envelope fa-2x colorFAicon"></i>
+                    </div>
+                    <div flex="20">
+                        Email
+                    </div>
+                    <div flex>
+                        {{application.email}}
+                    </div>
+                </div>
+                <br/>
+                <div layout="row">
+                    <div flex="5">
+                        <i class="fa fa-venus-mars fa-2x colorFAicon"></i>
+                    </div>
+                    <div flex="20">
+                        Sex
+                    </div>
+                    <div flex>
+                        {{application.sex}}
+                    </div>
+                </div>
+            </div>
             </section>
         </md-card-content>
     </md-card>
