@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog',
-    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog) {
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog','$location',
+    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog,$location) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
         console.log($scope.user);
@@ -167,6 +167,17 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                 };
 
                 Users.update($scope.user);
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(true)
+                        .title('Thank you!')
+                        .content('We have received your application and will process it soon. Good luck!')
+                        .ok('ok')
+                ).then(function(){
+
+                        // Redirect to dashboard
+                        $location.path('/dashboard/myApplication');
+                    });
 
             }else{
                 showAlert(null);
