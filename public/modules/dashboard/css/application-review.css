@@ -1,0 +1,83 @@
+#applicationContent #pendingApplication {
+    border: 1px solid #E7E7E7;
+}
+
+#applicationContent .page-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#pendingApplication .table-header {
+    padding: 12px 15px;
+}
+
+#pendingApplication .table-header span {
+    color: rgba(0, 0, 0, 0.54);
+    color: rgb(0, 0, 0);
+}
+
+#pendingApplication .table-row {
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    padding: 9px 12px;
+}
+
+#pendingApplication .table-row:hover {
+    background-color: #FBFBFB;
+}
+
+#pendingApplication .table-row span {
+    color: rgba(0, 0, 0, 0.54);
+    color: rgb(0, 0, 0);
+}
+
+#pendingApplication .table-row span > .fa {
+    margin-right: 3px;
+
+}
+
+#pendingApplication .table-row span > .fa-star {
+    color: #FFC107;
+}
+
+#pendingApplication .table-row span > .fa-check {
+    color: #4CAF50;
+}
+
+
+#pendingApplication .table-row span > .fa-ban {
+    color: #F44336;
+}
+
+#pendingApplication ul {
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+
+#pendingApplication .applicationView {
+    padding: 24px;
+
+}
+
+#pendingApplication .applicationView table  {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+#pendingApplication .applicationView table tr td {
+    padding: 15px 0px;
+}
+
+#pendingApplication .applicationView .key {
+    padding-right: 36px;
+    font-size: 17px;
+}
+
+#pendingApplication .applicationView .value {
+    font-size: 15px;
+}
+
+#pendingApplication .applicationView .key,
+#pendingApplication .applicationView .value {
+    vertical-align: middle;
+}
