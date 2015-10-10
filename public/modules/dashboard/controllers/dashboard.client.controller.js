@@ -6,8 +6,6 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
         if ($scope.user)
             $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
 
-
-
         $scope.links = [
             {
                 'level' : 1,
