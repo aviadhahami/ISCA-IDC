@@ -28,6 +28,10 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
 }
 
+.text-center {
+	text-align: center;
+}
+
 /**** CUSTOM CLASSES FOR REPETITIVE ELEMENTS ****/
 
 .highlight-link {
@@ -208,13 +212,68 @@ ul.nav {
 
 #footer-section {
   	/*position: absolute;*/
-    left: 0;
-    bottom: 0;
-    width: 100%;
-  	/* Set the fixed height of the footer here */
-  	height: 100px;
-  	background-color: #fefefe;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	/*height: 100px;*/
+	background-color: #f0f0f0;
+	padding: 12px 0px;
 }
+
 #footer-section p {
 	margin-top: 42px;
+}
+
+#footer-section .logos {
+	margin-top: 24px;
+}
+
+#footer-section .logos div {
+	margin: auto;
+}
+
+#footer-section .logos img {
+	height: 125px;
+	width: auto;
+	margin: auto;
+	display: block;
+}
+
+#footer-section .logos md-list-item {
+	min-height: 24px;
+	color: #337ab7;
+
+}
+
+#footer-section .logos md-list-item .fa {
+	margin-right: 6px;
+}
+
+#footer-section .abs-fixer i {
+	position: absolute;
+	margin-top: 4px;
+}
+
+#footer-section .abs-fixer span {
+	margin-left: 19px;
+}
+
+#theTeam .avatar {
+	border: 1px solid #E7E7E7;
+	width: 150px;
+	height: 150px;
+}
+
+#theTeam .nametag {
+	background-color: transparent;
+}
+
+#theTeam h3 {
+	margin: auto;
+}
+
+#theTeam {
+	padding-top: 36px;
+	padding-bottom: 24px;
 }

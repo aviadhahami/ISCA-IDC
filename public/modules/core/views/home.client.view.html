@@ -11,6 +11,7 @@
 					We research, write, comment, report and develop tools to help reduce online hatred as much as possible, with the help of students from Israel and abroad.
 				</p>
 				<div class="registration">
+<<<<<<< HEAD
 					<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0 && !isMobile()">
 						Join Us
 					</a>
@@ -20,6 +21,17 @@
 
 					<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1 && !isMobile()">
 						Apply to program
+=======
+					<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="!!userLevel == 0">
+						Join Us
+					</a>
+					<p class="sign-in-invite"  data-ng-if="!!userLevel == 0">
+						Already registered? <a class="highlight-link" href="/#!/signin">Sign In</a>
+					</p>
+
+					<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1">
+						Apply to the program
+>>>>>>> cc494999ecf7fac14a58774632e36fb1a5a5ab39
 					</a>
 				</div>
 			</div>
@@ -156,11 +168,16 @@
 						</p>
 						
 						<div class="registration">
+<<<<<<< HEAD
 							<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0 && !isMobile()">
 								Join Us
 							</a>
 							<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1 && !isMobile()">
 								Apply to program
+=======
+							<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1">
+								Apply to the program
+>>>>>>> cc494999ecf7fac14a58774632e36fb1a5a5ab39
 							</a>
 						</div>
 					</div>

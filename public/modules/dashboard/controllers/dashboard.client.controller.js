@@ -5,13 +5,16 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
-
-
         $scope.links = [
             {
                 'level' : 1,
                 'url': '/dashboard/applicationReview',
                 'title' : 'Applications'
+            },
+            {
+                'level' : 1,
+                'url': '/dashboard/myApplication',
+                'title' : 'My application'
             },
             {
                 'level' : 1,

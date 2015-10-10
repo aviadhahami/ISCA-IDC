@@ -1,12 +1,19 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog',
-    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog) {
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog','$location',
+    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog,$location) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
+<<<<<<< HEAD
         
+=======
+>>>>>>> cc494999ecf7fac14a58774632e36fb1a5a5ab39
         function init(){
+            if($scope.user.iscaData.hasOwnProperty('applicationForm')){
+                $location.path('/dashboard/myApplication');
+            }
+
             var loadSavedData = function(){
                 return JSON.parse(localStorage.getItem('academic-application-data'));
             };
@@ -44,7 +51,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         init();
 
-        $scope.userReadTerms = true; // TODO: CHANGE TO FALSE
+        $scope.userReadTerms = false;
         $scope.toggleUserReadTerms = function(){
             $scope.userReadTerms = !$scope.userReadTerms;
         };
@@ -167,6 +174,21 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                 };
 
                 Users.update($scope.user);
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(true)
+                        .title('Thank you!')
+                        .content('We have received your application and will process it soon. Good luck!')
+                        .ok('ok')
+                ).then(function(){
+
+
+                        // Clear localStorage
+                        localStorage.clear();
+
+                        // Redirect to dashboard
+                        $location.path('/dashboard/myApplication');
+                    });
 
             }else{
                 showAlert(null);
