@@ -7,6 +7,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		if ($scope.user)
 	        $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
 
+		console.log($scope.userLevel);
 		// Controls the participant / volunteer overview tabs
 		$scope.participationType = 'participant';
 		$scope.changeParticipationType = function (type) {
