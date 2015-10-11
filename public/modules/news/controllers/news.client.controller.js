@@ -4,12 +4,16 @@
 angular.module('news').controller('NewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'News',
 	function($scope, $stateParams, $location, Authentication, News) {
 		$scope.authentication = Authentication;
+		$scope.user = Authentication.user;
 
+
+		console.log($scope.user);
 		// Create new News
 		$scope.create = function() {
 			// Create new News object
 			var news = new News ({
-				name: this.name
+				name: this.name,
+				content : this.content
 			});
 
 			// Redirect after save
@@ -25,7 +29,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 
 		// Remove existing News
 		$scope.remove = function(news) {
-			if ( news ) { 
+			if ( news ) {
 				news.$remove();
 
 				for (var i in $scope.news) {
@@ -58,7 +62,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 
 		// Find existing News
 		$scope.findOne = function() {
-			$scope.news = News.get({ 
+			$scope.news = News.get({
 				newsId: $stateParams.newsId
 			});
 		};

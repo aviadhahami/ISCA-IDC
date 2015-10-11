@@ -2,6 +2,9 @@
 	<div class="page-header">
 		<h1 data-ng-bind="news.name"></h1>
 	</div>
+	<div>
+		<p data-ng-bind="news.content"></p>
+	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == news.user._id))">
 		<a class="btn btn-primary" href="/#!/news/{{news._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
