@@ -7,42 +7,22 @@ angular.module('dashboard').controller('applicationsReviewController', ['$scope'
         $scope.selectedTab = APPLICATION_TABLE;
         $scope.selectedApplication = undefined;
 
-        function normalizeDescription(selectedApplication) {
-            var suffix = '';
-
-            switch (selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear) {
-                case "1": {
-                    suffix = 'st';
-                    break;
-                }
-                case "2": {
-                    suffix = 'nd';
-                    break;
-                }
-                case "3": {
-                    suffix = 'rd';
-                    break;
-                }
-                default :{
-                    suffix = 'th';
-                    break;
-                }
-
-            }
-
-            return selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear + suffix +
-                ' year ' + selectedApplication.iscaData.applicationForm.form.academicInfo.fieldOfStudy + ' student, '
-                + selectedApplication.iscaData.applicationForm.form.sex;
-        }
+        // Remove duplicates from language arrary
+        var uniq = function (a) {
+            return a.sort().filter(function(item, pos, ary) {
+                return !pos || item != ary[pos - 1];
+            })
+        };
 
         $scope.displayApplication = function(application) {
             $scope.selectedTab = APPLICATION_VIEW;
             $scope.selectedApplication = application;
-            $scope.selectedApplication.description = normalizeDescription(application);
 
             var bday = new Date(application.iscaData.applicationForm.form.birthday);
             $scope.selectedApplication.birthday = bday.getDate() + '/' + (bday.getMonth() + 1) + '/' + bday.getFullYear();
             bday = undefined;
+            $scope.selectedApplication.languages = uniq(application.iscaData.applicationForm.form.academicInfo.languages.split(','));
+            console.log($scope.selectedApplication);
 
         };
 
