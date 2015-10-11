@@ -21,8 +21,10 @@ var NewsSchema = new Schema({
 		default: Date.now
 	},
 	imageData:{
-		type:String,
-		default:''
+		type: Schema.Types.Mixed,
+		default : {
+			0:''
+		}
 	},
 	user: {
 		type: Schema.ObjectId,
