@@ -14,7 +14,7 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 	var news = new News(req.body);
 	news.user = req.user;
-
+	news.creator = req.user.displayName;
 	news.save(function(err) {
 		if (err) {
 			return res.status(400).send({
@@ -72,7 +72,7 @@ exports.delete = function(req, res) {
 /**
  * List of News
  */
-exports.list = function(req, res) { 
+exports.list = function(req, res) {
 	News.find().sort('-created').populate('user', 'displayName').exec(function(err, news) {
 		if (err) {
 			return res.status(400).send({
@@ -87,7 +87,7 @@ exports.list = function(req, res) {
 /**
  * News middleware
  */
-exports.newsByID = function(req, res, next, id) { 
+exports.newsByID = function(req, res, next, id) {
 	News.findById(id).populate('user', 'displayName').exec(function(err, news) {
 		if (err) return next(err);
 		if (! news) return next(new Error('Failed to load News ' + id));
@@ -100,7 +100,7 @@ exports.newsByID = function(req, res, next, id) {
  * News authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.news.user.id !== req.user.id) {
+	if (req.news.user.id !== req.user.id || req.user.role === 'admin' || req.user.role === 'manager') {
 		return res.status(403).send('User is not authorized');
 	}
 	next();
