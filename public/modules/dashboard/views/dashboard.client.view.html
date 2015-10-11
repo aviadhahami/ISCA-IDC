@@ -14,14 +14,13 @@
                         <h4 class="md-title">Tools and links</h4>
                         <hr/>
                         <ul>
-                            <li ng-repeat="link in links" ng-if="userLevel >= link.level">
+                            <li ng-repeat="link in links" ng-show="userLevel >= link.level">
                                 <a href="/#!{{link.url}}">{{link.title}}</a>
                             </li>
                         </ul>
                     </md-card-content>
                 </md-card>
             </div>
-
         </md-card-content>
     </md-card>
 </md-content>

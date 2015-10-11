@@ -1,25 +1,23 @@
 <div class="navbar-container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
-		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+		<!-- CURRENTLY HIDING NAV FROM MOBILE -->
+		<!-- <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
 			<div class="ham"></div>
-		</button>
-		<a href="/" class="navbar-brand">
+		</button> -->
+		<a href="/#!/" class="navbar-brand">
 			<img src="modules/core/img/brand/logo.png" />
 		</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav navbar-right">
-			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-hide="userLevel > 0">
+			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-if="userLevel == 0 && !WURFL.is_mobile">
 				<a href="/#!/signin" md-ink-ripple>Sign In</a>
 			</li>
 			<li class="menu-item social-link">
-				<a href="http://google.com" target="_blank" md-ink-ripple>Google+</a>
+				<a href="http://twitter.com/iscaorg" target="_blank" md-ink-ripple>Twitter</a>
 			</li>
 			<li class="menu-item social-link">
-				<a href="http://twitter.com" target="_blank" md-ink-ripple>Twitter</a>
-			</li>
-			<li class="menu-item social-link">
-				<a href="http://facebook.com" target="_blank" md-ink-ripple>Facebook</a>
+				<a href="http://facebook.com/iscaorg" target="_blank" md-ink-ripple>Facebook</a>
 			</li>
 			<li class="menu-item dropdown" data-ng-show="userLevel > 0">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
