@@ -29,6 +29,10 @@ var NewsSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
+	},
+	content :{
+		type: String,
+		default : ''
 	}
 });
 
