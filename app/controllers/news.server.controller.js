@@ -14,6 +14,8 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 	var news = new News(req.body);
 	news.user = req.user;
+	news.content = req.body.content;
+
 	news.save(function(err) {
 		if (err) {
 			return res.status(400).send({
