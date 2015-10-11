@@ -7,7 +7,7 @@ module.exports = {
 		description: 'Fighting Anti-Semitism on the web',
 		keywords: 'MongoDB, Express, AngularJS, Node.js'
 	},
-	port: process.env.PORT || 80,
+	port: process.env.PORT || 3000,
     templateEngine: 'swig',
 	sessionCollection: 'sessions',
            sessionSecret: 'MEAN',
