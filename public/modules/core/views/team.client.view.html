@@ -1,13 +1,13 @@
 <div layout="row" ng-controller="TeamController" id="theTeam">
     <md-card flex="70" offset="15">
         <md-card-content>
-            <md-grid-list  md-cols="3" md-gutter="48px" md-row-height="4:3">
-                <md-grid-tile ng-repeat="member in team | orderBy: index">
-                    <img ng-src="{{ member.img }}" class="avatar"/>
-                    <md-grid-tile-footer layout-align="center" class="text-center nametag">
-                        <h3>{{ member.name }}</h3>
-                        <h3>{{ member.title }}</h3>
-                    </md-grid-tile-footer>
+            <md-grid-list  md-cols-gt-md="3" md-cols-md="2" md-cols-sm="1" md-row-height="275px">
+                <md-grid-tile ng-repeat="member in team | orderBy: index" class="text-center nametag">
+                    <div layout="column">
+                        <img ng-src="{{ member.img }}" class="avatar"/>
+                        <h4>{{ member.name }}</h4>
+                        <h5>{{ member.title }}</h5>
+                    </div>
                 </md-grid-tile>
             </md-grid-list>
         </md-card-content>

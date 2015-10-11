@@ -3,12 +3,11 @@
 angular.module('dashboard').controller('dashboardController', ['$scope', 'Authentication','Userroleasenumservice','Users','$http',
     function($scope, Authentication,Userroleasenumservice,Users, $http) {
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
-        if ($scope.user)
-            $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
+        $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
         $scope.links = [
             {
-                'level' : 1,
+                'level' : 4,
                 'url': '/dashboard/applicationReview',
                 'title' : 'Applications'
             },
@@ -18,7 +17,7 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                 'title' : 'My application'
             },
             {
-                'level' : 1,
+                'level' : 0,
                 'url': '/',
                 'title' : 'Home'
             },
