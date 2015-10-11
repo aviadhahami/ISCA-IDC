@@ -85,7 +85,7 @@ exports.list = function(req, res) {
 
 // Get 10 posts
 exports.listTenPosts = function(req, res) {
-	News.find().sort('-created').populate('user', 'displayName').exec(function(err, news) {
+	News.find().sort('-created').limit(10).populate('user', 'displayName').exec(function(err, news) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
