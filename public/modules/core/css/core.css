@@ -79,16 +79,38 @@ h1, h2, h3, h4, h5, h6 {
 	opacity: 1;
 }
 
+.zebra-list-wrapper {
+	margin: auto;
+	display: table;
+}
+
 ul.zebra-list {
-	padding: 0;
-	border: 1px solid rgba(0,0,0,0.1);
+	padding: 12px 48px;
+	float: left;
+	margin: 12px 48px;
+	/*border: 1px solid rgba(0,0,0,0.1);*/
+	border: 1px solid #EEE;
+
 }
 ul.zebra-list>li {
 	list-style: none;
 	padding: 30px 20px;
+	text-align: left;
+
 }
 ul.zebra-list>li:nth-child(even) {
-	background-color: rgba(50,141,200,0.1);
+	/*background-color: rgba(50,141,200,0.1);*/
+}
+
+ul.zebra-list li i {
+	color: darkcyan;
+	vertical-align: middle;
+	margin-right: 24px;
+	/*font-size: 20px;*/
+}
+
+ul.zebra-list li span {
+	vertical-align: middle;
 }
 
 .faq-entry>.question {
@@ -184,8 +206,10 @@ ul.nav {
 .navbar-header>.navbar-toggle>.ham {
 	background-image: url('../img/menu/ham-icon-mobile.png');
 	background-size: cover;
-	height: 44px;
-	width: 44px;
+	height: 34px;
+	width: 34px;
+	margin-top: 6px;
+    margin-right: -16px;
 }
 
 
@@ -232,8 +256,7 @@ ul.nav {
 }
 
 #footer-section .logos img {
-	height: 125px;
-	width: auto;
+	width: 80%;
 	margin: auto;
 	display: block;
 }
@@ -254,7 +277,7 @@ ul.nav {
 }
 
 #footer-section .abs-fixer span {
-	margin-left: 19px;
+	margin-left: 6px;
 }
 
 #theTeam .avatar {
@@ -274,4 +297,12 @@ ul.nav {
 #theTeam {
 	padding-top: 36px;
 	padding-bottom: 24px;
+}
+
+
+@media (max-width: 600px) {
+	#footer-section .logos img {
+		width: 50%;
+		margin-top: 20px;
+	}
 }
