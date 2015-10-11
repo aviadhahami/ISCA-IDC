@@ -16,7 +16,7 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/angular-material/angular-material.css',
-				'public/lib/font-awesome/css/font-awesome.min.css',
+				'public/lib/font-awesome/css/font-awesome.min.css'
 			],
 			js: [
 				'public/lib/ng-file-upload-shim/ng-file-upload-shim.min.js',
@@ -31,11 +31,11 @@ module.exports = {
 				'public/lib/angular-sanitize/angular-sanitize.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
 			]
 		},
 		svg: [
-			'public/lib/font-awesome/fonts/fontawesome-webfont.svg',
+			'public/lib/font-awesome/fonts/fontawesome-webfont.svg'
 		],
 		css: [
 			'public/modules/**/css/*.css'

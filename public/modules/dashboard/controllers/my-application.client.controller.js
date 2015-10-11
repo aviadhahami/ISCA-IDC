@@ -23,7 +23,14 @@ angular.module('dashboard').controller('myApplicationController', ['$scope', 'Au
 
             $scope.formattedBirthday = dd +'/'+ mm +'/'+yyyy;
 
-            $scope.languages = $scope.application.academicInfo.languages.split(',');
+            // Remove duplicates from arr
+            var uniq = function (a) {
+                return a.sort().filter(function(item, pos, ary) {
+                    return !pos || item != ary[pos - 1];
+                })
+            };
+            $scope.languages =uniq($scope.application.academicInfo.languages.split(','));
+
         }
 
     }]);
