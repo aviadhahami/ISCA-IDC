@@ -4,7 +4,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 	function($scope, Authentication, Userroleasenumservice) {
 		// This provides Authentication context.
 		$scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
-       $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
+       	$scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
 		// Toggles mobile menu
 		$scope.isCollapsed = false;

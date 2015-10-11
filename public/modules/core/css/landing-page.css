@@ -5,7 +5,7 @@ section.block {
 	color: #303030;
 	padding: 70px 0;
 }
-section.block:nth-child(odd) {
+section.block:nth-child(even) {
 	background-color: #f5f6f7;
 }
 section.block h5 {
@@ -81,10 +81,30 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 
 /**** FEEDS SECTION ****/
 #feeds {
-	height: 640px;
+	min-height: 640px;
+}
+#feeds>div {
+	min-height: 500px;
 }
 .news {
-	padding: 40px;
+	background-color: #fefefe;
+	padding: 0 30px 30px 30px;
+}
+.news-content {
+	margin-top: 20px;
+}
+.news-content>.image-container {
+	float: left;
+	width: 200px;
+	max-height: 200px;
+	margin-right: 20px;
+	overflow: hidden;
+}
+.news-content>.image-container>img {
+	width: 100%;
+}
+.news-content>p {
+	margin-bottom: 30px;
 }
 
 /**** PARTICIPATION SECTION ****/
