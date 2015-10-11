@@ -1,7 +1,7 @@
 <section data-ng-controller="HomeController">
 	<div class="container-fluid" id="join-banner">
 		<div class="container">
-			<div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+			<div class="col-xs-12 col-xs-offset-0">
 				<h3 id="header-title">
 					ISRAELI STUDENTS COMBATING ANTISEMITISM
 				</h3>
@@ -11,23 +11,58 @@
 					We research, write, comment, report and develop tools to help reduce online hatred as much as possible, with the help of students from Israel and abroad.
 				</p>
 				<div class="registration">
-					<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="!!userLevel == 0">
+					<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0 && !isMobile()">
 						Join Us
 					</a>
-					<p class="sign-in-invite"  data-ng-if="!!userLevel == 0">
-						Already registered? <a class="highlight-link" href="/#!/signin">Sign In</a>
+					<p class="sign-in-invite"  data-ng-if="userLevel == 0 && !isMobile()">
+						Already registered?<a class="highlight-link" href="/#!/signin">Sign In</a>
 					</p>
 
-					<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1">
-						Apply to the program
+					<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1 && !isMobile()">
+						Apply to program
 					</a>
 				</div>
 			</div>
 		</div>
 	</div>
+	<section class="block" id="feeds">
+		<div class="container-fluid">
+			<div class="news col-sm-6 col-sm-offset-1 col-xs-12 col-xs-offset-0 md-whiteframe-z1">
+				<h2>
+					Germany: Criminal Complaint Filed Against Mayor for Antisemitism
+				</h2>
+				<div class="news-content">
+					<div class="image-container">
+						<img src="http://www.jpost.com/HttpHandlers/ShowImage.ashx?id=254531&h=530&w=758" align="left" />
+					</div>
+					<p>
+						Andreas Neumann, a Jew who lives in Germany, filed a criminal complaint against the Mayor of Jena, Albrecht Schröter, alleging he incited anti-Semitic hatred because of his call to boycott Israeli products and after he blamed Israel for the Syrian refugee crisis.
+						<br><br>
+						According to Neumann’s lawyer, he seeks a 15,000 Euro penalty an a temporary restraining order against the Mayor’s allegedly anti-Semitic speeches.
+						<br><br>
+						“Schröter’s call has a clear anti-Semitic character and is, in my view, clearly incitement to hate,” Neumann said.  He explained that calls supporting boycott of Israeli products targets all Jewish people.
+					</p>
+					<a href="http://www.jpost.com/Diaspora/Criminal-complaint-filed-against-German-Mayor-for-anti-Israel-and-anti-Jewish-hate-419755" target="_blank">
+						<button class="readmore-btn" md-ink-ripple>Read More</button>
+					</a>
+				</div>
+			</div>
+			<div class="col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
+				<!-- Facebook Page Feed -->
+				<div class="fb-page md-whiteframe-z1" data-href="https://www.facebook.com/iscaorg" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true">
+					<div class="fb-xfbml-parse-ignore">
+						<blockquote cite="https://www.facebook.com/iscaorg">
+							<a href="https://www.facebook.com/iscaorg">ISCA - Israeli Students Combating Antisemitism</a>
+						</blockquote>
+					</div>
+				</div>	
+				<!-- End Facebook -->
+			</div>
+		</div>
+	</section>
 	<section class="block" id="participation">
 		<div class="container">
-			<div id="type-selection" class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+			<div id="type-selection" class="col-xs-12 col-xs-offset-0">
 				<a ng-href="/#!/" class="participation-type-tab highlight-link col-xs-6" id="participant" ng-click="changeParticipationType('participant')" ng-class="{'active': participationType == 'participant'}" md-ink-ripple>
 					<h5>
 						Program participant
@@ -40,8 +75,7 @@
 				</a>
 			</div>
 			<div id="participant-container" ng-show="participationType == 'participant'">
-
-				<div class="benefits col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+				<div class="benefits col-xs-12 col-xs-offset-0">
 					<div class="col-sm-4 col-xs-12">
 						<img src="modules/core/img/landing-page/icons/classes.png" />
 						<p>
@@ -122,7 +156,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="text-center col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+				<div class="text-center col-xs-12 col-xs-offset-0">
 					<div data-read-more-button align-to="left"></div>
 					<div class="readmore-content">
 						<h5>
@@ -137,8 +171,11 @@
 						</p>
 						
 						<div class="registration">
-							<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1">
-								Apply to the program
+							<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0 && !isMobile()">
+								Join Us
+							</a>
+							<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1 && !isMobile()">
+								Apply to program
 							</a>
 						</div>
 					</div>
@@ -146,7 +183,7 @@
 			</div>
 
 			<div id="volunteer-container" ng-show="participationType == 'volunteer'">
-				<div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+				<div class="col-xs-12 col-xs-offset-0">
 					<h5>
 						Volunteering Overview
 					</h5>
@@ -157,12 +194,12 @@
 					</p>
 					
 					<div class="commentator">
-						<div class="col-md-3 col-md-offset-0 col-xs-10 col-xs-offset-1">
+						<div class="col-md-3 col-md-offset-0 col-xs-12 col-xs-offset-0">
 							<div class="commentator-image">
 								<img src="modules/core/img/landing-page/gabriela1.jpg" />
 							</div>
 						</div>
-						<div class="col-md-9 col-md-offset-0 col-xs-10 col-xs-offset-1">
+						<div class="col-md-9 col-md-offset-0 col-xs-12 col-xs-offset-0">
 							<blockquote class="commentator-text">
 								<p>
 									“Coming from Europe, I thought iv'e seen a lot of hate towards Jews in real life. I never realized this phenomenon was so wide spread online and that it is the catalyst for what I experienced on the streets.
@@ -206,7 +243,7 @@
 	<section class="block" id="faq"
 			ng-if="false">
 		<div class="container">
-			<div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+			<div class="col-xs-12 col-xs-offset-0">
 				<h5>
 					Frequently Asked Questions
 				</h5>
@@ -218,6 +255,4 @@
 		</div>
 	</section>
 </section>
-
-
 

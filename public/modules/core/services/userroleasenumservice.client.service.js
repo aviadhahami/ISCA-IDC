@@ -11,16 +11,8 @@ angular.module('core').factory('Userroleasenumservice', [
 
 		return {
 			getValue: function (rolesArr) {
+				// rolesArr is just a string.. don't worry about it..
 				return rolesEnum.hasOwnProperty(rolesArr) ? rolesEnum[rolesArr] : 0;
-				// var maxLevel = 0;
-				
-				// for (var role in rolesArr) {
-				// 	console.log("role: " + role);
-				// 	if (rolesEnum.hasOwnProperty(role) && rolesEnum[role] > maxLevel)
-				// 		console.log("maxLevel++");
-				// 		maxLevel = rolesEnum[role];
-				// }
-				// return maxLevel;
 			}
 		};
 	}

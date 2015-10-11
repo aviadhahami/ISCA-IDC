@@ -206,8 +206,10 @@ ul.nav {
 .navbar-header>.navbar-toggle>.ham {
 	background-image: url('../img/menu/ham-icon-mobile.png');
 	background-size: cover;
-	height: 44px;
-	width: 44px;
+	height: 34px;
+	width: 34px;
+	margin-top: 6px;
+    margin-right: -16px;
 }
 
 
@@ -254,8 +256,7 @@ ul.nav {
 }
 
 #footer-section .logos img {
-	height: 125px;
-	width: auto;
+	width: 80%;
 	margin: auto;
 	display: block;
 }
@@ -276,7 +277,7 @@ ul.nav {
 }
 
 #footer-section .abs-fixer span {
-	margin-left: 19px;
+	margin-left: 6px;
 }
 
 #theTeam .avatar {
@@ -296,4 +297,12 @@ ul.nav {
 #theTeam {
 	padding-top: 36px;
 	padding-bottom: 24px;
+}
+
+
+@media (max-width: 600px) {
+	#footer-section .logos img {
+		width: 50%;
+		margin-top: 20px;
+	}
 }
