@@ -1,12 +1,16 @@
 'use strict';
 
 
-angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog',
-    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog) {
+angular.module('academic-signup').controller('academic-signup-controller', ['$scope', 'Authentication','$interval','Upload','Users','$timeout','$mdDialog','$location',
+    function($scope, Authentication,$interval,Upload,Users,$timeout,$mdDialog,$location) {
         // This provides Authentication context.
         $scope.user = angular.copy(Authentication.user);
-        console.log($scope.user);
+
         function init(){
+            if($scope.user.iscaData.hasOwnProperty('applicationForm')){
+                $location.path('/dashboard/myApplication');
+            }
+
             var loadSavedData = function(){
                 return JSON.parse(localStorage.getItem('academic-application-data'));
             };
@@ -44,7 +48,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         init();
 
-        $scope.userReadTerms = true; // TODO: CHANGE TO FALSE
+        $scope.userReadTerms = false;
         $scope.toggleUserReadTerms = function(){
             $scope.userReadTerms = !$scope.userReadTerms;
         };
@@ -167,6 +171,22 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                 };
 
                 Users.update($scope.user);
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(true)
+                        .title('Thank you!')
+                        .content('We have received your application and will process it soon. Good luck!')
+                        .ok('ok')
+                ).then(function(data){
+
+                        // Clear localStorage
+                        localStorage.clear();
+
+                        // Redirect to dashboard
+                        window.location.reload();
+                        $location.path('/dashboard');
+
+                    });
 
             }else{
                 showAlert(null);

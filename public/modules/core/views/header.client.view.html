@@ -1,37 +1,41 @@
 <div class="navbar-container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
-		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+		<!-- CURRENTLY HIDING NAV FROM MOBILE -->
+		<!-- <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
 			<div class="ham"></div>
-		</button>
+		</button> -->
 		<a href="/#!/" class="navbar-brand">
 			<img src="modules/core/img/brand/logo.png" />
 		</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav navbar-right">
-			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-hide="userLevel > 0">
+			<li class="menu-item" ui-route="/signin" ng-class="{active: $uiRoute}" data-ng-if="userLevel == 0 && !WURFL.is_mobile">
 				<a href="/#!/signin" md-ink-ripple>Sign In</a>
 			</li>
 			<li class="menu-item social-link">
-				<a href="http://google.com" target="_blank" md-ink-ripple>Google+</a>
+				<a href="http://twitter.com/iscaorg" target="_blank" md-ink-ripple>Twitter</a>
 			</li>
 			<li class="menu-item social-link">
-				<a href="http://twitter.com" target="_blank" md-ink-ripple>Twitter</a>
-			</li>
-			<li class="menu-item social-link">
-				<a href="http://facebook.com" target="_blank" md-ink-ripple>Facebook</a>
+				<a href="http://facebook.com/iscaorg" target="_blank" md-ink-ripple>Facebook</a>
 			</li>
 			<li class="menu-item dropdown" data-ng-show="userLevel > 0">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<div class="ham" md-ink-ripple></div>
 				</a>
+
 				<ul class="dropdown-menu">
+					<li>
+						<h6 class="md-subhead" style="padding-left: 20px; font-weight: 600;">{{user.displayName}}</h6>
+					</li>
+
+					<hr/>
 					<li>
 						<a href="/#!/settings/profile" md-ink-ripple>Edit Profile</a>
 					</li>
-					<li>
-						<a href="/#!/settings/accounts" md-ink-ripple>Manage Social Accounts</a>
-					</li>
+					<!--<li>-->
+						<!--<a href="/#!/settings/accounts" md-ink-ripple>Manage Social Accounts</a>-->
+					<!--</li>-->
 					<li data-ng-show="userLevel >0">
 						<a href="/#!/settings/password" md-ink-ripple>Change Password</a>
 					</li>
@@ -43,7 +47,7 @@
 					</li>
 					<li class="divider"></li>
 					<li>
-						<a href="/auth/signout" md-ink-ripple>Signout</a>
+						<a href="/auth/signout" ng-click="clearLocalStorage()" md-ink-ripple>Signout</a>
 					</li>
 				</ul>
 			</li>

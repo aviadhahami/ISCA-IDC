@@ -4,13 +4,16 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 	function($scope, Authentication, Userroleasenumservice) {
 		// This provides Authentication context.
 		$scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
-        if ($scope.user)
-	        $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
+       	$scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
-	    // Toggles mobile menu
+		// Toggles mobile menu
 		$scope.isCollapsed = false;
 		$scope.toggleCollapsibleMenu = function() {
- 			$scope.isCollapsed = !$scope.isCollapsed;
- 		};
+			$scope.isCollapsed = !$scope.isCollapsed;
+		};
+
+		$scope.clearLocalStorage = function(){
+			localStorage.clear();
+		}
 	}
 ]);

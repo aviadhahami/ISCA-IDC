@@ -1,0 +1,176 @@
+<style>
+    .colorFAicon{
+        color:darkcyan
+    }
+    md-chips .md-chips{
+        box-shadow: none!important;
+    }
+    md-chips-wrap{
+        padding-bottom: 0;
+    }
+    .md-chips:not(.md-readonly) .md-chip{
+        padding-right: 10px!important;
+    }
+</style>
+<md-content ng-controller="myApplicationController">
+
+    <md-card>
+        <md-card-content>
+            <a ui-sref='dashboard'><i class="fa fa-chevron-left"></i> Back</a>
+            <h2 class="md-title">{{application.name}}'s application form</h2>
+            <hr/>
+            <section>
+                <p style="text-decoration: underline">General information</p>
+                <div layout="column">
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-user fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            ID number
+                        </div>
+                        <div flex>
+                            {{application.id}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-mobile fa-3x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Phone
+                        </div>
+                        <div flex>
+                            {{application.phone}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-birthday-cake fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Birthday
+                        </div>
+                        <div flex>
+                            {{formattedBirthday}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-envelope fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Email
+                        </div>
+                        <div flex>
+                            {{application.email}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-venus-mars fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Sex
+                        </div>
+                        <div flex>
+                            {{application.sex}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-file-pdf-o fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Resume
+                        </div>
+                        <div flex>
+                            <a href="downloadcv/{{application.cv}}">Download your resume</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <br/><br/>
+
+
+            <p style="text-decoration: underline">Academic information</p>
+            <div layout="column">
+                <div layout="row">
+                    <div flex="5">
+                        <i class="fa fa-graduation-cap fa-2x colorFAicon"></i>
+                    </div>
+                    <div flex="20">
+                        Pursuing
+                    </div>
+                    <div flex>
+                        {{application.academicInfo.degree}} in {{application.academicInfo.fieldOfStudy}}
+                    </div>
+                </div>
+                <br/>
+                <div layout="row">
+                    <div flex="5">
+                        <i class="fa fa-hourglass-half fa-2x colorFAicon"></i>
+                    </div>
+                    <div flex="20">
+                        Current study year
+                    </div>
+                    <div flex>
+                        {{application.academicInfo.currentYear}}
+                    </div>
+                </div>
+                <br/>
+                <div layout="row">
+                    <div flex="5">
+                        <i class="fa fa-language fa-2x colorFAicon"></i>
+                    </div>
+                    <div flex="20">
+                        Controlled languages
+                    </div>
+                    <div flex>
+                        <md-chips ng-model="languages" readonly="true">
+                            <md-chip-template>
+                                <p>{{$chip}}</p>
+                            </md-chip-template>
+                        </md-chips>
+                    </div>
+                </div>
+
+                <br/><br/>
+
+                <p style="text-decoration: underline">Essay and why you have applied</p>
+                <div layout="column">
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-question-circle fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            What do I bring in
+                        </div>
+                        <div flex>
+                            {{application.academicInfo.reasonToCome}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div layout="row">
+                        <div flex="5">
+                            <i class="fa fa-file-text-o fa-2x colorFAicon"></i>
+                        </div>
+                        <div flex="20">
+                            Essay
+                        </div>
+                        <div flex>
+                            {{application.essay.content}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+        </md-card-content>
+    </md-card>
+</md-content>
