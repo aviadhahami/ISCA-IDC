@@ -14,7 +14,6 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 	var news = new News(req.body);
 	news.user = req.user;
-	news.creator = req.user.displayName;
 	news.save(function(err) {
 		if (err) {
 			return res.status(400).send({
@@ -86,7 +85,7 @@ exports.list = function(req, res) {
 
 // Get 10 posts
 exports.listTenPosts = function(req, res) {
-	News.find().list(10).sort('-created').populate('user', 'displayName').exec(function(err, news) {
+	News.find().sort('-created').populate('user', 'displayName').exec(function(err, news) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
