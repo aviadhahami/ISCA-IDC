@@ -14,7 +14,9 @@ var ApplicationConfiguration = (function() {
 		'ui.router',
 		'ui.bootstrap',
 		'ui.utils',
-		'ngFileUpload'
+		'ngFileUpload',
+		'angulartics',
+		'angulartics.google.analytics'
 	];
 
 	// Add a new vertical module

@@ -18,7 +18,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 		// TODO: Get Facebook page posts (ISCAorg) using Graph API
 
-		console.log($scope.userLevel);
+		//console.log($scope.userLevel);
 		// Controls the participant / volunteer overview tabs
 		$scope.participationType = 'participant';
 		$scope.changeParticipationType = function (type) {
