@@ -4,6 +4,9 @@
     <!-- Table header -->
 
     <div flex="80" id="applicationContent" ng-if="applications && applications.length > 0">
+        <a ui-sref="dashboard">
+            <i class="fa fa-chevron-left"></i> Back
+        </a>
         <h2 class="md-display-3 page-title">Available applications</h2>
         <md-tabs id="pendingApplication" no-tabs-wrapper md-selected="selectedTab" md-dynamic-height="true">
             <md-tab>
@@ -42,94 +45,179 @@
             <md-tab>
                 <!-- Application data -->
                 <md-tab-body>
-                    <div class="applicationView">
-                        <div>
-                            <h4 class="md-title"><i class="fa fa-chevron-left" ng-click="backToTable()"> Back</i></h4>
-                        </div>
-                        <div>
-                            <h2 class="md-display-2">{{ selectedApplication.displayName }} <small ng-if="selectedApplication.iscaData.applicationForm">{{ selectedApplication.description}}</small></h2>
-                            <h3>ID: <small>{{ selectedApplication.iscaData.applicationForm.form.id }}</small></h3>
-                            <h3>DOB: <small>{{ selectedApplication.birthday }}</small></h3>
-                            <h3>Phone: <small>{{ selectedApplication.iscaData.applicationForm.form.phone }}</small></h3>
-                            <h3>Email: <small>{{ selectedApplication.email }}</small></h3>
-                        </div>
-                        <table>
-                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.academicInfo.reasonToCome">
-                                <td>
-                                    <p class="key md-subhead">Reason to come</p>
-                                </td>
-                                <td>
-                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.academicInfo.reasonToCome }}</p>
-                                </td>
-                            </tr>
+                    <style>
+                        .colorFAicon{
+                            color:darkcyan
+                        }
+                        md-chips .md-chips{
+                            box-shadow: none!important;
+                        }
+                        md-chips-wrap{
+                            padding-bottom: 0;
+                        }
+                        .md-chips:not(.md-readonly) .md-chip{
+                            padding-right: 10px!important;
+                        }
+                    </style>
+                    <md-card>
+                        <md-card-content>
+                            <a href="#" ng-click="backToTable()"><i class="fa fa-chevron-left"></i> Back</a>
+                            <h2 class="md-title">{{selectedApplication.displayName}}'s application form</h2>
+                            <hr/>
+                            <section>
+                                <p style="text-decoration: underline">General information</p>
+                                <div layout="column">
+                                    <div layout="row">
+                                        <div flex="5">
+                                            <i class="fa fa-user fa-2x colorFAicon"></i>
+                                        </div>
+                                        <div flex="20">
+                                            ID number
+                                        </div>
+                                        <div flex>
+                                            {{selectedApplication.iscaData.applicationForm.form.id}}
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div layout="row">
+                                        <div flex="5">
+                                            <i class="fa fa-mobile fa-3x colorFAicon"></i>
+                                        </div>
+                                        <div flex="20">
+                                            Phone
+                                        </div>
+                                        <div flex>
+                                            {{selectedApplication.iscaData.applicationForm.form.phone}}
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div layout="row">
+                                        <div flex="5">
+                                            <i class="fa fa-birthday-cake fa-2x colorFAicon"></i>
+                                        </div>
+                                        <div flex="20">
+                                            Birthday
+                                        </div>
+                                        <div flex>
+                                            {{selectedApplication.birthday}}
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div layout="row">
+                                        <div flex="5">
+                                            <i class="fa fa-envelope fa-2x colorFAicon"></i>
+                                        </div>
+                                        <div flex="20">
+                                            Email
+                                        </div>
+                                        <div flex>
+                                            {{selectedApplication.email}}
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div layout="row">
+                                        <div flex="5">
+                                            <i class="fa fa-venus-mars fa-2x colorFAicon"></i>
+                                        </div>
+                                        <div flex="20">
+                                            Sex
+                                        </div>
+                                        <div flex>
+                                            {{selectedApplication.iscaData.applicationForm.form.sex}}
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div layout="row">
+                                        <div flex="5">
+                                            <i class="fa fa-file-pdf-o fa-2x colorFAicon"></i>
+                                        </div>
+                                        <div flex="20">
+                                            Resume
+                                        </div>
+                                        <div flex>
+                                            <a href="downloadcv/{{selectedApplication.iscaData.applicationForm.form.cv}}">Download your resume</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
 
-                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.academicInfo.languages">
-                                <td>
-                                    <p class="key md-subhead">Languages</p>
-                                </td>
-                                <td>
-                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.academicInfo.languages }}</p>
-                                </td>
-                            </tr>
+                            <br/><br/>
 
-                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.academicInfo.degree && selectedApplication.iscaData.applicationForm.form.academicInfo.fieldOfStudy">
-                                <td>
-                                    <p class="key md-subhead">Degree</p>
-                                </td>
-                                <td>
-                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.academicInfo.degree + ' in ' + selectedApplication.iscaData.applicationForm.form.academicInfo.fieldOfStudy }}</p>
-                                </td>
-                            </tr>
 
-                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear">
-                                <td>
-                                    <p class="key md-subhead">Year in school</p>
-                                </td>
-                                <td>
-                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear }}</p>
-                                </td>
-                            </tr>
+                            <p style="text-decoration: underline">Academic information</p>
+                            <div layout="column">
+                                <div layout="row">
+                                    <div flex="5">
+                                        <i class="fa fa-graduation-cap fa-2x colorFAicon"></i>
+                                    </div>
+                                    <div flex="20">
+                                        Pursuing
+                                    </div>
+                                    <div flex>
+                                        {{selectedApplication.iscaData.applicationForm.form.academicInfo.degree}} in {{selectedApplication.iscaData.applicationForm.form.academicInfo.fieldOfStudy}}
+                                    </div>
+                                </div>
+                                <br/>
+                                <div layout="row">
+                                    <div flex="5">
+                                        <i class="fa fa-hourglass-half fa-2x colorFAicon"></i>
+                                    </div>
+                                    <div flex="20">
+                                        Current study year
+                                    </div>
+                                    <div flex>
+                                        {{selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear}}
+                                    </div>
+                                </div>
+                                <br/>
+                                <div layout="row">
+                                    <div flex="5">
+                                        <i class="fa fa-language fa-2x colorFAicon"></i>
+                                    </div>
+                                    <div flex="20">
+                                        Controlled languages
+                                    </div>
+                                    <div flex>
+                                        <md-chips ng-model="selectedApplication.languages" readonly="true">
+                                            <md-chip-template>
+                                                <p>{{$chip}}</p>
+                                            </md-chip-template>
+                                        </md-chips>
+                                    </div>
+                                </div>
 
-                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.essay.topic && selectedApplication.iscaData.applicationForm.form.essay.content ">
-                                <td>
-                                    <p class="key md-subhead">Essay</p>
-                                </td>
-                                <td>
-                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.essay.topic }}</p>
-                                    <p class="value md-body-1">{{ selectedApplication.iscaData.applicationForm.form.essay.content }}</p>
-                                </td>
-                            </tr>
+                                <br/><br/>
 
-                            <tr ng-show="selectedApplication.iscaData.applicationForm.form.cv">
-                                <td>
-                                    <p class="key md-subhead">Resume</p>
-                                </td>
-                                <td>
-                                    <md-button class="md-raised" href="downloadcv/{{ selectedApplication.iscaData.applicationForm.form.cv }}">
-                                        <img src="../../../icons/cloud-download.png" alt=""/>
-                                        Click to download
-                                    </md-button>
-                                </td>
-                            </tr>
-
-                        </table>
-                        <div>
-                            <md-button class="md-raised" ng-click="starApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.formPending">
-                                <i class="fa fa-star" title="Star applicant" ng-if="!selectedApplication.iscaData.applicationForm.starred"></i>
-                                <span ng-if="!selectedApplication.iscaData.applicationForm.starred">Star</span>
-                                <i class="fa fa-star" title="Unstar applicant" ng-if="selectedApplication.iscaData.applicationForm.starred"></i>
-                                <span ng-if="selectedApplication.iscaData.applicationForm.starred">Unstar</span>
-                            </md-button>
-                            <md-button class="md-raised" ng-click="acceptApplicant(selectedApplication)" ng-if="!selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
-                                <i class="fa fa-check" title="Accept applicant"></i>
-                                Accept
-                            </md-button>
-                            </md-button><md-button class="md-raised" ng-click="denyApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
-                                <i class="fa fa-ban" title="Deny applicant"></i>
-                                Deny
-                            </md-button>
-                        </div>
-                    </div>
+                                <p style="text-decoration: underline">Essay and why you have applied</p>
+                                <div layout="column">
+                                    <div layout="row">
+                                        <div flex="5">
+                                            <i class="fa fa-question-circle fa-2x colorFAicon"></i>
+                                        </div>
+                                        <div flex="20">
+                                            What do I bring in
+                                        </div>
+                                        <div flex>
+                                            {{selectedApplication.iscaData.applicationForm.form.academicInfo.reasonToCome}}
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div layout="row">
+                                        <div flex="5">
+                                            <i class="fa fa-file-text-o fa-2x colorFAicon"></i>
+                                        </div>
+                                        <div flex="20">
+                                            Essay
+                                        </div>
+                                        <div flex>
+                                            {{selectedApplication.iscaData.applicationForm.form.essay.content}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </section>
+                        </md-card-content>
+                    </md-card>
                 </md-tab-body>
                 <!-- END Application data -->
             </md-tab>

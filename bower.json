@@ -17,6 +17,8 @@
     "bootstrap": "~3",
     "font-awesome": "fontawesome#~4.4.0",
     "ng-file-upload": "~9.0.7",
-    "ng-file-upload-shim": "~9.0.7"
+    "ng-file-upload-shim": "~9.0.7",
+    "angulartics": "~0.20.1",
+    "angulartics-google-analytics": "~0.1.1"
   }
 }
