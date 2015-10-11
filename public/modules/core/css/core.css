@@ -86,7 +86,6 @@ ul.zebra-list {
 	/*border: 1px solid rgba(0,0,0,0.1);*/
 	border: 1px solid #EEE;
 	display: table;
-
 }
 ul.zebra-list>li {
 	list-style: none;
