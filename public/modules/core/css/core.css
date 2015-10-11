@@ -79,17 +79,13 @@ h1, h2, h3, h4, h5, h6 {
 	opacity: 1;
 }
 
-.zebra-list-wrapper {
-	margin: auto;
-	display: table;
-}
-
 ul.zebra-list {
 	padding: 12px 48px;
-	float: left;
+	float: none;
 	margin: 12px 48px;
 	/*border: 1px solid rgba(0,0,0,0.1);*/
 	border: 1px solid #EEE;
+	display: table;
 
 }
 ul.zebra-list>li {
@@ -239,7 +235,7 @@ ul.nav {
 	width: 100%;
 	/* Set the fixed height of the footer here */
 	/*height: 100px;*/
-	background-color: #f0f0f0;
+	background-color: #f5f6f7;
 	padding: 12px 0px;
 }
 
