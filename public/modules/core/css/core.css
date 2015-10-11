@@ -79,16 +79,38 @@ h1, h2, h3, h4, h5, h6 {
 	opacity: 1;
 }
 
+.zebra-list-wrapper {
+	margin: auto;
+	display: table;
+}
+
 ul.zebra-list {
-	padding: 0;
-	border: 1px solid rgba(0,0,0,0.1);
+	padding: 12px 48px;
+	float: left;
+	margin: 12px 48px;
+	/*border: 1px solid rgba(0,0,0,0.1);*/
+	border: 1px solid #EEE;
+
 }
 ul.zebra-list>li {
 	list-style: none;
 	padding: 30px 20px;
+	text-align: left;
+
 }
 ul.zebra-list>li:nth-child(even) {
-	background-color: rgba(50,141,200,0.1);
+	/*background-color: rgba(50,141,200,0.1);*/
+}
+
+ul.zebra-list li i {
+	color: darkcyan;
+	vertical-align: middle;
+	margin-right: 24px;
+	/*font-size: 20px;*/
+}
+
+ul.zebra-list li span {
+	vertical-align: middle;
 }
 
 .faq-entry>.question {
