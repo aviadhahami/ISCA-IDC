@@ -7,7 +7,7 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
 
         $scope.links = [
             {
-                'level' : 4,
+                'level' : 1,
                 'url': '/dashboard/applicationReview',
                 'title' : 'Applications'
             },
