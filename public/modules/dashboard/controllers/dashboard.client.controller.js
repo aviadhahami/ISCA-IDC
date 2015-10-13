@@ -8,6 +8,11 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
         $scope.links = [
             {
                 'level' : 4,
+                'url': '/dashboard/users',
+                'title' : 'Users'
+            },
+            {
+                'level' : 4,
                 'url': '/dashboard/applicationReview',
                 'title' : 'Applications'
             },
