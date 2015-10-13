@@ -19,7 +19,7 @@ angular.module('dashboard').config(['$stateProvider',
 
                     // Only admin are authorized on this page
                     if ($scope.userLevel !== 4) {
-                        //$location.path('/');
+                        $location.path('/');
                     }
 
                     if (applications == undefined || applications.length == 0)
