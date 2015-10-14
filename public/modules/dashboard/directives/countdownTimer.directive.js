@@ -1,5 +1,4 @@
-angular.module('dashboard', [])
-    .directive('countdown', function ($interval, dateFilter) {
+angular.module('dashboard').directive('countdown', function ($interval, dateFilter) {
         return {
             restrict: 'A',
             transclude: true,
