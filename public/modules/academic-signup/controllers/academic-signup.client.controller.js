@@ -147,6 +147,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         var showAlert = function(ev) {
 
+            var content = 'We believe that some things are missing in your application, please review it.';
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application
             // to prevent interaction outside of dialog
@@ -154,7 +155,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                 $mdDialog.alert()
                     .clickOutsideToClose(true)
                     .title('Can not submit application')
-                    .content('We believe that some things are missing in your application, please review it.')
+                    .content(content)
                     .ok('OK')
                     .targetEvent(ev)
             );
