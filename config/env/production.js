@@ -85,7 +85,7 @@ module.exports = {
 			service: process.env.MAILER_SERVICE_PROVIDER || 'Gmail',//'MAILER_SERVICE_PROVIDER',
 			auth: {
 				user: process.env.MAILER_EMAIL_ID || 'isca.academic@gmail.com',
-				pass: process.env.MAILER_PASSWORD || 'aqa12345'
+				pass: process.env.MAILER_PASSWORD || 'password'
 			}
 		}
 	}
