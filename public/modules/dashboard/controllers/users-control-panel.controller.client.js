@@ -23,6 +23,9 @@ angular.module('dashboard').controller('userControlPanelController', ['$scope', 
                 $scope.selectedTab = APPLICATION_TABLE;
                 $scope.selectedApplication = undefined;
             };
+
+
+            // TODO: delete user function
         }
     ]
 );
