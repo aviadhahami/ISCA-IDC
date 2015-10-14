@@ -7,20 +7,19 @@
                 <md-card>
                     <md-card-content>
                         <md-tabs md-dynamic-height md-border-bottom>
-                            <md-tab label="application window">
+                            <md-tab label="application countdown">
                                 <md-content class="md-padding">
-                                    <h1 class="md-display-2">Tab One</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+                                    <h1 class="md-display-2">Applications are due 8PM, October 28th !</h1>
+                                    <h2 style="color:#EF5350" countdown end-date="October 29,2015" units="days|hours|minutes|seconds"></h2>
                                 </md-content>
                             </md-tab>
                             <md-tab ng-if="userLevel > 1" label="Hours report">
                                 <md-content class="md-padding">
                                     <h1 class="md-display-2">Hours report</h1>
-                                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                                    <p>There is no data to display at the moment..</p>
                                 </md-content>
                             </md-tab>
                         </md-tabs>
-                        <strong countdown end-date="October 15,2015" units="days|hours|minutes|seconds"></strong>
                     </md-card-content>
                 </md-card>
                 <md-card>
