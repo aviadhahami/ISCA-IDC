@@ -17,24 +17,17 @@
                             <li layout="row" class="table-header">
                                 <span class="md-subhead" flex>First name</span>
                                 <span class="md-subhead" flex>Last name</span>
-                                <span class="md-subhead" flex>Sex</span>
+                                <span class="md-subhead" flex>Role</span>
                                 <span class="md-subhead" flex>Email</span>
-                                <span class="md-subhead" flex>Degree</span>
                             </li>
 
                             <li layout="row"
-                                ng-repeat='user in users | orderBy: "iscaData.applicationForm.formPending": true | orderBy: "iscaData.applicationForm.accepted": true'
+                                ng-repeat='user in users'
                                 ng-click="displayApplication(user)" class="table-row">
-                                <span class="md-body-1" flex>
-                                    <i class="fa fa-star" title="Starred" ng-show="user.iscaData.applicationForm && user.iscaData.applicationForm.starred"></i>
-                                    <i class="fa fa-check" title="Accepted" ng-show="user.iscaData.applicationForm && user.iscaData.applicationForm.accepted"></i>
-                                    <i class="fa fa-ban" title="Denied" ng-show="user.iscaData.applicationForm && !user.iscaData.applicationForm.accepted && !user.iscaData.applicationForm.formPending"></i>
-                                    {{ user.firstName }}
-                                </span>
+                                <span class="md-body-1" flex>{{ user.firstName }}</span>
                                 <span class="md-body-1" flex>{{ user.lastName }}</span>
-                                <span class="md-body-1" flex>{{ user.iscaData.applicationForm.form.sex }}</span>
+                                <span class="md-body-1" flex>{{ user.roles }}</span>
                                 <span class="md-body-1" flex>{{ user.email }}</span>
-                                <span class="md-body-1" flex>{{ user.iscaData.applicationForm.form.academicInfo.degree + ' of ' + user.iscaData.applicationForm.form.academicInfo.fieldOfStudy }}</span>
                             </li>
                         </ul>
                     </md-tab-body>
