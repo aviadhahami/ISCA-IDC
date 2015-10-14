@@ -59,7 +59,7 @@ angular.module('dashboard').config(['$stateProvider',
                     }
                 }]
             })
-            .state('users', {
+            .state('usersControlPanel', {
                 url: '/dashboard/users',
                 templateUrl: 'modules/dashboard/views/users-control-panel.client.view.html',
                 controller: ['$scope', 'users','Authentication', 'Userroleasenumservice', '$location', function($scope, users, Authentication, Userroleasenumservice, $location) {
