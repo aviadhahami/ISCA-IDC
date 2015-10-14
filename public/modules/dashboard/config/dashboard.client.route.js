@@ -61,7 +61,7 @@ angular.module('dashboard').config(['$stateProvider',
             })
             .state('users', {
                 url: '/dashboard/users',
-                templateUrl: 'modules/dashboard/views/users.client.view.html',
+                templateUrl: 'modules/dashboard/views/users-control-panel.client.view.html',
                 controller: ['$scope', 'users','Authentication', 'Userroleasenumservice', '$location', function($scope, users, Authentication, Userroleasenumservice, $location) {
 
                     $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
