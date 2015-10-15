@@ -7,7 +7,13 @@ angular.module('dashboard').config(['$stateProvider',
         $stateProvider.
             state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'modules/dashboard/views/dashboard.client.view.html'
+                templateUrl: 'modules/dashboard/views/dashboard.client.view.html',
+                controller: ['$scope','$location',function($scope,$location){
+                    if($scope.user == null){
+                        $location.path('/');
+                    }
+                    console.log($scope.user);
+                }]
             })
             .state('applicationsReview', {
                 url: '/dashboard/applicationReview',
@@ -15,9 +21,7 @@ angular.module('dashboard').config(['$stateProvider',
                 controller: ['$scope', 'applications','Authentication', 'Userroleasenumservice', '$location', function($scope, applications, Authentication, Userroleasenumservice, $location) {
 
                     $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
-                    if($scope.user === null){
-                        $location.path('/');
-                    }
+
                     $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
 
                     // Only admin are authorized on this page
