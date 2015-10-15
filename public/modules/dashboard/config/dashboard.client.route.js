@@ -62,7 +62,7 @@ angular.module('dashboard').config(['$stateProvider',
                 }]
             })
             .state('application-dead-line', {
-                url: 'dashboard/application-dead-line',
+                url: '/dashboard/application-dead-line',
                 templateUrl: 'modules/dashboard/views/application-dead-line.client.view.html'
             });
     }

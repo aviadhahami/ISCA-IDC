@@ -33,7 +33,7 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
             },
             {
                 'level' : 4,
-                'url': '/dashboard/applicationDeadLine',
+                'url': '/dashboard/application-dead-line',
                 'title' : 'Edit application deadline'
             }
         ];
