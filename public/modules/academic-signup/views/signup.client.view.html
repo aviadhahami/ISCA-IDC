@@ -13,7 +13,7 @@
                     </h3>
                     <hr/>
                     <p>
-                        The application form should take about 20 minutes to complete so in order to save some time try preparing the following
+                        The application form should take about 20 minutes to complete so in order to save some time try preparing the following:
                     <ol>
                         <li>
                             CV written in English or Hebrew, in <a style="cursor: help" ng-click="pdfDialog()">PDF format</a>
@@ -24,9 +24,9 @@
                     </ol>
                     </p>
                     <br/>
-                    <p style="color:#4A148C">
+                    <p>
                         Goodluck !
-                        <i class="fa fa-smile-o" style="color:#4A148C"></i>
+                        <i class="fa fa-smile-o" ></i>
                     </p>
                     <div class="md-actions" layout="row" layout-align="center">
                         <md-button md-no-ink style="background-color: palegreen" class="md-primary" ng-click="toggleUserReadTerms()">I'm ready!</md-button>
@@ -47,8 +47,8 @@
                                     <input ng-model="applicationFormData.name" disabled>
                                 </md-input-container>
                                 <!--TODO: Fix line height as it looks like crap atm-->
-                                <md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>
 
+                                <md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>
                             </div>
 
                             <md-input-container>
@@ -57,7 +57,7 @@
                             </md-input-container>
 
                             <md-input-container>
-                                <label>ID</label>
+                                <label>ID or passport number</label>
                                 <input type="text" ng-model="applicationFormData.id" md-maxlength="9" maxlength="9" required>
                             </md-input-container>
 
@@ -95,10 +95,10 @@
                                 </label>
                                 <md-select ng-model="applicationFormData.academicInfo.degree">
                                     <md-option value="Bachelor">
-                                        B.A. / B.S.
+                                        B.A. / B.S. / L.L.B
                                     </md-option>
                                     <md-option value="Master">
-                                        M.A. / M.S.
+                                        M.A. / M.S. / L.L.M
                                     </md-option>
                                     <md-option value="other">
                                         Other
