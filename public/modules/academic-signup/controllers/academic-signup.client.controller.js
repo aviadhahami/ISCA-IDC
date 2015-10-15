@@ -143,6 +143,8 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         };
 
+        // Holding all the missing data from the form
+        $scope.formMisses = [];
         // Recursively test for empty fields within the application object
         var checkEmptyObjectsRecursively = function(obj){
             var temp = true;
@@ -152,6 +154,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             for (var k in obj){
                 if (!obj[k]){
                     temp = false;
+                    $scope.formMisses.push(k);
                 }
                 if(typeof obj[k] === 'object'){
                     temp = temp & checkEmptyObjectsRecursively(obj[k]);
