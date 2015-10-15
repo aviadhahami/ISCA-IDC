@@ -32,6 +32,12 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 
+/* angular-material thingies go here */
+md-input-container label, md-input-container .md-placeholder, 
+md-select:not(.ng-valid) .md-select-value span:first-child {
+	color: #5dbbd6;
+}
+
 /**** CUSTOM CLASSES FOR REPETITIVE ELEMENTS ****/
 
 .highlight-link {
@@ -80,25 +86,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ul.zebra-list {
-	padding: 12px 48px;
+	padding: 0;
 	float: none;
-	/*border: 1px solid rgba(0,0,0,0.1);*/
 	border: 1px solid #EEE;
 	display: table;
 	margin: auto;
 }
 ul.zebra-list>li {
 	list-style: none;
-	padding: 30px 20px;
+	padding: 40px 80px;
 	text-align: left;
-
+	-ms-transition: all 1s;
+	-webkit-transition: all 1s;
+    transition: all 1s;
 }
-ul.zebra-list>li:nth-child(even) {
-	/*background-color: rgba(50,141,200,0.1);*/
+ul.zebra-list>li:hover {
+	background-color: rgba(50,141,200,0.1);
+}
+ul.zebra-list>li:first-child {
+    background-color: #328dc8;
+    color: #fefefe;
 }
 
 ul.zebra-list li i {
-	color: darkcyan;
+	color: #328dc8;
 	vertical-align: middle;
 	margin-right: 24px;
 	/*font-size: 20px;*/
