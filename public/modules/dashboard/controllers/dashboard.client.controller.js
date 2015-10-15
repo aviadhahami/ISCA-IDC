@@ -30,6 +30,11 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                 'level' : 4,
                 'url': '/dashboard/rolespanel',
                 'title' : 'Roles panel'
+            },
+            {
+                'level' : 4,
+                'url': '/dashboard/applicationDeadLine',
+                'title' : 'Edit application deadline'
             }
         ];
     }]);
