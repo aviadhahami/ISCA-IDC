@@ -15,6 +15,7 @@ angular.module('dashboard').config(['$stateProvider',
                 controller: ['$scope', 'applications','Authentication', 'Userroleasenumservice', '$location', function($scope, applications, Authentication, Userroleasenumservice, $location) {
 
                     $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
+
                     $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
 
                     // Only admin are authorized on this page
