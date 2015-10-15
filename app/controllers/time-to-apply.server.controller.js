@@ -4,7 +4,9 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    fs = require('fs'),
+    path = require('path');
 
 /**
  * Create a Time to apply
@@ -20,23 +22,3 @@ exports.get = function(req, res) {
 
 };
 
-/**
- * Update a Time to apply
- */
-exports.update = function(req, res) {
-
-};
-
-/**
- * Delete an Time to apply
- */
-exports.delete = function(req, res) {
-
-};
-
-/**
- * List of Time to applies
- */
-exports.list = function(req, res) {
-
-};
