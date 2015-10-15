@@ -5,12 +5,12 @@ angular.module('core').factory('Timetoapply', ['$http',
 
 		// Public API
 		return {
-			setTime: function(time) {
+			setTime: function(date) {
 				return $http({
 					method:'post',
 					url:'api/timeToApply',
 					data:{
-						'time':time
+						'date':date
 					}
 				})
 			},
