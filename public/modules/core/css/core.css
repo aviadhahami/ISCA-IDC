@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 /* angular-material thingies go here */
 md-input-container label, md-input-container .md-placeholder, 
 md-select:not(.ng-valid) .md-select-value span:first-child {
-	color: #5dbbd6;
+	color: #328dc8;
 }
 
 /**** CUSTOM CLASSES FOR REPETITIVE ELEMENTS ****/
@@ -246,6 +246,7 @@ ul.nav {
 	/* Set the fixed height of the footer here */
 	/*height: 100px;*/
 	background-color: #f5f6f7;
+	border-top: 1px solid rgba(0,0,0,0.1);
 	padding: 12px 0px;
 }
 
