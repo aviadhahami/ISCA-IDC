@@ -60,6 +60,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         $scope.studyOptions = [
             'Computer Science',
             'Law',
+            'Business Administration',
             'Psychology',
             'Sustainability',
             'Economics',
