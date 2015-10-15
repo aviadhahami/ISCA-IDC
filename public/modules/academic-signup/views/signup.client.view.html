@@ -17,14 +17,10 @@
                     </h3>
                     <hr/>
                     <p>
-                        The application form might take some time to fill,
-                        so in order to save some time try preparing the following: <br/>
+                        The application form should take about 20 minutes to complete so in order to save some time try preparing the following:
                     <ol>
                         <li>
-                            CV written in English, in PDF format
-                        </li>
-                        <li>
-                            A notion about why you would like to join us
+                            CV written in English or Hebrew, in <a style="cursor: help" ng-click="pdfDialog()">PDF format</a>
                         </li>
                         <li>
                             Links to your portfolio (if you're a designer)
@@ -32,12 +28,12 @@
                     </ol>
                     </p>
                     <br/>
-                    <p style="color:red">
-                        Make sure you are free for around 20 minutes and have stable internet connection in order to
-                        successfully fill the form. Goodluck!
+                    <p>
+                        Goodluck !
+                        <i class="fa fa-smile-o" ></i>
                     </p>
                     <div class="md-actions" layout="row" layout-align="center">
-                        <md-button md-no-ink class="md-primary" ng-click="toggleUserReadTerms()">I'm ready!</md-button>
+                        <md-button md-no-ink style="background-color: palegreen" class="md-primary" ng-click="toggleUserReadTerms()">I'm ready!</md-button>
                     </div>
                 </md-card-content>
             </md-card>
@@ -55,8 +51,8 @@
                                     <input ng-model="applicationFormData.name" disabled>
                                 </md-input-container>
                                 <!--TODO: Fix line height as it looks like crap atm-->
-                                <md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>
 
+                                <md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>
                             </div>
 
                             <md-input-container>
@@ -65,7 +61,7 @@
                             </md-input-container>
 
                             <md-input-container>
-                                <label>ID</label>
+                                <label>ID or passport number</label>
                                 <input type="text" ng-model="applicationFormData.id" md-maxlength="9" maxlength="9" required>
                             </md-input-container>
 
@@ -103,10 +99,10 @@
                                 </label>
                                 <md-select ng-model="applicationFormData.academicInfo.degree">
                                     <md-option value="Bachelor">
-                                        B.A. / B.S.
+                                        B.A. / B.S. / L.L.B
                                     </md-option>
                                     <md-option value="Master">
-                                        M.A. / M.S.
+                                        M.A. / M.S. / L.L.M
                                     </md-option>
                                     <md-option value="other">
                                         Other
@@ -137,15 +133,15 @@
                             </md-input-container>
                             <md-input-container>
                                 <label>
-                                    Fluently spoken foreign languages (separate by comma)
+                                    Fluently spoken foreign languages (i.e 'Hebrew, Arabic, English')
                                 </label>
                                 <input type="text" ng-model="applicationFormData.academicInfo.languages" required/>
                             </md-input-container>
                             <md-input-container>
                                 <label>
-                                    Please describe why Anti-Semitism is important to you and what you will bring to the program
+                                    Why do you want to fight antisemitism? what skills you can bring to the program?
                                 </label>
-                                <textarea ng-model="applicationFormData.academicInfo.reasonToCome" cols="30" rows="10" maxlength="1000" md-maxlength="1000"></textarea>
+                                <textarea ng-model="applicationFormData.academicInfo.reasonToCome" cols="30" rows="10" maxlength="500" md-maxlength="500"></textarea>
                             </md-input-container>
                         </section>
                     </md-card-content>
@@ -158,15 +154,15 @@
                         <hr/>
                         <section>
                             <p>
-                                In this section one may write a short essay about one of the following topics. <br/>
-                                You may choose any languages that you like, but make sure it is up to 400 words. <br/>
+                                In this section you are required to write a short essay (300-400 words) about one of the following topics. <br/>
+                                You may choose any language (<u>except for Hebrew</u>). <br/>
                             </p>
                             <h6>
                                 notes:
                             </h6>
                             <ul>
                                 <li>
-                                    <i><b>There's no need for expertise in writing essays! Do your best!</b></i>
+                                    <b>There's no need for expertise in writing essays! Do your best!</b>
                                 </li>
                                 <li>
                                     Graphic designers don't need to write an essay yet they <b>must</b> supply a link to their portfolio.
@@ -174,30 +170,29 @@
                             </ul>
 
                             <h5>Topics</h5>
-                            <p>Selected Value: </p>
 
                             <md-radio-group ng-model="applicationFormData.essay.topic">
                                 <md-radio-button value="Social effect">
-                                    The residual effect demonstrated by social networks (Facebook, Twitter etc.) over the 'real world'.
+                                    How do social networks (Facebook, Twitter etc.) affect the 'real world'?
                                 </md-radio-button>
                                 <md-radio-button value="Jewish challenge">
-                                    What challenges Jews are facing in general and in our times. Share your opinion.
+                                    What challenges do you think Jews will face in upcoming years?
                                 </md-radio-button>
                                 <md-radio-button value="Eliminate Anti-Semitism">
-                                    In what ways the world can eliminate Anti-Semitism and racism?. Share your opinion.
+                                    How can we reduce the occurrence of online antisemitism and racism?
                                 </md-radio-button>
                                 <md-radio-button value="Initiative">
-                                    If you could use the ISCA academic program as your resource, what new initiatives will you make?
+                                    As a part of the Academic Program, you will get a chance to create your own projects to help promote our goal. Share some of your ideas and explain how they will be of help.
                                 </md-radio-button>
                                 <md-radio-button value="Designer">
-                                    I'm a designer and I will supply link to my portfolio below
+                                    I'm a designer and I will supply a link to my portfolio below
                                 </md-radio-button>
                             </md-radio-group>
                             <md-input-container>
                                 <label>
                                     {{user.displayName}}'s essay
                                 </label>
-                                <textarea ng-model="applicationFormData.essay.content" cols="30" rows="10" maxlength="5000" md-maxlength="5000"></textarea>
+                                <textarea ng-model="applicationFormData.essay.content" cols="30" rows="10" maxlength="2000" md-maxlength="2000"></textarea>
                             </md-input-container>
                         </section>
                     </md-card-content>
@@ -221,7 +216,7 @@
                                     Your resume must be written in <b>English</b> or <b>Hebrew</b>.
                                 </li>
                                 <li>
-                                    Your resume must be in the format of a <b>PDF file</b> and not bigger than <b>20MB</b>
+                                    Your resume must be in the format of a <b>PDF file</b> and not bigger than <b>10MB</b>
                                 </li>
                             </ul>
                             <section layout="row" layout-sm="column" layout-align="left center" layout-wrap>
@@ -247,10 +242,10 @@
                         <hr/>
                         <p>
                             Before submitting, make sure all fields are filled properly and that you haven't forgot anything. <br/>
-                            When ready, click the big green button.
+                            When ready, click below.
                         </p>
                         <md-button class="md-raised" ng-click="submitApplication()" style="width:100%;height:100px; background-color: palegreen">
-                            Apply now!
+                            Submit Now!
                         </md-button>
                     </md-card-content>
                 </md-card>

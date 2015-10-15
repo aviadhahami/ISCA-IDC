@@ -60,6 +60,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         $scope.studyOptions = [
             'Computer Science',
             'Law',
+            'Business Administration',
             'Psychology',
             'Sustainability',
             'Economics',
@@ -71,6 +72,20 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             $scope.saveData();
             console.log('saved');
         },3000);
+
+        $scope.pdfDialog = function(){
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title('How to create PDF files')
+                    .content('If you do not know what is a PDF file, use the following links:' +
+                    '<ul>' +
+                    '<li><a href="https://en.wikipedia.org/wiki/Portable_Document_Format" target="_blank">What is a PDF file</a></li>' +
+                    '<li><a href="https://support.office.com/en-us/article/Save-as-PDF-443b9ec2-3b9a-431f-b6f7-672550a296b7" target="_blank">How to save files as PDF</a></li>' +
+                    '</ul>')
+                    .ok('Got it!')
+            );
+        };
 
 
         $scope.file ='';
