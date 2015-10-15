@@ -1,10 +1,15 @@
 'use strict';
 
-angular.module('dashboard').controller('dashboardController', ['$scope', 'Authentication','Userroleasenumservice','Users','$http',
-    function($scope, Authentication,Userroleasenumservice,Users, $http) {
+angular.module('dashboard').controller('dashboardController', ['$scope', 'Authentication','Userroleasenumservice','Users','$http','Timetoapply',
+    function($scope, Authentication,Userroleasenumservice,Users, $http,Timetoapply) {
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
+
+        Timetoapply.getTime().then(function(res){
+            console.log(res.data);
+            $scope.applicationEndDate=res.data.date;
+        });
         $scope.links = [
             {
                 'level' : 4,
