@@ -42,7 +42,8 @@ angular.module('dashboard').config(['$stateProvider',
                         return deferred.promise;
                     }]
                 }
-            }).state('myApplication', {
+            })
+            .state('myApplication', {
                 url: '/dashboard/myApplication',
                 templateUrl: 'modules/dashboard/views/myApplication.client.view.html',
                 controller: ['$scope','Authentication', '$location', function($scope, Authentication, $location) {
@@ -53,12 +54,16 @@ angular.module('dashboard').config(['$stateProvider',
                             $location.path('/academic-signup');
                         }else{
                             $scope.application = angular.copy($scope.user.iscaData.applicationForm.form);
-                           // $scope.application.birthday = new Date($scope.application.birthday);
+                            // $scope.application.birthday = new Date($scope.application.birthday);
                         }
                     }else{
                         $location.path('/dashboard');
                     }
                 }]
+            })
+            .state('application-dead-line', {
+                url: '/dashboard/application-dead-line',
+                templateUrl: 'modules/dashboard/views/application-dead-line.client.view.html'
             });
     }
 ]);
