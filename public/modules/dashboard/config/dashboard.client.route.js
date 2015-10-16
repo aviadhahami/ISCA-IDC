@@ -7,7 +7,13 @@ angular.module('dashboard').config(['$stateProvider',
         $stateProvider.
             state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'modules/dashboard/views/dashboard.client.view.html'
+                templateUrl: 'modules/dashboard/views/dashboard.client.view.html',
+                controller:[,function(){
+
+                }],
+                resolve:[,function(){
+
+                }]
             })
             .state('applicationsReview', {
                 url: '/dashboard/applicationReview',
