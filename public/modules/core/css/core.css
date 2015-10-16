@@ -33,10 +33,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* angular-material thingies go here */
-md-input-container label, md-input-container .md-placeholder, 
+md-input-container:not(.md-input-invalid) label, 
+md-input-container:not(.md-input-invalid) .md-placeholder, 
 md-select:not(.ng-valid) .md-select-value span:first-child {
 	color: #328dc8;
+	font-weight: bold;
 }
+
+md-input-container.md-input-invalid label,
+md-input-container.md-input-invalid .md-placeholder {
+	color: rgb(244,67,54);
+}
+
+md-select .md-select-value span,
+md-input-container:not(.md-input-invalid).md-input-has-value label {
+	color: rgba(0,0,0,0.8);
+}
+
+
 
 /**** CUSTOM CLASSES FOR REPETITIVE ELEMENTS ****/
 
