@@ -19,6 +19,9 @@ angular.module('core').factory('Timetoapply', ['$http',
 					method: 'get',
 					url: 'api/timeToApply'
 				})
+			},
+			isPassed: function(){
+				return this.getTime() - Date.now() > 0
 			}
 		};
 	}
