@@ -7,7 +7,18 @@ angular.module('academic-signup').config(['$stateProvider',
 		$stateProvider.
 			state('academic-signup', {
 				url: '/academic-signup',
-				templateUrl: 'modules/academic-signup/views/signup.client.view.html'
+				templateUrl: 'modules/academic-signup/views/signup.client.view.html',
+				controller:['$scope','deadLinePassed',function($scope,deadLinePassed){
+					if(deadLinePassed){
+						console.log('registartion closed',deadLinePassed)
+					}
+				}],
+				resolve:{
+					deadLinePassed:['Timetoapply',function(Timetoapply){
+						return Timetoapply.isPassed();
+					}]
+
+				}
 			});
 	}
 ]);
