@@ -21,7 +21,11 @@ angular.module('core').factory('Timetoapply', ['$http',
 				})
 			},
 			isPassed: function(){
-				return this.getTime() - Date.now() > 0
+				return this.getTime().then(function(res){
+					var dueDate = new Date(res.data.date);
+					var now = Date.now();
+					return (dueDate - now > 0);
+				});
 			}
 		};
 	}
