@@ -8,11 +8,20 @@ angular.module('academic-signup').config(['$stateProvider',
 			state('academic-signup', {
 				url: '/academic-signup',
 				templateUrl: 'modules/academic-signup/views/signup.client.view.html',
-				controller:['$scope','deadLinePassed',function($scope,deadLinePassed){
-					if(deadLinePassed){
-						console.log('registartion closed',deadLinePassed)
-					}
-				}],
+				controller:['$scope','deadLinePassed','$mdDialog','$location',
+					function($scope,deadLinePassed,$mdDialog,$location){
+						if(!deadLinePassed){
+							$mdDialog.show(
+								$mdDialog.alert()
+									.clickOutsideToClose(false)
+									.title('We\'re sorry!')
+									.content('The application form is now closed! Please try next year ')
+									.ok('Got it!')
+							).then(function(){
+									$location.path('/dashboard');
+								});
+						}
+					}],
 				resolve:{
 					deadLinePassed:['Timetoapply',function(Timetoapply){
 						return Timetoapply.isPassed();
