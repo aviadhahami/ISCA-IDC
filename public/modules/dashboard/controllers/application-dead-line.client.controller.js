@@ -16,9 +16,7 @@ angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope
 		};
 		init();
 
-
 		$scope.changeDeadline = function(){
-
 			$http({
 				method:'post',
 				url:'api/timeToApply',
