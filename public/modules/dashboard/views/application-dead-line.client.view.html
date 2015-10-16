@@ -1,3 +1,22 @@
-<section data-ng-controller="ApplicationDeadLineController">
-	This is the Application dead line
-</section>
+<md-content data-ng-controller="ApplicationDeadLineController">
+	<md-card>
+		<md-card-content>
+			<h2 class="md-title">Change application deadline</h2>
+			<hr/>
+			<div layout="row">
+				<p>The application deadline is currently targeting: {{currentTime.getMonth() + 1}}/{{currentTime.getDate()}}/{{currentTime.getFullYear()}}
+				<small><b>(notice! format is mm/dd/yyyy !!)</b></small>
+			</div>
+			<div layout="row">
+				<div layout="col">
+					<p>Pick new date</p>
+					<md-datepicker ng-model="requiredDate"></md-datepicker>
+					<br/>
+					<md-button class="md-raised" ng-class="changeDeadline()" >Save changes</md-button>
+				</div>
+
+			</div>
+
+		</md-card-content>
+	</md-card>
+</md-content>
