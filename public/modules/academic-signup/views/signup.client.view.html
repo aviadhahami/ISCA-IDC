@@ -1,11 +1,15 @@
 <section ng-controller="academic-signup-controller" id="academic-signup-form">
     <div class="container">
+        <a ui-sref="dashboard">
+            <i class="fa fa-chevron-left"></i> Back
+        </a>
         <md-toolbar class="md-primary">
             <h1 class="md-toolbar-tools">
                 APPLY TO THE ACADEMIC PROGRAM
             </h1>
         </md-toolbar>
         <md-content layout-padding>
+
             <md-card ng-show="!userReadTerms">
                 <md-card-content>
                     <h3>
