@@ -8,12 +8,13 @@ angular.module('dashboard').config(['$stateProvider',
             state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'modules/dashboard/views/dashboard.client.view.html',
-                controller:[,function(){
-
+                controller:['$scope','deadLinePassed',function($scope,deadLinePassed){
+                    $scope.deadLinePassed = deadLinePassed;
                 }],
-                resolve:[,function(){
-
-                }]
+                resolve:{
+                    deadLinePassed: ['Timetoapply',function(Timetoapply){
+                        return Timetoapply.isPassed();
+                    }]}
             })
             .state('applicationsReview', {
                 url: '/dashboard/applicationReview',
