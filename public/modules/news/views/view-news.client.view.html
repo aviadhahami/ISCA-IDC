@@ -1,24 +1,45 @@
 <section data-ng-controller="NewsController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="news.name"></h1>
-	</div>
-	<div>
-		<p data-ng-bind="news.content"></p>
-	</div>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == news.user._id))">
-		<a class="btn btn-primary" href="/#!/news/{{news._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="news.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="news.user.displayName"></span>
-		</em>
-	</small>
+	<a ui-sref="listNews">
+		<i class="fa fa-chevron-left"></i> Back
+	</a>
+	<md-card>
+		<md-card-content>
+			<div layout="row">
+				<div flex="90">
+					<h2 class="md-headline">{{news.name}}</h2>
+				</div>
+				<div flex data-ng-if="((authentication.user) && (authentication.user._id == news.user._id))">
+					<div layout="row">
+						<div flex>
+							<md-button class="md-fab md-primary" aria-label="Edit" href="/#!/news/{{news._id}}/edit" >
+								<i style="color: white;"class="fa fa-pencil fa-lg"></i>
+							</md-button>
+						</div>
+						<div flex>
+							<md-button class="md-fab" aria-label="Delete" ng-click="remove();">
+								<i style="color:white" class="fa fa-trash-o fa-lg"></i>
+							</md-button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr/>
+			<p>
+				{{news.content}}
+			</p>
+
+			<br/>
+
+			<small>
+				<em class="text-muted">
+					Posted on
+					<span data-ng-bind="news.created | date:'mediumDate'"></span>
+					by
+					<span data-ng-bind="news.user.displayName"></span>
+				</em>
+			</small>
+		</md-card-content>
+	</md-card>
+
 </section>
