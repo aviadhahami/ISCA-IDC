@@ -1,0 +1,115 @@
+<br/><br/>
+
+<div layout="row">
+    <div flex="5"></div>
+    <p flex style="text-decoration: underline">Academic information</p>
+</div>
+
+<div layout="row">
+    <div flex="5">
+        <i class="fa fa-venus-mars fa-2x colorFAicon"></i>
+    </div>
+    <div flex="20">
+        Sex
+    </div>
+    <div flex>
+        {{selectedUser.iscaData.applicationForm.form.sex}}
+    </div>
+</div>
+<br/>
+
+<div layout="row">
+    <div flex="5">
+        <i class="fa fa-user fa-2x colorFAicon"></i>
+    </div>
+    <div flex="20">
+        ID Number
+    </div>
+    <div flex>
+        {{selectedUser.iscaData.applicationForm.form.id}}
+    </div>
+</div>
+<br/>
+
+<div layout="row">
+    <div flex="5">
+        <i class="fa fa-birthday-cake fa-2x colorFAicon"></i>
+    </div>
+    <div flex="20">
+        Birthday
+    </div>
+    <div flex>
+        {{selectedUser.birthday}}
+    </div>
+</div>
+<br/>
+
+<div layout="row">
+    <div flex="5">
+        <i class="fa fa-graduation-cap fa-2x colorFAicon"></i>
+    </div>
+    <div flex="20">
+        Pursuing
+    </div>
+    <div flex>
+        {{selectedUser.iscaData.applicationForm.form.academicInfo.degree}} in
+        {{selectedUser.iscaData.applicationForm.form.academicInfo.fieldOfStudy}}
+    </div>
+</div>
+<br/>
+
+<div layout="row">
+    <div flex="5">
+        <i class="fa fa-hourglass-half fa-2x colorFAicon"></i>
+    </div>
+    <div flex="20">
+        Current study year
+    </div>
+    <div flex>
+        {{selectedUser.iscaData.applicationForm.form.academicInfo.currentYear}}
+    </div>
+</div>
+<br/>
+
+<div layout="row">
+    <div flex="5">
+        <i class="fa fa-mobile fa-3x colorFAicon"></i>
+    </div>
+    <div flex="20">
+        Phone
+    </div>
+    <div flex>
+        {{selectedUser.iscaData.applicationForm.form.phone}}
+    </div>
+</div>
+<br/>
+
+<div layout="row">
+    <div flex="5">
+        <i class="fa fa-language fa-2x colorFAicon"></i>
+    </div>
+    <div flex="20">
+        Controlled languages
+    </div>
+    <div flex>
+        <md-chips ng-model="selectedUser.languages" readonly="true">
+            <md-chip-template>
+                <p>{{$chip}}</p>
+            </md-chip-template>
+        </md-chips>
+    </div>
+</div>
+<br/>
+
+<div layout="row">
+    <div flex="5">
+        <i class="fa fa-file-pdf-o fa-2x colorFAicon"></i>
+    </div>
+    <div flex="20">
+        Resume
+    </div>
+    <div flex>
+        <a href="downloadcv/{{selectedUser.iscaData.applicationForm.form.cv}}">Download {{selectedUser.firstName}}'s resume</a>
+    </div>
+</div>
+<br/>
