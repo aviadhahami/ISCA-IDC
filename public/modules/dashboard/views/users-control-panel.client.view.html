@@ -92,21 +92,9 @@
                                 </div>
                             </div>
 
-                            <div ng-if="selectedUser.iscaData.hoursReports">
-                                <br/><br/>
-
-                                <div layout="row">
-                                    <div flex="5">
-                                        <i class="fa fa-clock-o fa-2x colorFAicon"></i>
-                                    </div>
-                                    <p flex style="text-decoration: underline">Hours report</p>
-                                </div>
-                            </div>
-
-
                             <br/><br/>
-                            <md-button class="md-raised" ng-click="showConformationDialog()">
-                                <i class="fa fa-ban" title="Reset any previous marks"></i>
+                            <md-button class="md-raised md-warn" ng-click="showConformationDialog()">
+                                <i class="fa fa-ban"></i>
                                 Delete
                             </md-button>
                         </md-card-content>
