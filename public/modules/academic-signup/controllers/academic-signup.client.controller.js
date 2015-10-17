@@ -60,6 +60,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
         $scope.studyOptions = [
             'Computer Science',
             'Law',
+            'Business Administration',
             'Psychology',
             'Sustainability',
             'Economics',
@@ -71,6 +72,20 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             $scope.saveData();
             console.log('saved');
         },3000);
+
+        $scope.pdfDialog = function(){
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title('How to create PDF files')
+                    .content('If you do not know what is a PDF file, use the following links:' +
+                    '<ul>' +
+                    '<li><a href="https://en.wikipedia.org/wiki/Portable_Document_Format" target="_blank">What is a PDF file</a></li>' +
+                    '<li><a href="https://support.office.com/en-us/article/Save-as-PDF-443b9ec2-3b9a-431f-b6f7-672550a296b7" target="_blank">How to save files as PDF</a></li>' +
+                    '</ul>')
+                    .ok('Got it!')
+            );
+        };
 
 
         $scope.file ='';
@@ -128,6 +143,21 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
 
         };
 
+        // Holding all the missing data from the form
+        $scope.formMisses = [];
+        var formKeysToEnum = {
+            id : 'ID or passport number',
+            phone:'Phone number',
+            currentYear : 'Current year of study',
+            degree : 'Degree type',
+            fieldOfStudy : 'Study field',
+            languages:'Known languages',
+            reasonToCome : 'What you can contribute',
+            topic : 'Topic for the essay',
+            content : 'Essay\'s content' ,
+            cv : 'A copy of your CV'
+
+        }
         // Recursively test for empty fields within the application object
         var checkEmptyObjectsRecursively = function(obj){
             var temp = true;
@@ -137,6 +167,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             for (var k in obj){
                 if (!obj[k]){
                     temp = false;
+                    $scope.formMisses.push(k);
                 }
                 if(typeof obj[k] === 'object'){
                     temp = temp & checkEmptyObjectsRecursively(obj[k]);
@@ -144,19 +175,37 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
             }
             return temp;
         };
+        var generateMissingItemsList = function(missingItems){
+            var closingLI = '</li>',
+                openLI = '<li>',
+                returnString = '';
+            console.log(missingItems)
+            for(var i=0;i<missingItems.length;i++){
+                returnString += openLI + formKeyToString(missingItems[i])+ closingLI;
+            }
+            console.log(returnString);
+            return returnString == null ? 'Form is empty' : returnString;
+        };
+        var formKeyToString = function(key){
+            return formKeysToEnum[key];
+        };
+        var showAlert = function(missesObj) {
+            var msg = 'The following things are missing in your form: <br/>' +
+                '<ul>' +
+                generateMissingItemsList(missesObj) +
+                '</ul>';
 
-        var showAlert = function(ev) {
-
+            // Clear the object
+            $scope.formMisses = [];
             // Appending dialog to document.body to cover sidenav in docs app
             // Modal dialogs should fully cover application
             // to prevent interaction outside of dialog
             $mdDialog.show(
                 $mdDialog.alert()
-                    .clickOutsideToClose(true)
+                    .clickOutsideToClose(false)
                     .title('Can not submit application')
-                    .content('We believe that some things are missing in your application, please review it.')
+                    .content(msg)
                     .ok('OK')
-                    .targetEvent(ev)
             );
         };
 
@@ -189,7 +238,7 @@ angular.module('academic-signup').controller('academic-signup-controller', ['$sc
                     });
 
             }else{
-                showAlert(null);
+                showAlert($scope.formMisses);
                 // Form missing
             }
         };

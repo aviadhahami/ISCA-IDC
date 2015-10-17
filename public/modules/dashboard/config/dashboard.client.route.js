@@ -7,7 +7,14 @@ angular.module('dashboard').config(['$stateProvider',
         $stateProvider.
             state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'modules/dashboard/views/dashboard.client.view.html'
+                templateUrl: 'modules/dashboard/views/dashboard.client.view.html',
+                controller:['$scope','deadLinePassed',function($scope,deadLinePassed){
+                    $scope.deadLinePassed = deadLinePassed;
+                }],
+                resolve:{
+                    deadLinePassed: ['Timetoapply',function(Timetoapply){
+                        return Timetoapply.isPassed();
+                    }]}
             })
             .state('applicationsReview', {
                 url: '/dashboard/applicationReview',
@@ -15,6 +22,7 @@ angular.module('dashboard').config(['$stateProvider',
                 controller: ['$scope', 'applications','Authentication', 'Userroleasenumservice', '$location', function($scope, applications, Authentication, Userroleasenumservice, $location) {
 
                     $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
+
                     $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
 
                     // Only admin are authorized on this page
@@ -41,7 +49,8 @@ angular.module('dashboard').config(['$stateProvider',
                         return deferred.promise;
                     }]
                 }
-            }).state('myApplication', {
+            })
+            .state('myApplication', {
                 url: '/dashboard/myApplication',
                 templateUrl: 'modules/dashboard/views/myApplication.client.view.html',
                 controller: ['$scope','Authentication', '$location', function($scope, Authentication, $location) {
@@ -52,12 +61,16 @@ angular.module('dashboard').config(['$stateProvider',
                             $location.path('/academic-signup');
                         }else{
                             $scope.application = angular.copy($scope.user.iscaData.applicationForm.form);
-                           // $scope.application.birthday = new Date($scope.application.birthday);
+                            // $scope.application.birthday = new Date($scope.application.birthday);
                         }
                     }else{
                         $location.path('/dashboard');
                     }
                 }]
+            })
+            .state('application-dead-line', {
+                url: '/dashboard/application-dead-line',
+                templateUrl: 'modules/dashboard/views/application-dead-line.client.view.html'
             });
     }
 ]);
