@@ -5,7 +5,8 @@
 
     <div flex="80" id="applicationContent" ng-if="applications && applications.length > 0">
         <a ui-sref="dashboard">
-            <i class="fa fa-chevron-left"></i> Back
+            <i class="fa fa-chevron-left"></i>
+            Back
         </a>
         <h2 class="md-display-3 page-title">Available applications</h2>
         <md-tabs id="pendingApplication" no-tabs-wrapper md-selected="selectedTab" md-dynamic-height="true">
@@ -244,7 +245,13 @@
         </md-tabs>
     </div>
 
-    <div flex="80" ng-if="applications == undefined || applications.length == 0" style="text-align: center"><h2 class="md-display-3">No applications available</h2></div>
+    <div flex="80" ng-if="applications == undefined || applications.length == 0" style="text-align: center">
+        <a ui-sref="dashboard" style="float: left">
+            <i class="fa fa-chevron-left"></i>
+            Back
+        </a>
+        <h2 class="md-display-3">No applications available</h2>
+    </div>
 
     <div flex="10"></div>
 
