@@ -35,6 +35,11 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                 'level' : 4,
                 'url': '/dashboard/application-dead-line',
                 'title' : 'Edit application deadline'
+            },
+            {
+                'level' : 1,
+                'url': '/news',
+                'title' : 'News archive'
             }
         ];
     }]);
