@@ -71,6 +71,39 @@ angular.module('dashboard').config(['$stateProvider',
             .state('application-dead-line', {
                 url: '/dashboard/application-dead-line',
                 templateUrl: 'modules/dashboard/views/application-dead-line.client.view.html'
+            })
+            .state('usersControlPanel', {
+                url: '/dashboard/users',
+                templateUrl: 'modules/dashboard/views/users-control-panel.client.view.html',
+                controller: ['$scope', 'users','Authentication', 'Userroleasenumservice', '$location', function($scope, users, Authentication, Userroleasenumservice, $location) {
+
+                    $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
+                    $scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
+
+                    // Only admin are authorized on this page
+                    if ($scope.userLevel !== 4) {
+                        $location.path('/');
+                    }
+
+                    if (users == undefined || users.length == 0)
+                        $scope.users = undefined;
+                    else
+                        $scope.users = users;
+                }],
+                resolve: {
+                    users: ['$q', '$http', function($q, $http) {
+                        var deferred = $q.defer();
+                        $http.get('/users/getRecords').then(function(response) {
+                            if (!response.data.err) {
+                                deferred.resolve(response.data);
+                            } else {
+                                deferred.resolve({});
+                                // deferred.reject() & stateError
+                            }
+                        });
+                        return deferred.promise;
+                    }]
+                }
             });
     }
 ]);
