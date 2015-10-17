@@ -1,8 +1,10 @@
 'use strict';
-angular.module('dashboard').controller('userControlPanelController', ['$scope', 'Authentication','Users','Userroleasenumservice', '$http', '$mdDialog',
-        function($scope, Authentication, Users,Userroleasenumservice, $http, $mdDialog) {
+angular.module('dashboard').controller('userControlPanelController', ['$scope', 'Authentication','Users','Userroleasenumservice', '$http', '$mdDialog', '$timeout',
+        function($scope, Authentication, Users,Userroleasenumservice, $http, $mdDialog, $timeout) {
 
-            $scope.credentials = {};
+            var alert = undefined;
+
+
             // Remove duplicates from language array
             var uniq = function (a) {
                 return a.sort().filter(function(item, pos, ary) {
@@ -30,7 +32,13 @@ angular.module('dashboard').controller('userControlPanelController', ['$scope', 
                 $scope.selectedUser = undefined;
             };
 
-            $scope.conformationDialog = function() {
+            $scope.showConformationDialog = function() {
+
+                $scope.credentials = {
+                    username: $scope.user.username,
+                    password: ''
+                };
+
                 $mdDialog.show({
                     clickOutsideToClose: true,
                     template:
@@ -42,62 +50,63 @@ angular.module('dashboard').controller('userControlPanelController', ['$scope', 
                                     '<label>Password</label>' +
                                     '<input type="password" id="password" name="password" ng-model="credentials.password">' +
                                 '</md-input-container>' +
-                                '<md-button class="md-raised" ng-click="deleteUser()">' +
-                                    '<i class="fa fa-ban" title="Reset any previous marks"></i>' +
-                                    ' Delete' +
-                                '</md-button>' +
+                                '<div class="md-actions">' +
+                                    '<md-button class="md-raised" ng-click="deleteUser()">' +
+                                        '<i class="fa fa-ban" title="Reset any previous marks"></i>' +
+                                        ' Delete' +
+                                    '</md-button>' +
+                                '</div>' +
                             '</div>' +
                         '</md-dialog-content>' +
                     '</md-dialog>',
-                    scope: $scope
+                    scope: $scope,
+                    preserveScope: true
                 });
+
             };
 
-            $scope.alert = function(title, content) {
+            $scope.showAlert = function(title, content) {
+                alert = $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title(title)
+                    .content(content)
+                    .ok('OK');
 
-                return $mdDialog.alert({
-                    clickOutsideToClose: true,
-                    title: title,
-                    content:content,
-                    ok: 'OK'
-                });
+                return $mdDialog.show(alert);
             };
 
             $scope.deleteUser = function() {
-                $mdDialog.hide();
-                if (!$scope.credentials.password) {
-                    $scope.credentials.password = '';
-                }
-                $scope.credentials.username = $scope.user.username;
+                $mdDialog.hide().finally(function() {
+                    if (!$scope.credentials.password) {
+                        $scope.credentials.password = '';
+                    }
 
-                $http.post('/auth/signin', $scope.credentials).then(function(response) {
-                    var promise = Users.remove($scope.selectedUser);
-                    promise.$promise.then(function(success) {
+                    $http.post('/auth/signin', $scope.credentials).then(function(response) {
+                        var promise = Users.remove($scope.selectedUser);
+                        promise.$promise.then(function(success) {
 
-                        var alert = $scope.alert('Success', $scope.selectedUser.displayName + ' was deleted');
-                        $mdDialog.show().finally(function() {
-                            alert = undefined;
-                            $http.get('/users/getRecords').then(function(response) {
-                                if (!response.data.err) {
-                                    $scope.users = response.data;
-                                }
+                            $scope.showAlert('Success', $scope.selectedUser.displayName + ' was deleted').finally(function() {
 
+                                $http.get('/users/getRecords').then(function(response) {
+                                    if (!response.data.err) {
+                                        $scope.users = response.data;
+                                    }
+
+                                    alert = undefined;
+                                    $scope.backToTable();
+                                });
+                            });
+
+                        }, function(error){
+                            $scope.showAlert('Error', 'There was an error deleting the user').finally(function() {
+                                alert = undefined;
                                 $scope.backToTable();
                             });
                         });
-
-                    }, function(error){
-                        var alert = $scope.alert('Error', 'There was an error deleting the user');
-                        $mdDialog.show(alert).finally(function() {
+                    },function(response) {
+                        $scope.showAlert('Error', 'Password incorrect').finally(function() {
                             alert = undefined;
-                            $scope.backToTable();
                         });
-                    });
-                },function(response) {
-                    var alert = $scope.alert('Error', 'Password incorrect');
-                    $mdDialog.show(alert).finally(function() {
-                        alert = undefined;
-                        $scope.backToTable();
                     });
                 });
             };
