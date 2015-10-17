@@ -6,7 +6,21 @@
             <div class="row flex">
                 <md-card>
                     <md-card-content>
-                        Here there's gonna be info
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <md-tab label="application countdown" ng-if="deadLinePassed">
+                                <md-content class="md-padding">
+                                    <h1 ng-if="!user.iscaData.applicationForm" class="md-display-2">Applications are due 8PM, October 28th !</h1>
+                                    <h1 ng-if="user.iscaData.applicationForm" class="md-display-2">We've received your application !</h1>
+                                    <h2 style="color:#EF5350" countdown end-date="{{applicationEndDate}}" units="days|hours|minutes|seconds"></h2>
+                                </md-content>
+                            </md-tab>
+                            <md-tab ng-if="userLevel > 1" label="Hours report">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-2">Hours report</h1>
+                                    <p>There is no data to display at the moment..</p>
+                                </md-content>
+                            </md-tab>
+                        </md-tabs>
                     </md-card-content>
                 </md-card>
                 <md-card>
