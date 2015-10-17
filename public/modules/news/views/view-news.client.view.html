@@ -8,7 +8,7 @@
 				<div flex="90">
 					<h2 class="md-headline">{{news.name}}</h2>
 				</div>
-				<div flex data-ng-if="((authentication.user) && (authentication.user._id == news.user._id))">
+				<div flex data-ng-if="((authentication.user) && ((authentication.user._id == news.user._id) || authentication.user.roles ==='admin'))">
 					<div layout="row">
 						<div flex>
 							<md-button class="md-fab md-primary" aria-label="Edit" href="/#!/news/{{news._id}}/edit" >
