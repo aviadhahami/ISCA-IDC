@@ -49,6 +49,27 @@ exports.update = function(req, res) {
 	}
 };
 
+/**
+ * Remove user
+ */
+exports.remove = function(req, res) {
+	var user = req.user;
+	if (user.roles === 'admin'){
+
+		var userId = req.query._id;
+
+		User.remove({ _id: userId}, function(err) {
+			if (err) {
+				res.status(400).send({error: 'error deleting user'});
+			} else {
+				res.status(200).send();
+			}
+		});
+	} else{
+		res.status(403).send({error : 'unauthorized'});
+	}
+};
+
 exports.updateRole = function(req,res){
 	var admin = req.user;
 	if (admin){
@@ -91,13 +112,13 @@ exports.getAllUsers = function(req,res){
 			var sanitizedUsersArr = [];
 
 			users.forEach(function(user) {
-				var santizied = user.sanitize();
-				sanitizedUsersArr.push(santizied);
+				var sanitized = user.sanitize();
+				sanitizedUsersArr.push(sanitized);
 			});
 			res.status(200).send(sanitizedUsersArr);
 		});
 	}else{
-		res.send(403).send({error : 'unauthorized'});
+		res.status(403).send({error : 'unauthorized'});
 	}
 };
 

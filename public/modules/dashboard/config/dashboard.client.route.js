@@ -54,7 +54,7 @@ angular.module('dashboard').config(['$stateProvider',
                             $scope.application = angular.copy($scope.user.iscaData.applicationForm.form);
                            // $scope.application.birthday = new Date($scope.application.birthday);
                         }
-                    }else{
+                    } else {
                         $location.path('/dashboard');
                     }
                 }]

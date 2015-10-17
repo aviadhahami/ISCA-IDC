@@ -53,4 +53,12 @@ angular.module('dashboard').controller('applicationsReviewController', ['$scope'
             $scope.backToTable();
         };
 
+        $scope.resetApplicant = function(selectedApplication) {
+            selectedApplication.iscaData.applicationForm.accepted = false;
+            selectedApplication.iscaData.applicationForm.starred = false;
+            selectedApplication.iscaData.applicationForm.formPending = true;
+            Users.update(selectedApplication);
+            $scope.backToTable();
+        }
+
     }]);

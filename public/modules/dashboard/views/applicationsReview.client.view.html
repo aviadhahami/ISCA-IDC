@@ -23,7 +23,7 @@
                             </li>
 
                             <li layout="row"
-                                ng-repeat='application in applications | orderBy: "iscaData.applicationForm.formPending": true | orderBy: "iscaData.applicationForm.accepted": true'
+                                ng-repeat='application in applications | orderBy: "displayName" | orderBy: "iscaData.applicationForm.formPending": true | orderBy: "iscaData.applicationForm.accepted": true'
                                 ng-click="displayApplication(application)" class="table-row">
                                 <span class="md-body-1" flex>
                                     <i class="fa fa-star" title="Starred" ng-show="application.iscaData.applicationForm && application.iscaData.applicationForm.starred"></i>
@@ -61,7 +61,7 @@
                     </style>
                     <md-card>
                         <md-card-content>
-                            <a href="#" ng-click="backToTable()"><i class="fa fa-chevron-left"></i> Back</a>
+                            <a href="#" ng-click="backToTable()"><i class="fa fa-chevron-left"></i> Back to table</a>
                             <h2 class="md-title">{{selectedApplication.displayName}}'s application form</h2>
                             <hr/>
                             <section>
@@ -215,7 +215,27 @@
                                     </div>
                                 </div>
                             </div>
-                            </section>
+                            <br/><br/>
+                            <div>
+                                <md-button class="md-raised" ng-click="starApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.formPending">
+                                    <i class="fa fa-star" title="Star applicant" ng-if="!selectedApplication.iscaData.applicationForm.starred"></i>
+                                    <span ng-if="!selectedApplication.iscaData.applicationForm.starred">Star</span>
+                                    <i class="fa fa-star" title="Unstar applicant" ng-if="selectedApplication.iscaData.applicationForm.starred"></i>
+                                    <span ng-if="selectedApplication.iscaData.applicationForm.starred">Unstar</span>
+                                </md-button>
+                                <md-button class="md-raised" ng-click="acceptApplicant(selectedApplication)" ng-if="!selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
+                                    <i class="fa fa-check" title="Accept applicant"></i>
+                                    Accept
+                                </md-button>
+                                <md-button class="md-raised" ng-click="denyApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
+                                    <i class="fa fa-ban" title="Deny applicant"></i>
+                                    Deny
+                                </md-button>
+                                <md-button class="md-raised" ng-click="resetApplicant(selectedApplication)">
+                                    <i class="fa fa-ban" title="Reset any previous marks"></i>
+                                    Reset
+                                </md-button>
+                            </div>
                         </md-card-content>
                     </md-card>
                 </md-tab-body>
