@@ -9,6 +9,10 @@
         </a>
 
         <h2 class="md-display-3 page-title">Existing users</h2>
+        <md-input-container flex="20" offset="80">
+            <label>Search</label>
+            <input type="text" ng-model="filterText" >
+        </md-input-container>
         <md-tabs id="pendingApplication" no-tabs-wrapper md-selected="selectedTab" md-dynamic-height="true">
             <md-tab>
                 <div flex="80" layout="column">
@@ -23,7 +27,7 @@
                             </li>
 
                             <li layout="row"
-                                ng-repeat='user in users | orderBy: "displayName" | orderBy: "roles"'
+                                ng-repeat='user in users | filter: { displayName: filterText } | orderBy: "displayName" | orderBy: "roles"'
                                 ng-click="displayApplication(user)" class="table-row">
                                 <span class="md-body-1" flex>{{ user.firstName }}</span>
                                 <span class="md-body-1" flex>{{ user.lastName }}</span>
@@ -94,8 +98,8 @@
 
                             <br/><br/>
                             <md-button class="md-raised md-warn" ng-click="showConformationDialog()">
-                                <i class="fa fa-ban"></i>
-                                Delete
+                                <i class="fa fa-ban" style="color: white;"></i>
+                                <span style="color: white;"> Delete</span>
                             </md-button>
                         </md-card-content>
                     </md-card>
