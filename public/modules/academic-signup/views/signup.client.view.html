@@ -44,7 +44,7 @@
                         <h4>PERSONAL INFORMATION</h4>
                         <hr/>
                         <section>
-                            <div layout layout-sm="column">
+                            <div layout="row" layout-sm="column">
                                 <!--TODO: CHANGE STYLE TO PERMANENT-->
                                 <md-input-container style="width:80%">
                                     <label>Name</label>
@@ -52,7 +52,10 @@
                                 </md-input-container>
                                 <!--TODO: Fix line height as it looks like crap atm-->
 
-                                <md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>
+                                <div layout="column">
+                                    <label>Birth date</label>
+                                    <md-datepicker ng-model="applicationFormData.birthday" md-placeholder="Date of birth" required></md-datepicker>
+                                </div>
                             </div>
 
                             <md-input-container>
