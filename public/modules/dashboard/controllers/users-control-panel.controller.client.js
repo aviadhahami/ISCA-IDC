@@ -1,9 +1,10 @@
 'use strict';
-angular.module('dashboard').controller('userControlPanelController', ['$scope', 'Authentication','Users','Userroleasenumservice', '$http', '$mdDialog', '$timeout',
-        function($scope, Authentication, Users,Userroleasenumservice, $http, $mdDialog, $timeout) {
+angular.module('dashboard').controller('userControlPanelController', ['$scope', 'Authentication','Users','Userroleasenumservice', '$http', '$mdDialog', '$q',
+        function($scope, Authentication, Users,Userroleasenumservice, $http, $mdDialog, $q) {
 
-            var alert = undefined;
+            var alert;
 
+            $scope.newRole = { name: ''};
 
             // Remove duplicates from language array
             var uniq = function (a) {
@@ -19,6 +20,7 @@ angular.module('dashboard').controller('userControlPanelController', ['$scope', 
             $scope.displayApplication = function(user) {
                 $scope.selectedTab = APPLICATION_VIEW;
                 $scope.selectedUser = user;
+                $scope.newRole.name = $scope.selectedUser.roles;
                 if (user.iscaData.applicationForm) {
                     var bday = new Date(user.iscaData.applicationForm.form.birthday);
                     $scope.selectedUser.birthday = bday.getDate() + '/' + (bday.getMonth() + 1) + '/' + bday.getFullYear();
@@ -75,6 +77,7 @@ angular.module('dashboard').controller('userControlPanelController', ['$scope', 
                 return $mdDialog.show(alert);
             };
 
+            // Delete user
             $scope.deleteUser = function() {
                 $mdDialog.hide().finally(function() {
                     if (!$scope.credentials.password) {
@@ -110,6 +113,67 @@ angular.module('dashboard').controller('userControlPanelController', ['$scope', 
                     });
                 });
             };
+
+            // END Delete user
+
+            // Reassign role
+            var showLoadingModal = function () {
+                var tpl = '<md-dialog><md-dialog-content>' +
+                    '<h2 flex>Updating...</h2>' +
+                    '<div layout="row" layout-sm="column" layout-align="space-around">' +
+                    '<md-progress-circular md-mode="indeterminate"></md-progress-circular>' +
+                    '</div> </md-dialog-content></md-dialog>';
+                $mdDialog.show({
+                    clickOutsideToClose: false,
+                    template: tpl
+                });
+
+            };
+
+            var showSuccessModal = function () {
+                $mdDialog.show($mdDialog.alert()
+                        .clickOutsideToClose(true)
+                        .title('Updated role!')
+                        .content('Great success !')
+                        .ok('Got it!')
+                );
+            };
+
+            $scope.roles = ['Volunteer', 'Participant', 'Manager', 'Admin'];
+
+            $scope.updateRole = function(user, role) {
+                showLoadingModal();
+                updateUserRole(user._id, role).then(function (data) {
+                    $mdDialog.hide();
+                    showSuccessModal();
+                    $scope.selectedUser.roles = role;
+                },function(err){
+                    //$mdDialog.hide();
+                    $scope.showAlert('Error', 'There was a problem').finally(function() {
+                        alert = undefined;
+                    });
+                    console.log(err);
+                });
+            };
+
+            var updateUserRole = function (_id, requestedRole) {
+                var deferred = $q.defer();
+                $http({
+                    method: 'POST',
+                    url: '/users/updateRole',
+                    data: {
+                        requestedRole: requestedRole,
+                        idToPromote: _id
+                    }
+                }).then(function (res) {
+                    deferred.resolve(res.data);
+                }, function (err) {
+                    deferred.reject(err);
+                });
+                return deferred.promise;
+            };
+
+            // END Reassign role
         }
     ]
 );

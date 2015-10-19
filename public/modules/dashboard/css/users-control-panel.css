@@ -23,3 +23,7 @@
     background-color: #F44336;
     color: white !important;
 }
+
+.role-menu-option:hover {
+    background-color: #EEE;
+}

@@ -45,7 +45,6 @@ exports.get = function(req, res) {
     var fileName = 'timeToApply.json';
     fs.readFile(pathToFolder+fileName , 'utf8', function (err, data) {
         if (err) throw err;
-        console.log('req is ==============', req);
         res.status(200).send(JSON.parse(data));
     });
 };
