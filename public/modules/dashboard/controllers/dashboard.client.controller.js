@@ -39,7 +39,7 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
             {
                 'level' : 1,
                 'url': '/news',
-                'title' : 'News archive'
+                'title' : 'News'
             }
         ];
     }]);
