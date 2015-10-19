@@ -20,7 +20,10 @@
                     <div flex>
                         <div layout="row">
                             <div flex="70">
-                                search
+                                <md-input-container flex="20" offset="80">
+                                    <label>Search</label>
+                                    <input type="text" ng-model="filterText" >
+                                </md-input-container>
                             </div>
                             <div flex>
                                 <md-button class="md-fab" aria-label="New item" href="/#!/news/create" >
@@ -33,7 +36,7 @@
             </md-toolbar>
             <section>
                 <md-list layout-padding>
-                    <a  ng-repeat="news in news | filter: { displayName: filterText }" ng-href="#!/news/{{news._id}}" class="news-item">
+                    <a  ng-repeat="news in news | filter: { name: filterText }" ng-href="#!/news/{{news._id}}" class="news-item">
                         <md-list-item class="md-3-line">
                             <div class="md-list-item-text">
                                 <h4 class="md-subhead">{{news.name}}</h4>
