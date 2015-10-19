@@ -10,7 +10,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 	}
 ])
 .run(['$rootScope', '$state', '$window', function($rootScope, $state, $window) {
-	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, error) {
+	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, error) {
 		// scroll to top on every state change
 		$window.scrollTo(0, 0);
 	});
