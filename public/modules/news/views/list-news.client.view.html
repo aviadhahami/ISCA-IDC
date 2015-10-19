@@ -13,7 +13,16 @@
     <md-card>
         <md-card-content>
             <md-toolbar md-scroll-shrink>
-                <div class="md-toolbar-tools" style="color:white">News archive</div>
+                <div layout="row">
+                    <div flex="90">
+                        <div class="md-toolbar-tools" style="color:white">News archive</div>
+                    </div>
+                    <div flex>
+                        <md-button class="md-fab" aria-label="New item" href="/#!/news/create" >
+                            <i style="color: white;"class="fa fa-pencil fa-lg"></i>
+                        </md-button>
+                    </div>
+                </div>
             </md-toolbar>
             <section>
                 <md-list layout-padding>
