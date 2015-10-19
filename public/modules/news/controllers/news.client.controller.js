@@ -5,6 +5,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 	function($scope, $stateParams, $location, Authentication, News) {
 		$scope.authentication = Authentication;
 		$scope.user = Authentication.user;
+		$scope.userLevel = $scope.user.roles;
 
 
 		console.log($scope.user);
