@@ -114,8 +114,15 @@ exports.newsByID = function(req, res, next, id) {
  * News authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.news.user.id !== req.user.id || req.user.role === 'admin' || req.user.role === 'manager') {
-		return res.status(403).send('User is not authorized');
+	if(req.news.user){
+		if (req.news.user.id !== req.user.id && req.user.roles !== 'admin' && req.user.roles !== 'manager') {
+			return res.status(403).send('first,User is not authorized');
+		}
+	}else{
+		if( req.user.roles !== 'admin' && req.user.roles !== 'manager'){
+			return res.status(403).send('admin error,User is not authorized');
+		}
 	}
+
 	next();
 };
