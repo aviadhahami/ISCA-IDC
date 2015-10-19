@@ -14,19 +14,26 @@
         <md-card-content>
             <md-toolbar md-scroll-shrink>
                 <div layout="row">
-                    <div flex="90">
+                    <div flex="70">
                         <div class="md-toolbar-tools" style="color:white">News archive</div>
                     </div>
                     <div flex>
-                        <md-button class="md-fab" aria-label="New item" href="/#!/news/create" >
-                            <i style="color: white;"class="fa fa-pencil fa-lg"></i>
-                        </md-button>
+                        <div layout="row">
+                            <div flex="70">
+                                search
+                            </div>
+                            <div flex>
+                                <md-button class="md-fab" aria-label="New item" href="/#!/news/create" >
+                                    <i style="color: white;"class="fa fa-pencil fa-lg"></i>
+                                </md-button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </md-toolbar>
             <section>
                 <md-list layout-padding>
-                    <a  ng-repeat="news in news" ng-href="#!/news/{{news._id}}" class="news-item">
+                    <a  ng-repeat="news in news | filter: { displayName: filterText }" ng-href="#!/news/{{news._id}}" class="news-item">
                         <md-list-item class="md-3-line">
                             <div class="md-list-item-text">
                                 <h4 class="md-subhead">{{news.name}}</h4>
