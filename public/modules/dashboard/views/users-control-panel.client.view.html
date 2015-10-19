@@ -68,7 +68,7 @@
                     </style>
                     <md-card>
                         <md-card-content>
-                            <a href="#" ng-click="backToTable()">
+                            <a href="" ng-click="backToTable()">
                                 <i class="fa fa-chevron-left"></i>
                                 Back to table
                             </a>
@@ -97,10 +97,24 @@
                             </div>
 
                             <br/><br/>
+
+                            <div layout="row">
+                                <md-input-container flex="20">
+                                    <label>Reassign role</label>
+                                    <md-select ng-model="newRole.name">
+                                        <md-option class="role-menu-option" ng-repeat="role in roles track by $index" value="{{role.toLowerCase()}}"
+                                                   ng-click="updateRole(selectedUser, role.toLowerCase())">
+                                            {{role}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+
                             <md-button class="md-raised md-warn" ng-click="showConformationDialog()">
                                 <i class="fa fa-ban" style="color: white;"></i>
                                 <span style="color: white;"> Delete</span>
                             </md-button>
+
                         </md-card-content>
                     </md-card>
                 </md-tab-body>

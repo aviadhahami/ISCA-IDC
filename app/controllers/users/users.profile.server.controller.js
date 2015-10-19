@@ -73,8 +73,6 @@ exports.remove = function(req, res) {
 exports.updateRole = function(req,res){
 	var admin = req.user;
 	if (admin){
-		console.log(admin);
-
 		// Check if injected role exists
 		if(admin.roles === 'admin' && rolesString.indexOf(req.body.requestedRole) > -1){
 			var requestedRole = req.body.requestedRole;

@@ -3,7 +3,7 @@
         <md-card-content>
             <h2 class="md-title">The Team</h2>
             <hr/>
-            <md-grid-list  md-cols-gt-md="3" md-cols-md="2" md-cols-sm="1" md-row-height="275px">
+            <md-grid-list md-cols-gt-md="3" md-cols-md="2" md-cols-sm="1" md-row-height="275px">
                 <md-grid-tile ng-repeat="member in team | orderBy: index" class="text-center nametag">
                     <div layout="column">
                         <img ng-src="{{ member.img }}" class="avatar"/>
