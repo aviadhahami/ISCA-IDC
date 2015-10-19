@@ -8,7 +8,6 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 		$scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
 
 
-		console.log($scope.user);
 		// Create new News
 		$scope.create = function() {
 			// Create new News object
