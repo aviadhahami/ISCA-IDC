@@ -1,11 +1,11 @@
 'use strict';
 
 // News controller
-angular.module('news').controller('NewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'News',
-	function($scope, $stateParams, $location, Authentication, News) {
+angular.module('news').controller('NewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'News','Userroleasenumservice',
+	function($scope, $stateParams, $location, Authentication, News,Userroleasenumservice) {
 		$scope.authentication = Authentication;
 		$scope.user = Authentication.user;
-		$scope.userLevel = $scope.user.roles;
+		$scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
 
 
 		console.log($scope.user);
