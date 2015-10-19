@@ -30,7 +30,7 @@
 
                         <md-grid-list md-cols-gt-md="5" md-cols-md="3" md-cols-sm="1" md-row-height="225px">
 
-                            <md-grid-tile ng-repeat="link in links | orderBy: title" class="text-center dash-tile" ng-if="userLevel >= link.level">
+                            <md-grid-tile ng-repeat="link in links | orderBy: 'level'" class="text-center dash-tile" ng-if="userLevel >= link.level">
                                 <md-whiteframe class="md-whiteframe-1dp" ng-click="openLink(link)">
                                     <div layout="column">
                                         <i class="fa fa-4x" ng-class="[link.icon]"></i>
