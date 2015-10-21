@@ -10,6 +10,36 @@ var _ = require('lodash'),
 	User = mongoose.model('User'),
 	rolesString = 'volunteer,participant,manager,admin';
 
+exports.updateAdmin = function(req, res) {
+	// Init Variables
+	var user = req.user;
+
+	// For security measurement we remove the roles from the req.body object
+	delete req.body.roles;
+
+	if (user) {
+		// Merge existing user
+		user = _.extend(user, req.body);
+		user.updated = Date.now();
+		user.displayName = user.firstName + ' ' + user.lastName;
+
+		user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				res.status(200).send({message: 'updated by admin'});
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+};
+
+
 /**
  * Update user details
  */
