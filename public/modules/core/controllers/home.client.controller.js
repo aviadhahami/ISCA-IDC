@@ -4,7 +4,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	function($scope, Authentication, Userroleasenumservice) {
 		// This provides Authentication context.
 		$scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
-	    $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0; 
+		$scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
 		// Facebook Graph API init
 		(function(d, s, id) {
@@ -46,5 +46,62 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.isMobile = function () {
 			return WURFL.is_mobile;
 		}
+
+
+		$scope.sections = [
+			{
+				title:'News feed',
+				data:[
+
+				]
+			},
+			{
+				title:'Magazine',
+				data:[
+					{
+						title:'THIS IS A TITLE!',
+						description:'And here I described something',
+						author:'David',
+						imgSrc: 'https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg'
+					},
+					{
+						title:'THIS IS A TITLE!',
+						description:'And here I described something',
+						author:'David',
+						imgSrc: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
+					},
+					{
+						title:'THIS IS A TITLE!',
+						description:'And here I described something',
+						author:'David',
+						imgSrc: 'http://www.nps.gov/pais/learn/nature/images/GHOST_CRAB_2.JPG'
+					}
+				]
+			},
+			{
+				title:'Blog',
+				data:[
+					{
+						title:'THIS IS A TITLE!',
+						description:'And here I described something',
+						author:'David',
+						imgSrc: 'https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg'
+					},
+					{
+						title:'THIS IS A TITLE!',
+						description:'And here I described something',
+						author:'David',
+						imgSrc: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
+					},
+					{
+						title:'THIS IS A TITLE!',
+						description:'And here I described something',
+						author:'David',
+						imgSrc: 'http://www.nps.gov/pais/learn/nature/images/GHOST_CRAB_2.JPG'
+					}
+				]
+			}
+
+		]
 	}
 ]);
