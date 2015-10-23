@@ -7,8 +7,7 @@
 			<h2 class="md-title">Change application deadline</h2>
 			<hr/>
 			<div layout="row">
-				<p>The application deadline is currently targeting: {{currentTime.getMonth() + 1}}/{{currentTime.getDate()}}/{{currentTime.getFullYear()}}
-					<small><b>(notice! format is mm/dd/yyyy !!)</b></small>
+				<p>The application deadline is currently targeting: {{currentTimeStringObj.month}} {{currentTimeStringObj.day}} at {{currentTimeStringObj.hour}}
 			</div>
 			<div layout="row">
 				<div layout="col">
