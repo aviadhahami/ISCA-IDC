@@ -11,8 +11,10 @@ angular.module('dashboard').factory('deadlineService', ['$http',
             return hour > 12 ? hour-12 + 'PM' : (hour === 0 ? 12 : hour)+ 'AM';
         };
         var getDateExtension = function(time){
+            if (time >=3 && time <= 20){
+                return time + 'th';
+            }
             var timeTest = time % 10;
-
             switch(timeTest) {
                 case(1):
                     time += 'st';
