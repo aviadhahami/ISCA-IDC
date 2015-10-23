@@ -14,8 +14,12 @@
                 <div flex="80" layout="column">
                     <!-- Applications table-->
                     <md-tab-body>
+                        <md-input-container>
+                            <label>Showing total of {{applications.length}} applications</label>
+                        </md-input-container>
                         <ul>
                             <li layout="row" class="table-header">
+                                <span class="md-subhead" flex>#</span>
                                 <span class="md-subhead" flex>First name</span>
                                 <span class="md-subhead" flex>Last name</span>
                                 <span class="md-subhead" flex>Sex</span>
@@ -26,6 +30,9 @@
                             <li layout="row"
                                 ng-repeat='application in applications | orderBy: "displayName" | orderBy: "iscaData.applicationForm.formPending": true | orderBy: "iscaData.applicationForm.accepted": true'
                                 ng-click="displayApplication(application)" class="table-row">
+
+                                <!--Choose icon to show-->
+                                <span class="md-body-1" flex="5">{{$index+1}}</span>
                                 <span class="md-body-1" flex>
                                     <i class="fa fa-star" title="Starred" ng-show="application.iscaData.applicationForm && application.iscaData.applicationForm.starred"></i>
                                     <i class="fa fa-check" title="Accepted" ng-show="application.iscaData.applicationForm && application.iscaData.applicationForm.accepted"></i>
