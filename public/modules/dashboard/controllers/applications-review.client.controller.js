@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('dashboard').controller('applicationsReviewController', ['$scope', 'Authentication', '$http', '$q',
-    function($scope, Authentication, $http, $q) {
+angular.module('dashboard').controller('applicationsReviewController', ['$scope', 'Authentication', '$http',
+    function($scope, Authentication, $http) {
         var APPLICATION_TABLE = 0,
             APPLICATION_VIEW  = 1;
         $scope.selectedTab = APPLICATION_TABLE;
@@ -30,18 +30,16 @@ angular.module('dashboard').controller('applicationsReviewController', ['$scope'
         };
 
         function updateUser(user) {
-            var deferred = $q.defer();
-
-            $http.post('/users/updateAdmin', user).then(function(response) {
-                deferred.resolve(response);
+            return $http.post('/users/updateAdmin', user).then(function(response) {
+                return (response)
             }, function(err) {
-                deferred.reject(err);
+                return (err);
             });
-            return deferred.promise;
         }
 
         function updateUserAndBack(user) {
             updateUser(user).then(function(response) {
+                //console.log(response)
                 $scope.backToTable();
             });
         }
