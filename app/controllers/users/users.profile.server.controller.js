@@ -13,9 +13,6 @@ var _ = require('lodash'),
 exports.updateAdmin = function(req, res) {
 	// Init Variables
 	var admin = req.user;
-	console.log(req.user);
-	console.log('----------------')
-	console.log(req.body);
 
 	// For security measurement we remove the roles from the req.body object
 	delete req.body.roles;
@@ -38,7 +35,6 @@ exports.updateAdmin = function(req, res) {
 				foundUser = _.extend(foundUser, req.body);
 				foundUser.updated = Date.now();
 
-				console.log(foundUser);
 				// Update found user
 				foundUser.save(function(err){
 					if (err) {
