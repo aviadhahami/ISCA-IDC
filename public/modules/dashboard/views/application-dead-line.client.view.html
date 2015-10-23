@@ -13,9 +13,7 @@
 			<div layout="row">
 				<div layout="col">
 					<p>Pick new date</p>
-					<time-date-picker display-mode="full" ng-model="requiredDate"></time-date-picker>
-					<br/>
-					<md-button class="md-raised" ng-click="changeDeadline()" >Save changes</md-button>
+					<time-date-picker display-mode="full" ng-model="requiredDate" on-save="changeDeadline()"></time-date-picker>
 				</div>
 
 			</div>
