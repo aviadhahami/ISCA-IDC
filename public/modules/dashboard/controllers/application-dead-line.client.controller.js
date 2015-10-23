@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http','$mdDialog',
-	function($scope,$http,$mdDialog) {
+angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http',
+	function($scope,$http) {
 		// Application dead line controller logic
 		// ...
 		var init = function(){
