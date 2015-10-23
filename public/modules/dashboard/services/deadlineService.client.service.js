@@ -65,6 +65,12 @@ angular.module('dashboard').factory('deadlineService', ['$http',
                         message : 'error',
                         err : err}
                 });
+            },
+            isPassed: function(){
+                return this.getDeadlineTime().then(function(res){
+                    var now = Date.now();
+                    return (res - now > 0);
+                });
             }
         }
     }
