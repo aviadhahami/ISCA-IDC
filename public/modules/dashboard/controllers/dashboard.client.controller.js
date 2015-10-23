@@ -6,9 +6,22 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
 
+        var monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
         Timetoapply.getTime().then(function(res){
-            $scope.applicationEndDate=res.data.date;
+            //console.log(res.data);
+            var time = res.data.date;
+            $scope.applicationEndDate=time;
+            var time = new Date(time);
+            $scope.endDateAsString = {
+                hours : time.getHours(),
+                dayInMonth : time.getDate(),
+                month : monthNames[time.getMonth()]
+            }
+            console.log($scope.endDateAsString);
         });
+
 
         $scope.openLink = function(link) {
             $location.url(link.url);
