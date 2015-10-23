@@ -16,7 +16,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/angular-material/angular-material.css',
-				'public/lib/font-awesome/css/font-awesome.min.css'
+				'public/lib/font-awesome/css/font-awesome.min.css',
+				'public/lib/sc-date-time/dist/sc-date-time.css'
 			],
 			js: [
 				'public/lib/ng-file-upload-shim/ng-file-upload-shim.min.js',
@@ -33,7 +34,8 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angulartics/dist/angulartics.min.js',
-				'public/lib/angulartics-google-analytics/dist/angulartics-google-analytics.min.js'
+				'public/lib/angulartics-google-analytics/dist/angulartics-google-analytics.min.js',
+				'public/lib/sc-date-time/dist/sc-date-time.js'
 			]
 		},
 		svg: [

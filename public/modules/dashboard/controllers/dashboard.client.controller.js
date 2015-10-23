@@ -1,22 +1,17 @@
 'use strict';
 
-angular.module('dashboard').controller('dashboardController', ['$scope', 'Authentication','Userroleasenumservice','Users','$location','Timetoapply',
-    function($scope, Authentication,Userroleasenumservice,Users, $location,Timetoapply) {
+angular.module('dashboard').controller('dashboardController', ['$scope', 'Authentication','Userroleasenumservice','Users','$location','deadlineService',
+    function($scope, Authentication,Userroleasenumservice,Users, $location,deadlineService) {
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
-
-        var monthNames = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
-        Timetoapply.getTime().then(function(res){
-            //console.log(res.data);
-            var time = res.data.date;
-            $scope.applicationEndDate=time;
-
+        deadlineService.getDeadlineTime().then(function(res){
+            // Must move back to string as the directive can't handle obj
+            $scope.applicationEndDate= res.toString();
         });
-
-
+        deadlineService.getDateAsStringObj().then(function(res){
+            $scope.applicationEndDateStringsObj = res;
+        });
         $scope.openLink = function(link) {
             $location.url(link.url);
         };

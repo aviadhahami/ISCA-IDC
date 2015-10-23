@@ -1,33 +1,26 @@
 'use strict';
 
-angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http','$mdDialog',
-	function($scope,$http,$mdDialog) {
-		// Application dead line controller logic
-		// ...
+angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http','deadlineService','$q','$state',
+	function($scope,$http,deadlineService,$q,$state) {
+
+
 		var init = function(){
-			$scope.requiredDate = '';
-			$http({
-				method:'get',
-				url:'api/timeToApply'
-			}).then(function(res){
-				console.log(res.data);
-				$scope.currentTime = new Date(res.data.date);
-			});
+
+			$q.all([deadlineService.getDeadlineTime(),deadlineService.getDateAsStringObj()])
+				.then(function(resolutions){
+					$scope.currentTime = resolutions[0];
+					$scope.currentTimeStringObj= resolutions[1];
+				});
 		};
 		init();
 
 		$scope.changeDeadline = function(){
-			$http({
-				method:'post',
-				url:'api/timeToApply',
-				data:{
-					date :$scope.requiredDate
-				}
-			}).then(function(res){
-				console.log(res.data);
+			deadlineService.updateDate($scope.requiredDate).then(function(res){
+				console.log(res);
 				$scope.success = 'updated date!'
-
+				$state.reload();
 			},function(err){
+				console.log(err);
 				$scope.error = 'didn\'t work this time...';
 			});
 		}
