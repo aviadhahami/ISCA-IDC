@@ -20,6 +20,7 @@
                     <md-tab-body>
                         <ul>
                             <li layout="row" class="table-header">
+                                <span class="md-subhead" flex="5">#</span>
                                 <span class="md-subhead" flex>First name</span>
                                 <span class="md-subhead" flex>Last name</span>
                                 <span class="md-subhead" flex>Role</span>
@@ -29,6 +30,7 @@
                             <li layout="row"
                                 ng-repeat='user in users | filter: { displayName: filterText } | orderBy: "displayName" | orderBy: "roles"'
                                 ng-click="displayApplication(user)" class="table-row">
+                                <span class="md-body-1" flex>{{ $index+1 }}</span>
                                 <span class="md-body-1" flex>{{ user.firstName }}</span>
                                 <span class="md-body-1" flex>{{ user.lastName }}</span>
                                 <span class="md-body-1" flex>
