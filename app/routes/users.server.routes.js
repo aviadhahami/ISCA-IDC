@@ -14,6 +14,8 @@ module.exports = function(app) {
 	app.route('/users').put(users.update);
 	app.route('/users').delete(users.remove);
 
+	app.route('/users/updateAdmin').post(users.updateAdmin);
+
 	app.route('/users/updateRole').post(users.updateRole);
 	app.route('/users/getRecords').get(users.getAllUsers);
 
