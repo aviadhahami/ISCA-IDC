@@ -12,8 +12,8 @@ angular.module('dashboard').config(['$stateProvider',
                     $scope.deadLinePassed = deadLinePassed;
                 }],
                 resolve:{
-                    deadLinePassed: ['Timetoapply',function(Timetoapply){
-                        return Timetoapply.isPassed();
+                    deadLinePassed: ['deadlineService',function(deadlineService){
+                        return deadlineService.isPassed();
                     }]}
             })
             .state('applicationsReview', {
