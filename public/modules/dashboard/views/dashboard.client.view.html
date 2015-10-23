@@ -9,7 +9,7 @@
                         <md-tabs md-dynamic-height md-border-bottom>
                             <md-tab label="application countdown" ng-if="deadLinePassed">
                                 <md-content class="md-padding">
-                                    <h1 ng-if="!user.iscaData.applicationForm" class="md-display-2">Applications are due 8PM, October 28th !</h1>
+                                    <h1 ng-if="!user.iscaData.applicationForm" class="md-display-2">Applications are due 8PM, November 2nd !</h1>
                                     <h1 ng-if="user.iscaData.applicationForm" class="md-display-2">We've received your application !</h1>
                                     <h2 style="color:#EF5350" countdown end-date="{{applicationEndDate}}" units="days|hours|minutes|seconds"></h2>
                                 </md-content>

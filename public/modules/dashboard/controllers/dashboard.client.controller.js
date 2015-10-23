@@ -13,13 +13,7 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
             //console.log(res.data);
             var time = res.data.date;
             $scope.applicationEndDate=time;
-            var time = new Date(time);
-            $scope.endDateAsString = {
-                hours : time.getHours(),
-                dayInMonth : time.getDate(),
-                month : monthNames[time.getMonth()]
-            }
-            console.log($scope.endDateAsString);
+
         });
 
 
