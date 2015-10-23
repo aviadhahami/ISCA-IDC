@@ -19,6 +19,7 @@
     "ng-file-upload": "~9.0.7",
     "ng-file-upload-shim": "~9.0.7",
     "angulartics": "~0.20.1",
-    "angulartics-google-analytics": "~0.1.1"
+    "angulartics-google-analytics": "~0.1.1",
+    "sc-date-time": "~1.1.3"
   }
 }
