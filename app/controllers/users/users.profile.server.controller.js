@@ -12,26 +12,46 @@ var _ = require('lodash'),
 
 exports.updateAdmin = function(req, res) {
 	// Init Variables
-	var user = req.user;
+	var admin = req.user;
+	console.log(req.user);
+	console.log('----------------')
+	console.log(req.body);
 
 	// For security measurement we remove the roles from the req.body object
 	delete req.body.roles;
 
-	if (user) {
-		// Merge existing user
-		user = _.extend(user, req.body);
-		user.updated = Date.now();
-		user.displayName = user.firstName + ' ' + user.lastName;
+	if (admin) {
+		if(admin.roles === 'admin'){
+			var userID = req.body._id;
+			// if admin
+			User.findById(userID,function(err,foundUser){
 
-		user.save(function(err) {
-			if (err) {
-				return res.status(400).send({
-					message: errorHandler.getErrorMessage(err)
+				// Merge existing user
+				foundUser = _.extend(foundUser, req.body);
+				foundUser.updated = Date.now();
+
+				// Update found user
+				foundUser.save(function(err){
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						req.login(admin, function(err) {
+							if (err) {
+								res.status(400).send(err);
+							} else {
+								res.json(foundUser);
+							}
+						});
+					}
 				});
-			} else {
-				res.status(200).send({message: 'updated by admin'});
-			}
-		});
+			});
+		}else{
+			// Not admin
+			res.status(403).send({message : 'Not authorized'});
+		}
+
 	} else {
 		res.status(400).send({
 			message: 'User is not signed in'
