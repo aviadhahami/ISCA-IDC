@@ -1,15 +1,16 @@
 'use strict';
 
-angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http','deadlineService',
-	function($scope,$http,deadlineService) {
+angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http','deadlineService','$q',
+	function($scope,$http,deadlineService,$q) {
 
 
 		var init = function(){
-			$scope.requiredDate,
-				$scope.currentTime,
-				$scope.currentTimeStringObj;
-			deadlineService.getDeadlineTime()
-			deadlineService.getDateAsStringObj()
+			$scope.requiredDate ='';
+			$q.all([deadlineService.getDeadlineTime(),deadlineService.getDateAsStringObj()])
+				.then(function(resolutions){
+					$scope.currentTime = resolutions[0];
+					$scope.currentTimeStringObj= resolutions[1];
+				});
 		};
 		init();
 
