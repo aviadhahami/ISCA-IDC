@@ -1,18 +1,15 @@
 'use strict';
 
-angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http',
-	function($scope,$http) {
-		// Application dead line controller logic
-		// ...
+angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http','deadline',
+	function($scope,$http,deadline) {
+
+
 		var init = function(){
-			$scope.requiredDate = '';
-			$http({
-				method:'get',
-				url:'api/timeToApply'
-			}).then(function(res){
-				console.log(res.data);
-				$scope.currentTime = new Date(res.data.date);
-			});
+			$scope.requiredDate,
+				$scope.currentTime,
+				$scope.currentTimeStringObj;
+			deadline.getDeadlineTime()
+			deadline.getDateAsStringObj()
 		};
 		init();
 
