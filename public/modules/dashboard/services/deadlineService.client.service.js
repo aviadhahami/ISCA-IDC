@@ -48,6 +48,23 @@ angular.module('dashboard').factory('deadlineService', ['$http',
                 }).then(function(res){
                     return new Date(res.data.date);
                 });
+            },
+            updateDate : function(date){
+                return $http({
+                    method:'post',
+                    url:'api/timeToApply',
+                    data:{
+                        date :date
+                    }
+                }).then(function(res){
+                    return {
+                        message : 'ok',
+                        res: res}
+                },function(err){
+                    return {
+                        message : 'error',
+                        err : err}
+                });
             }
         }
     }
