@@ -1,7 +1,7 @@
 {
   "name": "isca-idc",
   "description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "ISCA",
   "engines": {
     "node": "0.10.x",
