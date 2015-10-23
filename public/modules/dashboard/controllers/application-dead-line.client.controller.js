@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http','deadline',
-	function($scope,$http,deadline) {
+angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope','$http','deadlineService',
+	function($scope,$http,deadlineService) {
 
 
 		var init = function(){
 			$scope.requiredDate,
 				$scope.currentTime,
 				$scope.currentTimeStringObj;
-			deadline.getDeadlineTime()
-			deadline.getDateAsStringObj()
+			deadlineService.getDeadlineTime()
+			deadlineService.getDateAsStringObj()
 		};
 		init();
 

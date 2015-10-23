@@ -1,7 +1,7 @@
 'use strict';
 
 // Users service used for communicating with the users REST endpoint
-angular.module('dashboard').factory('deadline', ['$http',
+angular.module('dashboard').factory('deadlineService', ['$http',
     function($http) {
         //logic here
         var monthNames = ["January", "February", "March", "April", "May", "June",
