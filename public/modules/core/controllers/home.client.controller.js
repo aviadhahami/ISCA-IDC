@@ -75,7 +75,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 						description:'And here I described something',
 						author:'David',
 						imgSrc: 'http://www.nps.gov/pais/learn/nature/images/GHOST_CRAB_2.JPG'
-					}
+					},
 				]
 			},
 			{
