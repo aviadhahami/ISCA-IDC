@@ -42,17 +42,9 @@ exports.updateAdmin = function(req, res) {
 							message: errorHandler.getErrorMessage(err)
 						});
 					} else {
-
-						// If no error - relog the admin
-						req.login(admin, function(err) {
-							if (err) {
-								res.status(400).send(err);
-							} else {
-								res.json({
-									message : 'user updated',
-									user : foundUser
-								});
-							}
+						res.json({
+							message : 'user updated from admin',
+							user : foundUser
 						});
 					}
 				});
