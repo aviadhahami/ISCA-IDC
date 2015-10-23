@@ -9,7 +9,6 @@ angular.module('dashboard').controller('ApplicationDeadLineController', ['$scope
 			$q.all([deadlineService.getDeadlineTime(),deadlineService.getDateAsStringObj()])
 				.then(function(resolutions){
 					$scope.currentTime = resolutions[0];
-					$scope.requiredDate =resolutions[0];
 					$scope.currentTimeStringObj= resolutions[1];
 				});
 		};
