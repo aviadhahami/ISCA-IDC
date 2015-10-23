@@ -22,14 +22,23 @@ exports.updateAdmin = function(req, res) {
 
 	if (admin) {
 		if(admin.roles === 'admin'){
+
+			// Get the user id from the request body
 			var userID = req.body._id;
-			// if admin
+
+			// Query DB to get the user
 			User.findById(userID,function(err,foundUser){
+				if (err){
+
+					// If error in query
+					res.status(400).send(err)
+				}
 
 				// Merge existing user
 				foundUser = _.extend(foundUser, req.body);
 				foundUser.updated = Date.now();
 
+				console.log(foundUser);
 				// Update found user
 				foundUser.save(function(err){
 					if (err) {
@@ -37,11 +46,16 @@ exports.updateAdmin = function(req, res) {
 							message: errorHandler.getErrorMessage(err)
 						});
 					} else {
+
+						// If no error - relog the admin
 						req.login(admin, function(err) {
 							if (err) {
 								res.status(400).send(err);
 							} else {
-								res.json(foundUser);
+								res.json({
+									message : 'user updated',
+									user : foundUser
+								});
 							}
 						});
 					}
