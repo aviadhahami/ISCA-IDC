@@ -7,7 +7,7 @@ angular.module('dashboard').controller('applicationsReviewController', ['$scope'
         $scope.selectedTab = APPLICATION_TABLE;
         $scope.selectedApplication = undefined;
 
-        // Remove duplicates from language arrary
+        // Remove duplicates from language array
         var uniq = function (a) {
             return a.sort().filter(function(item, pos, ary) {
                 return !pos || item != ary[pos - 1];
