@@ -9,9 +9,6 @@ module.exports = function(app) {
 		.get(news.list)
 		.post(users.requiresLogin, news.create);
 
-	app.route('/news/limitedPosts')
-		.get(news.listTenPosts);
-
 	app.route('/news/:newsId')
 		.get(news.read)
 		.put(users.requiresLogin, news.hasAuthorization, news.update)
