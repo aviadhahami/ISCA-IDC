@@ -13,8 +13,14 @@ var NewsSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill News name',
+		required: 'Please fill title',
 		trim: true
+	},
+	type: {
+		type: String,
+		default: '',
+		required: 'Please fill type',
+		enum: ['magazine','blog']
 	},
 	created: {
 		type: Date,
