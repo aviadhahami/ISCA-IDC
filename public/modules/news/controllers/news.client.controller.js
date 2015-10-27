@@ -6,7 +6,13 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 		$scope.authentication = Authentication;
 		$scope.user = Authentication.user;
 		$scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
-		$scope.types = ['magazine','blog']
+
+		$scope.types = ['magazine','blog'];
+
+		$scope.filterByType = function(parent,item){
+			console.log(parent,item)
+			return true;
+		}
 
 		// Create new News
 		$scope.create = function() {
