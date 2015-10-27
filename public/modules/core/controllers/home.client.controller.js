@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Userroleasenumservice',
-	function($scope, Authentication, Userroleasenumservice) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Userroleasenumservice','$q','NewsGetterService',
+	function($scope, Authentication, Userroleasenumservice,$q,NewsGetterService) {
 		// This provides Authentication context.
 		$scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
 		$scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -45,9 +45,17 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		// based on WURFL.js service from http://web.wurfl.io/ 
 		$scope.isMobile = function () {
 			return WURFL.is_mobile;
-		}
+		};
 
+		$q.all([NewsGetterService.getMagazinePosts(),NewsGetterService.getBlogPosts()]).then(function(values){
+			console.log(values);
 
+			$scope.sections[1].data=values[0].data;
+			$scope.sections[2].data = values[1].data;
+			console.log($scope.sections)
+		});
+
+		// Sections implementation
 		$scope.sections = [
 			{
 				title:'News feed',

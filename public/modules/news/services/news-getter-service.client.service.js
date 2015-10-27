@@ -15,6 +15,18 @@ angular.module('news').factory('NewsGetterService', ['$http','$q',
                         method:'GET',
                         url: 'news'
                     })
+                },
+                getMagazinePosts : function(){
+                    return $http({
+                        method : 'GET',
+                        url : 'magazine'
+                    })
+                },
+                getBlogPosts : function(){
+                    return $http({
+                        method : 'GET',
+                        url : 'blog'
+                    })
                 }
             }
         }
