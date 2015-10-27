@@ -9,6 +9,12 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
             // Must move back to string as the directive can't handle obj
             $scope.applicationEndDate= res.toString();
         });
+        deadlineService.getDateAsStringObj().then(function(res){
+            $scope.applicationEndDateStringsObj = res;
+        });
+        $scope.openLink = function(link) {
+            $location.url(link.url);
+        };
         $scope.links = [
             {
                 level : 4,
@@ -42,8 +48,8 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
             },
             {
                 'level' : 1,
-                'url': '/news',
-                'title' : 'News',
+                'url': '/blogAndMagazine',
+                'title' : 'Blog and Magazine',
                 icon: 'fa-newspaper-o'
             }
         ];
