@@ -13,7 +13,7 @@ var NewsSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill title',
+		required: 'Please fill name',
 		trim: true
 	},
 	type: {
@@ -38,7 +38,8 @@ var NewsSchema = new Schema({
 	},
 	content :{
 		type: String,
-		default : ''
+		default : '',
+		required : 'Please add content'
 	}
 });
 
