@@ -6,7 +6,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 		$scope.authentication = Authentication;
 		$scope.user = Authentication.user;
 		$scope.userLevel = Userroleasenumservice.getValue($scope.user.roles);
-
+		$scope.types = ['magazine','blog']
 
 		// Create new News
 		$scope.create = function() {
