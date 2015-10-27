@@ -114,3 +114,22 @@ exports.hasAuthorization = function(req, res, next) {
 
 	next();
 };
+
+
+exports.getBlogPosts = function(req,res){
+	News.find({'type' : 'blog'}).sort('-created').exec(function(err,posts){
+		if (err){
+			res.status(400).send(err);
+		}
+		res.jsonp(posts);
+	})
+};
+
+exports.getMagazinePost = function(req,res){
+	News.find({'type' : 'magazine'}).sort('-created').exec(function(err,posts){
+		if (err){
+			res.status(400).send(err);
+		}
+		res.jsonp(posts);
+	})
+};

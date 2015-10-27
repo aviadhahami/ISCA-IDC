@@ -9,6 +9,14 @@ module.exports = function(app) {
 		.get(news.list)
 		.post(users.requiresLogin, news.create);
 
+	// Get blog posts
+	app.route('/blog')
+		.get(news.getBlogPosts);
+
+	app.route('/magazine')
+		.get(news.getMagazinePost);
+
+
 	app.route('/news/:newsId')
 		.get(news.read)
 		.put(users.requiresLogin, news.hasAuthorization, news.update)

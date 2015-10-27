@@ -51,55 +51,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.sections = [
 			{
 				title:'News feed',
-				data:[
-
-				]
+				data:[]
 			},
 			{
 				title:'Magazine',
-				data:[
-					{
-						title:'THIS IS A TITLE!',
-						description:'And here I described something',
-						author:'David',
-						imgSrc: 'https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg'
-					},
-					{
-						title:'THIS IS A TITLE!',
-						description:'And here I described something',
-						author:'David',
-						imgSrc: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
-					},
-					{
-						title:'THIS IS A TITLE!',
-						description:'And here I described something',
-						author:'David',
-						imgSrc: 'http://www.nps.gov/pais/learn/nature/images/GHOST_CRAB_2.JPG'
-					},
-				]
+				data:[]
 			},
 			{
 				title:'Blog',
-				data:[
-					{
-						title:'THIS IS A TITLE!',
-						description:'And here I described something',
-						author:'David',
-						imgSrc: 'https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg'
-					},
-					{
-						title:'THIS IS A TITLE!',
-						description:'And here I described something',
-						author:'David',
-						imgSrc: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
-					},
-					{
-						title:'THIS IS A TITLE!',
-						description:'And here I described something',
-						author:'David',
-						imgSrc: 'http://www.nps.gov/pais/learn/nature/images/GHOST_CRAB_2.JPG'
-					}
-				]
+				data:[]
 			}
 
 		]
