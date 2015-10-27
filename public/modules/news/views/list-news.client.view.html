@@ -37,7 +37,7 @@
             <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
                 <md-tab ng-repeat="type in types" label="{{type}}">
                     <md-content class="md-padding">
-                        <h1 class="md-display-2">{{type}}</h1>
+                        <h1 class="md-display-2">{{type.toUpperCase()}}</h1>
                         <hr/>
                         <md-list layout-padding>
                             <a  ng-repeat="news in news | filter: { name: filterText }" ng-if="news.type === type" ng-href="#!/news/{{news._id}}" class="news-item">
