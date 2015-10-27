@@ -9,7 +9,11 @@
                         <md-tabs md-dynamic-height md-border-bottom>
                             <md-tab label="application countdown" ng-if="deadLinePassed">
                                 <md-content class="md-padding">
-                                    <h1 ng-if="!user.iscaData.applicationForm" class="md-display-2">Applications are due 8PM, October 28th !</h1>
+                                    <h1 ng-if="!user.iscaData.applicationForm" class="md-display-2">Applications are due
+                                        {{applicationEndDateStringsObj.hour}},
+                                        {{applicationEndDateStringsObj.month}}
+                                        {{applicationEndDateStringsObj.day}}
+                                    </h1>
                                     <h1 ng-if="user.iscaData.applicationForm" class="md-display-2">We've received your application !</h1>
                                     <h2 style="color:#EF5350" countdown end-date="{{applicationEndDate}}" units="days|hours|minutes|seconds"></h2>
                                 </md-content>
@@ -27,11 +31,18 @@
                     <md-card-content>
                         <h4 class="md-title">Tools and links</h4>
                         <hr/>
-                        <ul>
-                            <li ng-repeat="link in links" ng-show="userLevel >= link.level">
-                                <a href="/#!{{link.url}}">{{link.title}}</a>
-                            </li>
-                        </ul>
+
+                        <md-grid-list md-cols-gt-md="5" md-cols-md="3" md-cols-sm="1" md-row-height="225px">
+
+                            <md-grid-tile ng-repeat="link in links | orderBy: 'level'" class="text-center dash-tile" ng-if="userLevel >= link.level">
+                                <md-whiteframe class="md-whiteframe-1dp" ng-click="openLink(link)">
+                                    <div layout="column">
+                                        <i class="fa fa-4x" ng-class="[link.icon]"></i>
+                                        <h4 class="bluish">{{ link.title }}</h4>
+                                    </div>
+                                </md-whiteframe>
+                            </md-grid-tile>
+                        </md-grid-list>
                     </md-card-content>
                 </md-card>
             </div>

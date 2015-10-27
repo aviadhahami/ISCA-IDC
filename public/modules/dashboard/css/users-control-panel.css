@@ -1,0 +1,29 @@
+.role {
+    text-transform: capitalize;
+    padding: 3px 6px;
+    /*font-weight: bold;*/
+    font-size: 14px;
+}
+
+.role.volunteer {
+    color: black !important;
+}
+
+.role.participant {
+    background-color: #4CAF50;
+    color: white !important;
+}
+
+.role.manager {
+    background-color: #FFEB3B;
+    color: black !important;
+}
+
+.role.admin {
+    background-color: #F44336;
+    color: white !important;
+}
+
+.role-menu-option:hover {
+    background-color: #EEE;
+}

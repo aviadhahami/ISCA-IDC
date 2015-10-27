@@ -1,0 +1,13 @@
+.bluish {
+    color: #328dc8;
+}
+
+.dash-tile md-whiteframe {
+    padding: 36px 0px;
+    width: 75%;
+    transition: all 1s;
+}
+.dash-tile md-whiteframe:hover {
+    background-color: rgba(50,141,200,0.1);
+    cursor: pointer;
+}

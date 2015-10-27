@@ -5,7 +5,8 @@
 
     <div flex="80" id="applicationContent" ng-if="applications && applications.length > 0">
         <a ui-sref="dashboard">
-            <i class="fa fa-chevron-left"></i> Back
+            <i class="fa fa-chevron-left"></i>
+            Back
         </a>
         <h2 class="md-display-3 page-title">Available applications</h2>
         <md-tabs id="pendingApplication" no-tabs-wrapper md-selected="selectedTab" md-dynamic-height="true">
@@ -13,8 +14,12 @@
                 <div flex="80" layout="column">
                     <!-- Applications table-->
                     <md-tab-body>
+                        <md-input-container>
+                            <label>Showing total of {{applications.length}} applications</label>
+                        </md-input-container>
                         <ul>
                             <li layout="row" class="table-header">
+                                <span class="md-subhead" flex>#</span>
                                 <span class="md-subhead" flex>First name</span>
                                 <span class="md-subhead" flex>Last name</span>
                                 <span class="md-subhead" flex>Sex</span>
@@ -23,8 +28,11 @@
                             </li>
 
                             <li layout="row"
-                                ng-repeat='application in applications | orderBy: "iscaData.applicationForm.formPending": true | orderBy: "iscaData.applicationForm.accepted": true'
+                                ng-repeat='application in applications | orderBy: "displayName" | orderBy: "iscaData.applicationForm.formPending": true | orderBy: "iscaData.applicationForm.accepted": true'
                                 ng-click="displayApplication(application)" class="table-row">
+
+                                <!--Choose icon to show-->
+                                <span class="md-body-1" flex="5">{{$index+1}}</span>
                                 <span class="md-body-1" flex>
                                     <i class="fa fa-star" title="Starred" ng-show="application.iscaData.applicationForm && application.iscaData.applicationForm.starred"></i>
                                     <i class="fa fa-check" title="Accepted" ng-show="application.iscaData.applicationForm && application.iscaData.applicationForm.accepted"></i>
@@ -61,7 +69,7 @@
                     </style>
                     <md-card>
                         <md-card-content>
-                            <a href="#" ng-click="backToTable()"><i class="fa fa-chevron-left"></i> Back</a>
+                            <a href ng-click="backToTable()"><i class="fa fa-chevron-left"></i> Back to table</a>
                             <h2 class="md-title">{{selectedApplication.displayName}}'s application form</h2>
                             <hr/>
                             <section>
@@ -139,104 +147,103 @@
                                         </div>
                                     </div>
                                 </div>
+                            </section>
+
+                            <br/><br/>
+
+
+                            <p style="text-decoration: underline">Academic information</p>
+                            <div layout="column">
+                                <div layout="row">
+                                    <div flex="5">
+                                        <i class="fa fa-graduation-cap fa-2x colorFAicon"></i>
+                                    </div>
+                                    <div flex="20">
+                                        Pursuing
+                                    </div>
+                                    <div flex>
+                                        {{selectedApplication.iscaData.applicationForm.form.academicInfo.degree}} in {{selectedApplication.iscaData.applicationForm.form.academicInfo.fieldOfStudy}}
+                                    </div>
+                                </div>
+                                <br/>
+                                <div layout="row">
+                                    <div flex="5">
+                                        <i class="fa fa-hourglass-half fa-2x colorFAicon"></i>
+                                    </div>
+                                    <div flex="20">
+                                        Current study year
+                                    </div>
+                                    <div flex>
+                                        {{selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear}}
+                                    </div>
+                                </div>
+                                <br/>
+                                <div layout="row">
+                                    <div flex="5">
+                                        <i class="fa fa-language fa-2x colorFAicon"></i>
+                                    </div>
+                                    <div flex="20">
+                                        Controlled languages
+                                    </div>
+                                    <div flex>
+                                        <md-chips ng-model="selectedApplication.languages" readonly="true">
+                                            <md-chip-template>
+                                                <p>{{$chip}}</p>
+                                            </md-chip-template>
+                                        </md-chips>
+                                    </div>
+                                </div>
 
                                 <br/><br/>
 
-
-                                <p style="text-decoration: underline">Academic information</p>
+                                <p style="text-decoration: underline">Essay and why you have applied</p>
                                 <div layout="column">
                                     <div layout="row">
                                         <div flex="5">
-                                            <i class="fa fa-graduation-cap fa-2x colorFAicon"></i>
+                                            <i class="fa fa-question-circle fa-2x colorFAicon"></i>
                                         </div>
                                         <div flex="20">
-                                            Pursuing
+                                            What do I bring in
                                         </div>
                                         <div flex>
-                                            {{selectedApplication.iscaData.applicationForm.form.academicInfo.degree}} in {{selectedApplication.iscaData.applicationForm.form.academicInfo.fieldOfStudy}}
+                                            {{selectedApplication.iscaData.applicationForm.form.academicInfo.reasonToCome}}
                                         </div>
                                     </div>
                                     <br/>
                                     <div layout="row">
                                         <div flex="5">
-                                            <i class="fa fa-hourglass-half fa-2x colorFAicon"></i>
+                                            <i class="fa fa-file-text-o fa-2x colorFAicon"></i>
                                         </div>
                                         <div flex="20">
-                                            Current study year
+                                            Essay
                                         </div>
                                         <div flex>
-                                            {{selectedApplication.iscaData.applicationForm.form.academicInfo.currentYear}}
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <div layout="row">
-                                        <div flex="5">
-                                            <i class="fa fa-language fa-2x colorFAicon"></i>
-                                        </div>
-                                        <div flex="20">
-                                            Controlled languages
-                                        </div>
-                                        <div flex>
-                                            <md-chips ng-model="selectedApplication.languages" readonly="true">
-                                                <md-chip-template>
-                                                    <p>{{$chip}}</p>
-                                                </md-chip-template>
-                                            </md-chips>
-                                        </div>
-                                    </div>
-
-                                    <br/><br/>
-
-                                    <p style="text-decoration: underline">Essay and why you have applied</p>
-                                    <div layout="column">
-                                        <div layout="row">
-                                            <div flex="5">
-                                                <i class="fa fa-question-circle fa-2x colorFAicon"></i>
-                                            </div>
-                                            <div flex="20">
-                                                What do I bring in
-                                            </div>
-                                            <div flex>
-                                                {{selectedApplication.iscaData.applicationForm.form.academicInfo.reasonToCome}}
-                                            </div>
-                                        </div>
-                                        <br/>
-                                        <div layout="row">
-                                            <div flex="5">
-                                                <i class="fa fa-file-text-o fa-2x colorFAicon"></i>
-                                            </div>
-                                            <div flex="20">
-                                                Essay
-                                            </div>
-                                            <div flex>
-                                                {{selectedApplication.iscaData.applicationForm.form.essay.content}}
-                                            </div>
+                                            {{selectedApplication.iscaData.applicationForm.form.essay.content}}
                                         </div>
                                     </div>
                                 </div>
-                                <br/><br/>
-                                <div>
-                                    <md-button class="md-raised" ng-click="starApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.formPending">
-                                        <i class="fa fa-star" title="Star applicant" ng-if="!selectedApplication.iscaData.applicationForm.starred"></i>
-                                        <span ng-if="!selectedApplication.iscaData.applicationForm.starred">Star</span>
-                                        <i class="fa fa-star" title="Unstar applicant" ng-if="selectedApplication.iscaData.applicationForm.starred"></i>
-                                        <span ng-if="selectedApplication.iscaData.applicationForm.starred">Unstar</span>
-                                    </md-button>
-                                    <md-button class="md-raised" ng-click="acceptApplicant(selectedApplication)" ng-if="!selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
-                                        <i class="fa fa-check" title="Accept applicant"></i>
-                                        Accept
-                                    </md-button>
-                                    </md-button>
-                                    <md-button class="md-raised" ng-click="denyApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
-                                        <i class="fa fa-ban" title="Deny applicant"></i>
-                                        Deny
-                                    </md-button>
-                                    <md-button class="md-raised" ng-click="resetApplicant(selectedApplication)">
-                                        <i class="fa fa-ban" title="Reset any previous marks"></i>
-                                        Reset
-                                    </md-button>
-                                </div>
-                            </section>
+                            </div>
+                            <br/><br/>
+                            <div>
+                                <md-button class="md-raised" ng-click="starApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.formPending">
+                                    <i class="fa fa-star" title="Star applicant" ng-if="!selectedApplication.iscaData.applicationForm.starred"></i>
+                                    <span ng-if="!selectedApplication.iscaData.applicationForm.starred">Star</span>
+                                    <i class="fa fa-star" title="Unstar applicant" ng-if="selectedApplication.iscaData.applicationForm.starred"></i>
+                                    <span ng-if="selectedApplication.iscaData.applicationForm.starred">Unstar</span>
+                                </md-button>
+                                <md-button class="md-raised" ng-click="acceptApplicant(selectedApplication)" ng-if="!selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
+                                    <i class="fa fa-check" title="Accept applicant"></i>
+                                    Accept
+                                </md-button>
+                                <md-button class="md-raised" ng-click="denyApplicant(selectedApplication)" ng-if="selectedApplication.iscaData.applicationForm.accepted || selectedApplication.iscaData.applicationForm.formPending">
+                                    <i class="fa fa-ban" title="Deny applicant"></i>
+                                    Deny
+                                </md-button>
+                                <md-button class="md-raised" ng-click="resetApplicant(selectedApplication)">
+                                    <i class="fa fa-ban" title="Reset any previous marks"></i>
+                                    Reset
+                                </md-button>
+                            </div>
                         </md-card-content>
                     </md-card>
                 </md-tab-body>
@@ -245,7 +252,13 @@
         </md-tabs>
     </div>
 
-    <div flex="80" ng-if="applications == undefined || applications.length == 0" style="text-align: center"><h2 class="md-display-3">No applications available</h2></div>
+    <div flex="80" ng-if="applications == undefined || applications.length == 0" style="text-align: center">
+        <a ui-sref="dashboard" style="float: left">
+            <i class="fa fa-chevron-left"></i>
+            Back
+        </a>
+        <h2 class="md-display-3">No applications available</h2>
+    </div>
 
     <div flex="10"></div>
 

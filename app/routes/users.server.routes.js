@@ -12,6 +12,9 @@ module.exports = function(app) {
 	// Setting up the users profile api
 	app.route('/users/me').get(users.me);
 	app.route('/users').put(users.update);
+	app.route('/users').delete(users.remove);
+
+	app.route('/users/updateAdmin').post(users.updateAdmin);
 
 	app.route('/users/updateRole').post(users.updateRole);
 	app.route('/users/getRecords').get(users.getAllUsers);

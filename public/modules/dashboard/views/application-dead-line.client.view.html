@@ -7,16 +7,14 @@
 			<h2 class="md-title">Change application deadline</h2>
 			<hr/>
 			<div layout="row">
-				<p>The application deadline is currently targeting: {{currentTime.getMonth() + 1}}/{{currentTime.getDate()}}/{{currentTime.getFullYear()}}
-					<small><b>(notice! format is mm/dd/yyyy !!)</b></small>
+				<p>The application deadline is currently targeting: {{currentTimeStringObj.month}} {{currentTimeStringObj.day}} at {{currentTimeStringObj.hour}}
 			</div>
 			<div layout="row">
 				<div layout="col">
 					<p>Pick new date</p>
-					<md-datepicker ng-model="requiredDate"></md-datepicker>
-					<br/>
-					<md-button class="md-raised" ng-click="changeDeadline()" >Save changes</md-button>
+					<time-date-picker display-mode="full" ng-model="requiredDate" on-save="changeDeadline()"></time-date-picker>
 				</div>
+
 			</div>
 			<div>
 				{{success || error}}
