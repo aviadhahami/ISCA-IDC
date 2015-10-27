@@ -9,17 +9,14 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 
 		$scope.types = ['magazine','blog'];
 
-		$scope.filterByType = function(parent,item){
-			console.log(parent,item)
-			return true;
-		}
 
 		// Create new News
 		$scope.create = function() {
 			// Create new News object
 			var news = new News ({
 				name: this.name,
-				content : this.content
+				content : this.content,
+				type: this.type
 			});
 
 			// Redirect after save
