@@ -42,6 +42,7 @@
                         <md-list layout-padding>
                             <a  ng-repeat="news in news | filter: { name: filterText }" ng-if="news.type === type" ng-href="#!/news/{{news._id}}" class="news-item">
                                 <md-list-item class="md-3-line">
+                                    <img ng-src="http://www.onthisdeity.com/wp-content/uploads/2011/04/adolf-hitler.jpg" class="md-avatar" />
                                     <div class="md-list-item-text">
                                         <h4 class="md-subhead">{{news.name}}</h4>
                                         <small>
