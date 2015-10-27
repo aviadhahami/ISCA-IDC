@@ -1,24 +1,31 @@
-<section data-ng-controller="NewsController" data-ng-init="findOne()">
+<md-content data-ng-controller="NewsController" ng-init="findOne()">
     <div class="page-header">
         <h1>Edit News</h1>
     </div>
-    <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="news.name" id="name" class="form-control" placeholder="Name" required>
-                        <textarea name="" id="" cols="30" rows="10" ng-bind="news.content"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
-                </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-            </fieldset>
-        </form>
-    </div>
-</section>
+    <md-content>
+        <md-card>
+            <md-card-content>
+                <md-input-container>
+                    <label>Name</label>
+                    <input ng-model="news.name" type="text"/>
+                </md-input-container>
+                <md-input-container>
+                    <label>Type</label>
+                    <md-select ng-model="news.type">
+                        <md-option value="magazine">
+                            Magazine
+                        </md-option>
+                        <md-option value="blog">
+                            Blog
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Content</label>
+                    <textarea name="content" id="content" data-ng-model="news.content" cols="30" rows="10"></textarea>
+                </md-input-container>
+                <button ng-click="update()">Update</button>
+            </md-card-content>
+        </md-card>
+    </md-content>
+</md-content>
