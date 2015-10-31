@@ -47,7 +47,11 @@
                         </div>
                         <!--IF FACEBOOK-->
                         <div ng-if="item.title.toLowerCase() === 'news feed'">
-                            <md-progress-linear md-mode="indeterminate" ng-if="loadingFacebookFeed"></md-progress-linear>
+                            <div ng-if="loadingFacebookFeed">
+                                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+                                <p>Loading Facebook posts..</p>
+                            </div>
+
                             <a ng-repeat="data in item.data" ng-href="http://facebook.com/{{data.id}}" target="_blank">
                                 <md-list-item ng-if="data.message" class="md-3-line">
                                     <img ng-src="{{item.icon}}" class="md-avatar"/>
@@ -69,40 +73,7 @@
             </md-tab>
         </md-tabs>
     </md-content>
-    <!--<div class="container-fluid">-->
-    <!--<div class="news col-sm-6 col-sm-offset-1 col-xs-12 col-xs-offset-0 md-whiteframe-z1">-->
-    <!--<h2>-->
-    <!--Germany: Criminal Complaint Filed Against Mayor for Antisemitism-->
-    <!--</h2>-->
-    <!--<div class="news-content">-->
-    <!--<div class="image-container">-->
-    <!--<img src="http://www.jpost.com/HttpHandlers/ShowImage.ashx?id=254531&h=530&w=758" align="left" />-->
-    <!--</div>-->
-    <!--<p>-->
-    <!--Andreas Neumann, a Jew who lives in Germany, filed a criminal complaint against the Mayor of Jena, Albrecht Schröter, alleging he incited anti-Semitic hatred because of his call to boycott Israeli products and after he blamed Israel for the Syrian refugee crisis.-->
-    <!--<br><br>-->
-    <!--According to Neumann’s lawyer, he seeks a 15,000 Euro penalty an a temporary restraining order against the Mayor’s allegedly anti-Semitic speeches.-->
-    <!--<br><br>-->
-    <!--“Schröter’s call has a clear anti-Semitic character and is, in my view, clearly incitement to hate,” Neumann said.  He explained that calls supporting boycott of Israeli products targets all Jewish people.-->
-    <!--</p>-->
-    <!--<a href="http://www.jpost.com/Diaspora/Criminal-complaint-filed-against-German-Mayor-for-anti-Israel-and-anti-Jewish-hate-419755" target="_blank">-->
-    <!--<button class="readmore-btn" md-ink-ripple>Read More</button>-->
-    <!--</a>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">-->
-    <!--&lt;!&ndash; Facebook Page Feed &ndash;&gt;-->
-    <!--<div class="fb-page md-whiteframe-z1" data-href="https://www.facebook.com/iscaorg" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true">-->
-    <!--<div class="fb-xfbml-parse-ignore">-->
-    <!--<blockquote cite="https://www.facebook.com/iscaorg">-->
-    <!--<a href="https://www.facebook.com/iscaorg">ISCA - Israeli Students Combating Antisemitism</a>-->
-    <!--</blockquote>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash; End Facebook &ndash;&gt;-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</section>-->
+
     <br/>
     <section class="block" id="participation">
         <div class="container">
