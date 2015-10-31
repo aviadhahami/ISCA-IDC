@@ -1,10 +1,15 @@
 <md-content data-ng-controller="NewsController" ng-init="findOne()">
-    <div class="page-header">
-        <h1>Edit News</h1>
-    </div>
     <md-content>
         <md-card>
             <md-card-content>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2 style="color: white">
+                            Edit "{{news.name}}"
+                        </h2>
+                    </div>
+                </md-toolbar>
+
                 <md-input-container>
                     <label>Name</label>
                     <input ng-model="news.name" type="text"/>
