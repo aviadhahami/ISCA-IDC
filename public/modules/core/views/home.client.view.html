@@ -32,6 +32,7 @@
             <md-tab ng-repeat="item in sections" label="{{item.title}}">
                 <md-content class="md-padding">
                     <md-list>
+                        <md-progress-linear  md-mode="indeterminate" ng-show="loadingNews"></md-progress-linear>
                         <a ng-repeat="data in item.data" ng-href="#!/blogAndMagazine/{{data._id}}" style="all:inherit"  class="news-item">
                             <md-list-item class="md-3-line magazine-and-blog">
                                 <img ng-src="data:{{data.imageData.filetype}};base64,{{data.imageData.base64}}" class="md-avatar"/>

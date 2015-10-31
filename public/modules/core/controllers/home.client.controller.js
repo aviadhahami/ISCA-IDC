@@ -37,13 +37,21 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         $scope.isMobile = function () {
             return WURFL.is_mobile;
         };
+        var populateNews = function(){
+            $scope.loadingNews = true;
+            $q.all([NewsGetterService.getMagazinePosts(),NewsGetterService.getBlogPosts()]).then(function(values){
+                $scope.loadingNews = false;
+                // Slicing to get only 10 and not overkill client
+                $scope.sections[1].data=values[0].data.slice(0,9);
+                $scope.sections[2].data = values[1].data.slice(0,9);
 
-        $q.all([NewsGetterService.getMagazinePosts(),NewsGetterService.getBlogPosts()]).then(function(values){
-            console.log(values);
-            $scope.sections[1].data=values[0].data.slice(0,9);
-            $scope.sections[2].data = values[1].data.slice(0,9);
-            console.log($scope.sections)
-        });
+            });
+        };
+        var init = function(){
+            populateNews();
+        };
+
+        init();
 
         // Sections implementation
         $scope.sections = [
