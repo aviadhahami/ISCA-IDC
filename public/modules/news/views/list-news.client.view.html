@@ -22,7 +22,7 @@
                             <div flex="80" >
                                 <md-input-container>
                                     <label style="color: white">Search</label>
-                                    <input style="color: white" type="text" ng-model="filterText"  />
+                                    <input style="color: white" type="text" ng-model="filter.text"  />
                                 </md-input-container>
                             </div>
                             <div flex>
@@ -41,7 +41,7 @@
                         <hr/>
                         <md-list layout-padding>
                             <!--TODO: FIX FILTER-->
-                            <a ng-repeat="item in news" ng-if="item.type === type" ng-href="#!/blogAndMagazine/{{item._id}}" class="news-item">
+                            <a ng-repeat="item in news | getPostByName:filter.text" ng-if="item.type === type" ng-href="#!/blogAndMagazine/{{item._id}}" class="news-item">
                                 <md-list-item class="md-3-line">
                                     <img ng-src="http://www.onthisdeity.com/wp-content/uploads/2011/04/adolf-hitler.jpg" class="md-avatar" />
                                     <div class="md-list-item-text">
