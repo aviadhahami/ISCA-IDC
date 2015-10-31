@@ -48,10 +48,16 @@
                         <div ng-if="item.title.toLowerCase() === 'news feed'">
                             <md-progress-linear md-mode="indeterminate" ng-if="loadingFacebookFeed"></md-progress-linear>
                             <a ng-repeat="data in item.data" ng-href="http://facebook.com/{{data.id}}" target="_blank">
-                                <md-list-item ng-if="data.message" class="md-3-line magazine-and-blog">
-                                    <p>
-                                        {{ data.message.length > 500 ? data.message.slice(0,499) + '...' :  data.message }}
-                                    </p>
+                                <md-list-item ng-if="data.message" class="md-3-line">
+                                    <div class="md-list-item-text" layout="column">
+                                        <p style="color:black">
+                                            {{ data.message.length > 500 ? data.message.slice(0,499) + '...' :  data.message }}
+                                        </p>
+                                        <small style="color:grey">
+                                            Posted on {{stringifyDate(data.created_time)}}
+                                        </small>
+                                    </div>
+
                                 </md-list-item>
                             </a>
                         </div>

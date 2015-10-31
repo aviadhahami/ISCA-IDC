@@ -93,6 +93,13 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
         init();
 
+        $scope.stringifyDate = function(date){
+            var time = new Date(date);
+            var yyyy = time.getFullYear().toString();
+            var mm = (time.getMonth()+1).toString();
+            var dd = time.getDate().toString();
+            return (dd[1]?dd:"0"+dd[0]) +'/' +  (mm[1]?mm:"0"+mm[0]) +'/' + yyyy;
+        };
         // Sections implementation
         $scope.sections = [
             {
