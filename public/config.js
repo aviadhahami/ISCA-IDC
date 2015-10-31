@@ -17,7 +17,8 @@ var ApplicationConfiguration = (function() {
 		'ngFileUpload',
 		'angulartics',
 		'angulartics.google.analytics',
-		'scDateTime'
+		'scDateTime',
+        'naif.base64'
 	];
 
 	// Add a new vertical module
