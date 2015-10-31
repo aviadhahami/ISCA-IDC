@@ -45,10 +45,12 @@
                                 </md-list-item>
                             </a>
                         </div>
+                        <!--IF FACEBOOK-->
                         <div ng-if="item.title.toLowerCase() === 'news feed'">
                             <md-progress-linear md-mode="indeterminate" ng-if="loadingFacebookFeed"></md-progress-linear>
                             <a ng-repeat="data in item.data" ng-href="http://facebook.com/{{data.id}}" target="_blank">
                                 <md-list-item ng-if="data.message" class="md-3-line">
+                                    <img ng-src="{{item.icon}}" class="md-avatar"/>
                                     <div class="md-list-item-text" layout="column">
                                         <p style="color:black">
                                             {{ data.message.length > 500 ? data.message.slice(0,499) + '...' :  data.message }}
