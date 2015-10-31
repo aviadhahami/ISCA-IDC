@@ -28,6 +28,10 @@
                     <label>Content</label>
                     <textarea name="content" id="content" data-ng-model="content" cols="30" rows="10"></textarea>
                 </md-input-container>
+                <md-input-container>
+                    <input type="file" ng-model="image" base-sixty-four-input required maxsize="500" accept="image/*">
+                    <img data-ng-src="data:{{image.filetype}};base64,{{image.base64}}" alt="uploaded image"/>
+                </md-input-container>
                 <button ng-click="create()">send</button>
             </md-card-content>
         </md-card>

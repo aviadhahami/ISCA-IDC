@@ -29,7 +29,7 @@ var NewsSchema = new Schema({
 	imageData:{
 		type: Schema.Types.Mixed,
 		default : {
-			base64:''
+			0:''
 		}
 	},
 	user: {
