@@ -33,6 +33,10 @@
                     <img style="width:50%" data-ng-src="data:{{image.filetype}};base64,{{image.base64}}" alt="uploaded image"/>
                 </md-input-container>
                 <button ng-click="create()">send</button>
+                <br/>
+                <p style="color:indianred;" ng-if="error">
+                    Can not upload!, {{error}}
+                </p>
             </md-card-content>
         </md-card>
     </md-content>

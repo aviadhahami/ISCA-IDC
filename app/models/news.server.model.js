@@ -28,6 +28,7 @@ var NewsSchema = new Schema({
 	},
 	imageData:{
 		type: Schema.Types.Mixed,
+        required: 'Please upload image',
 		default : {
 			0:''
 		}
