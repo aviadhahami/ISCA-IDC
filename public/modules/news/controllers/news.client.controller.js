@@ -45,7 +45,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
                 }
             } else {
                 $scope.news.$remove(function() {
-                    $location.path('listNews');
+                    $location.path('/blogAndMagazine');
                 });
             }
         };
