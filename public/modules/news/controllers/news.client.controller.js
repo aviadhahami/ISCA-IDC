@@ -76,12 +76,21 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 
         // Find existing News
         $scope.findOne = function() {
+            $scope.loadingNews = true;
             if(!$stateParams.newsId){
                 $location.path('/blogAndMagazine')
             }
-            $scope.news = News.get({
+            News.get({
                 newsId: $stateParams.newsId
+            },function(data){
+                $scope.loadingNews = false;
+                // Populate news
+                $scope.news =data;
+            },function(err){
+                console.log(err);
+                $scope.err = true;
             });
+
         };
     }
 ]);
