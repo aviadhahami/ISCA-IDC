@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Userroleasenumservice','$q','NewsGetterService','$window','facebookService',
-    function($scope, Authentication, Userroleasenumservice,$q,NewsGetterService,$window,facebookService) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Userroleasenumservice','$q','NewsGetterService','$window','facebookService','$interval',
+    function($scope, Authentication, Userroleasenumservice,$q,NewsGetterService,$window,facebookService,$interval) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -48,22 +48,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             });
         };
         var initFacebook = function(){
-            $window.fbAsyncInit = function() {
-                FB.init({
-                    appId: '187226808279553',
-                    status: true,
-                    cookie: true,
-                    xfbml: true,
-                    version: 'v2.4'
-                });
-                $scope.facebookLoaded= true;
-            };
-            (function(d){
-                var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-                js = d.createElement('script'); js.id = id; js.async = true;
-                js.src = '//connect.facebook.net/en_US/sdk.js';
-                d.getElementsByTagName('head')[0].appendChild(js);
-            }(document));
+            facebookService.initFacebook();
+            $scope.facebookLoaded = true;
         };
         var populateFacebookFeed = function(){
             $scope.loadingFacebookFeed = true;
@@ -73,21 +59,24 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                     $scope.loadingFacebookFeed = false;
                     $scope.sections[0].data = responses[0].data;
                     $scope.sections[0]['icon'] = responses[1].data.url;
+                    $interval.cancel(interval);
                 });
 
             }else{
                 console.log('FB isnt loaded yet')
+                $scope.facebookLoaded= false;
             }
         };
+        var interval;
         var init = function(){
             populateNews();
             initFacebook();
             populateFacebookFeed();
 
             // Look when facebook is loaded
-            $scope.$watch('facebookLoaded',function(o,n){
+            interval= $interval(function(){
                 populateFacebookFeed();
-            })
+            },1000);
         };
 
         init();
