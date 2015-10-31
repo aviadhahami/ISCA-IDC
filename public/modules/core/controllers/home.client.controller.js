@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Userroleasenumservice','$q','NewsGetterService',
-    function($scope, Authentication, Userroleasenumservice,$q,NewsGetterService) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Userroleasenumservice','$q','NewsGetterService','$window','facebookService',
+    function($scope, Authentication, Userroleasenumservice,$q,NewsGetterService,$window,facebookService) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -47,8 +47,42 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
             });
         };
+        var initFacebook = function(){
+            $window.fbAsyncInit = function() {
+                FB.init({
+                    appId: '187226808279553',
+                    status: true,
+                    cookie: true,
+                    xfbml: true,
+                    version: 'v2.4'
+                });
+                $scope.facebookLoaded= true;
+            };
+            (function(d){
+                var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = '//connect.facebook.net/en_US/sdk.js';
+                d.getElementsByTagName('head')[0].appendChild(js);
+            }(document));
+        };
+        var populateFacebookFeed = function(){
+            if($scope.facebookLoaded){
+                facebookService.getPostsFromIsca().then(function(data){
+                    console.log(data);
+                },function(err){
+                    console.log(err)
+                })
+            }else{
+                console.log('nope')
+            }
+        };
         var init = function(){
             populateNews();
+            initFacebook();
+            populateFacebookFeed();
+            $scope.$watch('facebookLoaded',function(o,n){
+                populateFacebookFeed()
+            })
         };
 
         init();
