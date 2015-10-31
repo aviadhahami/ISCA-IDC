@@ -63,8 +63,16 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 
         // Find a list of News
         $scope.find = function() {
-            $scope.news = News.query();
+            $scope.loadingNews = true;
+            News.query(function (data) {
+
+                // Remove loader
+                $scope.loadingNews = false;
+                // Populate data
+                $scope.news = data;
+            })
         };
+
 
         // Find existing News
         $scope.findOne = function() {

@@ -41,6 +41,7 @@
                         <hr/>
                         <md-list layout-padding>
                             <!--TODO: FIX FILTER-->
+                            <md-progress-linear  md-mode="indeterminate" ng-show="loadingNews"></md-progress-linear>
                             <a ng-repeat="item in news | getPostByName:filter.text" ng-if="item.type === type" ng-href="#!/blogAndMagazine/{{item._id}}" class="news-item">
                                 <md-list-item class="md-3-line">
                                     <img ng-src="data:{{item.imageData.filetype}};base64,{{item.imageData.base64}}" class="md-avatar" />
