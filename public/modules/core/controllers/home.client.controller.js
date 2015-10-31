@@ -67,21 +67,24 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         };
         var populateFacebookFeed = function(){
             if($scope.facebookLoaded){
-                facebookService.getPostsFromIsca().then(function(data){
-                    console.log(data);
+                facebookService.getPostsFromIsca().then(function(response){
+                    console.log(response);
+                    $scope.sections[0].data = response.data;
                 },function(err){
                     console.log(err)
                 })
             }else{
-                console.log('nope')
+                console.log('FB isnt loaded yet')
             }
         };
         var init = function(){
             populateNews();
             initFacebook();
             populateFacebookFeed();
+
+            // Look when facebook is loaded
             $scope.$watch('facebookLoaded',function(o,n){
-                populateFacebookFeed()
+                populateFacebookFeed();
             })
         };
 
