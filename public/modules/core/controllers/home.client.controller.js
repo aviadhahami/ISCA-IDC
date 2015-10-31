@@ -49,9 +49,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 		$q.all([NewsGetterService.getMagazinePosts(),NewsGetterService.getBlogPosts()]).then(function(values){
 			console.log(values);
-
-			$scope.sections[1].data=values[0].data;
-			$scope.sections[2].data = values[1].data;
+			$scope.sections[1].data=values[0].data.slice(0,9);
+			$scope.sections[2].data = values[1].data.slice(0,9);
 			console.log($scope.sections)
 		});
 
