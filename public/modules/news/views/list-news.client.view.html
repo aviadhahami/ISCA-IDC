@@ -26,7 +26,7 @@
                                 </md-input-container>
                             </div>
                             <div flex>
-                                <md-button class="md-fab" aria-label="New item" href="/#!/news/create" >
+                                <md-button class="md-fab" aria-label="New item" href="/#!/blogAndMagazine/create" >
                                     <i style="color: white;"class="fa fa-pencil fa-lg"></i>
                                 </md-button>
                             </div>
@@ -42,7 +42,7 @@
                         <md-list layout-padding>
 
                             <!--TODO: FIX FILTER-->
-                            <a  ng-repeat="news in news | filter: { name: filterText }" ng-if="news.type === type" ng-href="#!/news/{{news._id}}" class="news-item">
+                            <a  ng-repeat="news in news | filter: { name: filterText }" ng-if="news.type === type" ng-href="#!/blogAndMagazine/{{news._id}}" class="news-item">
                                 <md-list-item class="md-3-line">
                                     <img ng-src="http://www.onthisdeity.com/wp-content/uploads/2011/04/adolf-hitler.jpg" class="md-avatar" />
                                     <div class="md-list-item-text">
@@ -62,7 +62,7 @@
             </md-tabs>
 
             <div class="alert alert-warning text-center" data-ng-hide="!news.$resolved || news.length">
-                No News yet, why don't you <a href="/#!/news/create">create one</a>?
+                No items yet, why don't you <a href="/#!/blogAndMagazine/create">create one</a>?
             </div>
         </md-card-content>
     </md-card>
