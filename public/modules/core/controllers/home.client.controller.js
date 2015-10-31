@@ -35,7 +35,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         // Returns true if using mobile device (phone / tablet / etc.)
         // based on WURFL.js service from http://web.wurfl.io/
         $scope.isMobile = function () {
-            return WURFL.is_mobile;
+            return WURFL.is_mobile || false;
         };
         var populateNews = function(){
             $scope.loadingNews = true;
