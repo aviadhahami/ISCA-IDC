@@ -41,16 +41,16 @@
                         <hr/>
                         <md-list layout-padding>
                             <!--TODO: FIX FILTER-->
-                            <a ng-repeat="news in news | filter: { name: filterText }" ng-if="news.type === type" ng-href="#!/blogAndMagazine/{{news._id}}" class="news-item">
+                            <a ng-repeat="item in news" ng-if="item.type === type" ng-href="#!/blogAndMagazine/{{item._id}}" class="news-item">
                                 <md-list-item class="md-3-line">
                                     <img ng-src="http://www.onthisdeity.com/wp-content/uploads/2011/04/adolf-hitler.jpg" class="md-avatar" />
                                     <div class="md-list-item-text">
-                                        <h4 class="md-subhead">{{news.name}}</h4>
+                                        <h4 class="md-subhead">{{item.name}}</h4>
                                         <small>
                                           Posted on
-                                            <span data-ng-bind="news.created | date:'medium'"></span>
+                                            <span data-ng-bind="item.created | date:'medium'"></span>
                                             by
-                                            <span data-ng-bind="news.user.displayName"></span>
+                                            <span data-ng-bind="item.user.displayName"></span>
                                         </small>
                                     </div>
                                 </md-list-item>
