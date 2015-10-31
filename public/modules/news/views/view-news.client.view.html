@@ -1,0 +1,63 @@
+<md-content data-ng-controller="NewsController" data-ng-init="findOne()">
+    <a ui-sref="listNews">
+        <i class="fa fa-chevron-left"></i> Back
+    </a>
+    <md-card>
+        <md-card-content data-ng-show="!err">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <div flex="90">
+                        <h2 class="md-headline" style="color:white">{{news.name}}</h2>
+                    </div>
+                    <div flex data-ng-if="((authentication.user) && ((authentication.user._id == news.user._id) || authentication.user.roles ==='admin'))">
+                        <div layout="row">
+                            <div flex>
+                                <md-button class="md-fab md-primary" aria-label="Edit" href="/#!/blogAndMagazine/{{news._id}}/edit" >
+                                    <i style="color: white;"class="fa fa-pencil fa-lg"></i>
+                                </md-button>
+                            </div>
+                            <div flex>
+                                <md-button class="md-fab" aria-label="Delete" ng-click="remove();">
+                                    <i style="color:white" class="fa fa-trash-o fa-lg"></i>
+                                </md-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-toolbar>
+            <div>
+                <md-progress-linear ng-show="loadingNews" md-mode="indeterminate"></md-progress-linear>
+                <!--TODO : Move to another CSS class-->
+                <img style="width:40%;float:left;padding: 2px;" data-ng-src="data:{{news.imageData.filetype}};base64,{{news.imageData.base64}}" alt="uploaded image"/>
+
+                <p>
+                    {{news.content}}
+                </p>
+            </div>
+
+            <hr/>
+
+            <small>
+                <em class="text-muted">
+                    Posted on
+                    <span data-ng-bind="news.created | date:'mediumDate'"></span>
+                    by
+                    <span data-ng-bind="news.user.displayName"></span>
+                </em>
+            </small>
+        </md-card-content>
+        <md-card-content data-ng-show="err">
+            <md-toolbar class="md-accent">
+                <div class="md-toolbar-tools">
+                    <h2 style="color:white">
+                        Oops!
+                    </h2>
+                </div>
+            </md-toolbar>
+            <p style="font-size: large">
+                We could not find any blog or magazine with this ID
+            </p>
+        </md-card-content>
+    </md-card>
+
+</md-content>

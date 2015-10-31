@@ -2,6 +2,7 @@
 angular.module('core').
 	filter('searchWordInString', function() {
 		return function(input,whatWeSearch) {
+            console.log(whatWeSearch)
 			if (whatWeSearch && input) {
 				var res = [];
 				input.forEach(function(obj){

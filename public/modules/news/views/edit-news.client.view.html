@@ -1,0 +1,40 @@
+<md-content data-ng-controller="NewsController" ng-init="findOne()">
+    <md-content>
+        <md-card>
+            <md-card-content>
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2 style="color: white">
+                            Edit "{{news.name}}"
+                        </h2>
+                    </div>
+                </md-toolbar>
+
+                <md-input-container>
+                    <label>Name</label>
+                    <input ng-model="news.name" type="text"/>
+                </md-input-container>
+                <md-input-container>
+                    <label>Type</label>
+                    <md-select ng-model="news.type">
+                        <md-option value="magazine">
+                            Magazine
+                        </md-option>
+                        <md-option value="blog">
+                            Blog
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Content</label>
+                    <textarea name="content" id="content" data-ng-model="news.content" cols="30" rows="10"></textarea>
+                </md-input-container>
+                <md-input-container>
+                    <input type="file" ng-model="news.imageData" base-sixty-four-input required maxsize="500" accept="image/*">
+                    <img style="width:50%" data-ng-src="data:{{news.imageData.filetype}};base64,{{news.imageData.base64}}" alt="uploaded image"/>
+                </md-input-container>
+                <button ng-click="update()">Update</button>
+            </md-card-content>
+        </md-card>
+    </md-content>
+</md-content>

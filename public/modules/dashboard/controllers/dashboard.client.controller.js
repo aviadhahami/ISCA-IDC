@@ -15,7 +15,6 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
         $scope.openLink = function(link) {
             $location.url(link.url);
         };
-
         $scope.links = [
             {
                 level : 4,
@@ -46,6 +45,12 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                 url: '/dashboard/application-dead-line',
                 title : 'Edit application deadline',
                 icon: 'fa-clock-o'
+            },
+            {
+                'level' : 1,
+                'url': '/blogAndMagazine',
+                'title' : 'Blog and Magazine',
+                icon: 'fa-newspaper-o'
             }
         ];
     }]);
