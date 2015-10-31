@@ -69,7 +69,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             $scope.loadingFacebookFeed = true;
             if($scope.facebookLoaded){
                 $q.all([facebookService.getPostsFromIsca(),facebookService.getIscaPagePicture()]).then(function(responses){
-                   console.log(responses)
+                    console.log(responses)
                     $scope.loadingFacebookFeed = false;
                     $scope.sections[0].data = responses[0].data;
                     $scope.sections[0]['icon'] = responses[1].data.url;
