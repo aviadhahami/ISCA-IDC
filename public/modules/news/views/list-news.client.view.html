@@ -43,7 +43,7 @@
                             <!--TODO: FIX FILTER-->
                             <a ng-repeat="item in news | getPostByName:filter.text" ng-if="item.type === type" ng-href="#!/blogAndMagazine/{{item._id}}" class="news-item">
                                 <md-list-item class="md-3-line">
-                                    <img ng-src="item.imageData.base64" class="md-avatar" />
+                                    <img ng-src="data:{{item.imageData.filetype}};base64,{{item.imageData.base64}}" class="md-avatar" />
                                     <div class="md-list-item-text">
                                         <h4 class="md-subhead">{{item.name}}</h4>
                                         <small>
