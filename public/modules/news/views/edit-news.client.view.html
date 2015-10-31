@@ -29,6 +29,10 @@
                     <label>Content</label>
                     <textarea name="content" id="content" data-ng-model="news.content" cols="30" rows="10"></textarea>
                 </md-input-container>
+                <md-input-container>
+                    <input type="file" ng-model="news.imageData" base-sixty-four-input required maxsize="500" accept="image/*">
+                    <img style="width:50%" data-ng-src="data:{{news.imageData.filetype}};base64,{{news.imageData.base64}}" alt="uploaded image"/>
+                </md-input-container>
                 <button ng-click="update()">Update</button>
             </md-card-content>
         </md-card>
