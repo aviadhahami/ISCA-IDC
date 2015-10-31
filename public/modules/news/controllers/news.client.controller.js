@@ -71,7 +71,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
             $scope.news = News.get({
                 newsId: $stateParams.newsId
             });
-            console.log($scope.news);
+            // console.log($scope.news)
         };
     }
 ]);
