@@ -37,7 +37,8 @@ module.exports = {
                 'public/lib/angulartics/dist/angulartics.min.js',
                 'public/lib/angulartics-google-analytics/dist/angulartics-google-analytics.min.js',
 				'public/lib/sc-date-time/dist/sc-date-time.js',
-                'public/lib/angular-base64-upload/dist/angular-base64-upload.min.js'
+                'public/lib/angular-base64-upload/dist/angular-base64-upload.min.js',
+                'public/lib/angular-scroll/angular-scroll.min.js'
 			]
 		},
 		svg: [

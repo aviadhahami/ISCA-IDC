@@ -18,7 +18,8 @@ var ApplicationConfiguration = (function() {
 		'angulartics',
 		'angulartics.google.analytics',
 		'scDateTime',
-        'naif.base64'
+        'naif.base64',
+        'duScroll'
 	];
 
 	// Add a new vertical module
