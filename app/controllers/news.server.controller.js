@@ -15,6 +15,7 @@ exports.create = function(req, res) {
 	var news = new News(req.body);
 	news.user = req.user;
 	news.content = req.body.content;
+    news.imageData.base64 = req.body.imageData.base64;
 
 	news.save(function(err) {
 		if (err) {

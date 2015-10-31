@@ -12,13 +12,21 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
             text : ''
         };
 
+        var getBase64Image = function(img){
+            var base64Str;
+
+            return base64Str;
+        };
         // Create new News
         $scope.create = function() {
             // Create new News object
             var news = new News ({
                 name: this.name,
                 content : this.content,
-                type: this.type
+                type: this.type,
+                imageData : {
+                    base64 : getBase64Image(this.image)
+                }
             });
 
             // Redirect after save
