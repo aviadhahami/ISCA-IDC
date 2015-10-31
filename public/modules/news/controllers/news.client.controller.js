@@ -21,7 +21,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
 
             // Redirect after save
             news.$save(function(response) {
-                $location.path('news/' + response._id);
+                $location.path('blogAndMagazine/' + response._id);
 
                 // Clear form fields
                 $scope.name = '';
@@ -42,7 +42,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
                 }
             } else {
                 $scope.news.$remove(function() {
-                    $location.path('news');
+                    $location.path('listNews');
                 });
             }
         };
@@ -52,7 +52,7 @@ angular.module('news').controller('NewsController', ['$scope', '$stateParams', '
             var news = $scope.news;
 
             news.$update(function() {
-                $location.path('news/' + news._id);
+                $location.path('blogAndMagazine/' + news._id);
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
             });
