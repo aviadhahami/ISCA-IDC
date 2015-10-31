@@ -1,262 +1,306 @@
 <section data-ng-controller="HomeController">
-	<div class="container-fluid" id="join-banner">
-		<div class="container">
-			<div class="col-xs-12 col-xs-offset-0">
-				<h3 id="header-title">
-					ISRAELI STUDENTS COMBATING ANTISEMITISM
-				</h3>
-				<p>
-					ISCA Academic Program is a student initiative aimed at preventing and diluting online antisemitism, racism and de-legitimization of the state of Israel.
-					<br><br>
-					We research, write, comment, report and develop tools to help reduce online hatred as much as possible, with the help of students from Israel and abroad.
-				</p>
-				<div class="registration">
-					<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0 && !isMobile()">
-						Join Us
-					</a>
-					<p class="sign-in-invite"  data-ng-if="userLevel == 0 && !isMobile()">
-						Already registered?<a class="highlight-link" href="/#!/signin" style="color:#3F51B5;">Sign In</a>
-					</p>
+    <div class="container-fluid" id="join-banner">
+        <div class="container">
+            <div class="col-xs-12 col-xs-offset-0">
+                <h3 id="header-title">
+                    ISRAELI STUDENTS COMBATING ANTISEMITISM
+                </h3>
+                <p>
+                    ISCA Academic Program is a student initiative aimed at preventing and diluting online antisemitism, racism and de-legitimization of the state of Israel.
+                    <br><br>
+                    We research, write, comment, report and develop tools to help reduce online hatred as much as possible, with the help of students from Israel and abroad.
+                </p>
+                <div class="registration">
+                    <a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0 && !isMobile()">
+                        Join Us
+                    </a>
+                    <p class="sign-in-invite"  data-ng-if="userLevel == 0 && !isMobile()">
+                        Already registered?<a class="highlight-link" href="/#!/signin" style="color:#3F51B5;">Sign In</a>
+                    </p>
 
-					<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1 && !isMobile()">
-						Apply to the program
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<section class="block" id="feeds">
-		<div class="container-fluid">
-			<div class="news col-sm-6 col-sm-offset-1 col-xs-12 col-xs-offset-0 md-whiteframe-z1">
-				<h2>
-					Germany: Criminal Complaint Filed Against Mayor for Antisemitism
-				</h2>
-				<div class="news-content">
-					<div class="image-container">
-						<img src="http://www.jpost.com/HttpHandlers/ShowImage.ashx?id=254531&h=530&w=758" align="left" />
-					</div>
-					<p>
-						Andreas Neumann, a Jew who lives in Germany, filed a criminal complaint against the Mayor of Jena, Albrecht Schröter, alleging he incited anti-Semitic hatred because of his call to boycott Israeli products and after he blamed Israel for the Syrian refugee crisis.
-						<br><br>
-						According to Neumann’s lawyer, he seeks a 15,000 Euro penalty an a temporary restraining order against the Mayor’s allegedly anti-Semitic speeches.
-						<br><br>
-						“Schröter’s call has a clear anti-Semitic character and is, in my view, clearly incitement to hate,” Neumann said.  He explained that calls supporting boycott of Israeli products targets all Jewish people.
-					</p>
-					<a href="http://www.jpost.com/Diaspora/Criminal-complaint-filed-against-German-Mayor-for-anti-Israel-and-anti-Jewish-hate-419755" target="_blank">
-						<button class="readmore-btn" md-ink-ripple>Read More</button>
-					</a>
-				</div>
-			</div>
-			<div class="col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">
-				<!-- Facebook Page Feed -->
-				<div class="fb-page md-whiteframe-z1" data-href="https://www.facebook.com/iscaorg" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true">
-					<div class="fb-xfbml-parse-ignore">
-						<blockquote cite="https://www.facebook.com/iscaorg">
-							<a href="https://www.facebook.com/iscaorg">ISCA - Israeli Students Combating Antisemitism</a>
-						</blockquote>
-					</div>
-				</div>
-				<!-- End Facebook -->
-			</div>
-		</div>
-	</section>
-	<section class="block" id="participation">
-		<div class="container">
-			<div id="type-selection-title" class="col-xs-12 col-xs-offset-0 text-center">
-				<h1>
-					How can you contribute?
-				</h1>
-			</div>
-			<div id="type-selection" class="col-xs-12 col-xs-offset-0">
-				<a ng-href="/#!/" class="participation-type-tab highlight-link col-xs-6" id="participant" ng-click="changeParticipationType('participant')" ng-class="{'active': participationType == 'participant'}" md-ink-ripple>
-					<h5>
-						Member
-					</h5>
-				</a>
-				<a ng-href="/#!/" class="participation-type-tab highlight-link col-xs-6" id="volunteer" ng-click="changeParticipationType('volunteer')" ng-class="{'active': participationType == 'volunteer'}" md-ink-ripple>
-					<h5>
-						Volunteer
-					</h5>
-				</a>
-			</div>
-			<div id="participant-container" ng-show="participationType == 'participant'">
-				<div class="benefits col-xs-12 col-xs-offset-0">
-					<div class="col-sm-4 col-xs-12">
-						<img src="modules/core/img/landing-page/icons/classes.png" />
-						<p>
-							Academic lectures on antisemitism and online advocacy
-						</p>
-					</div>
-					<div class="col-sm-4 col-xs-12">
-						<img src="modules/core/img/landing-page/icons/team.png" />
-						<p>
-							Close mentorship from experienced team leaders
-						</p>
-					</div>
-					<div class="col-sm-4 col-xs-12">
-						<img src="modules/core/img/landing-page/icons/personal-project.png" />
-						<p>
-							Create your own personal project to help combat antisemitism
-						</p>
-					</div>
-					<div class="col-sm-4 col-xs-12">
-						<img src="modules/core/img/landing-page/icons/academic-credit.png" />
-						<p>
-							2 academic credits
-						</p>
-					</div>
-					<div class="col-sm-4 col-xs-12">
-						<img src="modules/core/img/landing-page/icons/2-points.png" />
-						<p>
-							Scholarship awarded for excelling students
-						</p>
-					</div>
-					<div class="col-sm-4 col-xs-12">
-						<img src="modules/core/img/landing-page/icons/compass.png" />
-						<p>
-							Doing something that really matters
-						</p>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-6">
-					<ul class="zebra-list">
-						<li>
-							<h5 class="text-center">
-								Who can apply?
-							</h5>
-						</li>
-						<li>
-							<i class="fa fa-language fa-2x"></i><span>Foreign language speakers</span>
-						</li>
-						<li>
-							<i class="fa fa-magic fa-2x"></i><span>New Media wizard</span>
-						</li>
-						<li>
-							<i class="fa fa-database fa-2x"></i><span>Experience with data mining</span>
-						</li>
-						<li>
-							<i class="fa fa-video-camera fa-2x"></i><span>Graphic designers / video editors</span>
-						</li>
-						<li>
-							<i class="fa fa-pencil-square-o fa-2x"></i><span>Creative writers and editors</span>
-						</li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-6">
-					<ul class="zebra-list">
-						<li>
-							<h5 class="text-center">
-								What are the requirements?
-							</h5>
-						</li>
-						<li>
-							<i class="fa fa-clock-o fa-2x"></i></i><span>Weekly volunteering hours</span>
-						</li>
-						<li>
-							<i class="fa fa-users fa-2x"></i><span>Participation in program events</span>
-						</li>
-						<li>
-							<i class="fa fa-pie-chart fa-2x"></i><span>Work on a multiple projects</span>
-						</li>
-					</ul>
-				</div>
-				<div class="text-center col-xs-12 col-xs-offset-0">
-					<div data-read-more-button align-to="left"></div>
-					<div class="readmore-content">
-						<h5>
-							Participation Overview
-						</h5>
-						<p>
-							Participants are the heart of the academic program. They take part in lectures and events, receive close guidance by team leaders and are in charge of creating new projects that help us fight hatred.
-							<br>
-							Since there are very few available spots for this position along with particular skills we are looking for, students have to apply to be a participant and commit to weekly volunteering hours consisting of various assignments.
-							<br><br>
-							Participants receive 2 academic credits for their efforts and upon excellence, might be awarded with a 6000 nis scholarship for their next year of volunteering (In accordance with conditions set by the managing staff and the National Union of Israeli Students).
-						</p>
+                    <a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1 && !isMobile()">
+                        Apply to the program
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<section class="block" id="feeds">-->
+    <!--FIXME : change to dynamic height-->
+    <md-content class="md-padding" style="height: 400px">
+        <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+            <md-tab ng-repeat="item in sections" label="{{item.title}}">
+                <md-content class="md-padding">
+                    <md-list>
+                        <md-progress-linear  md-mode="indeterminate" ng-show="loadingNews"></md-progress-linear>
+                        <div ng-if="item.title.toLowerCase() !== 'news feed'" >
+                            <a ng-repeat="data in item.data" ng-href="#!/blogAndMagazine/{{data._id}}" style="all:inherit"  class="news-item">
+                                <md-list-item class="md-3-line magazine-and-blog">
+                                    <img ng-src="data:{{data.imageData.filetype}};base64,{{data.imageData.base64}}" class="md-avatar"/>
+                                    <div class="md-list-item-text" layout="column">
+                                        <h3>{{ data.name }}</h3>
+                                        <h4>{{ data.content }}</h4>
+                                        <p>{{ data.created }}</p>
+                                    </div>
+                                </md-list-item>
+                            </a>
+                        </div>
+                        <!--IF FACEBOOK-->
+                        <div ng-if="item.title.toLowerCase() === 'news feed'">
+                            <md-progress-linear md-mode="indeterminate" ng-if="loadingFacebookFeed"></md-progress-linear>
+                            <a ng-repeat="data in item.data" ng-href="http://facebook.com/{{data.id}}" target="_blank">
+                                <md-list-item ng-if="data.message" class="md-3-line">
+                                    <img ng-src="{{item.icon}}" class="md-avatar"/>
+                                    <div class="md-list-item-text" layout="column">
+                                        <p style="color:black">
+                                            {{ data.message.length > 500 ? data.message.slice(0,499) + '...' :  data.message }}
+                                        </p>
+                                        <small style="color:grey">
+                                            Posted on {{stringifyDate(data.created_time)}}
+                                        </small>
+                                    </div>
 
-						<div class="registration">
-							<a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0 && !isMobile()">
-								Join Us
-							</a>
-							<a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1 && !isMobile()">
-								Apply to the program
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+                                </md-list-item>
+                            </a>
+                        </div>
+                    </md-list>
+                    <md-divider ></md-divider>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+    <!--<div class="container-fluid">-->
+    <!--<div class="news col-sm-6 col-sm-offset-1 col-xs-12 col-xs-offset-0 md-whiteframe-z1">-->
+    <!--<h2>-->
+    <!--Germany: Criminal Complaint Filed Against Mayor for Antisemitism-->
+    <!--</h2>-->
+    <!--<div class="news-content">-->
+    <!--<div class="image-container">-->
+    <!--<img src="http://www.jpost.com/HttpHandlers/ShowImage.ashx?id=254531&h=530&w=758" align="left" />-->
+    <!--</div>-->
+    <!--<p>-->
+    <!--Andreas Neumann, a Jew who lives in Germany, filed a criminal complaint against the Mayor of Jena, Albrecht Schröter, alleging he incited anti-Semitic hatred because of his call to boycott Israeli products and after he blamed Israel for the Syrian refugee crisis.-->
+    <!--<br><br>-->
+    <!--According to Neumann’s lawyer, he seeks a 15,000 Euro penalty an a temporary restraining order against the Mayor’s allegedly anti-Semitic speeches.-->
+    <!--<br><br>-->
+    <!--“Schröter’s call has a clear anti-Semitic character and is, in my view, clearly incitement to hate,” Neumann said.  He explained that calls supporting boycott of Israeli products targets all Jewish people.-->
+    <!--</p>-->
+    <!--<a href="http://www.jpost.com/Diaspora/Criminal-complaint-filed-against-German-Mayor-for-anti-Israel-and-anti-Jewish-hate-419755" target="_blank">-->
+    <!--<button class="readmore-btn" md-ink-ripple>Read More</button>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-sm-4 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center">-->
+    <!--&lt;!&ndash; Facebook Page Feed &ndash;&gt;-->
+    <!--<div class="fb-page md-whiteframe-z1" data-href="https://www.facebook.com/iscaorg" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true">-->
+    <!--<div class="fb-xfbml-parse-ignore">-->
+    <!--<blockquote cite="https://www.facebook.com/iscaorg">-->
+    <!--<a href="https://www.facebook.com/iscaorg">ISCA - Israeli Students Combating Antisemitism</a>-->
+    <!--</blockquote>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; End Facebook &ndash;&gt;-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</section>-->
+    <br/>
+    <section class="block" id="participation">
+        <div class="container">
+            <div id="type-selection-title" class="col-xs-12 col-xs-offset-0 text-center">
+                <h1>
+                    How can you contribute?
+                </h1>
+            </div>
+            <div id="type-selection" class="col-xs-12 col-xs-offset-0">
+                <a ng-href="/#!/" class="participation-type-tab highlight-link col-xs-6" id="participant" ng-click="changeParticipationType('participant')" ng-class="{'active': participationType == 'participant'}" md-ink-ripple>
+                    <h5>
+                        Member
+                    </h5>
+                </a>
+                <a ng-href="/#!/" class="participation-type-tab highlight-link col-xs-6" id="volunteer" ng-click="changeParticipationType('volunteer')" ng-class="{'active': participationType == 'volunteer'}" md-ink-ripple>
+                    <h5>
+                        Volunteer
+                    </h5>
+                </a>
+            </div>
+            <div id="participant-container" ng-show="participationType == 'participant'">
+                <div class="benefits col-xs-12 col-xs-offset-0">
+                    <div class="col-sm-4 col-xs-12">
+                        <img src="modules/core/img/landing-page/icons/classes.png" />
+                        <p>
+                            Academic lectures on antisemitism and online advocacy
+                        </p>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <img src="modules/core/img/landing-page/icons/team.png" />
+                        <p>
+                            Close mentorship from experienced team leaders
+                        </p>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <img src="modules/core/img/landing-page/icons/personal-project.png" />
+                        <p>
+                            Create your own personal project to help combat antisemitism
+                        </p>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <img src="modules/core/img/landing-page/icons/academic-credit.png" />
+                        <p>
+                            2 academic credits
+                        </p>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <img src="modules/core/img/landing-page/icons/2-points.png" />
+                        <p>
+                            Scholarship awarded for excelling students
+                        </p>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <img src="modules/core/img/landing-page/icons/compass.png" />
+                        <p>
+                            Doing something that really matters
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <ul class="zebra-list">
+                        <li>
+                            <h5 class="text-center">
+                                Who can apply?
+                            </h5>
+                        </li>
+                        <li>
+                            <i class="fa fa-language fa-2x"></i><span>Foreign language speakers</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-magic fa-2x"></i><span>New Media wizard</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-database fa-2x"></i><span>Experience with data mining</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-video-camera fa-2x"></i><span>Graphic designers / video editors</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-pencil-square-o fa-2x"></i><span>Creative writers and editors</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <ul class="zebra-list">
+                        <li>
+                            <h5 class="text-center">
+                                What are the requirements?
+                            </h5>
+                        </li>
+                        <li>
+                            <i class="fa fa-clock-o fa-2x"></i></i><span>Weekly volunteering hours</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-users fa-2x"></i><span>Participation in program events</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-pie-chart fa-2x"></i><span>Work on a multiple projects</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-center col-xs-12 col-xs-offset-0">
+                    <div data-read-more-button align-to="left"></div>
+                    <div class="readmore-content">
+                        <h5>
+                            Participation Overview
+                        </h5>
+                        <p>
+                            Participants are the heart of the academic program. They take part in lectures and events, receive close guidance by team leaders and are in charge of creating new projects that help us fight hatred.
+                            <br>
+                            Since there are very few available spots for this position along with particular skills we are looking for, students have to apply to be a participant and commit to weekly volunteering hours consisting of various assignments.
+                            <br><br>
+                            Participants receive 2 academic credits for their efforts and upon excellence, might be awarded with a 6000 nis scholarship for their next year of volunteering (In accordance with conditions set by the managing staff and the National Union of Israeli Students).
+                        </p>
 
-			<div id="volunteer-container" ng-show="participationType == 'volunteer'">
-				<div class="col-xs-12 col-xs-offset-0">
-					<h5>
-						Volunteering Overview
-					</h5>
-					<p>
-						Since we have limited spots for participating students, we opened the option for Freelance Volunteers.
-						<br><br>
-						Students who simply want to help out because they care about the cause can register and aid us in their free time, Freelance Volunteers also increase their chances of being accepted as participants the following year.
-					</p>
+                        <div class="registration">
+                            <a class="join-button" href="/#!/signup" md-ink-ripple data-ng-if="userLevel == 0 && !isMobile()">
+                                Join Us
+                            </a>
+                            <a class="join-button" href="/#!/academic-signup" md-ink-ripple data-ng-if="userLevel == 1 && !isMobile()">
+                                Apply to the program
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-					<div class="commentator">
-						<div class="col-md-3 col-md-offset-0 col-xs-12 col-xs-offset-0">
-							<div class="commentator-image">
-								<img src="modules/core/img/landing-page/gabriela1.jpg" />
-							</div>
-						</div>
-						<div class="col-md-9 col-md-offset-0 col-xs-12 col-xs-offset-0">
-							<blockquote class="commentator-text">
-								<p>
-									“Coming from Europe, I thought iv'e seen a lot of hate towards Jews in real life. I never realized this phenomenon was so wide spread online and that it is the catalyst for what I experienced on the streets.
-									<br>
-									I remember being really surprised knowing that I can contribute to this struggle as a part of the university curriculum.
-									<br><br>
-									This will be my second year at ISCA Academic Program, and I truly recommend it to those who are tired of being a passer by.
-									<br>
-									You will not only learn how to identify racism, but also receive tools to actually do something about it - raise awareness and reshape society.”
-								</p>
-								<footer>
-									Gabriela Rolnik Lisauskaite, Second year Volunteer with a merit scholarship, IDC Herzliya
-								</footer>
-							</blockquote>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div id="special-content" class="container-fluid"
-		 ng-if="false">
-		<div id="special-content-image" class="col-md-7 col-xs-12">
-			<img src="modules/core/img/landing-page/work-station.png" />
-		</div>
-		<div id="special-content-text" class="col-md-5 col-xs-12">
-			<h2>
-				Something Something Something
-			</h2>
-			<p>
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-			</p>
-			<div>
-				<div data-read-more-button theme="white-theme"></div>
-				<p class="readmore-content">
-					Participant Volunteers are the heart of the academic program. They take part in lectures and events, receive close guidance by team leaders and are in charge of creating new projects that help us fight hate.
-				</p>
-			</div>
-		</div>
-	</div>
-	<section class="block" id="faq"
-			 ng-if="false">
-		<div class="container">
-			<div class="col-xs-12 col-xs-offset-0">
-				<h5>
-					Frequently Asked Questions
-				</h5>
-				<hr>
-				<div class="faq-section">
-					<div class="faq-entry" ng-repeat="entry in faqEntries | orderBy: 'index'" data-faq-block entry="entry"></div>
-				</div>
-			</div>
-		</div>
-	</section>
+            <div id="volunteer-container" ng-show="participationType == 'volunteer'">
+                <div class="col-xs-12 col-xs-offset-0">
+                    <h5>
+                        Volunteering Overview
+                    </h5>
+                    <p>
+                        Since we have limited spots for participating students, we opened the option for Freelance Volunteers.
+                        <br><br>
+                        Students who simply want to help out because they care about the cause can register and aid us in their free time, Freelance Volunteers also increase their chances of being accepted as participants the following year.
+                    </p>
+
+                    <div class="commentator">
+                        <div class="col-md-3 col-md-offset-0 col-xs-12 col-xs-offset-0">
+                            <div class="commentator-image">
+                                <img src="modules/core/img/landing-page/gabriela1.jpg" />
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-md-offset-0 col-xs-12 col-xs-offset-0">
+                            <blockquote class="commentator-text">
+                                <p>
+                                    “Coming from Europe, I thought iv'e seen a lot of hate towards Jews in real life. I never realized this phenomenon was so wide spread online and that it is the catalyst for what I experienced on the streets.
+                                    <br>
+                                    I remember being really surprised knowing that I can contribute to this struggle as a part of the university curriculum.
+                                    <br><br>
+                                    This will be my second year at ISCA Academic Program, and I truly recommend it to those who are tired of being a passer by.
+                                    <br>
+                                    You will not only learn how to identify racism, but also receive tools to actually do something about it - raise awareness and reshape society.”
+                                </p>
+                                <footer>
+                                    Gabriela Rolnik Lisauskaite, Second year Volunteer with a merit scholarship, IDC Herzliya
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="special-content" class="container-fluid"
+         ng-if="false">
+        <div id="special-content-image" class="col-md-7 col-xs-12">
+            <img src="modules/core/img/landing-page/work-station.png" />
+        </div>
+        <div id="special-content-text" class="col-md-5 col-xs-12">
+            <h2>
+                Something Something Something
+            </h2>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+            <div>
+                <div data-read-more-button theme="white-theme"></div>
+                <p class="readmore-content">
+                    Participant Volunteers are the heart of the academic program. They take part in lectures and events, receive close guidance by team leaders and are in charge of creating new projects that help us fight hate.
+                </p>
+            </div>
+        </div>
+    </div>
+    <section class="block" id="faq"
+             ng-if="false">
+        <div class="container">
+            <div class="col-xs-12 col-xs-offset-0">
+                <h5>
+                    Frequently Asked Questions
+                </h5>
+                <hr>
+                <div class="faq-section">
+                    <div class="faq-entry" ng-repeat="entry in faqEntries | orderBy: 'index'" data-faq-block entry="entry"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 </section>
 

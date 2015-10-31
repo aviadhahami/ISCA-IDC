@@ -201,7 +201,9 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
 #special-content-text h2, #special-content-text p {
 	color: #fefefe;
 }
-
+.magazine-and-blog:hover{
+    background-color: #E3F2FD;
+}
 
 
 /***** MEDIA-QUERIES *****/
