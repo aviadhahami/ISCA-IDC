@@ -66,11 +66,14 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             }(document));
         };
         var populateFacebookFeed = function(){
+            $scope.loadingFacebookFeed = true;
             if($scope.facebookLoaded){
                 facebookService.getPostsFromIsca().then(function(response){
                     console.log(response);
+                    $scope.loadingFacebookFeed = false;
                     $scope.sections[0].data = response.data;
                 },function(err){
+                    $scope.loadingFacebookFeed = false;
                     console.log(err)
                 })
             }else{
