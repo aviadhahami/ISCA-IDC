@@ -40,9 +40,8 @@
                         <h1 class="md-display-2">{{type.toUpperCase()}}</h1>
                         <hr/>
                         <md-list layout-padding>
-
                             <!--TODO: FIX FILTER-->
-                            <a  ng-repeat="news in news | filter: { name: filterText }" ng-if="news.type === type" ng-href="#!/blogAndMagazine/{{news._id}}" class="news-item">
+                            <a ng-repeat="news in news | filter: { name: filterText }" ng-if="news.type === type" ng-href="#!/blogAndMagazine/{{news._id}}" class="news-item">
                                 <md-list-item class="md-3-line">
                                     <img ng-src="http://www.onthisdeity.com/wp-content/uploads/2011/04/adolf-hitler.jpg" class="md-avatar" />
                                     <div class="md-list-item-text">
