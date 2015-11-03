@@ -1,14 +1,20 @@
 <div layout="row" ng-controller="TeamController" id="theTeam">
-    <md-card flex="70" offset="15">
+    <md-card flex="70" class="offset-15 md-default-theme">
         <md-card-content>
             <h2 class="md-title">The Team</h2>
             <hr/>
             <md-grid-list md-cols-gt-md="3" md-cols-md="2" md-cols-sm="1" md-row-height="275px">
                 <md-grid-tile ng-repeat="member in team | orderBy: index" class="text-center nametag">
                     <div layout="column">
-                        <img ng-src="{{ member.img }}" class="avatar"/>
+                        <img ng-src="{{ member.img }}" class="avatar" />
                         <h4>{{ member.name }}</h4>
-                        <h5>{{ member.title }}</h5>
+                        <h5>
+                        <!--Aviad has many titles, btw, it breaks the symmetry  -->
+                        <!--<div ng-repeat="title in member.title">
+                        {{ title }}
+                        </div>-->
+                        {{ member.title.join(", ") }}
+                        </h5>
                     </div>
                 </md-grid-tile>
             </md-grid-list>
