@@ -205,7 +205,11 @@ section.block>.container>div, section.block>.container-fluid>div, section.block>
     background-color: #E3F2FD;
 }
 
+.avatar {
+	 border-radius: 50%;
+}
 
+/
 /***** MEDIA-QUERIES *****/
 
 @media (min-width: 840px) {
