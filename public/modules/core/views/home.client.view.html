@@ -28,52 +28,56 @@
     <!--<section class="block" id="feeds">-->
     <!--FIXME : change to dynamic height-->
     <div id="news"></div>
-    <md-content class="md-padding" style="height: 400px" >
-        <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
-            <md-tab ng-repeat="item in sections" label="{{item.title}}">
-                <md-content class="md-padding">
-                    <md-list>
-                        <md-progress-linear  md-mode="indeterminate" ng-show="loadingNews"></md-progress-linear>
-                        <div ng-if="item.title.toLowerCase() !== 'news feed'" >
-                            <a ng-repeat="data in item.data" ng-href="#!/blogAndMagazine/{{data._id}}" style="all:inherit"  class="news-item">
-                                <md-list-item class="md-3-line magazine-and-blog">
-                                    <img ng-src="data:{{data.imageData.filetype}};base64,{{data.imageData.base64}}" class="md-avatar"/>
-                                    <div class="md-list-item-text" layout="column">
-                                        <h3>{{ data.name }}</h3>
-                                        <h4>{{ data.content }}</h4>
-                                        <p>{{ data.created }}</p>
-                                    </div>
-                                </md-list-item>
-                            </a>
-                        </div>
-                        <!--IF FACEBOOK-->
-                        <div ng-if="item.title.toLowerCase() === 'news feed'">
-                            <div ng-if="loadingFacebookFeed">
-                                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
-                                <p>Loading Facebook posts..</p>
+
+    <md-card class="home-newsfeed md-padding">
+        <md-card-content class="home-newsfeed-content">
+            <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+                <md-tab ng-repeat="item in sections" label="{{item.title}}">
+                    <md-content class="md-padding">
+                        <md-list>
+                            <md-progress-linear  md-mode="indeterminate" ng-show="loadingNews"></md-progress-linear>
+                            <div ng-if="item.title.toLowerCase() !== 'news feed'" >
+                                <a ng-repeat="data in item.data" ng-href="#!/blogAndMagazine/{{data._id}}" style="all:inherit" class="news-item">
+                                    <md-list-item class="magazine-and-blog">
+                                        <img ng-src="data:{{data.imageData.filetype}};base64,{{data.imageData.base64}}" class="md-avatar"/>
+                                        <div class="md-list-item-text" layout="column">
+                                            <h3>{{ data.name }}</h3>
+                                            <h4>{{ data.content }}</h4>
+                                            <p>{{ data.created }}</p>
+                                        </div>
+                                    </md-list-item>
+                                </a>
                             </div>
+                            <!--IF FACEBOOK-->
+                            <div ng-if="item.title.toLowerCase() === 'news feed'">
+                                <div ng-if="loadingFacebookFeed">
+                                    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+                                    <p>Loading Facebook posts..</p>
+                                </div>
 
-                            <a ng-repeat="data in item.data" ng-href="http://facebook.com/{{data.id}}" target="_blank">
-                                <md-list-item ng-if="data.message" class="md-3-line">
-                                    <img ng-src="{{item.icon}}" class="md-avatar"/>
-                                    <div class="md-list-item-text" layout="column">
-                                        <p style="color:black">
-                                            {{ data.message.length > 500 ? data.message.slice(0,499) + '...' :  data.message }}
-                                        </p>
-                                        <small style="color:grey">
-                                            Posted on {{stringifyDate(data.created_time)}}
-                                        </small>
-                                    </div>
+                                <a ng-repeat="data in item.data" ng-href="http://facebook.com/{{data.id}}" target="_blank" class="news-item">
+                                    <md-list-item ng-if="data.message">
+                                        <img ng-src="{{item.icon}}" class="md-avatar"/>
+                                        <div class="md-list-item-text" layout="column">
+                                            <p style="color:black; margin-bottom: 0px;">
+                                                {{ data.message.length > 500 ? data.message.slice(0,499) + '...' :  data.message }}
+                                            </p>
+                                            <small style="color:grey">
+                                                Posted on {{stringifyDate(data.created_time)}}
+                                            </small>
+                                        </div>
 
-                                </md-list-item>
-                            </a>
-                        </div>
-                    </md-list>
-                    <md-divider ></md-divider>
-                </md-content>
-            </md-tab>
-        </md-tabs>
-    </md-content>
+                                    </md-list-item>
+                                </a>
+                            </div>
+                        </md-list>
+                        <md-divider ></md-divider>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-card-content>
+        </md-card>
+
 
     <br/>
     <section class="block" id="participation">
