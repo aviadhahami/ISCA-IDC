@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
 	var users = require('../../app/controllers/users.server.controller');
-	var tasks = require('../../app/controllers/tasks.server.controller');
+	var tasks = require('../../app/controllers/task.server.controller');
 
 	// Tasks Routes
 	app.route('/tasks')
