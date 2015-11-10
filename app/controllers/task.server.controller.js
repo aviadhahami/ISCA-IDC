@@ -9,14 +9,10 @@ var mongoose = require('mongoose'),
     _ = require('lodash');
 
 /**
- * Create a News
+ * Create a task
  */
 exports.create = function(req, res) {
     var tasks = new Tasks(req.body);
-    tasks.user = req.user;
-    tasks.content = req.body.content;
-    tasks.imageData = req.body.imageData;
-
     tasks.save(function(err) {
         if (err) {
             return res.status(400).send({
@@ -32,24 +28,24 @@ exports.create = function(req, res) {
  * Show the current task
  */
 exports.read = function(req, res) {
-    res.jsonp(req.news);
+    res.jsonp(req.task);
 };
 
 /**
  * Update a task
  */
 exports.update = function(req, res) {
-    var tasks = req.news ;
+    var task = req.task ;
 
-    tasks = _.extend(tasks , req.body);
+    task = _.extend(task , req.body);
 
-    tasks.save(function(err) {
+    task.save(function(err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.jsonp(tasks);
+            res.jsonp(task);
         }
     });
 };
@@ -58,7 +54,7 @@ exports.update = function(req, res) {
  * Delete task
  */
 exports.delete = function(req, res) {
-    var tasks = req.news ;
+    var tasks = req.task ;
 
     tasks.remove(function(err) {
         if (err) {
@@ -91,22 +87,22 @@ exports.list = function(req, res) {
  * News middleware
  */
 exports.tasksByID = function(req, res, next, id) {
-    Tasks.findById(id).populate('user', 'displayName').exec(function(err, tasks) {
+    Tasks.findById(id).populate('user', 'displayName').exec(function(err, task) {
         if (err) return next(err);
-        if (! tasks) return next(new Error('Failed to load News ' + id));
-        req.news = tasks ;
+        if (! task) return next(new Error('Failed to load Task' + id));
+        req.task = task ;
         next();
     });
 };
 
 /**
- * News authorization middleware
+ * Task authorization middleware
  */
 
 // TODO : VERIFY
 exports.hasAuthorization = function(req, res, next) {
-    if(req.news.user){
-        if (req.news.user.id !== req.user.id && req.user.roles !== 'admin' && req.user.roles !== 'manager') {
+    if(req.task.user){
+        if (req.task.user.id !== req.user.id && req.user.roles !== 'admin' && req.user.roles !== 'manager') {
             return res.status(403).send('first,User is not authorized');
         }
     }else{
