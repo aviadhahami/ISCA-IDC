@@ -6,7 +6,6 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
-        console.log($scope.user);
         // Instance for new task object
         $scope.newTask = {
             type: '',
@@ -16,12 +15,18 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
             content: ''
         };
 
-        $scope.taskTypes = [];
-        $http.get('/tasks?action=types').then(function (data) {
-            $scope.taskTypes = data.data;
-        }, function (err) {
-            console.log(err);
+        $scope.createNewTask = function () {
+            console.log($scope.newTask);
+            $http({
+                method: 'POST',
+                url: '/tasks',
+                data: $scope.newTask
+            }).then(function (data) {
+                // worked
+            }, function (err) {
+                // err
+            });
+        };
 
-        });
     }
 ]);
