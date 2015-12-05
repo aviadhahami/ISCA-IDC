@@ -34,9 +34,21 @@ var TaskSchema = new Schema({
         default: 'new',
         enum:['new','active','done']
     },
+    takenBy:{
+      type: Schema.ObjectId,
+        ref: 'User'
+    },
+    taken:{
+        type: Date,
+        default : 0
+    },
     closedBy:{
         type: Schema.ObjectId,
         ref: 'User'
+    },
+    closed :{
+        type: Date,
+        default : 0
     },
     description:{
         type: String,
@@ -48,7 +60,7 @@ var TaskSchema = new Schema({
         default : '',
         required : 'Please add content'
     },
-    timeTaked:{
+    timeTaken:{
         type: Number,
         default:0,
         required: 'Please add time value'

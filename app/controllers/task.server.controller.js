@@ -99,11 +99,10 @@ exports.tasksByID = function(req, res, next, id) {
  * Task authorization middleware
  */
 
-// TODO : VERIFY
 exports.hasAuthorization = function(req, res, next) {
-    if(req.task.user){
-        if (req.task.user.id !== req.user.id && req.user.roles !== 'admin' && req.user.roles !== 'manager') {
-            return res.status(403).send('first,User is not authorized');
+    if(req.task){
+        if (req.task.takenBy !== req.user.id && req.user.roles !== 'admin' && req.user.roles !== 'manager') {
+            return res.status(403).send('User is not authorized');
         }
     }else{
         if( req.user.roles !== 'admin' && req.user.roles !== 'manager'){
