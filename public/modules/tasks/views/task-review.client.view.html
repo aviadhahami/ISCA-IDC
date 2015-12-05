@@ -1,7 +1,22 @@
 <section data-ng-controller="TaskNewController">
-<md-content>
-    <md-card>
-        <h3>Title bla blba</h3>
-    </md-card>
-</md-content>
+    <md-content>
+        <a ui-sref="dashboard">
+            <i class="fa fa-chevron-left"></i> Back
+        </a>
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Title: {{task.title}}</span>
+                    <br>
+                    <span class="md-subhead">Description: {{task.description}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>Content: {{task.content}}</p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="start center">
+                <md-button class="md-raised" ng-click="" ng-if="">Take</md-button>
+            </md-card-actions>
+        </md-card>
+    </md-content>
 </section>
