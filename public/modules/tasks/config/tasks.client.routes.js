@@ -2,7 +2,7 @@
 
 // Setting up route
 angular.module('tasks').config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
+    function ($stateProvider, $urlRouterProvider) {
         // Home state routing
         $stateProvider.
             state('tasks', {
@@ -15,7 +15,18 @@ angular.module('tasks').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('taskReview', {
                 url: '/task/:taskId',
-                templateUrl: 'modules/tasks/views/task-review.client.view.html'
+                templateUrl: 'modules/tasks/views/task-review.client.view.html',
+                resolve: {
+                    task: ['$http','$stateParams', function ($http,$stateParams) {
+                        console.log($stateParams.taskId)
+                        $http.get('/tasks/' + $stateParams.taskId).then(function (res) {
+                            console.log(res);
+                            return res.data;
+                        }, function (err) {
+                            return err;
+                        });
+                    }]
+                }
             });
     }
 ]);

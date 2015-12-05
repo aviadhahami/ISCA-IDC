@@ -11,5 +11,6 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
         $scope.closeClicked = function() {};
 
 
+
     }
 ]);
