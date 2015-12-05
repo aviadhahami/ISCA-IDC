@@ -22,9 +22,12 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                 url: '/tasks',
                 data: $scope.newTask
             }).then(function (data) {
-                // worked
+                // Worked
+                console.log(data);
             }, function (err) {
-                // err
+                // Err
+                console.log(err);
+                // TODO: handle errors
             });
         };
 
