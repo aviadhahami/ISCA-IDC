@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', '$http', '$mdDialog',
+angular.module('tasks').controller('TaskNewController', ['$scope', 'Authentication', 'Userroleasenumservice', '$http', '$mdDialog',
     function ($scope, Authentication, Userroleasenumservice, $http, $mdDialog) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
