@@ -5,7 +5,7 @@
  */
 var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
-    Tasks = mongoose.model('News'),
+    Tasks = mongoose.model('Tasks'),
     _ = require('lodash');
 
 /**
