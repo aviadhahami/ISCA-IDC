@@ -48,7 +48,7 @@ var TaskSchema = new Schema({
         default : '',
         required : 'Please add content'
     },
-    value:{
+    timeTaked:{
         type: Number,
         default:0,
         required: 'Please add time value'
