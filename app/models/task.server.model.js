@@ -39,7 +39,8 @@ var TaskSchema = new Schema({
         ref: 'User'
     },
     taken:{
-        type: Date
+        type: Date,
+        default : 0
     },
     closedBy:{
         type: Schema.ObjectId,
