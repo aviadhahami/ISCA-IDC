@@ -6,13 +6,16 @@
 var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
     Tasks = mongoose.model('Tasks'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    q = require('q');
 
 /**
  * Create a task
  */
 exports.create = function(req, res) {
     var tasks = new Tasks(req.body);
+
+    tasks.type = tasks.type.toLowerCase();
     tasks.save(function(err) {
         if (err) {
             return res.status(400).send({
@@ -69,7 +72,7 @@ exports.delete = function(req, res) {
 
 var listHandler = {
     getTypes: function() {
-        var deferred = Q.defer()
+        var deferred = q.defer()
         Tasks.distinct('type').exec(function(err, types) {
             if (err) {
                 deferred.resolve({ success: false, err: err });
@@ -81,7 +84,7 @@ var listHandler = {
         return deferred.promise;
     },
     getByGeneric: function(key, value) {
-        var deferred = Q.defer();
+        var deferred = q.defer();
         var filterObject = {};
         filterObject[key] = value;
         Tasks.find(filterObject).sort('-created').exec(function(err, tasks) {
@@ -103,42 +106,48 @@ exports.list = function(req, res) {
     // Get types
     var action = req.param('action');
 
-    if (action == 'types') {
-        listHandler.getTypes().then(function(response) {
-           if (response.success) {
-               res.status(200).json({ types: response.data });
-           } else {
-               res.status(403).json({ err: "Error getting types"});
-           }
-        });
-    } else {
-        // TODO SANITIZE THIS!
-        // http://stackoverflow.com/questions/28710345/sanitize-user-input-in-mongoose
-        var searchString = req.param('value');
+    if (action) {
 
-        if (searchString) {
-            if (action == 'type') {
-                listHandler.getByGeneric('type', searchString).then(function(response) {
-                   if (response.success) {
-                       res.status(200).json({ tasks: response.data });
-                   } else {
-                       res.status(403).json({ err: "Error getting tasks"});
-                   }
-                });
-            } else if (action == 'status') {
-                listHandler.getByGeneric('status', searchString).then(function(response) {
-                    if (response.success) {
-                        res.status(200).json({ tasks: response.data });
-                    } else {
-                        res.status(403).json({ err: "Error getting tasks"});
-                    }
-                });
-            } else { // Unrecognized
-                res.status(403).json({ err: "Unknown action field"});
-            }
+        if (action == 'types') {
+            listHandler.getTypes().then(function (response) {
+                if (response.success) {
+                    res.status(200).json({types: response.data});
+                } else {
+                    res.status(403).json({err: "Error getting types"});
+                }
+            });
         } else {
-            res.status(403).json({ err: "Cannot perform action, value field is empty"});
+
+            // TODO SANITIZE THIS!
+            // http://stackoverflow.com/questions/28710345/sanitize-user-input-in-mongoose
+            var searchString = req.param('value');
+
+            if (searchString) {
+                if (action == 'type') {
+                    listHandler.getByGeneric('type', searchString).then(function (response) {
+                        if (response.success) {
+                            res.status(200).json({tasks: response.data});
+                        } else {
+                            res.status(403).json({err: "Error getting tasks"});
+                        }
+                    });
+                } else if (action == 'status') {
+                    listHandler.getByGeneric('status', searchString).then(function (response) {
+                        if (response.success) {
+                            res.status(200).json({tasks: response.data});
+                        } else {
+                            res.status(403).json({err: "Error getting tasks"});
+                        }
+                    });
+                } else { // Unrecognized
+                    res.status(403).json({err: "Unknown action field"});
+                }
+            } else {
+                res.status(403).json({err: "Cannot perform action, value field is empty"});
+            }
         }
+    } else {
+        res.status(403).json({err: "No action field"});
     }
 };
 
