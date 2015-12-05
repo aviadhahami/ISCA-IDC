@@ -46,9 +46,9 @@ var TaskSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
-    closedAt :{
+    closed :{
         type: Date,
-        default : Date.now
+        default : 0
     },
     description:{
         type: String,
