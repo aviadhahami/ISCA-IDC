@@ -207,9 +207,13 @@ ul.nav {
 	background-color: transparent !important;
 	color: #fefefe;
 }
+
 .menu-item>a:focus {
 	background-color: transparent !important;
+	/*
+	DISAPPEARING MENU ITEM BUG! 
 	color: #fefefe !important;
+	*/
 }
 .menu-item>.dropdown-toggle>.ham {
 	background-image: url('../img/menu/ham-icon-sprite.png');
