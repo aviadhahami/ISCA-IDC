@@ -12,35 +12,37 @@
                 </div>
             </md-toolbar>
             <br>
+
             <div>
-               <md-input-container>
-                   <label>
-                       Type
-                   </label>
-                   <input type="text" ng-model="newTask.type" />
-               </md-input-container>
+                <md-input-container>
+                    <label>
+                        Type
+                    </label>
+                    <input type="text" ng-model="newTask.type"/>
+                </md-input-container>
                 <md-input-container>
                     <label>
                         Title
                     </label>
-                    <input type="text" ng-model="newTask.title" />
+                    <input type="text" ng-model="newTask.title"/>
                 </md-input-container>
                 <md-input-container>
                     <label>
                         Description
                     </label>
-                    <input type="text" ng-model="newTask.description" />
+                    <input type="text" ng-model="newTask.description"/>
                 </md-input-container>
                 <md-input-container>
                     <label>
                         Content
                     </label>
-                    <input type="text" ng-model="newTask.content" />
+                    <textarea ng-model="newTask.content">
+                    </textarea>
                 </md-input-container>
             </div>
             <div>
-                <md-button class="md-raised" ng-click="createNewTask()" >
-                   Create task
+                <md-button class="md-raised" ng-click="createNewTask()">
+                    Create task
                 </md-button>
             </div>
         </md-card-content>
