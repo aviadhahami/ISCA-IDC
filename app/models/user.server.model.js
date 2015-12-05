@@ -74,7 +74,12 @@ var UserSchema = new Schema({
 	iscaData : {
 		type: Schema.Types.Mixed,
 		default : {
-			0:''
+			0:'',
+			hours:{
+				2015:{
+
+				}
+			}
 		}
 	},
 	additionalProvidersData: {},
