@@ -34,6 +34,10 @@ var TaskSchema = new Schema({
         default: 'new',
         enum:['new','active','done']
     },
+    takenBy:{
+      type: Schema.ObjectId,
+        ref: 'User'
+    },
     closedBy:{
         type: Schema.ObjectId,
         ref: 'User'
