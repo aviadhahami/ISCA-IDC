@@ -6,5 +6,8 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
+
+        $scope.task = undefined;
+
     }
 ]);
