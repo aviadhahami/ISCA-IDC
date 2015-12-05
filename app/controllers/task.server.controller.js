@@ -67,19 +67,79 @@ exports.delete = function(req, res) {
     });
 };
 
+var listHandler = {
+    getTypes: function() {
+        var deferred = Q.defer()
+        Tasks.distinct('type').exec(function(err, types) {
+            if (err) {
+                deferred.resolve({ success: false, err: err });
+            } else {
+                deferred.resolve({ success: true, data: types });
+            }
+        });
+
+        return deferred.promise;
+    },
+    getByGeneric: function(key, value) {
+        var deferred = Q.defer();
+        var filterObject = {};
+        filterObject[key] = value;
+        Tasks.find(filterObject).sort('-created').exec(function(err, tasks) {
+           if (err) {
+               deferred.resolve({ success: false, err: err });
+           } else {
+               deferred.resolve({ success: true, data: tasks });
+           }
+        });
+        return deferred.promise;
+    }
+};
+
 /**
- * List of tasks
+ * List of tasks by dynamic
  */
 exports.list = function(req, res) {
-    Tasks.find().sort('-created').populate('user', 'displayName').exec(function(err, tasks) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
+
+    // Get types
+    var action = req.param('action');
+
+    if (action == 'types') {
+        listHandler.getTypes().then(function(response) {
+           if (response.success) {
+               res.status(200).json({ types: response.data });
+           } else {
+               res.status(403).json({ err: "Error getting types"});
+           }
+        });
+    } else {
+        // TODO SANITIZE THIS!
+        // http://stackoverflow.com/questions/28710345/sanitize-user-input-in-mongoose
+        var searchString = req.param('value');
+
+        if (searchString) {
+            if (action == 'type') {
+                listHandler.getByGeneric('type', searchString).then(function(response) {
+                   if (response.success) {
+                       res.status(200).json({ tasks: response.data });
+                   } else {
+                       res.status(403).json({ err: "Error getting tasks"});
+                   }
+                });
+            } else if (action == 'status') {
+                listHandler.getByGeneric('status', searchString).then(function(response) {
+                    if (response.success) {
+                        res.status(200).json({ tasks: response.data });
+                    } else {
+                        res.status(403).json({ err: "Error getting tasks"});
+                    }
+                });
+            } else { // Unrecognized
+                res.status(403).json({ err: "Unknown action field"});
+            }
         } else {
-            res.jsonp(tasks);
+            res.status(403).json({ err: "Cannot perform action, value field is empty"});
         }
-    });
+    }
 };
 
 
