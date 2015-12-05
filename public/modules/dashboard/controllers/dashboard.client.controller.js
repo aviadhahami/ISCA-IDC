@@ -23,6 +23,12 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                 icon: 'fa-users'
             },
             {
+                level : 2,
+                url: '/tasks',
+                title : 'Tasks',
+                icon: 'fa-list-alt'
+            },
+            {
                 level : 4,
                 url: '/dashboard/applicationReview',
                 title : 'Applications',
