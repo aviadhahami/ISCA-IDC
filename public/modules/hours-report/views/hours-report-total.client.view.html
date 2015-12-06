@@ -1,0 +1,29 @@
+<section data-ng-controller="HoursReportTotalController">
+	<md-content class="hours-list-wrapper" ng-if="totalHours">
+		<h1 class="hours-list-header">
+    		Hours contributed per task
+    	</h1>
+    	<md-divider></md-divider>
+
+        <md-list ng-repeat="user in users" class="hours-list">
+            <a href="/hours/{{user._id}}">
+                <md-list-item class="hours-list-item">
+                    <h3 class="hours-list-header">
+                        {{ user.displayName }}
+                    </h3>
+                </md-list>
+            </a>
+            <md-divider></md-divider>
+
+            <a ng-if="user.iscaData && user.iscaData.hours" ng-repeat="task in appendTasks(user.hours)" ng-href="/#!/task/{{task.taskId}}" class="hours-item-wrapper">
+                <md-list-item class="hours-list-item">
+                    <div class="md-list-item-text" layout="column">
+                        <p>
+                        	{{ task.taskId }} --- Hours contributed: {{ task.timeTaken }}
+                       	</p>
+                    </div>
+                </md-list-item>
+            </a>
+        </md-list>
+    </md-content>
+</section>

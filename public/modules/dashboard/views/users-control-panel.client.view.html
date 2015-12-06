@@ -100,7 +100,7 @@
                                 <br/><br/>
 
                                 <div
-                                        ng-if="selectedUser.iscaData.hoursReports"
+                                        ng-if="selectedUser.iscaData && selectedUser.iscaData.hours"
                                         ng-include="'modules/dashboard/views/users-control-panel/hoursReport.html'">
                                 </div>
                             </div>
