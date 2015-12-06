@@ -69,7 +69,7 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                         sum += task.timeTaken;
             return sum;
         }
-        if ($scope.user.iscaData && $scope.user.iscaData.hours)
+        if ($scope.user.hasOwnProperty("iscaData") && $scope.user.iscaData.hasOwnProperty("hours"))
             $scope.totalHours = sumHours($scope.user.iscaData.hours);
         else
             $scope.totalHours = null;

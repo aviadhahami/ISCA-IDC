@@ -14,7 +14,7 @@ angular.module('hoursReport').controller('HoursReportController', ['$scope', 'Au
                         tasks.push(task);
             return tasks;
         }
-        if ($scope.user.iscaData && $scope.user.iscaData.hours)
+        if ($scope.user.hasOwnProperty("iscaData") && $scope.user.iscaData.hasOwnProperty("hours"))
             $scope.taskList = appendTasks($scope.user.iscaData.hours);
         else
             $scope.taskList = null;

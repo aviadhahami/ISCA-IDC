@@ -15,7 +15,7 @@
             </a>
             <md-divider></md-divider>
 
-            <a ng-if="user.iscaData && user.iscaData.hours" ng-repeat="task in appendTasks(user.iscaData.hours)" ng-href="/#!/task/{{task.taskId}}" class="hours-item-wrapper">
+            <a ng-if="user.hasOwnProperty('iscaData') && user.iscaData.hasOwnProperty('hours')" ng-repeat="task in appendTasks(user.iscaData.hours)" ng-href="/#!/task/{{task.taskId}}" class="hours-item-wrapper">
                 <md-list-item class="hours-list-item">
                     <div class="md-list-item-text" layout="column">
                         <p>
