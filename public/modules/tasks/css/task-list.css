@@ -1,0 +1,39 @@
+.md-tab {
+	min-width: 300px;
+}
+
+.task-list-header {
+	padding-left: 68px;
+}
+.task-list-wrapper {
+	width: 28%;
+	margin: 10px 2%;
+	border-radius: 7px;
+}
+.new-list {
+	background-color: rgba(255, 255, 153, 0.2);
+}
+.active-list {
+	background-color: rgba(153, 204, 255, 0.2);
+}
+.done-list {
+	background-color: rgba(204, 255, 204, 0.2);
+}
+
+.task-list {
+	border-radius: 0 0 7px 7px;
+	height: 600px;
+	overflow-y: scroll;
+}
+
+#add-fab {
+	position: fixed;
+	top: 160px;
+	right: 10px;
+}
+#add-fab i {
+	color: #aaa;
+}
+#add-fab:hover i {
+	color: white;
+}

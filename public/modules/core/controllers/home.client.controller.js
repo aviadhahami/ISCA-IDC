@@ -7,9 +7,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
 
-        // TODO: Get Facebook page posts (ISCAorg) using Graph API
-
-        //console.log($scope.userLevel);
         // Controls the participant / volunteer overview tabs
         $scope.participationType = 'participant';
         $scope.changeParticipationType = function (type) {

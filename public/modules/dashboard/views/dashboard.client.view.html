@@ -20,8 +20,19 @@
                             </md-tab>
                             <md-tab ng-if="userLevel > 1" label="Hours report">
                                 <md-content class="md-padding">
-                                    <h1 class="md-display-2">Hours report</h1>
-                                    <p>There is no data to display at the moment..</p>
+                                    <h1 class="md-display-2">
+                                        Hours report
+                                    </h1>
+                                    <p ng-if="!totalHours">
+                                        There is no data to display at the moment..
+                                    </p>
+                                    <p ng-if="totalHours">
+                                        Total hours contributed: {{ totalHours }}
+                                        <br>
+                                        <a href="/#!/hours/{{user._id}}">
+                                            Go to hours report
+                                        </a>
+                                    </p>
                                 </md-content>
                             </md-tab>
                         </md-tabs>
