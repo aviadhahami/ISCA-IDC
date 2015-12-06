@@ -6,7 +6,7 @@
     	<md-divider></md-divider>
 
         <md-list ng-repeat="user in users" class="hours-list">
-            <a href="/hours/{{user._id}}">
+            <a ng-href="#!/hours/{{user._id}}">
                 <md-list-item class="hours-list-item">
                     <h3 class="hours-list-header">
                         {{ user.displayName }}
