@@ -48,6 +48,7 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
                         .content(err.data.message)
                         .ok('OK')
                     );
+
                 }
             });
         };
