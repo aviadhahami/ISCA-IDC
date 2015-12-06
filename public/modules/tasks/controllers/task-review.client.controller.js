@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tasks').controller('TaskNewController', ['$scope', 'Authentication', 'Userroleasenumservice',
+angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice',
     function($scope, Authentication, Userroleasenumservice) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
@@ -22,25 +22,8 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
 
         };
 
-        $scope.task = {
-        	title: 'fuck you',
-        	type: 'Fuckbook',
-        	created: {
-        		date: Date.now(),
-        		name: 'fuckface',
-        		id: 1
-        	},
-        	status: 'new',
-        	description: 'fuck yourself in the face',
-        	content: 'fuck yourself in the facefuck yourself in the facefuck yourself in the facefuck yourself in the facefuck yourself in the facefuck yourself in the facefuck yourself in the facefuck yourself in the facefuck yourself in the face',
-
-        }
-
         $scope.task = task;
         console.log(task);
-        $scope.takeClicked = function() {};
-        $scope.closeClicked = function() {};
-
 
 
     }
