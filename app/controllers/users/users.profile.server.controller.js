@@ -78,6 +78,10 @@ exports.updateAdmin = function(req, res) {
  * Update user details
  */
 exports.update = function(req, res) {
+	console.log('UPDATEEE')
+	console.log(req.body);
+
+
 	// Init Variables
 	var user = req.user;
 	var message = null;

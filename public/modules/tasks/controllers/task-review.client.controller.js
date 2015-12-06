@@ -6,7 +6,7 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
-
+        console.log($scope.user);
         $scope.task = task;
         $scope.editMode = false;
 
@@ -118,20 +118,21 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
 
                         var year = new Date().getFullYear();
                         var month = new Date().getMonth();
-                        if (!$scope.user.iscaData.hasOwnProperty['hours']) {
+                        if (!$scope.user.iscaData['hours']) {
                             $scope.user.iscaData.hours = {};
                         }
-                        if (!$scope.user.iscaData.hours.hasOwnProperty(year)) {
+                        if (!$scope.user.iscaData.hours[year]) {
                             $scope.user.iscaData.hours[year] = {};
                         }
                         if (!$scope.user.iscaData.hours[year].hasOwnProperty(month)) {
                             $scope.user.iscaData.hours[year][month] = [];
                         }
+                        console.log($scope.user.iscaData.hours[year][month]);
                         $scope.user.iscaData.hours[year][month].push({
                             taskId: $scope.task._id,
                             timeTaken: answer
                         });
-
+                        console.log($scope.user.iscaData.hours[year][month]);
 
                         // XHR
                         $q.all([
@@ -145,11 +146,20 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                             $http({
                                 method: 'PUT',
                                 url: '/users',
-                                body: $scope.user
+                                data: $scope.user
                             })
                         ]).
                         then(function (dataArr) {
                             console.log(dataArr)
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                    .clickOutsideToClose(false)
+                                    .title('Good job!')
+                                    .content('We\'ve recorded your actions')
+                                    .ok('ok')
+                            ).then(function () {
+                                $location.path('/tasks');
+                            });
                         })
 
                     }
