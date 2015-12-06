@@ -22,47 +22,56 @@ var TaskSchema = new Schema({
         required: 'Please fill type'
     },
     created: {
-        type: Date,
-        default: Date.now
+        date: {
+            type: Date,
+            default: Date.now
+        },
+        name: String,
+        id: {
+            type: Schema.ObjectId,
+            ref: 'User'
+        }
     },
-    createdBy: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
-    status:{
-        type : String,
-        default: 'new',
-        enum:['new','active','done']
-    },
-    takenBy:{
-      type: Schema.ObjectId,
-        ref: 'User'
-    },
-    taken:{
-        type: Date,
-        default : 0
-    },
-    closedBy:{
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
-    closed :{
-        type: Date,
-        default : 0
-    },
-    description:{
+    status: {
         type: String,
-        default : '',
+        default: 'new',
+        enum: ['new', 'active', 'done']
+    },
+    taken: {
+        name: String,
+        date: {
+            type: Date,
+            default: 0
+        },
+        id: {
+            type: Schema.ObjectId,
+            ref: 'User'
+        }
+    },
+    closed: {
+        date: {
+            type: Date,
+            default: 0
+        },
+        name: String,
+        id: {
+            type: Schema.ObjectId,
+            ref: 'User'
+        }
+    },
+    description: {
+        type: String,
+        default: '',
         required: 'Please add description'
     },
-    content :{
+    content: {
         type: String,
-        default : '',
-        required : 'Please add content'
+        default: '',
+        required: 'Please add content'
     },
-    timeTaken:{
+    timeTaken: {
         type: Number,
-        default:0,
+        default: 0,
         required: 'Please add time value'
     }
 });
