@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </md-toolbar>
-                    <div>
+                    <div ng-if="!editMode">
                         <small ng-if="task.status == 'new'" class="task-info">
                             <i>{{ task.type }} task - Created on {{ stringifyDate(task.created.date) }} By {{
                                 task.created.name }}</i>
@@ -56,6 +56,12 @@
                             <i>{{ task.type }} task - Completed on {{ stringifyDate(task.closed.date) }} By {{
                                 task.closed.name }}</i>
                         </small>
+                    </div>
+                    <div ng-if="editMode">
+                        <md-input-container>
+                            <label>type</label>
+                            <input type="text" ng-model="task.type">
+                        </md-input-container>
                     </div>
 
                     <br>
