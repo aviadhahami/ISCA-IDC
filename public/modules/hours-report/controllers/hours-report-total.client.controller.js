@@ -6,6 +6,8 @@ angular.module('hoursReport').controller('HoursReportTotalController', ['$scope'
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
+
+        console.log($scope.user)
         $scope.appendTasks = function (hoursObj) {
             var tasks = [];
             for (var year in hoursObj)
@@ -19,6 +21,7 @@ angular.module('hoursReport').controller('HoursReportTotalController', ['$scope'
             UsersGetterService.getUsers()
                 .then(function (data) {
                     $scope.users = data.data;
+                    console.log(data);
                 });
         };
         populateUsers();
