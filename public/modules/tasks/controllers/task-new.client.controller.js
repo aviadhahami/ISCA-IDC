@@ -11,7 +11,6 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
         $scope.newTask = {
             type: '',
             title: '',
-            createdBy: $scope.user._id,
             description: '',
             content: ''
         };

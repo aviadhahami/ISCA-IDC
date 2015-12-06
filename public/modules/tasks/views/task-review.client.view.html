@@ -21,7 +21,7 @@
             <md-card-actions layout="row" layout-align="start center">
                 <md-button class="md-raised" ng-click="takeClicked()" ng-if="!!task.takenBy">Take</md-button>
                 <md-button class="md-raised" ng-click="closeClicked()"
-                           ng-if="task.takenBy === user._id || userLevel > 2">
+                           ng-if="task.taken.id === user._id || userLevel > 2">
                     Close
                 </md-button>
             </md-card-actions>
