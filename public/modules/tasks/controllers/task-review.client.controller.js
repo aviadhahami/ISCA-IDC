@@ -65,9 +65,25 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                 }
             }).then(function (res) {
                 console.log(res);
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(false)
+                        .title('Good luck')
+                        .content('You\'ve taken property of this task')
+                        .ok('thanks')
+                ).then(function () {
 
+                });
             }, function (err) {
-                console.log(err);
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(false)
+                        .title('Woops')
+                        .content(err.message)
+                        .ok('ok')
+                ).then(function () {
+                    $location.path('/tasks');
+                });
             });
         };
 
