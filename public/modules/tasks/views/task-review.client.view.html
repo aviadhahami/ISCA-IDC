@@ -15,7 +15,9 @@
                             </div>
                             <div ng-if="editMode" flex="80">
                                 <h2 style="color:white">
-                                    <input type="text" ng-model="task.title">
+                                    <md-input-container>
+                                        <input type="text" ng-model="task.title">
+                                    </md-input-container>
                                 </h2>
                             </div>
                             <div data-ng-if="userLevel > 2 && !!user && !editMode" layout="row" flex>
@@ -65,18 +67,20 @@
                 </p>
             </md-card-content>
             <md-card-content ng-if="editMode">
-                <textarea class="task-text" data-ng-model="task.content">
-                </textarea>
+                <md-input-container>
+                    <textarea class="task-text" data-ng-model="task.content">
+                    </textarea>
+                </md-input-container>
             </md-card-content>
 
-            <md-card-actions  ng-if="!editMode" layout="row" layout-align="start center">
-                    <md-button class="md-raised" ng-click="takeTask()" ng-if="task.status == 'new'">
-                        Pick up task!
-                    </md-button>
-                    <md-button class="md-raised" ng-click="closeTask()"
-                               ng-if="task.taken.id === user._id || userLevel > 2">
-                        I'm done!
-                    </md-button>
+            <md-card-actions ng-if="!editMode" layout="row" layout-align="start center">
+                <md-button class="md-raised" ng-click="takeTask()" ng-if="task.status == 'new'">
+                    Pick up task!
+                </md-button>
+                <md-button class="md-raised" ng-click="closeTask()"
+                           ng-if="task.taken.id === user._id || userLevel > 2">
+                    I'm done!
+                </md-button>
             </md-card-actions>
         </md-card>
     </md-content>
