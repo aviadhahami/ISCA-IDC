@@ -58,22 +58,27 @@ exports.update = function (req, res) {
  * Delete task
  */
 exports.delete = function (req, res) {
-    var tasks = req.task;
 
-    tasks.remove(function (err) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp(tasks);
-        }
-    });
+    if (req.user.roles === 'admin') {
+        var tasks = req.task;
+
+        tasks.remove(function (err) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.jsonp(tasks);
+            }
+        });
+    }else{
+        res.status(403).send({ message : 'Not an admin'});
+    }
 };
 
 var listHandler = {
     getTypes: function () {
-        var deferred = q.defer()
+        var deferred = q.defer();
         Tasks.distinct('type').exec(function (err, types) {
             if (err) {
                 deferred.resolve({success: false, err: err});

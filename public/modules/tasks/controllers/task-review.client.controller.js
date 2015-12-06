@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', 'task', '$http',
-    function ($scope, Authentication, Userroleasenumservice, task, $http) {
+angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', 'task', '$http','$mdDialog','$location',
+    function ($scope, Authentication, Userroleasenumservice, task, $http,$mdDialog,$location) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -34,21 +34,70 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                 $scope.editMode = !$scope.editMode;
             }, function (err) {
                 console.log(err);
-                mdDialog.alert()
-                    .clickOutsideToClose(false)
-                    .title('Woops!')
-                    .content('Something went wrong, updates weren\'t saved')
-                    .ok('ok');
-                $scope.editMode = !$scope.editMode;
+
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(false)
+                        .title('Woops')
+                        .content('Something went wrong, updates weren\'t saved')
+                        .ok('ok')
+                ).then(function () {
+                    $scope.editMode = !$scope.editMode;
+                });
+
             });
 
 
         };
+
         $scope.takeTask = function () {
 
         };
+
         $scope.closeTask = function () {
 
+        };
+
+        $scope.removeRecord = function () {
+            if ($scope.userLevel < 4) {
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(false)
+                        .title('WARNING')
+                        .content('You are not authorized to do this action')
+                        .ok('ok')
+                ).then(function () {
+                    $location.path('/tasks');
+                });
+            } else {
+
+                $http({
+                    method: 'DELETE',
+                    url: '/tasks/' + $scope.task._id
+                }).then(function (res) {
+                    console.log(res);
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .clickOutsideToClose(false)
+                            .title('Task deleted')
+                            .content('This task has been removed')
+                            .ok('ok')
+                    ).then(function () {
+                        $location.path('/tasks');
+                    });
+                }, function (err) {
+                    console.log(err);
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .clickOutsideToClose(false)
+                            .title('Error')
+                            .content(err.message)
+                            .ok('ok')
+                    ).then(function () {
+                        $location.path('/tasks');
+                    });
+                });
+            }
         };
 
 
