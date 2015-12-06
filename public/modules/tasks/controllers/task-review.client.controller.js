@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', 'task','$http',
-    function ($scope, Authentication, Userroleasenumservice, task,$http) {
+angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', 'task', '$http',
+    function ($scope, Authentication, Userroleasenumservice, task, $http) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -31,10 +31,17 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                 }
             }).then(function (res) {
                 console.log(res);
-            },function (err) {
+                $scope.editMode = !$scope.editMode;
+            }, function (err) {
                 console.log(err);
+                mdDialog.alert()
+                    .clickOutsideToClose(false)
+                    .title('Woops!')
+                    .content('Something went wrong, updates weren\'t saved')
+                    .ok('ok');
+                $scope.editMode = !$scope.editMode;
             });
-            $scope.editMode = !$scope.editMode;
+
 
         };
         $scope.takeTask = function () {
