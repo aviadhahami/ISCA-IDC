@@ -11,6 +11,9 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
         $scope.newTask = {
             type: '',
             title: '',
+            create:{
+                id : $scope.user._id
+            },
             description: '',
             content: ''
         };
