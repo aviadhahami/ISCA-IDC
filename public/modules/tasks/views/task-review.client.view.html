@@ -6,23 +6,30 @@
         <md-card class="{{task.status}}-task">
             <md-card-title>
                 <md-card-title-text>
-                    <md-toolbar>
+                    <md-toolbar ng-class="{'md-accent' : editMode}">
                         <div class="md-toolbar-tools">
                             <div flex="80">
                                 <h2 style="color:white">
                                     {{task.title}}
                                 </h2>
                             </div>
-                            <div data-ng-if="userLevel > 2 && !!user" layout="row" flex>
+                            <div data-ng-if="userLevel > 2 && !!user && !editMode" layout="row" flex>
                                 <div flex>
                                     <md-button class="md-fab md-primary" aria-label="Edit"
-                                               href="/#!/blogAndMagazine/{{news._id}}/edit">
+                                               ng-click="edit()">
                                         <i style="color: white;" class="fa fa-pencil fa-lg"></i>
                                     </md-button>
                                 </div>
                                 <div data-ng-if="userLevel > 3" flex>
                                     <md-button class="md-fab" aria-label="Delete" ng-click="remove();">
                                         <i style="color:white" class="fa fa-trash-o fa-lg"></i>
+                                    </md-button>
+                                </div>
+                            </div>
+                            <div data-ng-if="userLevel > 2 && !!user && editMode">
+                                <div flex>
+                                    <md-button class="md-fab md-primary" style="background-color: #00A000" aria-label="Finish" ng-click="updateRecord()">
+                                        <i style="color:white" class="fa fa-check fa-lg"></i>
                                     </md-button>
                                 </div>
                             </div>
