@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', 'task', '$http', '$mdDialog', '$location',
-    function ($scope, Authentication, Userroleasenumservice, task, $http, $mdDialog, $location) {
+angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', 'task', '$http', '$mdDialog', '$location', '$q',
+    function ($scope, Authentication, Userroleasenumservice, task, $http, $mdDialog, $location, $q) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -107,6 +107,7 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                 })
                 .then(function (answer) {
                     if (!!answer) {
+
                         // Prepare object data
                         $scope.task.closed = {
                             name: $scope.user.displayName,
@@ -115,34 +116,42 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                         };
                         $scope.task.status = 'done';
 
-                        // XHR
-                        $http({
-                            method: 'PUT',
-                            url: '/tasks/' + task._id,
-                            data: {
-                                task: $scope.task
-                            }
-                        }).then(function (res) {
-                            console.log(res);
-                            $mdDialog.show(
-                                $mdDialog.alert()
-                                    .clickOutsideToClose(false)
-                                    .title('Great job!')
-                                    .content('You\'ve completed this task')
-                                    .ok('ok')
-                            ).then(function () {
-                            });
-                        }, function (err) {
-                            $mdDialog.show(
-                                $mdDialog.alert()
-                                    .clickOutsideToClose(false)
-                                    .title('Woops')
-                                    .content(err.message)
-                                    .ok('ok')
-                            ).then(function () {
-                                $location.path('/tasks');
-                            });
+                        var year = new Date().getFullYear();
+                        var month = new Date().getMonth();
+                        if (!$scope.user.iscaData.hasOwnProperty['hours']) {
+                            $scope.user.iscaData.hours = {};
+                        }
+                        if (!$scope.user.iscaData.hours.hasOwnProperty(year)) {
+                            $scope.user.iscaData.hours[year] = {};
+                        }
+                        if (!$scope.user.iscaData.hours[year].hasOwnProperty(month)) {
+                            $scope.user.iscaData.hours[year][month] = [];
+                        }
+                        $scope.user.iscaData.hours[year][month].push({
+                            taskId: $scope.task._id,
+                            timeTaken: answer
                         });
+
+
+                        // XHR
+                        $q.all([
+                            $http({
+                                method: 'PUT',
+                                url: '/tasks/' + task._id,
+                                data: {
+                                    task: $scope.task
+                                }
+                            }),
+                            $http({
+                                method: 'PUT',
+                                url: '/users',
+                                body: $scope.user
+                            })
+                        ]).
+                        then(function (dataArr) {
+                            console.log(dataArr)
+                        })
+
                     }
                 });
 
