@@ -44,11 +44,21 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
 
 
         };
+
         $scope.takeTask = function () {
 
         };
+
         $scope.closeTask = function () {
 
+        };
+
+        $scope.removeRecord = function () {
+            $http({}).then(function (res) {
+                console.log(res);
+            },function(err){
+                console.log(err);
+            });
         };
 
 
