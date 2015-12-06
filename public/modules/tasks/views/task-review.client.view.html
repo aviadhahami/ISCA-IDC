@@ -8,23 +8,38 @@
                 <md-card-title-text>
                     <md-toolbar>
                         <div class="md-toolbar-tools">
-                            <h2 style="color:white">
-                                {{task.title}}
-                            </h2>
+                            <div flex="80">
+                                <h2 style="color:white">
+                                    {{task.title}}
+                                </h2>
+                            </div>
+                            <div data-ng-if="userLevel > 2 && !!user" layout="row" flex>
+                                <div flex>
+                                    <md-button class="md-fab md-primary" aria-label="Edit"
+                                               href="/#!/blogAndMagazine/{{news._id}}/edit">
+                                        <i style="color: white;" class="fa fa-pencil fa-lg"></i>
+                                    </md-button>
+                                </div>
+                                <div data-ng-if="userLevel > 3" flex>
+                                    <md-button class="md-fab" aria-label="Delete" ng-click="remove();">
+                                        <i style="color:white" class="fa fa-trash-o fa-lg"></i>
+                                    </md-button>
+                                </div>
+                            </div>
                         </div>
                     </md-toolbar>
                     <div>
                         <small ng-if="task.status == 'new'" class="task-info">
                             <i>{{ task.type }} task - Created on {{ stringifyDate(task.created.date) }} By {{
-                            task.created.name }}</i>
+                                task.created.name }}</i>
                         </small>
                         <small ng-if="task.status == 'active'" class="task-info">
                             <i>{{ task.type }} task - Picked up on {{ stringifyDate(task.taken.date) }} By {{
-                            task.taken.name }}</i>
+                                task.taken.name }}</i>
                         </small>
                         <small ng-if="task.status == 'done'" class="task-info">
                             <i>{{ task.type }} task - Completed on {{ stringifyDate(task.closed.date) }} By {{
-                            task.closed.name }}</i>
+                                task.closed.name }}</i>
                         </small>
                     </div>
 
