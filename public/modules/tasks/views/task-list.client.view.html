@@ -1,4 +1,95 @@
 <section data-ng-controller="TaskListController">
-    
-</section>
+	{{ categories }}
+	{{ taskList }}
+    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+        <md-tab ng-repeat="category in categories" label="{{category.title}}" ng-click="populateTasks(category.title)">
+            <md-content class="md-padding">
+	            <div ng-if="loadingTasks">
+	                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+	                <p>Loading Tasks...</p>
+	            </div>
+				
+				<md-content layout-padding layout="row" layout-align="center start">
+					<md-content class="task-list-wrapper new-list">
+						<h1 class="task-list-header">
+	                		New Tasks
+	                	</h1>
+	                	<md-divider></md-divider>
+		                <md-list class="task-list">
+		                    <a ng-repeat="task in taskList | filter:{ status: 'new' }" ng-href="/#!/task/{{task._id}}" class="task-item-wrapper">
+		                        <md-list-item class="task-list-item">
+		                            <img ng-if="createdThisWeek(task.created.date)" ng-src="/modules/tasks/img/star.png" class="md-avatar new-star"/>
+		                            <div ng-if="!createdThisWeek(task.created.date)" class="md-avatar empty-avatar"></div>
 
+		                            <div class="md-list-item-text" layout="column">
+		                                <h3>
+		                                    {{ task.title }}
+		                                </h3>
+		                                <small>
+		                                    {{ task.type }} - Created on {{ stringifyDate(task.created.date) }} By {{ task.created.name }}
+		                                </small>
+		                                <p>
+		                                	{{ task.description }}
+		                               	</p>
+		                            </div>
+		                        </md-list-item>
+		                    </a>
+		                </md-list>
+		            </md-content>
+						
+					<md-content class="task-list-wrapper active-list">
+						<h1 class="task-list-header">
+	                		Ongoing Tasks
+	                	</h1>
+	                	<md-divider></md-divider>
+	                	<md-list class="task-list">
+		                    <a ng-repeat="task in taskList | filter:{ status: 'active' }" ng-href="/#!/task/{{task._id}}" class="task-item-wrapper">
+		                        <md-list-item class="task-list-item">
+		                        	<div class="md-avatar empty-avatar"></div>
+
+		                            <div class="md-list-item-text" layout="column">
+		                                <h3>
+		                                    {{ task.title }}
+		                                </h3>
+		                                <small>
+		                                    {{ task.type }} - Picked up on {{ stringifyDate(task.taken.date) }} By {{ task.taken.name }}
+		                                </small>
+		                                <p>
+		                                	{{ task.description }}
+		                               	</p>
+		                            </div>
+		                        </md-list-item>
+		                    </a>
+		                </md-list>
+		            </md-content>
+
+					<md-content class="task-list-wrapper done-list">
+						<h1 class="task-list-header">
+	                		Completed Tasks
+	                	</h1>
+	                	<md-divider></md-divider>
+		                <md-list class="task-list">
+		                    <a ng-repeat="task in taskList | filter:{ status: 'done' }" ng-href="/#!/task/{{task._id}}" class="task-item-wrapper">
+		                        <md-list-item class="task-list-item">
+		                            <img ng-src="/modules/tasks/img/check.png" class="md-avatar done-check"/>
+
+		                            <div class="md-list-item-text" layout="column">
+		                                <h3>
+		                                    {{ task.title }}
+		                                </h3>
+		                                <small>
+		                                    {{ task.type }} - Completed on {{ stringifyDate(task.closed.date) }} By {{ task.closed.name }}
+		                                </small>
+		                                <p>
+		                                	{{ task.description }}
+		                               	</p>
+		                            </div>
+		                        </md-list-item>
+		                    </a>
+		                </md-list>
+		            </md-content>
+				</md-content>
+            </md-content>
+        </md-tab>
+    </md-tabs>
+</section>
