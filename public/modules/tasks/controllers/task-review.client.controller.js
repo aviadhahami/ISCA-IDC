@@ -88,42 +88,64 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
         };
 
         $scope.closeTask = function () {
-            $scope.task.closed = {
-                name: $scope.user.displayName,
-                date: Date.now(),
-                id: $scope.user._id
-            };
-            $scope.task.status = 'done';
+            $mdDialog.show({
+                    controller: function ($scope, $mdDialog) {
+                        $scope.answer = function () {
+                            if (!!$scope.value) {
+                                $mdDialog.hide($scope.value);
+                            } else {
+                                $scope.err = 'Please specify amount of hours';
+                            }
+                        };
+                        $scope.close = function () {
+                            $mdDialog.hide();
+                        }
+                    },
+                    templateUrl: 'modules/tasks/views/task-hours-dialog.client.view.html',
+                    parent: angular.element(document.body),
+                    clickOutsideToClose: false
+                })
+                .then(function (answer) {
+                    if (!!answer) {
+                        // Prepare object data
+                        $scope.task.closed = {
+                            name: $scope.user.displayName,
+                            date: Date.now(),
+                            id: $scope.user._id
+                        };
+                        $scope.task.status = 'done';
 
-            $http({
-                method: 'PUT',
-                url: '/tasks/' + task._id,
-                data: {
-                    task: $scope.task
-                }
-            }).then(function (res) {
-                console.log(res);
-                $mdDialog.show(
-                    $mdDialog.alert()
-                        .clickOutsideToClose(false)
-                        .title('Great job!')
-                        .content('You\'ve completed this task')
-                        .ok('ok')
-                ).then(function () {
+                        // XHR
+                        $http({
+                            method: 'PUT',
+                            url: '/tasks/' + task._id,
+                            data: {
+                                task: $scope.task
+                            }
+                        }).then(function (res) {
+                            console.log(res);
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                    .clickOutsideToClose(false)
+                                    .title('Great job!')
+                                    .content('You\'ve completed this task')
+                                    .ok('ok')
+                            ).then(function () {
+                            });
+                        }, function (err) {
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                    .clickOutsideToClose(false)
+                                    .title('Woops')
+                                    .content(err.message)
+                                    .ok('ok')
+                            ).then(function () {
+                                $location.path('/tasks');
+                            });
+                        });
+                    }
+                });
 
-                    // Ask how many hours and update user's data
-                });
-            }, function (err) {
-                $mdDialog.show(
-                    $mdDialog.alert()
-                        .clickOutsideToClose(false)
-                        .title('Woops')
-                        .content(err.message)
-                        .ok('ok')
-                ).then(function () {
-                    $location.path('/tasks');
-                });
-            });
 
         };
 
