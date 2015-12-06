@@ -12,7 +12,10 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
             type: '',
             title: '',
             description: '',
-            content: ''
+            content: '',
+            created:{
+                name: $scope.user.displayName
+            }
         };
 
         $scope.createNewTask = function () {
