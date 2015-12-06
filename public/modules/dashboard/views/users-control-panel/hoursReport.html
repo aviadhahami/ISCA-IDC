@@ -3,4 +3,13 @@
         <i class="fa fa-clock-o fa-2x colorFAicon"></i>
     </div>
     <p flex style="text-decoration: underline">Hours report</p>
+    <div layout="row" ng-repeat="task in appendTasks(user.iscaData.hours)">
+	    <div flex="5"></div>
+	    <div flex="20">
+	        Hours:
+	    </div>
+	    <div flex>
+	        {{task.timeTaken}}
+	    </div>
+	</div>
 </div>

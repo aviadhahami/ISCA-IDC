@@ -174,6 +174,16 @@ angular.module('dashboard').controller('userControlPanelController', ['$scope', 
             };
 
             // END Reassign role
+
+
+            $scope.appendTasks = function (hoursObj) {
+                var tasks = [];
+                for (var year in hoursObj)
+                    for (var month in year)
+                        for (var task in month)
+                            tasks.push(task);
+                return tasks;
+            }
         }
     ]
 );

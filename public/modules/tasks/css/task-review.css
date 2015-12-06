@@ -1,0 +1,24 @@
+.task-details-container {
+	padding: 20px;
+}
+
+.new-task {
+	background-color: rgba(255, 255, 153, 0.2) !important;
+}
+.active-task {
+	background-color: rgba(153, 204, 255, 0.2) !important;
+}
+.done-task {
+	background-color: rgba(204, 255, 204, 0.2) !important;
+}
+
+.task-header {
+	font-size: 38px;
+	font-weight: bold;
+}
+.task-info {
+	font-size: 14px;
+}
+.task-text {
+	font-size: 20px;
+}
