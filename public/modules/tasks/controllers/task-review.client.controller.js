@@ -75,6 +75,7 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
 
                 });
             }, function (err) {
+                console.log(err);
                 $mdDialog.show(
                     $mdDialog.alert()
                         .clickOutsideToClose(false)
