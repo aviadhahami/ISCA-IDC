@@ -1,5 +1,5 @@
 <section data-ng-controller="TaskListController">
-    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+    <md-tabs id="task-tabs" md-dynamic-height md-border-bottom md-stretch-tabs="always">
         <md-tab ng-repeat="category in categories" label="{{category}}" ng-click="populateTasks(category)">
             <md-content class="md-padding">
 	            <div ng-if="loadingTasks">
@@ -90,4 +90,10 @@
             </md-content>
         </md-tab>
     </md-tabs>
+    
+    <a href="/#!/task/new" id="add-fab" ng-if="userLevel > 2">
+    	<md-button class="md-fab" aria-label="Add">
+        	<i class="fa fa-plus fa-lg"></i>
+    	</md-button>	
+    </a>
 </section>
