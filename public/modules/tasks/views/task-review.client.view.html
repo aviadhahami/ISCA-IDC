@@ -11,25 +11,30 @@
                             <h2 style="color:white">
                                 {{task.title}}
                             </h2>
+                            <br/>
+                            <small ng-if="task.status == 'new'" class="task-info">
+                                {{ task.type }} - Created on {{ stringifyDate(task.created.date) }} By {{
+                                task.created.name }}
+                            </small>
+                            <small ng-if="task.status == 'active'" class="task-info">
+                                {{ task.type }} - Picked up on {{ stringifyDate(task.taken.date) }} By {{
+                                task.taken.name }}
+                            </small>
+                            <small ng-if="task.status == 'done'" class="task-info">
+                                {{ task.type }} - Completed on {{ stringifyDate(task.closed.date) }} By {{
+                                task.closed.name }}
+                            </small>
                         </div>
                     </md-toolbar>
-                    <small ng-if="task.status == 'new'" class="task-info">
-                        {{ task.type }} - Created on {{ stringifyDate(task.created.date) }} By {{ task.created.name }}
-                    </small>
-                    <small ng-if="task.status == 'active'" class="task-info">
-                        {{ task.type }} - Picked up on {{ stringifyDate(task.taken.date) }} By {{ task.taken.name }}
-                    </small>
-                    <small ng-if="task.status == 'done'" class="task-info">
-                        {{ task.type }} - Completed on {{ stringifyDate(task.closed.date) }} By {{ task.closed.name }}
-                    </small>
                     <br>
-
-                    <p class="md-subhead">
-                        {{task.description}}
-                    </p>
                 </md-card-title-text>
             </md-card-title>
             <md-card-content>
+                <label>Description</label>
+                <p class="task-text">
+                    {{task.description}}
+                </p>
+                <hr />
                 <p class="task-text">
                     {{ task.content }}
                 </p>
