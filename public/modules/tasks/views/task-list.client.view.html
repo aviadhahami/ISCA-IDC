@@ -1,8 +1,6 @@
 <section data-ng-controller="TaskListController">
-	{{ categories }}
-	{{ taskList }}
     <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
-        <md-tab ng-repeat="category in categories" label="{{category.title}}" ng-click="populateTasks(category.title)">
+        <md-tab ng-repeat="category in categories" label="{{category}}" ng-click="populateTasks(category)">
             <md-content class="md-padding">
 	            <div ng-if="loadingTasks">
 	                <md-progress-linear md-mode="indeterminate"></md-progress-linear>

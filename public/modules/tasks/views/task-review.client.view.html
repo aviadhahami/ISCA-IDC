@@ -1,27 +1,36 @@
-<section data-ng-controller="TaskNewController">
+<section>
     <md-content>
-        <md-card class="task-details-container {{task.status}}-task">
+        <a ui-sref="tasks">
+            <i class="fa fa-chevron-left"></i> Back
+        </a>
+        <md-card class="{{task.status}}-task">
             <md-card-title>
                 <md-card-title-text>
-                    <h1 class="md-headline task-header">
-                        {{ task.title }}
-                    </h1>
-                    <small ng-if="task.status == 'new'" class="task-info">
-                        {{ task.type }} - Created on {{ stringifyDate(task.created.date) }} By {{ task.created.name }}
-                    </small>
-                    <small ng-if="task.status == 'active'" class="task-info">
-                        {{ task.type }} - Picked up on {{ stringifyDate(task.taken.date) }} By {{ task.taken.name }}
-                    </small>
-                    <small ng-if="task.status == 'done'" class="task-info">
-                        {{ task.type }} - Completed on {{ stringifyDate(task.closed.date) }} By {{ task.closed.name }}
-                    </small>
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <h2 style="color:white">
+                                {{task.title}}
+                            </h2>
+                        </div>
+                    </md-toolbar>
+                    <div>
+                        <small ng-if="task.status == 'new'" class="task-info">
+                            <i>{{ task.type }} task - Created on {{ stringifyDate(task.created.date) }} By {{
+                            task.created.name }}</i>
+                        </small>
+                        <small ng-if="task.status == 'active'" class="task-info">
+                            <i>{{ task.type }} task - Picked up on {{ stringifyDate(task.taken.date) }} By {{
+                            task.taken.name }}</i>
+                        </small>
+                        <small ng-if="task.status == 'done'" class="task-info">
+                            <i>{{ task.type }} task - Completed on {{ stringifyDate(task.closed.date) }} By {{
+                            task.closed.name }}</i>
+                        </small>
+                    </div>
+
                     <br>
-                    <p class="md-subhead">
-                        {{task.description}}
-                    </p>
                 </md-card-title-text>
             </md-card-title>
-
             <md-card-content>
                 <p class="task-text">
                     {{ task.content }}

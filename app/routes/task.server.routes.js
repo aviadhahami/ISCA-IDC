@@ -16,5 +16,5 @@ module.exports = function(app) {
 			.delete(users.requiresLogin, tasks.hasAuthorization, tasks.delete);
 
 	// Finish by binding the Tasks middleware
-	app.param('tasksId', tasks.tasksByID);
+	app.param('taskId', tasks.tasksByID);
 };
