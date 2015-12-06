@@ -6,6 +6,9 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
+        if($scope.userLevel<3){
+            $location.path('/');
+        }
 
         // Instance for new task object
         $scope.newTask = {
