@@ -1,0 +1,17 @@
+<md-dialog style="padding: 5px;">
+    <h2>Please specify working hours</h2>
+    <md-input-container>
+        <label>Specify hours</label>
+        <input type="number" ng-model="value"/>
+    </md-input-container>
+    <p style="color: darkred;"> {{ err }}</p>
+
+    <div layout="row">
+        <md-button ng-click="answer()">
+            Close Task
+        </md-button>
+        <md-button ng-click="close()">
+            Cancel
+        </md-button>
+    </div>
+</md-dialog>

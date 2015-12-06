@@ -80,11 +80,12 @@
             </md-card-content>
 
             <md-card-actions ng-if="!editMode" layout="row" layout-align="start center">
-                <md-button class="md-raised" ng-click="takeTask()" ng-if="task.status == 'new'">
+                <md-button class="md-raised" ng-click="takeTask()" ng-if="task.status === 'new'">
                     Pick up task!
                 </md-button>
                 <md-button class="md-raised" ng-click="closeTask()"
-                           ng-if="task.taken.id === user._id || userLevel > 2">
+                           ng-if="task.taken.id === user._id || userLevel > 2"
+                ng-hide="task.status === 'done'">
                     I'm done!
                 </md-button>
             </md-card-actions>
