@@ -8,10 +8,13 @@ angular.module('hoursReport').controller('HoursReportController', ['$scope', 'Au
 
         var appendTasks = function (hoursObj) {
             var tasks = [];
-            for (var year in hoursObj)
-                for (var month in year)
-                    for (var task in month)
-                        tasks.push(task);
+            for (var year in hoursObj) {
+                for (var month in hoursObj[year]) {
+                    for (var i = 0; i < hoursObj[year][month].length; i++) {
+                        tasks.push(hoursObj[year][month][i]);
+                    }
+                }
+            }
             return tasks;
         }
         if ($scope.user.hasOwnProperty("iscaData") && $scope.user.iscaData.hasOwnProperty("hours"))
