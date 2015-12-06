@@ -131,7 +131,8 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                         console.log($scope.user.iscaData.hours[year][month]);
                         $scope.user.iscaData.hours[year][month].push({
                             taskId: $scope.task._id,
-                            timeTaken: answer
+                            timeTaken: answer,
+                            taskTitle : $scope.task.title
                         });
                         console.log($scope.user.iscaData.hours[year][month]);
 

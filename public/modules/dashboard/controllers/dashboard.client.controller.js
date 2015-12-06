@@ -63,13 +63,16 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
         // This function handles all arrays in the user's 'iscaData.hours' object
         var sumHours = function (hoursObj) {
             var sum = 0;
-            for (var year in hoursObj)
-                for (var month in year)
-                    for (var task in month)
-                        sum += task.timeTaken;
+            for (var year in hoursObj) {
+                for (var month in hoursObj[year]) {
+                    for (var i = 0; i < hoursObj[year][month].length; i++) {
+                        sum += hoursObj[year][month][i].timeTaken;
+                    }
+                }
+            }
             return sum;
         }
-        if ($scope.user.iscaData && $scope.user.iscaData.hours)
+        if ($scope.user.hasOwnProperty("iscaData") && $scope.user.iscaData.hasOwnProperty("hours"))
             $scope.totalHours = sumHours($scope.user.iscaData.hours);
         else
             $scope.totalHours = null;

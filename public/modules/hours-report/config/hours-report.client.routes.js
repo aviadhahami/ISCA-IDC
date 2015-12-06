@@ -12,16 +12,7 @@ angular.module('hoursReport').config(['$stateProvider', '$urlRouterProvider',
             .state('hoursReport', {
                 url: '/hours/:userId',
                 templateUrl: 'modules/hours-report/views/hours-report.client.view.html',
-                controller: 'HoursReportController',
-                resolve: {
-                    task: ['$http', '$stateParams', function ($http, $stateParams) {
-                        return $http.get('/hours/' + $stateParams.userId).then(function (res) {
-                            return res.data;
-                        }, function (err) {
-                            return err;
-                        });
-                    }]
-                }
+                controller: 'HoursReportController'
             });
     }
 ]);
