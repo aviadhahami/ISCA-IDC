@@ -1,15 +1,28 @@
-<section data-ng-controller="HoursReportController">
-	<md-content class="hours-list-wrapper" ng-if="!totalHours">
-		<p>
-	    	There is no data to display at the moment..
-		</p>
-	</md-content>
+<section>
+    <md-content class="hours-list-wrapper" ng-if="!totalHours">
+        <p>
+            There is no data to display at the moment..
+        </p>
+    </md-content>
 
-   	<md-content class="hours-list-wrapper" ng-if="totalHours">
-		<h1 class="hours-list-header">
-    		Hours contributed
-    	</h1>
-    	<md-divider></md-divider>
+    <md-content class="hours-list-wrapper" ng-if="totalHours">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <div flex="80">
+                    <h1 class="hours-list-header" style="color:white">
+                        Hours contributed
+                    </h1>
+                </div>
+                <div>
+                    <h2 style="color:whitesmoke">
+                        Overall hours : {{totalHours}}
+                    </h2>
+                </div>
+            </div>
+        </md-toolbar>
+        <md-divider>
+
+        </md-divider>
 
         <md-list class="hours-list">
             <a ng-repeat="task in taskList" ng-href="/#!/task/{{task.taskId}}" class="hours-item-wrapper">

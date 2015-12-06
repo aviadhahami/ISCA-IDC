@@ -8,16 +8,20 @@ angular.module('hoursReport').controller('HoursReportController', ['$scope', 'Au
 
         var appendTasks = function (hoursObj) {
             var tasks = [];
-            for (var year in hoursObj) {
-                for (var month in hoursObj[year]) {
-                    for (var i = 0; i < hoursObj[year][month].length; i++) {
-                        tasks.push(hoursObj[year][month][i]);
+            for (var yearKey in hoursObj) {
+                for (var monthKey in hoursObj[yearKey]) {
+                    // console.log(hoursObj[yearKey][monthKey]);
+                    for (var taskKey in hoursObj[yearKey][monthKey]) {
+                        console.log(hoursObj[yearKey][monthKey][taskKey]);
+                        tasks.push(hoursObj[yearKey][monthKey][taskKey]);
+                        $scope.totalHours += hoursObj[yearKey][monthKey][taskKey]['timeTaken'];
                     }
                 }
             }
             return tasks;
         }
-        if ($scope.user.hasOwnProperty("iscaData") && $scope.user.iscaData.hasOwnProperty("hours"))
+        $scope.totalHours = 0;
+        if ($scope.user.hasOwnProperty('iscaData') && $scope.user.iscaData.hasOwnProperty('hours'))
             $scope.taskList = appendTasks($scope.user.iscaData.hours);
         else
             $scope.taskList = null;
