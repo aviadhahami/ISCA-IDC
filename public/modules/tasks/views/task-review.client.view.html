@@ -15,16 +15,16 @@
                     </md-toolbar>
                     <div>
                         <small ng-if="task.status == 'new'" class="task-info">
-                            <i>{{ task.type }}</i> task - Created on {{ stringifyDate(task.created.date) }} By {{
-                            task.created.name }}
+                            <i>{{ task.type }} task - Created on {{ stringifyDate(task.created.date) }} By {{
+                            task.created.name }}</i>
                         </small>
                         <small ng-if="task.status == 'active'" class="task-info">
-                            <i>{{ task.type }}</i> task - Picked up on {{ stringifyDate(task.taken.date) }} By {{
-                            task.taken.name }}
+                            <i>{{ task.type }} task - Picked up on {{ stringifyDate(task.taken.date) }} By {{
+                            task.taken.name }}</i>
                         </small>
                         <small ng-if="task.status == 'done'" class="task-info">
-                            <i>{{ task.type }}</i> task - Completed on {{ stringifyDate(task.closed.date) }} By {{
-                            task.closed.name }}
+                            <i>{{ task.type }} task - Completed on {{ stringifyDate(task.closed.date) }} By {{
+                            task.closed.name }}</i>
                         </small>
                     </div>
 
