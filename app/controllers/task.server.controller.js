@@ -31,7 +31,6 @@ exports.create = function (req, res) {
  * Show the current task
  */
 exports.read = function (req, res) {
-    console.log('-------in READs-----')
     res.jsonp(req.task);
 };
 
@@ -41,7 +40,7 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
     var task = req.task;
 
-    task = _.extend(task, req.body);
+    task = _.extend(task, req.body.task);
 
     task.save(function (err) {
         if (err) {
