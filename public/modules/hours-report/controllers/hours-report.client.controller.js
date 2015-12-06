@@ -7,7 +7,6 @@ angular.module('hoursReport').controller('HoursReportController', ['$scope', 'Au
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
 
         var appendTasks = function (hoursObj) {
-            //console.log(hoursObj)
             var tasks = [];
             for (var yearKey in hoursObj) {
                 for (var monthKey in hoursObj[yearKey]) {
@@ -20,10 +19,9 @@ angular.module('hoursReport').controller('HoursReportController', ['$scope', 'Au
                 }
             }
             return tasks;
-        };
-
+        }
         $scope.totalHours = 0;
-        if ($scope.user.iscaData && $scope.user.iscaData.hours)
+        if ($scope.user.hasOwnProperty('iscaData') && $scope.user.iscaData.hasOwnProperty('hours'))
             $scope.taskList = appendTasks($scope.user.iscaData.hours);
         else
             $scope.taskList = null;
