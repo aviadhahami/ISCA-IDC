@@ -28,7 +28,7 @@ angular.module('tasks').controller('TaskListController', ['$scope', 'Authenticat
                 .then(function (data) {
                     console.log(data);
                     $scope.categories = data.data.types;
-                    $scope.populateTasks(data.data.types[0]);
+                    $scope.populateTasks($scope.categories[0]);
                 });
         };
         $scope.populateTasks = function (taskType) {
