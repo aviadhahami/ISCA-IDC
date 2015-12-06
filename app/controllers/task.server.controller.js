@@ -59,7 +59,7 @@ exports.update = function (req, res) {
  */
 exports.delete = function (req, res) {
 
-    if (res.user.roles === 'admin') {
+    if (req.user.roles === 'admin') {
         var tasks = req.task;
 
         tasks.remove(function (err) {
