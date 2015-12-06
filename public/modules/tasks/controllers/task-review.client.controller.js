@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', 'task', '$http','$mdDialog','$location',
-    function ($scope, Authentication, Userroleasenumservice, task, $http,$mdDialog,$location) {
+angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', 'task', '$http', '$mdDialog', '$location',
+    function ($scope, Authentication, Userroleasenumservice, task, $http, $mdDialog, $location) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -51,7 +51,24 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
         };
 
         $scope.takeTask = function () {
+            $scope.task.taken = {
+                name: $scope.user.displayName,
+                date: Date.now(),
+                id: $scope.user._id
+            };
+            $scope.task.status = 'active';
+            $http({
+                method: 'PUT',
+                url: '/tasks/' + task._id,
+                data: {
+                    task: $scope.task
+                }
+            }).then(function (res) {
+                console.log(res);
 
+            }, function (err) {
+                console.log(err);
+            });
         };
 
         $scope.closeTask = function () {

@@ -176,7 +176,7 @@ exports.tasksByID = function (req, res, next, id) {
 
 exports.hasAuthorization = function (req, res, next) {
     if (req.task) {
-        if (req.task.takenBy !== req.user.id && req.user.roles !== 'admin' && req.user.roles !== 'manager') {
+        if (req.task.taken.id !== req.user.id && req.user.roles !== 'admin' && req.user.roles !== 'manager') {
             return res.status(403).send('User is not authorized');
         }
     } else {
