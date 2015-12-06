@@ -59,4 +59,18 @@ angular.module('dashboard').controller('dashboardController', ['$scope', 'Authen
                 icon: 'fa-newspaper-o'
             }
         ];
+
+        // This function handles all arrays in the user's 'iscaData.hours' object
+        var sumHours = function (hoursObj) {
+            var sum = 0;
+            for (var year in hoursObj)
+                for (var month in year)
+                    for (var task in month)
+                        sum += task.timeTaken;
+            return sum;
+        }
+        if ($scope.user.iscaData && $scope.user.iscaData.hours)
+            $scope.totalHours = sumHours($scope.user.iscaData.hours);
+        else
+            $scope.totalHours = null;
     }]);
