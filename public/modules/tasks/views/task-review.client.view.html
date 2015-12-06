@@ -1,22 +1,49 @@
-<section data-ng-controller="TaskNewController">
+<section>
     <md-content>
-        <a ui-sref="dashboard">
+        <a ui-sref="tasks">
             <i class="fa fa-chevron-left"></i> Back
         </a>
-        <md-card>
+        <md-card class="{{task.status}}-task">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">Title: {{task.title}}</span>
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <h2 style="color:white">
+                                {{task.title}}
+                            </h2>
+                        </div>
+                    </md-toolbar>
+                    <div>
+                        <small ng-if="task.status == 'new'" class="task-info">
+                            <i>{{ task.type }} task - Created on {{ stringifyDate(task.created.date) }} By {{
+                            task.created.name }}</i>
+                        </small>
+                        <small ng-if="task.status == 'active'" class="task-info">
+                            <i>{{ task.type }} task - Picked up on {{ stringifyDate(task.taken.date) }} By {{
+                            task.taken.name }}</i>
+                        </small>
+                        <small ng-if="task.status == 'done'" class="task-info">
+                            <i>{{ task.type }} task - Completed on {{ stringifyDate(task.closed.date) }} By {{
+                            task.closed.name }}</i>
+                        </small>
+                    </div>
+
                     <br>
-                    <span class="md-subhead">Description: {{task.description}}</span>
                 </md-card-title-text>
             </md-card-title>
             <md-card-content>
-                <p>Content: {{task.content}}</p>
+                <p class="task-text">
+                    {{ task.content }}
+                </p>
             </md-card-content>
+
             <md-card-actions layout="row" layout-align="start center">
-                <md-button class="md-raised" ng-click="takeClicked()" ng-if="!!task.takenBy">Take</md-button>
-                <md-button class="md-raised" ng-click="closeClicked()" ng-if="task.takenBy === user._id || userLevel > 2">Close</md-button>
+                <md-button class="md-raised" ng-click="takeTask()" ng-if="task.status == 'new'">
+                    Pick up task!
+                </md-button>
+                <md-button class="md-raised" ng-click="closeTask()" ng-if="task.taken.id === user._id || userLevel > 2">
+                    I'm done!
+                </md-button>
             </md-card-actions>
         </md-card>
     </md-content>

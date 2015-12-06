@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentication', 'Userroleasenumservice', '$http', '$mdDialog',
-    function ($scope, Authentication, Userroleasenumservice, $http, $mdDialog) {
+angular.module('tasks').controller('TaskNewController', ['$scope', 'Authentication', 'Userroleasenumservice', '$http', '$mdDialog','$location',
+    function ($scope, Authentication, Userroleasenumservice, $http, $mdDialog,$location) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -11,9 +11,11 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
         $scope.newTask = {
             type: '',
             title: '',
-            createdBy: $scope.user._id,
             description: '',
-            content: ''
+            content: '',
+            created: {
+                name: $scope.user.displayName
+            }
         };
 
         $scope.createNewTask = function () {
@@ -26,7 +28,15 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
 
                 // Worked
                 console.log(data);
-
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(false)
+                        .title('Task added')
+                        .content('Task was added, you will now move to the tasks list')
+                        .ok('ok')
+                ).then(function () {
+                    $location.path('/tasks');
+                });
             }, function (err) {
                 // Err
                 console.log(err);
@@ -38,8 +48,8 @@ angular.module('tasks').controller('TaskReviewController', ['$scope', 'Authentic
                         .content(err.data.message)
                         .ok('OK')
                     );
+
                 }
-                // TODO: handle errors
             });
         };
 
