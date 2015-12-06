@@ -26,14 +26,15 @@ angular.module('tasks').controller('TaskListController', ['$scope', 'Authenticat
         var populateCategories = function() {
             TasksGetterService.getCategories()
             .then( function(data) {
-                $scope.categories = data.data;
+                console.log(data);
+                $scope.categories = data.data.types;
             });
         };
         $scope.populateTasks = function(taskType) {
             $scope.loadingTasks = true;
             TasksGetterService.getTasks(taskType)
             .then( function(data) {
-            	$scope.taskList = data.data;
+            	$scope.taskList = data.data.tasks;
                 $scope.loadingTasks = false;
             });
         };

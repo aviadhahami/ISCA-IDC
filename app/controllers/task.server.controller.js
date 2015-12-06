@@ -12,11 +12,11 @@ var mongoose = require('mongoose'),
 /**
  * Create a task
  */
-exports.create = function(req, res) {
+exports.create = function (req, res) {
     var tasks = new Tasks(req.body);
 
     tasks.type = tasks.type.toLowerCase();
-    tasks.save(function(err) {
+    tasks.save(function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -30,7 +30,7 @@ exports.create = function(req, res) {
 /**
  * Show the current task
  */
-exports.read = function(req, res) {
+exports.read = function (req, res) {
     console.log('-------in READs-----')
     res.jsonp(req.task);
 };
@@ -38,12 +38,12 @@ exports.read = function(req, res) {
 /**
  * Update a task
  */
-exports.update = function(req, res) {
-    var task = req.task ;
+exports.update = function (req, res) {
+    var task = req.task;
 
-    task = _.extend(task , req.body);
+    task = _.extend(task, req.body);
 
-    task.save(function(err) {
+    task.save(function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -57,10 +57,10 @@ exports.update = function(req, res) {
 /**
  * Delete task
  */
-exports.delete = function(req, res) {
-    var tasks = req.task ;
+exports.delete = function (req, res) {
+    var tasks = req.task;
 
-    tasks.remove(function(err) {
+    tasks.remove(function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -72,28 +72,28 @@ exports.delete = function(req, res) {
 };
 
 var listHandler = {
-    getTypes: function() {
+    getTypes: function () {
         var deferred = q.defer()
-        Tasks.distinct('type').exec(function(err, types) {
+        Tasks.distinct('type').exec(function (err, types) {
             if (err) {
-                deferred.resolve({ success: false, err: err });
+                deferred.resolve({success: false, err: err});
             } else {
-                deferred.resolve({ success: true, data: types });
+                deferred.resolve({success: true, data: types});
             }
         });
 
         return deferred.promise;
     },
-    getByGeneric: function(key, value) {
+    getByGeneric: function (key, value) {
         var deferred = q.defer();
         var filterObject = {};
         filterObject[key] = value;
-        Tasks.find(filterObject).sort('-created').exec(function(err, tasks) {
-           if (err) {
-               deferred.resolve({ success: false, err: err });
-           } else {
-               deferred.resolve({ success: true, data: tasks });
-           }
+        Tasks.find(filterObject).sort('-created').exec(function (err, tasks) {
+            if (err) {
+                deferred.resolve({success: false, err: err});
+            } else {
+                deferred.resolve({success: true, data: tasks});
+            }
         });
         return deferred.promise;
     }
@@ -102,7 +102,7 @@ var listHandler = {
 /**
  * List of tasks by dynamic
  */
-exports.list = function(req, res) {
+exports.list = function (req, res) {
 
     // Get types
     var action = req.param('action');
@@ -156,12 +156,12 @@ exports.list = function(req, res) {
 /**
  * News middleware
  */
-exports.tasksByID = function(req, res, next, id) {
+exports.tasksByID = function (req, res, next, id) {
     console.log('getting ' + req.task);
-    Tasks.findById(id).populate('user', 'displayName').exec(function(err, task) {
+    Tasks.findById(id).populate('user', 'displayName').exec(function (err, task) {
         if (err) return next(err);
-        if (! task) return next(new Error('Failed to load Task' + id));
-        req.task = task ;
+        if (!task) return next(new Error('Failed to load Task' + id));
+        req.task = task;
         next();
     });
 };
@@ -170,13 +170,13 @@ exports.tasksByID = function(req, res, next, id) {
  * Task authorization middleware
  */
 
-exports.hasAuthorization = function(req, res, next) {
-    if(req.task){
+exports.hasAuthorization = function (req, res, next) {
+    if (req.task) {
         if (req.task.takenBy !== req.user.id && req.user.roles !== 'admin' && req.user.roles !== 'manager') {
             return res.status(403).send('User is not authorized');
         }
-    }else{
-        if( req.user.roles !== 'admin' && req.user.roles !== 'manager'){
+    } else {
+        if (req.user.roles !== 'admin' && req.user.roles !== 'manager') {
             return res.status(403).send('admin error,User is not authorized');
         }
     }
