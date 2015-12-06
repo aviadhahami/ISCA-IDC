@@ -13,9 +13,6 @@
                             </h2>
                         </div>
                     </md-toolbar>
-                    <h1 class="md-headline task-header">
-                        {{ task.title }}
-                    </h1>
                     <small ng-if="task.status == 'new'" class="task-info">
                         {{ task.type }} - Created on {{ stringifyDate(task.created.date) }} By {{ task.created.name }}
                     </small>
@@ -26,6 +23,7 @@
                         {{ task.type }} - Completed on {{ stringifyDate(task.closed.date) }} By {{ task.closed.name }}
                     </small>
                     <br>
+
                     <p class="md-subhead">
                         {{task.description}}
                     </p>
