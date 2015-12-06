@@ -1,22 +1,40 @@
 <section data-ng-controller="TaskNewController">
     <md-content>
-        <a ui-sref="dashboard">
-            <i class="fa fa-chevron-left"></i> Back
-        </a>
-        <md-card>
+        <md-card class="task-details-container {{task.status}}-task">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">Title: {{task.title}}</span>
+                    <h1 class="md-headline task-header">
+                        {{ task.title }}
+                    </h1>
+                    <small ng-if="task.status == 'new'" class="task-info">
+                        {{ task.type }} - Created on {{ stringifyDate(task.created.date) }} By {{ task.created.name }}
+                    </small>
+                    <small ng-if="task.status == 'active'" class="task-info">
+                        {{ task.type }} - Picked up on {{ stringifyDate(task.taken.date) }} By {{ task.taken.name }}
+                    </small>
+                    <small ng-if="task.status == 'done'" class="task-info">
+                        {{ task.type }} - Completed on {{ stringifyDate(task.closed.date) }} By {{ task.closed.name }}
+                    </small>
                     <br>
-                    <span class="md-subhead">Description: {{task.description}}</span>
+                    <p class="md-subhead">
+                        {{task.description}}
+                    </p>
                 </md-card-title-text>
             </md-card-title>
+
             <md-card-content>
-                <p>Content: {{task.content}}</p>
+                <p class="task-text">
+                    {{ task.content }}
+                </p>
             </md-card-content>
+
             <md-card-actions layout="row" layout-align="start center">
-                <md-button class="md-raised" ng-click="takeClicked()" ng-if="!!task.takenBy">Take</md-button>
-                <md-button class="md-raised" ng-click="closeClicked()" ng-if="task.takenBy === user._id || userLevel > 2">Close</md-button>
+                <md-button class="md-raised" ng-click="takeTask()" ng-if="task.status == 'new'">
+                    Pick up task!
+                </md-button>
+                <md-button class="md-raised" ng-click="closeTask()" ng-if="task.taken.id === user._id || userLevel > 2">
+                    I'm done!
+                </md-button>
             </md-card-actions>
         </md-card>
     </md-content>
