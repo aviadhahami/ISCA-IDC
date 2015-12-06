@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('tasks').controller('TaskNewController', ['$scope', 'Authentication', 'Userroleasenumservice', '$http', '$mdDialog',
-    function ($scope, Authentication, Userroleasenumservice, $http, $mdDialog) {
+angular.module('tasks').controller('TaskNewController', ['$scope', 'Authentication', 'Userroleasenumservice', '$http', '$mdDialog','$location',
+    function ($scope, Authentication, Userroleasenumservice, $http, $mdDialog,$location) {
         // This provides Authentication context.
         $scope.user = Authentication.hasOwnProperty('user') ? Authentication.user : null;
         $scope.userLevel = $scope.user ? Userroleasenumservice.getValue($scope.user.roles) : 0;
@@ -13,7 +13,7 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
             title: '',
             description: '',
             content: '',
-            created:{
+            created: {
                 name: $scope.user.displayName
             }
         };
@@ -28,7 +28,15 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
 
                 // Worked
                 console.log(data);
-
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .clickOutsideToClose(false)
+                        .title('Task added')
+                        .content('Task was added, you will now move to the tasks list')
+                        .ok('ok')
+                ).then(function () {
+                    $location.path('/tasks');
+                });
             }, function (err) {
                 // Err
                 console.log(err);
@@ -41,7 +49,6 @@ angular.module('tasks').controller('TaskNewController', ['$scope', 'Authenticati
                         .ok('OK')
                     );
                 }
-                // TODO: handle errors
             });
         };
 
