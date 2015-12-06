@@ -157,7 +157,6 @@ exports.list = function (req, res) {
  * News middleware
  */
 exports.tasksByID = function (req, res, next, id) {
-    console.log('getting ' + req.task);
     Tasks.findById(id).populate('user', 'displayName').exec(function (err, task) {
         if (err) return next(err);
         if (!task) return next(new Error('Failed to load Task' + id));
